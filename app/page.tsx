@@ -69,13 +69,10 @@ export default function GherardPortfolio() {
             </a>
             <span className="hidden h-5 w-px bg-white/25 sm:block" aria-hidden />
             <a href="#about" className={navLink}>
-              Sobre
+              about
             </a>
             <a href="#proyectos" className={navLink}>
-              Proyectos
-            </a>
-            <a href="#servicios" className={navLink}>
-              Servicios
+              work
             </a>
             <a href="/shop" className={navLink}>
               Tienda

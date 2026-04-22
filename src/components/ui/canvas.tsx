@@ -19,10 +19,18 @@ export function renderCanvas() {
   let pointer: Point | null = null;
   const trail: TrailPoint[] = [];
 
+  const getTargetRect = () => {
+    const parent = canvas.parentElement;
+    if (parent) return parent.getBoundingClientRect();
+    return canvas.getBoundingClientRect();
+  };
+
   const resize = () => {
-    const rect = canvas.getBoundingClientRect();
+    const rect = getTargetRect();
     width = Math.max(1, Math.floor(rect.width));
     height = Math.max(1, Math.floor(rect.height));
+    canvas.style.width = `${width}px`;
+    canvas.style.height = `${height}px`;
     canvas.width = Math.floor(width * dpr);
     canvas.height = Math.floor(height * dpr);
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
@@ -58,6 +66,14 @@ export function renderCanvas() {
   };
 
   const draw = () => {
+    // Re-sync in case hero height/viewport changed without window resize.
+    if (
+      Math.floor(canvas.clientWidth) !== width ||
+      Math.floor(canvas.clientHeight) !== height
+    ) {
+      resize();
+    }
+
     ctx.clearRect(0, 0, width, height);
 
     if (pointer && active) {
@@ -91,6 +107,7 @@ export function renderCanvas() {
     raf = window.requestAnimationFrame(draw);
   };
 
+  let resizeObserver: ResizeObserver | null = null;
   resize();
   draw();
 
@@ -99,6 +116,12 @@ export function renderCanvas() {
   window.addEventListener("touchmove", onTouchMove, { passive: true });
   window.addEventListener("mouseleave", onLeave);
   window.addEventListener("touchend", onLeave, { passive: true });
+  if (typeof ResizeObserver !== "undefined") {
+    resizeObserver = new ResizeObserver(() => resize());
+    const parent = canvas.parentElement;
+    if (parent) resizeObserver.observe(parent);
+    resizeObserver.observe(canvas);
+  }
 
   const cleanup = () => {
     window.cancelAnimationFrame(raf);
@@ -107,6 +130,7 @@ export function renderCanvas() {
     window.removeEventListener("touchmove", onTouchMove);
     window.removeEventListener("mouseleave", onLeave);
     window.removeEventListener("touchend", onLeave);
+    if (resizeObserver) resizeObserver.disconnect();
   };
 
   // Store cleanup to avoid duplicate listeners if renderCanvas is called again.

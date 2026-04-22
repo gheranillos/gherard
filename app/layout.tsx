@@ -33,7 +33,7 @@ const coolvetica = localFont({
 })
 
 export const metadata: Metadata = {
-  title: 'Gherard | Director Creativo · Editor de Video · Branding',
+  title: 'Gherard | Portfolio',
   description: 'Portfolio creativo de Gherard. Edición de video, branding y dirección creativa para marcas con personalidad y estética auténtica.',
   generator: 'v0.app',
   icons: {
