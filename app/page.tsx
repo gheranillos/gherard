@@ -1,50 +1,15 @@
 "use client";
 
+import { useEffect } from "react";
 import { motion } from "framer-motion";
-import {
-  ArrowUpRight,
-  Instagram,
-  MessageCircle,
-  ShoppingBag,
-} from "lucide-react";
+import { Instagram, MessageCircle, ShoppingBag } from "lucide-react";
 
-import { Button } from "@/components/ui/button";
-import { useCart, type ShopProduct } from "@/lib/cart-context";
+import { useCart } from "@/lib/cart-context";
+import { renderCanvas } from "@/components/ui/canvas";
 import { SelectedWork } from "../src/sections/SelectedWork";
 
 /** Imagen en `public/hero.jpg` */
 const HERO_IMAGE = "/hero.jpg";
-
-const SHOP_PRODUCTS: ShopProduct[] = [
-  {
-    id: "pack-luts",
-    name: "Pack LUTs / color mood (10 presets)",
-    price: 35,
-    image:
-      "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=800&q=80",
-  },
-  {
-    id: "consultoria",
-    name: "Sesión de dirección creativa (1 h, videollamada)",
-    price: 90,
-    image:
-      "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=800&q=80",
-  },
-  {
-    id: "reel-pack",
-    name: "Pack edición: 3 reels cortos (hasta 45 s c/u)",
-    price: 220,
-    image:
-      "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=800&q=80",
-  },
-  {
-    id: "mini-brand",
-    name: "Mini identidad: logo + paleta + tipografías",
-    price: 280,
-    image:
-      "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=800&q=80",
-  },
-];
 
 const services = [
   {
@@ -78,7 +43,10 @@ const navLinkActive =
   "rounded-full px-3 py-2 text-[11px] font-medium uppercase tracking-[0.2em] text-[#f7b7ff]";
 
 export default function GherardPortfolio() {
-  const { addToCart, count, setOpen } = useCart();
+  const { count, setOpen } = useCart();
+  useEffect(() => {
+    renderCanvas();
+  }, []);
 
   return (
     <div className="bg-white text-neutral-900 selection:bg-[#d9ff3f] selection:text-black">
@@ -109,7 +77,7 @@ export default function GherardPortfolio() {
             <a href="#servicios" className={navLink}>
               Servicios
             </a>
-            <a href="#shop" className={navLink}>
+            <a href="/shop" className={navLink}>
               Tienda
             </a>
             <a href="#contacto" className={navLink}>
@@ -149,24 +117,15 @@ export default function GherardPortfolio() {
             transition={{ duration: 0.65 }}
             className="mx-auto flex w-full max-w-5xl flex-col items-center text-center"
           >
-            <p className="mb-4 text-[10px] font-medium uppercase tracking-[0.35em] text-white/90 md:text-xs">
-              Trabajo <span className="text-teal-400">●</span> disponible para
-              colaborar
-            </p>
             <h1 className="max-w-4xl text-4xl font-black uppercase leading-[0.95] tracking-[-0.03em] text-white drop-shadow-sm sm:text-5xl md:text-6xl lg:text-[4.25rem] xl:text-7xl">
               Diseño <span className="text-[#f7b7ff]">con</span> autenticidad
             </h1>
-            <a
-              href="#contacto"
-              className="group mt-8 inline-flex items-center gap-2 text-sm font-medium uppercase tracking-[0.2em] text-white"
-            >
-              <span className="border-b-2 border-teal-400 pb-0.5 transition group-hover:border-teal-300">
-                Contrátame
-              </span>
-              <ArrowUpRight className="size-4 text-teal-400 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </a>
           </motion.div>
         </div>
+        <canvas
+          className="pointer-events-none absolute inset-0 mx-auto"
+          id="canvas"
+        />
       </section>
 
       {/* About Section */}
@@ -281,59 +240,6 @@ export default function GherardPortfolio() {
                 </div>
               ))}
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Shop */}
-      <section id="shop" className="border-b border-neutral-200 bg-neutral-50/80">
-        <div className="mx-auto max-w-7xl px-6 py-20 md:px-10">
-          <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-            <div>
-              <div className="text-sm uppercase tracking-[0.25em] text-teal-600">
-                Tienda
-              </div>
-              <h2 className="mt-4 text-3xl font-black uppercase tracking-tight text-neutral-900 md:text-5xl">
-                Servicios y packs digitales
-              </h2>
-            </div>
-            <p className="max-w-xl text-sm leading-7 text-neutral-600">
-              Añade al carrito. El pago y la coordinación los cierras por
-              WhatsApp con un resumen automático del pedido.
-            </p>
-          </div>
-
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
-            {SHOP_PRODUCTS.map((product) => (
-              <article
-                key={product.id}
-                className="flex flex-col overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-sm"
-              >
-                <div className="relative aspect-[4/3] overflow-hidden">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={product.image}
-                    alt=""
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-                <div className="flex flex-1 flex-col p-5">
-                  <h3 className="font-semibold leading-snug text-neutral-900">
-                    {product.name}
-                  </h3>
-                  <p className="mt-2 text-lg font-bold tabular-nums text-neutral-900">
-                    {product.price}€
-                  </p>
-                  <Button
-                    type="button"
-                    className="mt-4 w-full"
-                    onClick={() => addToCart(product)}
-                  >
-                    Añadir al carrito
-                  </Button>
-                </div>
-              </article>
-            ))}
           </div>
         </div>
       </section>
