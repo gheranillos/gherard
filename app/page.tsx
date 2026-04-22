@@ -49,6 +49,8 @@ export default function GherardPortfolio() {
   const aboutCardRef = useRef<HTMLDivElement | null>(null);
   const aboutLine1Ref = useRef<HTMLHeadingElement | null>(null);
   const aboutLine2Ref = useRef<HTMLHeadingElement | null>(null);
+  const aboutMicroWrapRef = useRef<HTMLSpanElement | null>(null);
+  const aboutMicroTextRef = useRef<HTMLSpanElement | null>(null);
   const aboutBtnWrapRef = useRef<HTMLSpanElement | null>(null);
   const aboutBtnRef = useRef<HTMLButtonElement | null>(null);
 
@@ -61,9 +63,22 @@ export default function GherardPortfolio() {
     const card = aboutCardRef.current;
     const line1 = aboutLine1Ref.current;
     const line2 = aboutLine2Ref.current;
+    const microWrap = aboutMicroWrapRef.current;
+    const microText = aboutMicroTextRef.current;
     const btnWrap = aboutBtnWrapRef.current;
     const btn = aboutBtnRef.current;
-    if (!section || !bg || !card || !line1 || !line2 || !btnWrap || !btn) return;
+    if (
+      !section ||
+      !bg ||
+      !card ||
+      !line1 ||
+      !line2 ||
+      !microWrap ||
+      !microText ||
+      !btnWrap ||
+      !btn
+    )
+      return;
 
     const clamp = (v: number, min: number, max: number) =>
       Math.min(Math.max(v, min), max);
@@ -80,6 +95,11 @@ export default function GherardPortfolio() {
       const splitP = remap(progress, 0, 0.45, 0, 1);
       line1.style.transform = "translateY(0px)";
       line2.style.transform = "translateY(0px)";
+      microWrap.style.width = `${155 * splitP}px`;
+      microWrap.style.marginLeft = `${10 * splitP}px`;
+      microWrap.style.marginRight = `${10 * splitP}px`;
+      microText.style.opacity = String(splitP);
+      microText.style.transform = `translateY(${(1 - splitP) * 8}px)`;
       btnWrap.style.width = `${180 * splitP}px`;
       btnWrap.style.marginLeft = `${14 * splitP}px`;
       btnWrap.style.marginRight = `${14 * splitP}px`;
@@ -207,34 +227,44 @@ export default function GherardPortfolio() {
           >
             <h2
               ref={aboutLine1Ref}
-              className="font-black tracking-[-0.03em] text-[#0a0a0a]"
+              className="about-book font-black tracking-[-0.03em] text-[#0a0a0a]"
               style={{
                 fontSize: "clamp(2.6rem, 12vw, 9rem)",
                 lineHeight: 0.92,
                 transition: "transform 0.1s",
               }}
             >
-              No soy{" "}
+              No soy
               <span
-                className="inline-block align-middle font-normal tracking-[-0.015em] text-[#222] opacity-90"
-                style={{
-                  fontSize: "clamp(0.9rem, 1.75vw, 2rem)",
-                  lineHeight: 0.9,
-                  margin: "0 0.35em",
-                }}
+                ref={aboutMicroWrapRef}
+                className="inline-flex items-center justify-center overflow-hidden align-middle"
+                style={{ width: 0, marginLeft: 0, marginRight: 0 }}
               >
-                saquemos el
-                <br />
-                potencial de
-                <br />
-                tu marca.
-              </span>{" "}
-              solo editor,
+                <span
+                  ref={aboutMicroTextRef}
+                  className="about-light inline-block text-left tracking-[-0.015em] text-[#222]"
+                  style={{
+                    fontSize: "clamp(0.72rem, 1.1vw, 1.15rem)",
+                    lineHeight: 0.92,
+                    opacity: 0,
+                    transform: "translateY(8px)",
+                    transition: "opacity 0.1s, transform 0.1s",
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  saquemos el
+                  <br />
+                  potencial de
+                  <br />
+                  tu marca
+                </span>
+              </span>
+              editor,
             </h2>
 
             <h2
               ref={aboutLine2Ref}
-              className="font-black tracking-[-0.03em] text-[#0a0a0a]"
+              className="about-book font-black tracking-[-0.03em] text-[#0a0a0a]"
               style={{
                 fontSize: "clamp(2.6rem, 12vw, 9rem)",
                 lineHeight: 0.92,
@@ -256,7 +286,7 @@ export default function GherardPortfolio() {
                       document.querySelector("#contacto");
                     target?.scrollIntoView({ behavior: "smooth" });
                   }}
-                  className="rounded-full bg-[#0a0a0a] px-8 py-3 text-base font-semibold text-white transition hover:border-2 hover:border-[#0a0a0a] hover:bg-white hover:text-[#0a0a0a] md:px-11 md:py-4"
+                  className="about-light rounded-full bg-[#0a0a0a] px-8 py-3 text-base font-semibold text-white transition hover:border-2 hover:border-[#0a0a0a] hover:bg-white hover:text-[#0a0a0a] md:px-11 md:py-4"
                   style={{
                     opacity: 0,
                     transform: "scale(0.8)",
@@ -270,6 +300,30 @@ export default function GherardPortfolio() {
               identidad.
             </h2>
           </div>
+          <style jsx global>{`
+            @font-face {
+              font-family: "CoolveticaBook";
+              src: url("/fonts/coolvetica/Coolvetica-Book-Regular.otf")
+                format("opentype");
+              font-weight: 400;
+              font-style: normal;
+              font-display: swap;
+            }
+            @font-face {
+              font-family: "CoolveticaLight";
+              src: url("/fonts/coolvetica/Coolvetica-Light-Regular.otf")
+                format("opentype");
+              font-weight: 300;
+              font-style: normal;
+              font-display: swap;
+            }
+            .about-book {
+              font-family: "CoolveticaBook", sans-serif;
+            }
+            .about-light {
+              font-family: "CoolveticaLight", sans-serif;
+            }
+          `}</style>
         </div>
       </section>
 
