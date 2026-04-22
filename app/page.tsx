@@ -49,7 +49,7 @@ export default function GherardPortfolio() {
   const aboutCardRef = useRef<HTMLDivElement | null>(null);
   const aboutLine1Ref = useRef<HTMLHeadingElement | null>(null);
   const aboutLine2Ref = useRef<HTMLHeadingElement | null>(null);
-  const aboutBtnWrapRef = useRef<HTMLDivElement | null>(null);
+  const aboutBtnWrapRef = useRef<HTMLSpanElement | null>(null);
   const aboutBtnRef = useRef<HTMLButtonElement | null>(null);
 
   useEffect(() => {
@@ -77,14 +77,12 @@ export default function GherardPortfolio() {
       const scrolled = window.scrollY - section.offsetTop;
       const total = section.offsetHeight - window.innerHeight;
       const progress = clamp(scrolled / Math.max(total, 1), 0, 1);
-      const isMobile = window.innerWidth < 768;
-      const splitDistance = isMobile ? 70 : 130;
-
       const splitP = remap(progress, 0, 0.45, 0, 1);
-      line1.style.transform = `translateY(${-splitDistance * splitP}px)`;
-      line2.style.transform = `translateY(${splitDistance * splitP}px)`;
-
-      btnWrap.style.height = `${90 * splitP}px`;
+      line1.style.transform = "translateY(0px)";
+      line2.style.transform = "translateY(0px)";
+      btnWrap.style.width = `${180 * splitP}px`;
+      btnWrap.style.marginLeft = `${14 * splitP}px`;
+      btnWrap.style.marginRight = `${14 * splitP}px`;
       btn.style.opacity = String(splitP);
       btn.style.transform = `scale(${0.8 + 0.2 * splitP})`;
 
@@ -198,7 +196,7 @@ export default function GherardPortfolio() {
             <div className="absolute inset-0 bg-black/40" />
           </div>
 
-          <div className="pointer-events-none absolute left-6 top-10 z-20 text-sm uppercase tracking-[0.25em] text-[#7a8500] md:left-10">
+          <div className="pointer-events-none absolute left-6 top-10 z-20 text-sm uppercase tracking-[0.25em] text-[#f7b7ff] md:left-10">
             About
           </div>
 
@@ -216,33 +214,23 @@ export default function GherardPortfolio() {
                 transition: "transform 0.1s",
               }}
             >
-              No soy solo editor.
-            </h2>
-
-            <div
-              ref={aboutBtnWrapRef}
-              className="flex items-center justify-center overflow-hidden"
-              style={{ height: 0 }}
-            >
-              <button
-                ref={aboutBtnRef}
-                type="button"
-                onClick={() => {
-                  const target =
-                    document.querySelector("#contact") ??
-                    document.querySelector("#contacto");
-                  target?.scrollIntoView({ behavior: "smooth" });
-                }}
-                className="rounded-full bg-[#0a0a0a] px-8 py-3 text-base font-semibold text-white transition hover:border-2 hover:border-[#0a0a0a] hover:bg-white hover:text-[#0a0a0a] md:px-11 md:py-4"
+              No soy{" "}
+              <span
+                className="inline-block align-middle font-normal tracking-[-0.015em] text-[#222] opacity-90"
                 style={{
-                  opacity: 0,
-                  transform: "scale(0.8)",
-                  transition: "opacity 0.1s, transform 0.1s",
+                  fontSize: "clamp(0.9rem, 1.75vw, 2rem)",
+                  lineHeight: 0.9,
+                  margin: "0 0.35em",
                 }}
               >
-                Hablemos
-              </button>
-            </div>
+                saquemos el
+                <br />
+                potencial de
+                <br />
+                tu marca.
+              </span>{" "}
+              solo editor,
+            </h2>
 
             <h2
               ref={aboutLine2Ref}
@@ -253,7 +241,33 @@ export default function GherardPortfolio() {
                 transition: "transform 0.1s",
               }}
             >
-              Construyo identidad.
+              Construyo
+              <span
+                ref={aboutBtnWrapRef}
+                className="inline-flex items-center justify-center overflow-hidden align-middle"
+                style={{ width: 0, marginLeft: 0, marginRight: 0 }}
+              >
+                <button
+                  ref={aboutBtnRef}
+                  type="button"
+                  onClick={() => {
+                    const target =
+                      document.querySelector("#contact") ??
+                      document.querySelector("#contacto");
+                    target?.scrollIntoView({ behavior: "smooth" });
+                  }}
+                  className="rounded-full bg-[#0a0a0a] px-8 py-3 text-base font-semibold text-white transition hover:border-2 hover:border-[#0a0a0a] hover:bg-white hover:text-[#0a0a0a] md:px-11 md:py-4"
+                  style={{
+                    opacity: 0,
+                    transform: "scale(0.8)",
+                    transition: "opacity 0.1s, transform 0.1s",
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  Hablemos
+                </button>
+              </span>
+              identidad.
             </h2>
           </div>
         </div>
@@ -309,7 +323,7 @@ export default function GherardPortfolio() {
         <div className="mx-auto max-w-7xl px-6 py-20 md:px-10">
           <div className="grid gap-10 md:grid-cols-[0.9fr_1.1fr]">
             <div>
-              <div className="text-sm uppercase tracking-[0.25em] text-[#7a8500]">
+              <div className="text-sm uppercase tracking-[0.25em] text-[#f7b7ff]">
                 Proceso
               </div>
               <h2 className="mt-4 text-3xl font-black uppercase tracking-tight text-neutral-900 md:text-5xl">
@@ -322,7 +336,7 @@ export default function GherardPortfolio() {
                   key={item}
                   className="flex items-start gap-4 rounded-[24px] border border-neutral-200 bg-white p-5 shadow-sm transition hover:border-fuchsia-400/35"
                 >
-                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-neutral-200 bg-neutral-50 text-sm font-bold text-[#7a8500]">
+                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-neutral-200 bg-neutral-50 text-sm font-bold text-[#f7b7ff]">
                     0{index + 1}
                   </div>
                   <p className="pt-1 text-neutral-700">{item}</p>
