@@ -11,8 +11,8 @@ import {
 import { Button } from "@/components/ui/button";
 import { useCart, type ShopProduct } from "@/lib/cart-context";
 
-const HERO_IMAGE =
-  "https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=2400&q=80";
+/** Imagen en `public/hero.jpg` */
+const HERO_IMAGE = "/hero.jpg";
 
 const SHOP_PRODUCTS: ShopProduct[] = [
   {
@@ -122,7 +122,7 @@ export default function GherardPortfolio() {
         <img
           src={HERO_IMAGE}
           alt=""
-          className="absolute inset-0 h-full w-full scale-105 object-cover blur-[2px]"
+          className="absolute inset-0 h-full w-full object-cover object-center"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/40 to-black/25" />
         <div className="absolute inset-0 bg-black/20" />
