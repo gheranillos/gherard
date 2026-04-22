@@ -7,6 +7,7 @@ import { Instagram, MessageCircle, ShoppingBag } from "lucide-react";
 import { useCart } from "@/lib/cart-context";
 import { renderCanvas } from "@/components/ui/canvas";
 import { SelectedWork } from "../src/sections/SelectedWork";
+import { ReviewsSection } from "@/src/sections/Reviews";
 import { splitWords, wordVariants } from "@/src/hooks/useTextReveal";
 import { revealVariants, staggerChild, staggerContainer } from "@/src/hooks/useScrollReveal";
 
@@ -290,15 +291,9 @@ export default function GherardPortfolio() {
             <div className="absolute inset-0 bg-black/40" />
           </div>
 
-          <motion.div
-            variants={revealVariants.fadeIn}
-            initial={prefersReduced ? false : "hidden"}
-            whileInView={prefersReduced ? undefined : "visible"}
-            viewport={{ once: true, margin: "-40px" }}
-            className="pointer-events-none absolute left-6 top-10 z-20 text-sm uppercase tracking-[0.25em] text-[#f7b7ff] md:left-10"
-          >
+          <div className="pointer-events-none absolute left-6 top-10 z-20 text-sm uppercase tracking-[0.25em] text-[#f7b7ff] md:left-10">
             About
-          </motion.div>
+          </div>
 
           <div
             ref={aboutCardRef}
@@ -315,23 +310,7 @@ export default function GherardPortfolio() {
                 transition: "transform 0.1s",
               }}
             >
-              {splitWords("No soy").map((word, index) => (
-                <span
-                  key={`about-line-1-start-${word}-${index}`}
-                  style={{ display: "inline-block", overflow: "hidden" }}
-                >
-                  <motion.span
-                    style={{ display: "inline-block", marginRight: "0.25em" }}
-                    variants={wordVariants}
-                    custom={index}
-                    initial={prefersReduced ? false : "hidden"}
-                    whileInView={prefersReduced ? undefined : "visible"}
-                    viewport={{ once: true, margin: "-40px" }}
-                  >
-                    {word}
-                  </motion.span>
-                </span>
-              ))}{" "}
+              No soy{" "}
               <span
                 ref={aboutMicroWrapRef}
                 className="inline-flex items-center justify-center overflow-hidden align-middle"
@@ -356,24 +335,7 @@ export default function GherardPortfolio() {
                   tu marca
                 </span>
               </span>
-              {" "}
-              {splitWords("editor,").map((word, index) => (
-                <span
-                  key={`about-line-1-end-${word}-${index}`}
-                  style={{ display: "inline-block", overflow: "hidden" }}
-                >
-                  <motion.span
-                    style={{ display: "inline-block", marginRight: "0.25em" }}
-                    variants={wordVariants}
-                    custom={index + 2}
-                    initial={prefersReduced ? false : "hidden"}
-                    whileInView={prefersReduced ? undefined : "visible"}
-                    viewport={{ once: true, margin: "-40px" }}
-                  >
-                    {word}
-                  </motion.span>
-                </span>
-              ))}
+              {" "}editor,
             </h2>
 
             <h2
@@ -386,23 +348,7 @@ export default function GherardPortfolio() {
                 transition: "transform 0.1s",
               }}
             >
-              {splitWords("Construyo").map((word, index) => (
-                <span
-                  key={`about-line-2-start-${word}-${index}`}
-                  style={{ display: "inline-block", overflow: "hidden" }}
-                >
-                  <motion.span
-                    style={{ display: "inline-block", marginRight: "0.25em" }}
-                    variants={wordVariants}
-                    custom={index + 2}
-                    initial={prefersReduced ? false : "hidden"}
-                    whileInView={prefersReduced ? undefined : "visible"}
-                    viewport={{ once: true, margin: "-40px" }}
-                  >
-                    {word}
-                  </motion.span>
-                </span>
-              ))}{" "}
+              Construyo{" "}
               <span
                 ref={aboutBtnWrapRef}
                 className="inline-flex items-center justify-center overflow-hidden align-middle"
@@ -417,7 +363,7 @@ export default function GherardPortfolio() {
                       document.querySelector("#contacto");
                     target?.scrollIntoView({ behavior: "smooth" });
                   }}
-                  className="about-light rounded-full bg-[#0a0a0a] px-8 py-3 text-base font-semibold text-white transition hover:border-2 hover:border-[#0a0a0a] hover:bg-white hover:text-[#0a0a0a] md:px-11 md:py-4 transition-all duration-200"
+                  className="about-light rounded-full bg-[#0a0a0a] px-8 py-3 text-base font-semibold text-white transition hover:border-2 hover:border-[#0a0a0a] hover:bg-white hover:text-[#0a0a0a] md:px-11 md:py-4"
                   style={{
                     opacity: 0,
                     transform: "scale(0.8)",
@@ -428,24 +374,7 @@ export default function GherardPortfolio() {
                   Hablemos
                 </button>
               </span>
-              {" "}
-              {splitWords("identidad.").map((word, index) => (
-                <span
-                  key={`about-line-2-end-${word}-${index}`}
-                  style={{ display: "inline-block", overflow: "hidden" }}
-                >
-                  <motion.span
-                    style={{ display: "inline-block", marginRight: "0.25em" }}
-                    variants={wordVariants}
-                    custom={index + 4}
-                    initial={prefersReduced ? false : "hidden"}
-                    whileInView={prefersReduced ? undefined : "visible"}
-                    viewport={{ once: true, margin: "-40px" }}
-                  >
-                    {word}
-                  </motion.span>
-                </span>
-              ))}
+              {" "}identidad.
             </h2>
           </div>
           <style jsx global>{`
@@ -627,6 +556,8 @@ export default function GherardPortfolio() {
           </div>
         </div>
       </section>
+
+      <ReviewsSection />
 
       {/* Contact Section */}
       <section id="contacto" className="mx-auto max-w-7xl px-6 py-20 md:px-10">
