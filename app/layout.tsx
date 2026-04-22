@@ -1,12 +1,36 @@
 import type { Metadata } from 'next'
-import { Geist, Geist_Mono } from 'next/font/google'
+import localFont from 'next/font/local'
 import { Analytics } from '@vercel/analytics/next'
 
 import { Providers } from './providers'
 import './globals.css'
 
-const _geist = Geist({ subsets: ["latin"] });
-const _geistMono = Geist_Mono({ subsets: ["latin"] });
+const coolvetica = localFont({
+  src: [
+    {
+      path: '../fonts/coolvetica/coolvetica-rg.otf',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: '../fonts/coolvetica/coolvetica-rg-it.otf',
+      weight: '400',
+      style: 'italic',
+    },
+    {
+      path: '../fonts/coolvetica/coolvetica-condensed-rg.otf',
+      weight: '700',
+      style: 'normal',
+    },
+    {
+      path: '../fonts/coolvetica/coolvetica-compressed-hv.otf',
+      weight: '900',
+      style: 'normal',
+    },
+  ],
+  variable: '--font-coolvetica',
+  display: 'swap',
+})
 
 export const metadata: Metadata = {
   title: 'Gherard | Director Creativo · Editor de Video · Branding',
@@ -37,8 +61,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
-      <body className="font-sans antialiased">
+    <html lang="es" className={coolvetica.variable}>
+      <body className={`${coolvetica.className} font-sans antialiased`}>
         <Providers>{children}</Providers>
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>

@@ -10,6 +10,7 @@ import {
 
 import { Button } from "@/components/ui/button";
 import { useCart, type ShopProduct } from "@/lib/cart-context";
+import { SelectedWork } from "../src/sections/SelectedWork";
 
 /** Imagen en `public/hero.jpg` */
 const HERO_IMAGE = "/hero.jpg";
@@ -63,41 +64,6 @@ const services = [
   },
 ];
 
-const projects = [
-  {
-    name: "El Kiosco",
-    type: "Proyecto propio / Cultura visual",
-    description:
-      "Marca y universo creativo donde mezclo ropa, audiovisual, storytelling, comunidad y dirección estética con una energía urbana marcada.",
-    image:
-      "https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=1200&q=80",
-  },
-  {
-    name: "Branding",
-    type: "Identidad visual",
-    description:
-      "Diseño de marcas, sistemas visuales, piezas gráficas y conceptos que buscan verse sólidos, actuales y con personalidad.",
-    image:
-      "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1200&q=80",
-  },
-  {
-    name: "Videos",
-    type: "Edición y contenido",
-    description:
-      "Piezas para redes, campañas, promos y contenido audiovisual pensado para retener, comunicar y elevar la imagen del proyecto.",
-    image:
-      "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=1200&q=80",
-  },
-  {
-    name: "Trabajos freelance",
-    type: "Clientes y colaboraciones",
-    description:
-      "Trabajos desarrollados para marcas y proyectos en áreas como contenido, visuales, branding y dirección creativa aplicada.",
-    image:
-      "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80",
-  },
-];
-
 const process = [
   "Entiendo tu marca y su contexto",
   "Bajo ideas a una dirección visual clara",
@@ -109,7 +75,7 @@ const navLink =
   "rounded-full px-3 py-2 text-[11px] font-medium uppercase tracking-[0.2em] text-white/80 transition hover:bg-white/10 hover:text-white";
 
 const navLinkActive =
-  "rounded-full px-3 py-2 text-[11px] font-medium uppercase tracking-[0.2em] text-teal-400";
+  "rounded-full px-3 py-2 text-[11px] font-medium uppercase tracking-[0.2em] text-[#f7b7ff]";
 
 export default function GherardPortfolio() {
   const { addToCart, count, setOpen } = useCart();
@@ -188,7 +154,7 @@ export default function GherardPortfolio() {
               colaborar
             </p>
             <h1 className="max-w-4xl text-4xl font-black uppercase leading-[0.95] tracking-[-0.03em] text-white drop-shadow-sm sm:text-5xl md:text-6xl lg:text-[4.25rem] xl:text-7xl">
-              Diseño <span className="text-[#d9ff3f]">con</span> autenticidad
+              Diseño <span className="text-[#f7b7ff]">con</span> autenticidad
             </h1>
             <a
               href="#contacto"
@@ -288,67 +254,7 @@ export default function GherardPortfolio() {
         </div>
       </section>
 
-      {/* Projects Section */}
-      <section
-        id="proyectos"
-        className="mx-auto max-w-7xl px-6 py-20 md:px-10"
-      >
-        <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-          <div>
-            <div className="text-sm uppercase tracking-[0.25em] text-cyan-700">
-              Portfolio
-            </div>
-            <h2 className="mt-4 text-3xl font-black uppercase tracking-tight text-neutral-900 md:text-5xl">
-              Selected work / visual worlds
-            </h2>
-          </div>
-          <p className="max-w-xl leading-7 text-neutral-600">
-            Te dejé esta sección más visual para que metas covers, frames,
-            thumbnails, logos, renders o links reales a proyectos que quieras
-            enseñar.
-          </p>
-        </div>
-
-        <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-          {projects.map((project, index) => (
-            <motion.div
-              key={project.name}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.08 }}
-              className="group overflow-hidden rounded-[32px] border border-neutral-200 bg-white shadow-[0_12px_40px_rgba(0,0,0,0.08)]"
-            >
-              <div className="relative h-72 overflow-hidden">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={project.image}
-                  alt={project.name}
-                  className="h-full w-full object-cover transition duration-700 group-hover:scale-110 group-hover:rotate-1"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/10 to-transparent" />
-                <div className="absolute left-4 top-4 rounded-full border border-white/30 bg-black/35 px-3 py-1 text-[10px] uppercase tracking-[0.25em] text-white/90 backdrop-blur-md">
-                  {project.type}
-                </div>
-              </div>
-              <div className="p-7">
-                <h3 className="text-2xl font-black uppercase text-neutral-900">
-                  {project.name}
-                </h3>
-                <p className="mt-4 text-sm leading-7 text-neutral-600">
-                  {project.description}
-                </p>
-                <button
-                  type="button"
-                  className="mt-8 inline-flex items-center gap-2 rounded-2xl border border-neutral-200 px-4 py-2 text-sm text-neutral-700 transition hover:border-[#d9ff3f]/60 hover:text-neutral-900"
-                >
-                  Añadir caso real <ArrowUpRight className="h-4 w-4" />
-                </button>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </section>
+      <SelectedWork />
 
       {/* Process Section */}
       <section className="border-y border-neutral-200 bg-[linear-gradient(180deg,rgba(0,0,0,0.015),rgba(0,0,0,0.03))]">
