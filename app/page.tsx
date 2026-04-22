@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Instagram, MessageCircle, ShoppingBag } from "lucide-react";
 
@@ -13,19 +13,28 @@ const HERO_IMAGE = "/hero.jpg";
 
 const services = [
   {
-    title: "Edición de video",
-    description:
-      "Edición short form y long form con ritmo, intención y una estética que haga que la pieza se sienta viva, moderna y bien pensada.",
-  },
-  {
+    number: "01",
     title: "Branding",
     description:
-      "Construcción visual para marcas que necesitan una identidad con carácter, criterio estético y presencia real en digital.",
+      "Desarrollo de identidad visual completa: naming, paleta, tipografía, logotipo y sistema gráfico. Marcas que se ven sólidas, actuales y con personalidad propia.",
   },
   {
-    title: "Dirección creativa",
+    number: "02",
+    title: "Edición de Video",
     description:
-      "Conceptos, campañas, mood visual y decisiones creativas para aterrizar una idea en algo coherente, atractivo y auténtico.",
+      "Piezas para redes, campañas y contenido audiovisual. Edición con criterio narrativo, ritmo y estética cuidada para que cada video comunique algo real.",
+  },
+  {
+    number: "03",
+    title: "Diseño Web",
+    description:
+      "Sitios y portfolios con diseño limpio, buena estructura y atención al detalle. Enfocado en que la experiencia visual refleje la identidad de la marca.",
+  },
+  {
+    number: "04",
+    title: "Diseño Gráfico",
+    description:
+      "Piezas gráficas para redes, print y campañas. Flyers, presentaciones, contenido visual y todo lo que necesite verse bien y tener coherencia.",
   },
 ];
 
@@ -44,6 +53,7 @@ const navLinkActive =
 
 export default function GherardPortfolio() {
   const { count, setOpen } = useCart();
+  const [openServiceIndex, setOpenServiceIndex] = useState<number | null>(null);
   const aboutSectionRef = useRef<HTMLElement | null>(null);
   const aboutBgRef = useRef<HTMLDivElement | null>(null);
   const aboutCardRef = useRef<HTMLDivElement | null>(null);
@@ -51,8 +61,6 @@ export default function GherardPortfolio() {
   const aboutLine2Ref = useRef<HTMLHeadingElement | null>(null);
   const aboutMicroWrapRef = useRef<HTMLSpanElement | null>(null);
   const aboutMicroTextRef = useRef<HTMLSpanElement | null>(null);
-  const aboutSoloWrapRef = useRef<HTMLSpanElement | null>(null);
-  const aboutSoloTextRef = useRef<HTMLSpanElement | null>(null);
   const aboutBtnWrapRef = useRef<HTMLSpanElement | null>(null);
   const aboutBtnRef = useRef<HTMLButtonElement | null>(null);
 
@@ -67,8 +75,6 @@ export default function GherardPortfolio() {
     const line2 = aboutLine2Ref.current;
     const microWrap = aboutMicroWrapRef.current;
     const microText = aboutMicroTextRef.current;
-    const soloWrap = aboutSoloWrapRef.current;
-    const soloText = aboutSoloTextRef.current;
     const btnWrap = aboutBtnWrapRef.current;
     const btn = aboutBtnRef.current;
     if (
@@ -79,8 +85,6 @@ export default function GherardPortfolio() {
       !line2 ||
       !microWrap ||
       !microText ||
-      !soloWrap ||
-      !soloText ||
       !btnWrap ||
       !btn
     )
@@ -106,11 +110,6 @@ export default function GherardPortfolio() {
       microWrap.style.marginRight = `${10 * splitP}px`;
       microText.style.opacity = String(splitP);
       microText.style.transform = `translateY(${(1 - splitP) * 8}px)`;
-      soloWrap.style.width = `${78 * splitP}px`;
-      soloWrap.style.marginLeft = `${8 * splitP}px`;
-      soloWrap.style.marginRight = `${8 * splitP}px`;
-      soloText.style.opacity = String(splitP);
-      soloText.style.transform = `translateY(${(1 - splitP) * 8}px)`;
       btnWrap.style.width = `${180 * splitP}px`;
       btnWrap.style.marginLeft = `${14 * splitP}px`;
       btnWrap.style.marginRight = `${14 * splitP}px`;
@@ -238,7 +237,7 @@ export default function GherardPortfolio() {
           >
             <h2
               ref={aboutLine1Ref}
-              className="about-book font-black tracking-[-0.03em] text-[#0a0a0a]"
+              className="about-book whitespace-nowrap font-black tracking-[-0.03em] text-[#0a0a0a]"
               style={{
                 fontFamily: "CoolveticaBook, sans-serif",
                 fontSize: "clamp(2.6rem, 12vw, 9rem)",
@@ -271,30 +270,12 @@ export default function GherardPortfolio() {
                   tu marca
                 </span>
               </span>
-              <span
-                ref={aboutSoloWrapRef}
-                className="inline-flex items-center justify-center overflow-hidden align-middle"
-                style={{ width: 0, marginLeft: 0, marginRight: 0 }}
-              >
-                <span
-                  ref={aboutSoloTextRef}
-                  className="about-book inline-block"
-                  style={{
-                    opacity: 0,
-                    transform: "translateY(8px)",
-                    transition: "opacity 0.1s, transform 0.1s",
-                    whiteSpace: "nowrap",
-                  }}
-                >
-                  solo
-                </span>
-              </span>
               {" "}editor,
             </h2>
 
             <h2
               ref={aboutLine2Ref}
-              className="about-book font-black tracking-[-0.03em] text-[#0a0a0a]"
+              className="about-book whitespace-nowrap font-black tracking-[-0.03em] text-[#0a0a0a]"
               style={{
                 fontFamily: "CoolveticaBook, sans-serif",
                 fontSize: "clamp(2.6rem, 12vw, 9rem)",
@@ -361,41 +342,68 @@ export default function GherardPortfolio() {
       {/* Services Section */}
       <section
         id="servicios"
-        className="border-y border-neutral-200 bg-[linear-gradient(180deg,rgba(0,0,0,0.02),rgba(0,0,0,0.01))]"
+        className="border-y border-neutral-200 bg-white"
       >
         <div className="mx-auto max-w-7xl px-6 py-20 md:px-10">
           <div className="max-w-2xl">
-            <div className="text-sm uppercase tracking-[0.25em] text-fuchsia-600">
+            <div className="text-sm uppercase tracking-[0.25em] text-[#f7b7ff]">
               Servicios
             </div>
             <h2 className="mt-4 text-3xl font-black uppercase tracking-tight text-neutral-900 md:text-5xl">
-              Qué puedo hacer por tu proyecto
+              Lo que hago.
             </h2>
           </div>
 
-          <div className="mt-10 grid gap-5 md:grid-cols-3">
+          <div className="mt-10 divide-y divide-[#e0e0e0] border-y border-[#e0e0e0]">
             {services.map((service, index) => (
-              <motion.div
+              <button
                 key={service.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.08 }}
-                className="group relative overflow-hidden rounded-[30px] border border-neutral-200 bg-white p-6 shadow-sm transition hover:-translate-y-2 hover:border-[#d9ff3f]/50 hover:shadow-md"
+                type="button"
+                onClick={() =>
+                  setOpenServiceIndex((prev) => (prev === index ? null : index))
+                }
+                className="group w-full px-0 py-6 text-left transition hover:bg-[#f7f7f7] md:py-6"
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-[#d9ff3f]/0 via-fuchsia-500/0 to-cyan-400/0 transition duration-500 group-hover:from-[#d9ff3f]/10 group-hover:via-fuchsia-500/8 group-hover:to-cyan-400/8" />
-                <div className="relative">
-                  <div className="mb-6 text-[4rem] font-black leading-none text-neutral-200">
-                    0{index + 1}
+                <div className="flex items-center gap-4 md:items-start">
+                  <span className="mt-1 align-super font-mono text-[0.7rem] font-bold text-[#f7b7ff]">
+                    {service.number}
+                  </span>
+                  <div className="min-w-0 flex-1">
+                    <h3 className="text-[#0a0a0a] font-black tracking-[-0.03em] text-[clamp(1.6rem,7vw,2.2rem)] md:text-[clamp(2rem,4vw,3.2rem)]">
+                      {service.title}
+                    </h3>
+                    <div
+                      className="overflow-hidden transition-[max-height,opacity] duration-[400ms,300ms] ease-[ease,ease]"
+                      style={{
+                        maxHeight: openServiceIndex === index ? "260px" : "0px",
+                        opacity: openServiceIndex === index ? 1 : 0,
+                      }}
+                    >
+                      <p className="mt-4 max-w-[600px] text-base leading-[1.7] text-[#444444]">
+                        {service.description}
+                      </p>
+                      <a
+                        href="#proyectos"
+                        className="mt-3 inline-flex text-sm font-medium text-[#f7b7ff] hover:underline"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        → Ver proyectos
+                      </a>
+                    </div>
                   </div>
-                  <h3 className="text-2xl font-bold uppercase text-neutral-900">
-                    {service.title}
-                  </h3>
-                  <p className="mt-3 text-sm leading-7 text-neutral-600">
-                    {service.description}
-                  </p>
+                  <span
+                    className="ml-4 text-xl leading-none text-[#0a0a0a] transition-transform duration-300 ease-in-out"
+                    style={{
+                      transform:
+                        openServiceIndex === index
+                          ? "rotate(180deg)"
+                          : "rotate(0deg)",
+                    }}
+                  >
+                    ∨
+                  </span>
                 </div>
-              </motion.div>
+              </button>
             ))}
           </div>
         </div>
