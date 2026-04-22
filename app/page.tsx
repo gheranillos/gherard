@@ -1,12 +1,14 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Instagram, MessageCircle, ShoppingBag } from "lucide-react";
 
 import { useCart } from "@/lib/cart-context";
 import { renderCanvas } from "@/components/ui/canvas";
 import { SelectedWork } from "../src/sections/SelectedWork";
+import { splitWords, wordVariants } from "@/src/hooks/useTextReveal";
+import { revealVariants, staggerChild, staggerContainer } from "@/src/hooks/useScrollReveal";
 
 /** Imagen en `public/hero.jpg` */
 const HERO_IMAGE = "/hero.jpg";
@@ -58,13 +60,14 @@ const process = [
 ];
 
 const navLink =
-  "rounded-full px-3 py-2 text-[11px] font-medium uppercase tracking-[0.2em] text-white/80 transition hover:bg-white/10 hover:text-white";
+  "rounded-full px-3 py-2 text-[11px] font-medium uppercase tracking-[0.2em] text-white/80 transition hover:bg-white/10 hover:text-white transition-opacity duration-200 hover:opacity-50";
 
 const navLinkActive =
-  "rounded-full px-3 py-2 text-[11px] font-medium uppercase tracking-[0.2em] text-[#f7b7ff]";
+  "rounded-full px-3 py-2 text-[11px] font-medium uppercase tracking-[0.2em] text-[#f7b7ff] transition-opacity duration-200 hover:opacity-50";
 
 export default function GherardPortfolio() {
   const { count, setOpen } = useCart();
+  const [prefersReduced, setPrefersReduced] = useState(false);
   const aboutSectionRef = useRef<HTMLElement | null>(null);
   const aboutBgRef = useRef<HTMLDivElement | null>(null);
   const aboutCardRef = useRef<HTMLDivElement | null>(null);
@@ -77,6 +80,12 @@ export default function GherardPortfolio() {
 
   useEffect(() => {
     renderCanvas();
+  }, []);
+  useEffect(() => {
+    const reduced =
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    setPrefersReduced(reduced);
   }, []);
   useEffect(() => {
     const section = aboutSectionRef.current;
@@ -179,7 +188,7 @@ export default function GherardPortfolio() {
               href="https://instagram.com/gheranillos"
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-full p-2 text-white/85 transition hover:bg-white/10 hover:text-white"
+              className="rounded-full p-2 text-white/85 transition hover:bg-white/10 hover:text-white transition-transform duration-200 hover:-translate-y-1"
               aria-label="Instagram"
             >
               <Instagram className="size-4" />
@@ -187,7 +196,7 @@ export default function GherardPortfolio() {
             <button
               type="button"
               onClick={() => setOpen(true)}
-              className="relative rounded-full p-2 text-white/85 transition hover:bg-white/10 hover:text-white"
+              className="relative rounded-full p-2 text-white/85 transition hover:bg-white/10 hover:text-white transition-all duration-200"
               aria-label="Abrir carrito"
             >
               <ShoppingBag className="size-4" />
@@ -202,16 +211,60 @@ export default function GherardPortfolio() {
 
         {/* Bottom-centered headline + CTA */}
         <div className="relative z-10 flex min-h-[100dvh] flex-col justify-end px-6 pb-14 pt-32 md:px-10 md:pb-20">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.65 }}
-            className="mx-auto flex w-full max-w-5xl flex-col items-center text-center"
-          >
+          <div className="mx-auto flex w-full max-w-5xl flex-col items-center text-center">
             <h1 className="max-w-4xl text-4xl font-black uppercase leading-[0.95] tracking-[-0.03em] text-white drop-shadow-sm sm:text-5xl md:text-6xl lg:text-[4.25rem] xl:text-7xl">
-              Diseño <span className="text-[#f7b7ff]">con</span> autenticidad
+              {splitWords("Diseño").map((word, index) => (
+                <span
+                  key={`hero-head-1-${word}-${index}`}
+                  style={{ display: "inline-block", overflow: "hidden" }}
+                >
+                  <motion.span
+                    style={{ display: "inline-block", marginRight: "0.25em" }}
+                    variants={wordVariants}
+                    custom={index}
+                    initial={prefersReduced ? false : "hidden"}
+                    animate={prefersReduced ? undefined : "visible"}
+                  >
+                    {word}
+                  </motion.span>
+                </span>
+              ))}
+              <span className="text-[#f7b7ff]">
+                {splitWords("con").map((word, index) => (
+                  <span
+                    key={`hero-head-2-${word}-${index}`}
+                    style={{ display: "inline-block", overflow: "hidden" }}
+                  >
+                    <motion.span
+                      style={{ display: "inline-block", marginRight: "0.25em" }}
+                      variants={wordVariants}
+                      custom={index + 1}
+                      initial={prefersReduced ? false : "hidden"}
+                      animate={prefersReduced ? undefined : "visible"}
+                    >
+                      {word}
+                    </motion.span>
+                  </span>
+                ))}
+              </span>
+              {splitWords("autenticidad").map((word, index) => (
+                <span
+                  key={`hero-head-3-${word}-${index}`}
+                  style={{ display: "inline-block", overflow: "hidden" }}
+                >
+                  <motion.span
+                    style={{ display: "inline-block", marginRight: "0.25em" }}
+                    variants={wordVariants}
+                    custom={index + 2}
+                    initial={prefersReduced ? false : "hidden"}
+                    animate={prefersReduced ? undefined : "visible"}
+                  >
+                    {word}
+                  </motion.span>
+                </span>
+              ))}
             </h1>
-          </motion.div>
+          </div>
         </div>
         <canvas
           className="pointer-events-none absolute inset-0 mx-auto"
@@ -237,9 +290,15 @@ export default function GherardPortfolio() {
             <div className="absolute inset-0 bg-black/40" />
           </div>
 
-          <div className="pointer-events-none absolute left-6 top-10 z-20 text-sm uppercase tracking-[0.25em] text-[#f7b7ff] md:left-10">
+          <motion.div
+            variants={revealVariants.fadeIn}
+            initial={prefersReduced ? false : "hidden"}
+            whileInView={prefersReduced ? undefined : "visible"}
+            viewport={{ once: true, margin: "-40px" }}
+            className="pointer-events-none absolute left-6 top-10 z-20 text-sm uppercase tracking-[0.25em] text-[#f7b7ff] md:left-10"
+          >
             About
-          </div>
+          </motion.div>
 
           <div
             ref={aboutCardRef}
@@ -256,7 +315,23 @@ export default function GherardPortfolio() {
                 transition: "transform 0.1s",
               }}
             >
-              No soy{" "}
+              {splitWords("No soy").map((word, index) => (
+                <span
+                  key={`about-line-1-start-${word}-${index}`}
+                  style={{ display: "inline-block", overflow: "hidden" }}
+                >
+                  <motion.span
+                    style={{ display: "inline-block", marginRight: "0.25em" }}
+                    variants={wordVariants}
+                    custom={index}
+                    initial={prefersReduced ? false : "hidden"}
+                    whileInView={prefersReduced ? undefined : "visible"}
+                    viewport={{ once: true, margin: "-40px" }}
+                  >
+                    {word}
+                  </motion.span>
+                </span>
+              ))}{" "}
               <span
                 ref={aboutMicroWrapRef}
                 className="inline-flex items-center justify-center overflow-hidden align-middle"
@@ -281,7 +356,24 @@ export default function GherardPortfolio() {
                   tu marca
                 </span>
               </span>
-              {" "}editor,
+              {" "}
+              {splitWords("editor,").map((word, index) => (
+                <span
+                  key={`about-line-1-end-${word}-${index}`}
+                  style={{ display: "inline-block", overflow: "hidden" }}
+                >
+                  <motion.span
+                    style={{ display: "inline-block", marginRight: "0.25em" }}
+                    variants={wordVariants}
+                    custom={index + 2}
+                    initial={prefersReduced ? false : "hidden"}
+                    whileInView={prefersReduced ? undefined : "visible"}
+                    viewport={{ once: true, margin: "-40px" }}
+                  >
+                    {word}
+                  </motion.span>
+                </span>
+              ))}
             </h2>
 
             <h2
@@ -294,7 +386,23 @@ export default function GherardPortfolio() {
                 transition: "transform 0.1s",
               }}
             >
-              Construyo{" "}
+              {splitWords("Construyo").map((word, index) => (
+                <span
+                  key={`about-line-2-start-${word}-${index}`}
+                  style={{ display: "inline-block", overflow: "hidden" }}
+                >
+                  <motion.span
+                    style={{ display: "inline-block", marginRight: "0.25em" }}
+                    variants={wordVariants}
+                    custom={index + 2}
+                    initial={prefersReduced ? false : "hidden"}
+                    whileInView={prefersReduced ? undefined : "visible"}
+                    viewport={{ once: true, margin: "-40px" }}
+                  >
+                    {word}
+                  </motion.span>
+                </span>
+              ))}{" "}
               <span
                 ref={aboutBtnWrapRef}
                 className="inline-flex items-center justify-center overflow-hidden align-middle"
@@ -309,7 +417,7 @@ export default function GherardPortfolio() {
                       document.querySelector("#contacto");
                     target?.scrollIntoView({ behavior: "smooth" });
                   }}
-                  className="about-light rounded-full bg-[#0a0a0a] px-8 py-3 text-base font-semibold text-white transition hover:border-2 hover:border-[#0a0a0a] hover:bg-white hover:text-[#0a0a0a] md:px-11 md:py-4"
+                  className="about-light rounded-full bg-[#0a0a0a] px-8 py-3 text-base font-semibold text-white transition hover:border-2 hover:border-[#0a0a0a] hover:bg-white hover:text-[#0a0a0a] md:px-11 md:py-4 transition-all duration-200"
                   style={{
                     opacity: 0,
                     transform: "scale(0.8)",
@@ -320,7 +428,24 @@ export default function GherardPortfolio() {
                   Hablemos
                 </button>
               </span>
-              {" "}identidad.
+              {" "}
+              {splitWords("identidad.").map((word, index) => (
+                <span
+                  key={`about-line-2-end-${word}-${index}`}
+                  style={{ display: "inline-block", overflow: "hidden" }}
+                >
+                  <motion.span
+                    style={{ display: "inline-block", marginRight: "0.25em" }}
+                    variants={wordVariants}
+                    custom={index + 4}
+                    initial={prefersReduced ? false : "hidden"}
+                    whileInView={prefersReduced ? undefined : "visible"}
+                    viewport={{ once: true, margin: "-40px" }}
+                  >
+                    {word}
+                  </motion.span>
+                </span>
+              ))}
             </h2>
           </div>
           <style jsx global>{`
@@ -357,17 +482,45 @@ export default function GherardPortfolio() {
       >
         <div className="mx-auto max-w-7xl overflow-visible px-6 pb-0 pt-24 md:px-10">
           <div className="max-w-2xl">
-            <div className="text-sm uppercase tracking-[0.25em] text-[#f7b7ff]">
+            <motion.div
+              variants={revealVariants.fadeIn}
+              initial={prefersReduced ? false : "hidden"}
+              whileInView={prefersReduced ? undefined : "visible"}
+              viewport={{ once: true, margin: "-40px" }}
+              className="text-sm uppercase tracking-[0.25em] text-[#f7b7ff]"
+            >
               Servicios
-            </div>
+            </motion.div>
             <h2 className="mt-4 text-3xl font-black uppercase tracking-tight text-neutral-900 md:text-5xl">
-              Lo que hago.
+              {splitWords("Lo que hago.").map((word, index) => (
+                <span
+                  key={`services-head-${word}-${index}`}
+                  style={{ display: "inline-block", overflow: "hidden" }}
+                >
+                  <motion.span
+                    style={{ display: "inline-block", marginRight: "0.25em" }}
+                    variants={wordVariants}
+                    custom={index}
+                    initial={prefersReduced ? false : "hidden"}
+                    whileInView={prefersReduced ? undefined : "visible"}
+                    viewport={{ once: true, margin: "-40px" }}
+                  >
+                    {word}
+                  </motion.span>
+                </span>
+              ))}
             </h2>
           </div>
 
-          <div className="mt-10 flex flex-col gap-0 overflow-visible pb-14">
+          <motion.div
+            className="mt-10 flex flex-col gap-0 overflow-visible pb-14"
+            variants={staggerContainer}
+            initial={prefersReduced ? false : "hidden"}
+            whileInView={prefersReduced ? undefined : "visible"}
+            viewport={{ once: true, margin: "-40px" }}
+          >
             {services.map((service, index) => (
-              <article
+              <motion.article
                 key={service.title}
                 className={`group min-h-[420px] w-full rounded-2xl border border-[#e8e8e8] bg-white px-6 py-8 shadow-[0_-2px_20px_rgba(0,0,0,0.06)] transition-[transform,box-shadow] duration-300 ease-out hover:shadow-[0_-4px_26px_rgba(0,0,0,0.1)] md:px-14 md:py-12 sticky ${
                   index === 0
@@ -379,6 +532,16 @@ export default function GherardPortfolio() {
                         : "md:top-[134px] top-[96px]"
                 }`}
                 style={{ zIndex: index + 1 }}
+                variants={staggerChild}
+                whileHover={
+                  prefersReduced
+                    ? undefined
+                    : {
+                        y: -8,
+                        scale: 1.015,
+                        transition: { duration: 0.25, ease: "easeOut" },
+                      }
+                }
               >
                 <div className="grid gap-8 md:grid-cols-[1fr_380px] md:gap-10">
                   <div className="min-w-0">
@@ -405,7 +568,14 @@ export default function GherardPortfolio() {
                     </div>
                   </div>
                   <div className="hidden md:block">
-                    <div className="relative h-[260px] overflow-hidden rounded-xl">
+                    <motion.div
+                      className="relative h-[260px] overflow-hidden rounded-xl"
+                      whileHover={
+                        prefersReduced
+                          ? undefined
+                          : { scale: 1.06, transition: { duration: 0.5 } }
+                      }
+                    >
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
                         src={service.image}
@@ -418,12 +588,12 @@ export default function GherardPortfolio() {
                           img.src = service.fallback;
                         }}
                       />
-                    </div>
+                    </motion.div>
                   </div>
                 </div>
-              </article>
+              </motion.article>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -465,44 +635,102 @@ export default function GherardPortfolio() {
           <div className="absolute bottom-0 left-0 h-40 w-40 rounded-full bg-fuchsia-500/15 blur-3xl" />
           <div className="relative grid gap-8 md:grid-cols-[1.1fr_0.9fr] md:items-end">
             <div>
-              <div className="text-sm uppercase tracking-[0.25em] text-neutral-500">
+              <motion.div
+                className="text-sm uppercase tracking-[0.25em] text-neutral-500"
+                variants={revealVariants.fadeIn}
+                initial={prefersReduced ? false : "hidden"}
+                whileInView={prefersReduced ? undefined : "visible"}
+                viewport={{ once: true, margin: "-40px" }}
+              >
                 Contacto
-              </div>
+              </motion.div>
               <h2 className="mt-4 max-w-2xl text-3xl font-black uppercase tracking-tight text-neutral-900 md:text-6xl">
-                Si tu proyecto necesita dirección, branding o edición con
-                identidad, escríbeme.
+                {splitWords(
+                  "Si tu proyecto necesita dirección, branding o edición con identidad, escríbeme.",
+                ).map((word, index) => (
+                  <span
+                    key={`contact-head-${word}-${index}`}
+                    style={{ display: "inline-block", overflow: "hidden" }}
+                  >
+                    <motion.span
+                      style={{ display: "inline-block", marginRight: "0.25em" }}
+                      variants={wordVariants}
+                      custom={index}
+                      initial={prefersReduced ? false : "hidden"}
+                      whileInView={prefersReduced ? undefined : "visible"}
+                      viewport={{ once: true, margin: "-40px" }}
+                    >
+                      {word}
+                    </motion.span>
+                  </span>
+                ))}
               </h2>
-              <p className="mt-5 max-w-2xl leading-8 text-neutral-600">
+              <motion.p
+                className="mt-5 max-w-2xl leading-8 text-neutral-600"
+                variants={revealVariants.fadeUp}
+                initial={prefersReduced ? false : "hidden"}
+                whileInView={prefersReduced ? undefined : "visible"}
+                viewport={{ once: true, margin: "-40px" }}
+              >
                 Esta web está hecha para presentarte rápido, con personalidad y
                 sin mandar PDFs. Aquí puedes mostrar quién eres, qué haces y
                 cómo se ve tu trabajo en un formato mucho más vivo.
-              </p>
+              </motion.p>
             </div>
 
-            <div className="grid gap-4">
-              <a
+            <motion.div
+              className="grid gap-4"
+              variants={staggerContainer}
+              initial={prefersReduced ? false : "hidden"}
+              whileInView={prefersReduced ? undefined : "visible"}
+              viewport={{ once: true, margin: "-40px" }}
+            >
+              <motion.a
                 href="#"
-                className="rounded-2xl border border-neutral-200 bg-neutral-100/80 px-6 py-4 text-center text-sm font-medium text-neutral-500 transition hover:border-neutral-300 hover:bg-neutral-100 hover:text-neutral-800"
+                className="rounded-2xl border border-neutral-200 bg-neutral-100/80 px-6 py-4 text-center text-sm font-medium text-neutral-500 transition hover:border-neutral-300 hover:bg-neutral-100 hover:text-neutral-800 transition-all duration-200"
+                variants={staggerChild}
               >
                 Correo próximamente
-              </a>
-              <a
+              </motion.a>
+              <motion.a
                 href="https://instagram.com/gheranillos"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 rounded-2xl border border-neutral-200 bg-white px-6 py-4 text-center text-sm font-medium text-neutral-900 transition hover:border-fuchsia-400/40 hover:bg-neutral-50"
+                className="inline-flex items-center justify-center gap-2 rounded-2xl border border-neutral-200 bg-white px-6 py-4 text-center text-sm font-medium text-neutral-900 transition hover:border-fuchsia-400/40 hover:bg-neutral-50 transition-all duration-200"
+                variants={staggerChild}
               >
                 <Instagram className="h-4 w-4" /> Ver Instagram
-              </a>
-              <a
+              </motion.a>
+              <motion.a
                 href="https://wa.me/584147613621"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 rounded-2xl bg-[#d9ff3f] px-6 py-4 text-center text-sm font-semibold text-black transition hover:scale-[1.01]"
+                className="relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-2xl bg-[#d9ff3f] px-6 py-4 text-center text-sm font-semibold text-black transition hover:scale-[1.01]"
+                variants={staggerChild}
+                whileHover={
+                  prefersReduced
+                    ? undefined
+                    : { scale: 1.05, transition: { duration: 0.2 } }
+                }
+                whileTap={prefersReduced ? undefined : { scale: 0.95 }}
               >
+                <motion.div
+                  style={{
+                    position: "absolute",
+                    inset: 0,
+                    background: "#ffffff",
+                    pointerEvents: "none",
+                  }}
+                  initial={{ x: "-100%", opacity: 0.15 }}
+                  whileHover={
+                    prefersReduced
+                      ? undefined
+                      : { x: "100%", opacity: 0.15, transition: { duration: 0.5, ease: "easeInOut" } }
+                  }
+                />
                 <MessageCircle className="h-4 w-4" /> Escribirme por WhatsApp
-              </a>
-            </div>
+              </motion.a>
+            </motion.div>
           </div>
         </div>
       </section>

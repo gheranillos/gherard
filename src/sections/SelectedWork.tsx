@@ -1,11 +1,15 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { motion } from "framer-motion";
 
 import {
   CircularGallery,
   type GalleryItem,
 } from "../components/CircularGallery";
+import { splitWords, wordVariants } from "../hooks/useTextReveal";
+import { revealVariants } from "../hooks/useScrollReveal";
 
 const portfolioItems: GalleryItem[] = [
   {
@@ -42,24 +46,60 @@ const portfolioItems: GalleryItem[] = [
 
 export function SelectedWork() {
   const router = useRouter();
+  const [prefersReduced, setPrefersReduced] = useState(false);
+
+  useEffect(() => {
+    const reduced =
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    setPrefersReduced(reduced);
+  }, []);
 
   return (
     <section id="proyectos" className="py-20">
       <div className="mx-auto max-w-7xl px-6 md:px-10">
         <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div>
-            <div className="text-sm uppercase tracking-[0.25em] text-cyan-700">
+            <motion.div
+              className="text-sm uppercase tracking-[0.25em] text-cyan-700"
+              variants={revealVariants.fadeIn}
+              initial={prefersReduced ? false : "hidden"}
+              whileInView={prefersReduced ? undefined : "visible"}
+              viewport={{ once: true, margin: "-40px" }}
+            >
               Portfolio
-            </div>
+            </motion.div>
             <h2 className="mt-4 text-3xl font-black uppercase tracking-tight text-neutral-900 md:text-5xl">
-              Selected work / visual worlds
+              {splitWords("Selected work / visual worlds").map((word, index) => (
+                <span
+                  key={`portfolio-head-${word}-${index}`}
+                  style={{ display: "inline-block", overflow: "hidden" }}
+                >
+                  <motion.span
+                    style={{ display: "inline-block", marginRight: "0.25em" }}
+                    variants={wordVariants}
+                    custom={index}
+                    initial={prefersReduced ? false : "hidden"}
+                    whileInView={prefersReduced ? undefined : "visible"}
+                    viewport={{ once: true, margin: "-40px" }}
+                  >
+                    {word}
+                  </motion.span>
+                </span>
+              ))}
             </h2>
           </div>
-          <p className="max-w-xl leading-7 text-neutral-600">
+          <motion.p
+            className="max-w-xl leading-7 text-neutral-600"
+            variants={revealVariants.fadeUp}
+            initial={prefersReduced ? false : "hidden"}
+            whileInView={prefersReduced ? undefined : "visible"}
+            viewport={{ once: true, margin: "-40px" }}
+          >
             Te dejé esta sección más visual para que metas covers, frames,
             thumbnails, logos, renders o links reales a proyectos que quieras
             enseñar.
-          </p>
+          </motion.p>
         </div>
       </div>
 

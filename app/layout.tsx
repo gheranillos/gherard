@@ -3,6 +3,7 @@ import localFont from 'next/font/local'
 import { Analytics } from '@vercel/analytics/next'
 
 import { Providers } from './providers'
+import { CursorGlow } from '@/src/components/CursorGlow'
 import './globals.css'
 
 const coolvetica = localFont({
@@ -64,6 +65,7 @@ export default function RootLayout({
     <html lang="es" className={coolvetica.variable}>
       <body className={`${coolvetica.className} font-sans antialiased`}>
         <Providers>{children}</Providers>
+        <CursorGlow />
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>
