@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { Instagram, MessageCircle, ShoppingBag } from "lucide-react";
 
@@ -44,8 +44,63 @@ const navLinkActive =
 
 export default function GherardPortfolio() {
   const { count, setOpen } = useCart();
+  const aboutSectionRef = useRef<HTMLElement | null>(null);
+  const aboutBgRef = useRef<HTMLDivElement | null>(null);
+  const aboutCardRef = useRef<HTMLDivElement | null>(null);
+  const aboutLine1Ref = useRef<HTMLHeadingElement | null>(null);
+  const aboutLine2Ref = useRef<HTMLHeadingElement | null>(null);
+  const aboutBtnWrapRef = useRef<HTMLDivElement | null>(null);
+  const aboutBtnRef = useRef<HTMLButtonElement | null>(null);
+
   useEffect(() => {
     renderCanvas();
+  }, []);
+  useEffect(() => {
+    const section = aboutSectionRef.current;
+    const bg = aboutBgRef.current;
+    const card = aboutCardRef.current;
+    const line1 = aboutLine1Ref.current;
+    const line2 = aboutLine2Ref.current;
+    const btnWrap = aboutBtnWrapRef.current;
+    const btn = aboutBtnRef.current;
+    if (!section || !bg || !card || !line1 || !line2 || !btnWrap || !btn) return;
+
+    const clamp = (v: number, min: number, max: number) =>
+      Math.min(Math.max(v, min), max);
+    const remap = (v: number, i0: number, i1: number, o0: number, o1: number) => {
+      if (i1 - i0 === 0) return o0;
+      const mapped = o0 + ((v - i0) / (i1 - i0)) * (o1 - o0);
+      return clamp(mapped, Math.min(o0, o1), Math.max(o0, o1));
+    };
+
+    const onScroll = () => {
+      const scrolled = window.scrollY - section.offsetTop;
+      const total = section.offsetHeight - window.innerHeight;
+      const progress = clamp(scrolled / Math.max(total, 1), 0, 1);
+      const isMobile = window.innerWidth < 768;
+      const splitDistance = isMobile ? 70 : 130;
+
+      const splitP = remap(progress, 0, 0.45, 0, 1);
+      line1.style.transform = `translateY(${-splitDistance * splitP}px)`;
+      line2.style.transform = `translateY(${splitDistance * splitP}px)`;
+
+      btnWrap.style.height = `${90 * splitP}px`;
+      btn.style.opacity = String(splitP);
+      btn.style.transform = `scale(${0.8 + 0.2 * splitP})`;
+
+      const zoomP = remap(progress, 0.6, 1, 0, 1);
+      card.style.transform = `scale(${1 - 0.22 * zoomP})`;
+      card.style.borderRadius = `${28 * zoomP}px`;
+      bg.style.opacity = String(zoomP);
+    };
+
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
   }, []);
 
   return (
@@ -128,41 +183,78 @@ export default function GherardPortfolio() {
       {/* About Section */}
       <section
         id="about"
-        className="relative mx-auto max-w-7xl px-6 py-20 md:px-10"
+        ref={aboutSectionRef}
+        className="relative h-[300vh]"
       >
-        <div className="absolute left-4 top-16 hidden text-[11rem] font-black uppercase leading-none text-neutral-900/[0.05] md:block">
-          G
-        </div>
-        <div className="relative grid gap-10 md:grid-cols-[0.8fr_1.2fr]">
-          <div>
-            <div className="text-sm uppercase tracking-[0.25em] text-[#7a8500]">
-              About
-            </div>
-            <h2 className="mt-4 text-3xl font-black uppercase tracking-tight text-neutral-900 md:text-5xl">
-              No soy solo editor.
-              <br />
-              Tampoco solo hago branding.
-            </h2>
+        <div className="sticky top-0 flex h-screen items-center justify-center overflow-hidden">
+          <div
+            ref={aboutBgRef}
+            className="absolute inset-0 bg-cover bg-center opacity-0"
+            style={{
+              backgroundImage:
+                "url('/images/about-bg.jpg'), url('https://picsum.photos/seed/gherard-about/1600/900')",
+            }}
+          >
+            <div className="absolute inset-0 bg-black/40" />
           </div>
-          <div className="space-y-5 leading-8 text-neutral-600">
-            <p>
-              Me interesa construir piezas con criterio completo: idea, imagen,
-              ritmo, dirección y sensación final. No me mueve hacer contenido
-              por hacer, sino crear cosas que tengan una vibra clara y una
-              identidad que se sienta real.
-            </p>
-            <p>
-              He trabajado en proyectos propios como{" "}
-              <span className="font-medium text-[#5c6200]">El Kiosco</span>, en
-              branding, visuales, videos promocionales, conceptos para
-              contenido y trabajos freelance donde la imagen y la idea tienen
-              que ir pegadas.
-            </p>
-            <p>
-              Mi enfoque mezcla estética urbana, sensibilidad visual, cultura
-              digital, storytelling y dirección creativa para que una marca no
-              solo se vea dura, sino que también diga algo.
-            </p>
+
+          <div className="pointer-events-none absolute left-6 top-10 z-20 text-sm uppercase tracking-[0.25em] text-[#7a8500] md:left-10">
+            About
+          </div>
+
+          <div
+            ref={aboutCardRef}
+            className="relative z-10 w-full max-w-full bg-white px-[6vw] py-[8vh] text-center"
+            style={{ transformOrigin: "center center" }}
+          >
+            <h2
+              ref={aboutLine1Ref}
+              className="font-black tracking-[-0.03em] text-[#0a0a0a]"
+              style={{
+                fontSize: "clamp(2.6rem, 12vw, 9rem)",
+                lineHeight: 0.92,
+                transition: "transform 0.1s",
+              }}
+            >
+              No soy solo editor.
+            </h2>
+
+            <div
+              ref={aboutBtnWrapRef}
+              className="flex items-center justify-center overflow-hidden"
+              style={{ height: 0 }}
+            >
+              <button
+                ref={aboutBtnRef}
+                type="button"
+                onClick={() => {
+                  const target =
+                    document.querySelector("#contact") ??
+                    document.querySelector("#contacto");
+                  target?.scrollIntoView({ behavior: "smooth" });
+                }}
+                className="rounded-full bg-[#0a0a0a] px-8 py-3 text-base font-semibold text-white transition hover:border-2 hover:border-[#0a0a0a] hover:bg-white hover:text-[#0a0a0a] md:px-11 md:py-4"
+                style={{
+                  opacity: 0,
+                  transform: "scale(0.8)",
+                  transition: "opacity 0.1s, transform 0.1s",
+                }}
+              >
+                Hablemos
+              </button>
+            </div>
+
+            <h2
+              ref={aboutLine2Ref}
+              className="font-black tracking-[-0.03em] text-[#0a0a0a]"
+              style={{
+                fontSize: "clamp(2.6rem, 12vw, 9rem)",
+                lineHeight: 0.92,
+                transition: "transform 0.1s",
+              }}
+            >
+              Construyo identidad.
+            </h2>
           </div>
         </div>
       </section>
