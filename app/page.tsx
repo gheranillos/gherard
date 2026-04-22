@@ -51,6 +51,8 @@ export default function GherardPortfolio() {
   const aboutLine2Ref = useRef<HTMLHeadingElement | null>(null);
   const aboutMicroWrapRef = useRef<HTMLSpanElement | null>(null);
   const aboutMicroTextRef = useRef<HTMLSpanElement | null>(null);
+  const aboutSoloWrapRef = useRef<HTMLSpanElement | null>(null);
+  const aboutSoloTextRef = useRef<HTMLSpanElement | null>(null);
   const aboutBtnWrapRef = useRef<HTMLSpanElement | null>(null);
   const aboutBtnRef = useRef<HTMLButtonElement | null>(null);
 
@@ -65,6 +67,8 @@ export default function GherardPortfolio() {
     const line2 = aboutLine2Ref.current;
     const microWrap = aboutMicroWrapRef.current;
     const microText = aboutMicroTextRef.current;
+    const soloWrap = aboutSoloWrapRef.current;
+    const soloText = aboutSoloTextRef.current;
     const btnWrap = aboutBtnWrapRef.current;
     const btn = aboutBtnRef.current;
     if (
@@ -75,6 +79,8 @@ export default function GherardPortfolio() {
       !line2 ||
       !microWrap ||
       !microText ||
+      !soloWrap ||
+      !soloText ||
       !btnWrap ||
       !btn
     )
@@ -93,7 +99,6 @@ export default function GherardPortfolio() {
       const total = section.offsetHeight - window.innerHeight;
       const progress = clamp(scrolled / Math.max(total, 1), 0, 1);
       const splitP = remap(progress, 0, 0.45, 0, 1);
-      const soloWord = document.getElementById("about-solo-word");
       line1.style.transform = "translateY(0px)";
       line2.style.transform = "translateY(0px)";
       microWrap.style.width = `${155 * splitP}px`;
@@ -101,10 +106,11 @@ export default function GherardPortfolio() {
       microWrap.style.marginRight = `${10 * splitP}px`;
       microText.style.opacity = String(splitP);
       microText.style.transform = `translateY(${(1 - splitP) * 8}px)`;
-      if (soloWord) {
-        soloWord.style.opacity = String(splitP);
-        soloWord.style.transform = `translateY(${(1 - splitP) * 8}px)`;
-      }
+      soloWrap.style.width = `${78 * splitP}px`;
+      soloWrap.style.marginLeft = `${8 * splitP}px`;
+      soloWrap.style.marginRight = `${8 * splitP}px`;
+      soloText.style.opacity = String(splitP);
+      soloText.style.transform = `translateY(${(1 - splitP) * 8}px)`;
       btnWrap.style.width = `${180 * splitP}px`;
       btnWrap.style.marginLeft = `${14 * splitP}px`;
       btnWrap.style.marginRight = `${14 * splitP}px`;
@@ -234,6 +240,7 @@ export default function GherardPortfolio() {
               ref={aboutLine1Ref}
               className="about-book font-black tracking-[-0.03em] text-[#0a0a0a]"
               style={{
+                fontFamily: "CoolveticaBook, sans-serif",
                 fontSize: "clamp(2.6rem, 12vw, 9rem)",
                 lineHeight: 0.92,
                 transition: "transform 0.1s",
@@ -265,23 +272,31 @@ export default function GherardPortfolio() {
                 </span>
               </span>
               <span
-                className="about-book inline-block"
-                style={{
-                  opacity: 0,
-                  transform: "translateY(8px)",
-                  transition: "opacity 0.1s, transform 0.1s",
-                }}
-                id="about-solo-word"
+                ref={aboutSoloWrapRef}
+                className="inline-flex items-center justify-center overflow-hidden align-middle"
+                style={{ width: 0, marginLeft: 0, marginRight: 0 }}
               >
-                {" "}solo{" "}
+                <span
+                  ref={aboutSoloTextRef}
+                  className="about-book inline-block"
+                  style={{
+                    opacity: 0,
+                    transform: "translateY(8px)",
+                    transition: "opacity 0.1s, transform 0.1s",
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  solo
+                </span>
               </span>
-              editor,
+              {" "}editor,
             </h2>
 
             <h2
               ref={aboutLine2Ref}
               className="about-book font-black tracking-[-0.03em] text-[#0a0a0a]"
               style={{
+                fontFamily: "CoolveticaBook, sans-serif",
                 fontSize: "clamp(2.6rem, 12vw, 9rem)",
                 lineHeight: 0.92,
                 transition: "transform 0.1s",
