@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { Instagram, MessageCircle, ShoppingBag } from "lucide-react";
 
@@ -17,24 +17,36 @@ const services = [
     title: "Branding",
     description:
       "Desarrollo de identidad visual completa: naming, paleta, tipografía, logotipo y sistema gráfico. Marcas que se ven sólidas, actuales y con personalidad propia.",
+    tags: ["Identidad", "Logotipo", "Sistema Visual", "Estrategia"],
+    image: "/images/services/branding.jpg",
+    fallback: "https://picsum.photos/seed/branding/800/520",
   },
   {
     number: "02",
     title: "Edición de Video",
     description:
       "Piezas para redes, campañas y contenido audiovisual. Edición con criterio narrativo, ritmo y estética cuidada para que cada video comunique algo real.",
+    tags: ["Redes", "Narrativa", "Ritmo", "Contenido"],
+    image: "/images/services/video.jpg",
+    fallback: "https://picsum.photos/seed/videoediting/800/520",
   },
   {
     number: "03",
     title: "Diseño Web",
     description:
       "Sitios y portfolios con diseño limpio, buena estructura y atención al detalle. Enfocado en que la experiencia visual refleje la identidad de la marca.",
+    tags: ["Responsive", "UI", "Portfolio", "Webflow"],
+    image: "/images/services/web.jpg",
+    fallback: "https://picsum.photos/seed/webdesign/800/520",
   },
   {
     number: "04",
     title: "Diseño Gráfico",
     description:
       "Piezas gráficas para redes, print y campañas. Flyers, presentaciones, contenido visual y todo lo que necesite verse bien y tener coherencia.",
+    tags: ["Gráfica", "Print", "Redes", "Campaña"],
+    image: "/images/services/grafico.jpg",
+    fallback: "https://picsum.photos/seed/graphic/800/520",
   },
 ];
 
@@ -53,7 +65,6 @@ const navLinkActive =
 
 export default function GherardPortfolio() {
   const { count, setOpen } = useCart();
-  const [openServiceIndex, setOpenServiceIndex] = useState<number | null>(null);
   const aboutSectionRef = useRef<HTMLElement | null>(null);
   const aboutBgRef = useRef<HTMLDivElement | null>(null);
   const aboutCardRef = useRef<HTMLDivElement | null>(null);
@@ -344,7 +355,7 @@ export default function GherardPortfolio() {
         id="servicios"
         className="border-y border-neutral-200 bg-white"
       >
-        <div className="mx-auto max-w-7xl px-6 py-20 md:px-10">
+        <div className="mx-auto max-w-7xl overflow-visible px-6 pb-0 pt-24 md:px-10">
           <div className="max-w-2xl">
             <div className="text-sm uppercase tracking-[0.25em] text-[#f7b7ff]">
               Servicios
@@ -354,56 +365,63 @@ export default function GherardPortfolio() {
             </h2>
           </div>
 
-          <div className="mt-10 divide-y divide-[#e0e0e0] border-y border-[#e0e0e0]">
+          <div className="mt-10 flex flex-col gap-0 overflow-visible pb-14">
             {services.map((service, index) => (
-              <button
+              <article
                 key={service.title}
-                type="button"
-                onClick={() =>
-                  setOpenServiceIndex((prev) => (prev === index ? null : index))
-                }
-                className="group w-full px-0 py-6 text-left transition hover:bg-[#f7f7f7] md:py-6"
+                className={`group min-h-[420px] w-full rounded-2xl border border-[#e8e8e8] bg-white px-6 py-8 shadow-[0_-2px_20px_rgba(0,0,0,0.06)] transition-[transform,box-shadow] duration-300 ease-out hover:shadow-[0_-4px_26px_rgba(0,0,0,0.1)] md:px-14 md:py-12 sticky ${
+                  index === 0
+                    ? "md:top-[80px] top-[60px]"
+                    : index === 1
+                      ? "md:top-[98px] top-[72px]"
+                      : index === 2
+                        ? "md:top-[116px] top-[84px]"
+                        : "md:top-[134px] top-[96px]"
+                }`}
+                style={{ zIndex: index + 1 }}
               >
-                <div className="flex items-center gap-4 md:items-start">
-                  <span className="mt-1 align-super font-mono text-[0.7rem] font-bold text-[#f7b7ff]">
-                    {service.number}
-                  </span>
-                  <div className="min-w-0 flex-1">
-                    <h3 className="text-[#0a0a0a] font-black tracking-[-0.03em] text-[clamp(1.6rem,7vw,2.2rem)] md:text-[clamp(2rem,4vw,3.2rem)]">
-                      {service.title}
-                    </h3>
-                    <div
-                      className="overflow-hidden transition-[max-height,opacity] duration-[400ms,300ms] ease-[ease,ease]"
-                      style={{
-                        maxHeight: openServiceIndex === index ? "260px" : "0px",
-                        opacity: openServiceIndex === index ? 1 : 0,
-                      }}
-                    >
-                      <p className="mt-4 max-w-[600px] text-base leading-[1.7] text-[#444444]">
-                        {service.description}
-                      </p>
-                      <a
-                        href="#proyectos"
-                        className="mt-3 inline-flex text-sm font-medium text-[#f7b7ff] hover:underline"
-                        onClick={(e) => e.stopPropagation()}
-                      >
-                        → Ver proyectos
-                      </a>
+                <div className="grid gap-8 md:grid-cols-[1fr_380px] md:gap-10">
+                  <div className="min-w-0">
+                    <div className="flex items-baseline">
+                      <span className="mr-4 align-super font-mono text-[0.75rem] font-bold text-[#f7b7ff]">
+                        {`{${service.number}}`}
+                      </span>
+                      <h3 className="text-[clamp(1.6rem,8vw,2.4rem)] font-extrabold leading-[0.95] tracking-[-0.03em] text-[#0a0a0a] md:text-[clamp(2rem,3.5vw,3rem)]">
+                        {service.title}
+                      </h3>
+                    </div>
+                    <p className="mt-5 max-w-[520px] text-base leading-[1.75] text-[#555555]">
+                      {service.description}
+                    </p>
+                    <div className="mt-6 flex flex-wrap gap-2">
+                      {service.tags.map((tag) => (
+                        <span
+                          key={`${service.title}-${tag}`}
+                          className="rounded-full bg-[#f2f2f2] px-3.5 py-1 text-[0.78rem] font-medium text-[#333333]"
+                        >
+                          {tag}
+                        </span>
+                      ))}
                     </div>
                   </div>
-                  <span
-                    className="ml-4 text-xl leading-none text-[#0a0a0a] transition-transform duration-300 ease-in-out"
-                    style={{
-                      transform:
-                        openServiceIndex === index
-                          ? "rotate(180deg)"
-                          : "rotate(0deg)",
-                    }}
-                  >
-                    ∨
-                  </span>
+                  <div className="hidden md:block">
+                    <div className="relative h-[260px] overflow-hidden rounded-xl">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={service.image}
+                        alt={service.title}
+                        className="h-full w-full object-cover transition-transform duration-400 ease-out group-hover:scale-[1.03]"
+                        onError={(e) => {
+                          const img = e.currentTarget;
+                          if (img.dataset.fallbackApplied === "1") return;
+                          img.dataset.fallbackApplied = "1";
+                          img.src = service.fallback;
+                        }}
+                      />
+                    </div>
+                  </div>
                 </div>
-              </button>
+              </article>
             ))}
           </div>
         </div>
