@@ -93,6 +93,7 @@ export default function GherardPortfolio() {
       const total = section.offsetHeight - window.innerHeight;
       const progress = clamp(scrolled / Math.max(total, 1), 0, 1);
       const splitP = remap(progress, 0, 0.45, 0, 1);
+      const soloWord = document.getElementById("about-solo-word");
       line1.style.transform = "translateY(0px)";
       line2.style.transform = "translateY(0px)";
       microWrap.style.width = `${155 * splitP}px`;
@@ -100,6 +101,10 @@ export default function GherardPortfolio() {
       microWrap.style.marginRight = `${10 * splitP}px`;
       microText.style.opacity = String(splitP);
       microText.style.transform = `translateY(${(1 - splitP) * 8}px)`;
+      if (soloWord) {
+        soloWord.style.opacity = String(splitP);
+        soloWord.style.transform = `translateY(${(1 - splitP) * 8}px)`;
+      }
       btnWrap.style.width = `${180 * splitP}px`;
       btnWrap.style.marginLeft = `${14 * splitP}px`;
       btnWrap.style.marginRight = `${14 * splitP}px`;
@@ -234,7 +239,7 @@ export default function GherardPortfolio() {
                 transition: "transform 0.1s",
               }}
             >
-              No soy
+              No soy{" "}
               <span
                 ref={aboutMicroWrapRef}
                 className="inline-flex items-center justify-center overflow-hidden align-middle"
@@ -259,6 +264,17 @@ export default function GherardPortfolio() {
                   tu marca
                 </span>
               </span>
+              <span
+                className="about-book inline-block"
+                style={{
+                  opacity: 0,
+                  transform: "translateY(8px)",
+                  transition: "opacity 0.1s, transform 0.1s",
+                }}
+                id="about-solo-word"
+              >
+                {" "}solo{" "}
+              </span>
               editor,
             </h2>
 
@@ -271,7 +287,7 @@ export default function GherardPortfolio() {
                 transition: "transform 0.1s",
               }}
             >
-              Construyo
+              Construyo{" "}
               <span
                 ref={aboutBtnWrapRef}
                 className="inline-flex items-center justify-center overflow-hidden align-middle"
@@ -297,7 +313,7 @@ export default function GherardPortfolio() {
                   Hablemos
                 </button>
               </span>
-              identidad.
+              {" "}identidad.
             </h2>
           </div>
           <style jsx global>{`
