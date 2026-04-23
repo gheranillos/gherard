@@ -63,8 +63,6 @@ export default function GherardPortfolio() {
   const aboutCardRef = useRef<HTMLDivElement | null>(null);
   const aboutLine1Ref = useRef<HTMLHeadingElement | null>(null);
   const aboutLine2Ref = useRef<HTMLHeadingElement | null>(null);
-  const aboutMicroWrapRef = useRef<HTMLSpanElement | null>(null);
-  const aboutMicroTextRef = useRef<HTMLSpanElement | null>(null);
   const aboutBtnWrapRef = useRef<HTMLSpanElement | null>(null);
   const aboutBtnRef = useRef<HTMLButtonElement | null>(null);
 
@@ -91,8 +89,6 @@ export default function GherardPortfolio() {
     const card = aboutCardRef.current;
     const line1 = aboutLine1Ref.current;
     const line2 = aboutLine2Ref.current;
-    const microWrap = aboutMicroWrapRef.current;
-    const microText = aboutMicroTextRef.current;
     const btnWrap = aboutBtnWrapRef.current;
     const btn = aboutBtnRef.current;
     if (
@@ -101,8 +97,6 @@ export default function GherardPortfolio() {
       !card ||
       !line1 ||
       !line2 ||
-      !microWrap ||
-      !microText ||
       !btnWrap ||
       !btn
     )
@@ -121,22 +115,11 @@ export default function GherardPortfolio() {
       const total = section.offsetHeight - window.innerHeight;
       const progress = clamp(scrolled / Math.max(total, 1), 0, 1);
       const splitP = remap(progress, 0, 0.45, 0, 1);
-      const vw = window.innerWidth;
-      const isMobile = vw < 640;
-      const isCompactDesktop = vw < 1280;
-      const microWidth = isMobile ? 88 : isCompactDesktop ? 128 : 148;
-      const buttonWidth = isMobile ? 104 : isCompactDesktop ? 146 : 168;
-      const buttonGap = isMobile ? 8 : isCompactDesktop ? 10 : 14;
       line1.style.transform = "translateY(0px)";
       line2.style.transform = "translateY(0px)";
-      microWrap.style.width = `${microWidth * splitP}px`;
-      microWrap.style.marginLeft = `${10 * splitP}px`;
-      microWrap.style.marginRight = `${10 * splitP}px`;
-      microText.style.opacity = String(splitP);
-      microText.style.transform = `translateY(${(1 - splitP) * 8}px)`;
-      btnWrap.style.width = `${buttonWidth * splitP}px`;
-      btnWrap.style.marginLeft = `${buttonGap * splitP}px`;
-      btnWrap.style.marginRight = `${buttonGap * splitP}px`;
+      btnWrap.style.opacity = String(splitP);
+      btnWrap.style.marginLeft = `${14 * splitP}px`;
+      btnWrap.style.marginRight = `${10 * splitP}px`;
       btn.style.opacity = String(splitP);
       btn.style.transform = `scale(${0.8 + 0.2 * splitP})`;
 
@@ -199,7 +182,7 @@ export default function GherardPortfolio() {
             >
               {[
                 { label: "Inicio", href: "#", active: true },
-                { label: "About", href: "#about" },
+                { label: "About", href: "/about" },
                 { label: "Work", href: "/work" },
                 { label: "Tienda", href: "/shop" },
                 { label: "Contacto", href: "#contacto" },
@@ -301,10 +284,6 @@ export default function GherardPortfolio() {
             <div className="absolute inset-0 bg-black/40" />
           </div>
 
-          <div className="pointer-events-none absolute left-6 top-10 z-20 text-sm uppercase tracking-[0.25em] text-[#f7b7ff] md:left-10">
-            About
-          </div>
-
           <div
             ref={aboutCardRef}
             className="relative z-10 w-[min(98vw,920px)] bg-white px-4 py-[6vh] text-center sm:px-[5vw] md:px-[4vw] md:py-[5.5vh]"
@@ -320,32 +299,7 @@ export default function GherardPortfolio() {
                 transition: "transform 0.1s",
               }}
             >
-              No soy{" "}
-              <span
-                ref={aboutMicroWrapRef}
-                className="inline-flex items-center justify-center overflow-hidden align-middle"
-                style={{ width: 0, marginLeft: 0, marginRight: 0 }}
-              >
-                <span
-                  ref={aboutMicroTextRef}
-                  className="about-light inline-block text-left tracking-[-0.015em] text-[#222]"
-                  style={{
-                    fontSize: "clamp(0.72rem, 1.1vw, 1.15rem)",
-                    lineHeight: 0.92,
-                    opacity: 0,
-                    transform: "translateY(8px)",
-                    transition: "opacity 0.1s, transform 0.1s",
-                    whiteSpace: "nowrap",
-                  }}
-                >
-                  saquemos el
-                  <br />
-                  potencial de
-                  <br />
-                  tu marca.
-                </span>
-              </span>
-              {" "}editor,
+              No soy editor,
             </h2>
 
             <h2
@@ -361,8 +315,8 @@ export default function GherardPortfolio() {
               Construyo{" "}
               <span
                 ref={aboutBtnWrapRef}
-                className="inline-flex items-center justify-center overflow-hidden align-middle"
-                style={{ width: 0, marginLeft: 0, marginRight: 0 }}
+                className="inline-flex items-center justify-center overflow-visible align-middle"
+                style={{ opacity: 0, marginLeft: 0, marginRight: 0 }}
               >
                 <button
                   ref={aboutBtnRef}
@@ -373,7 +327,7 @@ export default function GherardPortfolio() {
                       document.querySelector("#contacto");
                     target?.scrollIntoView({ behavior: "smooth" });
                   }}
-                  className="about-light rounded-full border border-[#f7b7ff] bg-[#f7b7ff] px-7 py-2.5 text-sm font-normal tracking-[0.04em] text-[#0a0a0a] transition hover:border-[#0a0a0a] hover:bg-[#0a0a0a] hover:text-white sm:px-9 sm:py-3 sm:text-base md:px-11 md:py-4"
+                  className="about-light rounded-full border border-[#f7b7ff] bg-[#f7b7ff] px-6 py-2 text-xs font-bold uppercase tracking-[0.12em] text-[#0a0a0a] transition hover:border-[#0a0a0a] hover:bg-[#0a0a0a] hover:text-white sm:px-8 sm:py-2.5 sm:text-sm md:px-10 md:py-3"
                   style={{
                     fontFamily: "CoolveticaLight, sans-serif",
                     opacity: 0,
@@ -382,7 +336,7 @@ export default function GherardPortfolio() {
                     whiteSpace: "nowrap",
                   }}
                 >
-                  Hablemos
+                  Contacto
                 </button>
               </span>
               {" "}identidad.

@@ -35,7 +35,7 @@ export default async function WorkProjectPage({
             Inicio
           </Link>
           <span className="hidden h-5 w-px bg-white/25 sm:block" aria-hidden />
-          <Link href="/#about" className={navLink}>
+          <Link href="/about" className={navLink}>
             About
           </Link>
           <Link href="/work" className={navLinkActive}>

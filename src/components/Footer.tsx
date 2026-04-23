@@ -36,7 +36,7 @@ const Container = ({ children, className, delay = 0.2, reverse, simple }: Props)
 
 const navLinks = [
   { label: "Inicio", href: "#hero" },
-  { label: "Sobre mí", href: "#about" },
+  { label: "Sobre mí", href: "/about" },
   { label: "Servicios", href: "#servicios" },
   { label: "Portfolio", href: "#portfolio" },
   { label: "Contacto", href: "#contact" },

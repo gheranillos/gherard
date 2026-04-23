@@ -338,7 +338,7 @@ function WorkHero() {
                 >
                   {[
                     { label: "Inicio", href: "/" },
-                    { label: "About", href: "/#about" },
+                    { label: "About", href: "/about" },
                     { label: "Work", href: "/work", active: true },
                     { label: "Tienda", href: "/shop" },
                     { label: "Contacto", href: "/#contacto" },
