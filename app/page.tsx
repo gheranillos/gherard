@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { Instagram, MessageCircle, ShoppingBag } from "lucide-react";
 
@@ -175,9 +176,9 @@ export default function GherardPortfolio() {
             <a href="#about" className={navLink}>
               about
             </a>
-            <a href="#proyectos" className={navLink}>
+            <Link href="/work" className={navLink}>
               work
-            </a>
+            </Link>
             <a href="/shop" className={navLink}>
               Tienda
             </a>

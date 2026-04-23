@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 
@@ -8,47 +9,16 @@ import {
   CircularGallery,
   type GalleryItem,
 } from "../components/CircularGallery";
+import { projects } from "@/src/data/projects";
 import { splitWords, wordVariants } from "../hooks/useTextReveal";
 import { revealVariants } from "../hooks/useScrollReveal";
 
-const portfolioItems: GalleryItem[] = [
-  {
-    image: "/images/projects/el-kiosco.jpg",
-    name: "El Kiosco",
-    category: "Branding e identidad",
-    href: "/projects/el-kiosco",
-  },
-  {
-    image: "/images/projects/branding.jpg",
-    name: "Branding",
-    category: "Sistema visual",
-    href: "/projects/branding",
-  },
-  {
-    image: "/images/projects/videos.jpg",
-    name: "Videos",
-    category: "Edición y motion",
-    href: "/projects/videos",
-  },
-  {
-    image: "/images/projects/freelance.jpg",
-    name: "Trabajos freelance",
-    category: "Piezas y campañas",
-    href: "/projects/freelance",
-  },
-  {
-    image: "/images/projects/fotografia.jpg",
-    name: "Fotografía",
-    category: "Dirección de arte",
-    href: "/projects/fotografia",
-  },
-  {
-    image: "/images/projects/direccion.jpg",
-    name: "Dirección",
-    category: "Creatividad",
-    href: "/projects/direccion",
-  },
-];
+const portfolioItems: GalleryItem[] = projects.map((project) => ({
+  image: project.coverImage,
+  name: project.title,
+  category: project.category,
+  href: `/work/${project.slug}`,
+}));
 
 export function SelectedWork() {
   const router = useRouter();
@@ -122,6 +92,14 @@ export function SelectedWork() {
           scrollEase={0.04}
           onItemNavigate={(href) => router.push(href)}
         />
+      </div>
+      <div className="mx-auto mt-12 flex justify-center px-6 md:px-10">
+        <Link
+          href="/work"
+          className="inline-flex items-center justify-center rounded-full border-2 border-[#0a0a0a] bg-transparent px-10 py-[0.85rem] font-semibold text-[#0a0a0a] transition-colors duration-200 hover:bg-[#0a0a0a] hover:text-white"
+        >
+          Ver todos los proyectos &rarr;
+        </Link>
       </div>
     </section>
   );
