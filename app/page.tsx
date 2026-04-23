@@ -337,6 +337,7 @@ export default function GherardPortfolio() {
                   className="about-light pointer-events-auto rounded-full border border-[#f7b7ff] bg-[#f7b7ff] px-6 py-2 text-xs font-bold uppercase tracking-[0.12em] text-[#0a0a0a] transition hover:border-[#0a0a0a] hover:bg-[#0a0a0a] hover:text-white sm:px-8 sm:py-2.5 sm:text-sm md:px-10 md:py-3"
                   style={{
                     fontFamily: "CoolveticaLight, sans-serif",
+                    paddingLeft: 32,
                     opacity: 0,
                     transform: "scale(1)",
                     transition: "opacity 0.1s, transform 0.1s",
