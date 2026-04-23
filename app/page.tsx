@@ -121,6 +121,7 @@ export default function GherardPortfolio() {
       const isMobile = window.innerWidth < 640;
       const microWidth = isMobile ? 115 : 155;
       const buttonWidth = isMobile ? 136 : 180;
+      const buttonGap = isMobile ? 18 : 14;
       line1.style.transform = "translateY(0px)";
       line2.style.transform = "translateY(0px)";
       microWrap.style.width = `${microWidth * splitP}px`;
@@ -129,8 +130,8 @@ export default function GherardPortfolio() {
       microText.style.opacity = String(splitP);
       microText.style.transform = `translateY(${(1 - splitP) * 8}px)`;
       btnWrap.style.width = `${buttonWidth * splitP}px`;
-      btnWrap.style.marginLeft = `${14 * splitP}px`;
-      btnWrap.style.marginRight = `${14 * splitP}px`;
+      btnWrap.style.marginLeft = `${buttonGap * splitP}px`;
+      btnWrap.style.marginRight = `${buttonGap * splitP}px`;
       btn.style.opacity = String(splitP);
       btn.style.transform = `scale(${0.8 + 0.2 * splitP})`;
 
@@ -302,7 +303,7 @@ export default function GherardPortfolio() {
               className="about-book font-black tracking-[-0.03em] text-[#0a0a0a] md:whitespace-nowrap"
               style={{
                 fontFamily: "CoolveticaBook, sans-serif",
-                fontSize: "clamp(2.6rem, 12vw, 9rem)",
+                fontSize: "clamp(2rem, 9.2vw, 7.4rem)",
                 lineHeight: 0.92,
                 transition: "transform 0.1s",
               }}
@@ -340,7 +341,7 @@ export default function GherardPortfolio() {
               className="about-book font-black tracking-[-0.03em] text-[#0a0a0a] md:whitespace-nowrap"
               style={{
                 fontFamily: "CoolveticaBook, sans-serif",
-                fontSize: "clamp(2.6rem, 12vw, 9rem)",
+                fontSize: "clamp(2rem, 9.2vw, 7.4rem)",
                 lineHeight: 0.92,
                 transition: "transform 0.1s",
               }}
@@ -360,7 +361,7 @@ export default function GherardPortfolio() {
                       document.querySelector("#contacto");
                     target?.scrollIntoView({ behavior: "smooth" });
                   }}
-                  className="about-light rounded-full border border-[#f7b7ff] bg-[#f7b7ff] px-8 py-3 text-base font-normal text-[#0a0a0a] transition hover:border-[#0a0a0a] hover:bg-[#0a0a0a] hover:text-white md:px-11 md:py-4"
+                  className="about-light rounded-full border border-[#f7b7ff] bg-[#f7b7ff] px-9 py-3 text-base font-normal tracking-[0.04em] text-[#0a0a0a] transition hover:border-[#0a0a0a] hover:bg-[#0a0a0a] hover:text-white md:px-11 md:py-4"
                   style={{
                     fontFamily: "CoolveticaLight, sans-serif",
                     opacity: 0,

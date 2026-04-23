@@ -39,16 +39,22 @@ export function ReviewsSection() {
       let rotateX = 0;
       let rotateY = 0;
 
-      if (p >= 0.3 && p <= 0.55) {
-        rotateX = -90 * remap(p, 0.3, 0.55, 0, 1);
-      } else if (p > 0.55) {
-        rotateX = -90;
+      if (p >= 0.22 && p <= 0.44) {
+        // Movimiento 2: frente -> cara superior (Carla)
+        rotateX = -90 * remap(p, 0.22, 0.44, 0, 1);
+      } else if (p > 0.44 && p <= 0.56) {
+        // Regreso a eje neutro para evitar texto ladeado en el movimiento 3
+        rotateX = -90 + 90 * remap(p, 0.44, 0.56, 0, 1);
+      } else if (p > 0.56) {
+        rotateX = 0;
       }
 
-      if (p >= 0.58 && p <= 0.83) {
-        rotateY = -90 * remap(p, 0.58, 0.83, 0, 1);
-      } else if (p > 0.83) {
-        rotateY = -90;
+      if (p >= 0.56 && p <= 0.78) {
+        // Movimiento 3: frente -> lateral izquierda (reseña 3)
+        rotateY = -90 * remap(p, 0.56, 0.78, 0, 1);
+      } else if (p > 0.78) {
+        // Movimiento 4: lateral -> posterior (reseña 4)
+        rotateY = -90 - 90 * remap(p, 0.78, 1, 0, 1);
       }
 
       cube.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
@@ -124,6 +130,17 @@ export function ReviewsSection() {
                   <span className="face-role">Co-fundador</span>
                 </p>
               </div>
+
+              <div className="face face-back">
+                <p className="face-quote">
+                  "Cada detalle estuvo bien pensado: composición, ritmo y mensaje. El trabajo final se sintió
+                  premium y totalmente alineado con lo que queríamos comunicar."
+                </p>
+                <p className="face-author">
+                  — <span className="face-name">Mariana T.</span>,{" "}
+                  <span className="face-role">Marketing Manager</span>
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -175,6 +192,11 @@ export function ReviewsSection() {
 
         .face-left {
           transform: rotateY(90deg) translateZ(calc(var(--cube-size) / 2));
+          transform-origin: center center;
+        }
+
+        .face-back {
+          transform: rotateY(180deg) translateZ(calc(var(--cube-size) / 2));
           transform-origin: center center;
         }
 

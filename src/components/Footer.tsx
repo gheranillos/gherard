@@ -1,8 +1,9 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
-import { Instagram, Linkedin, Twitter, Globe } from "lucide-react";
+import { Instagram, Linkedin, Globe } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
@@ -44,19 +45,24 @@ const navLinks = [
 const socialLinks = [
   { label: "Instagram", href: "https://instagram.com/gheranillos", icon: Instagram },
   { label: "LinkedIn", href: "https://linkedin.com/in/gheranillos", icon: Linkedin },
-  { label: "X", href: "https://x.com/gheranillos", icon: Twitter },
+  { label: "X", href: "https://x.com/gheranillos", icon: "x-logo" as const },
   { label: "Behance", href: "https://behance.net/gherard", icon: Globe },
 ];
 
 export default function Footer() {
   return (
-    <footer className="w-full border-t border-[#e8e8e8] bg-white px-6 py-16 md:px-[5vw] md:py-20">
+    <footer className="w-full border-t border-[#2b2b2b] bg-[#191919] px-6 py-16 md:px-[5vw] md:py-20">
       <div className="mx-auto flex w-full max-w-[1200px] flex-col">
         <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between md:gap-8">
           <Container delay={0.1} className="h-auto">
-            <p className="text-[clamp(1.8rem,3vw,2.4rem)] font-extrabold tracking-[-0.02em] text-[#0a0a0a]">
-              GHERARD
-            </p>
+            <Image
+              src="/iconfooter.png"
+              alt="Gherard"
+              width={220}
+              height={64}
+              className="h-auto w-[min(220px,58vw)]"
+              priority={false}
+            />
           </Container>
 
           <Container delay={0.2} className="h-auto">
@@ -65,7 +71,7 @@ export default function Footer() {
                 <Link
                   key={link.label}
                   href={link.href}
-                  className="text-[0.85rem] text-[#888888] transition-colors duration-200 hover:text-[#0a0a0a]"
+                  className="text-[0.85rem] text-[#9a9a9a] transition-colors duration-200 hover:text-white"
                 >
                   {link.label}
                 </Link>
@@ -75,14 +81,13 @@ export default function Footer() {
         </div>
 
         <Container delay={0.25} className="h-auto">
-          <div className="mt-8 flex flex-col items-center justify-between gap-6 border-y border-[#f0f0f0] py-12 text-center md:mt-10 md:flex-row md:text-left">
-            <p className="text-[clamp(1rem,2vw,1.2rem)] font-medium text-[#0a0a0a]">
+          <div className="mt-8 flex flex-col items-center justify-between gap-6 border-y border-[#2a2a2a] py-12 text-center md:mt-10 md:flex-row md:text-left">
+            <p className="text-[clamp(1rem,2vw,1.2rem)] font-medium text-white">
               Diseño. Identidad. Movimiento.
             </p>
 
             <div className="flex items-center gap-6">
               {socialLinks.map((item) => {
-                const Icon = item.icon;
                 return (
                   <Link
                     key={item.label}
@@ -90,9 +95,22 @@ export default function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={item.label}
-                    className="text-[#888888] transition-all duration-200 hover:scale-110 hover:text-[#0a0a0a]"
+                    className="text-[#9a9a9a] transition-all duration-200 hover:scale-110 hover:text-white"
                   >
-                    <Icon size={20} />
+                    {item.icon === "x-logo" ? (
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        aria-hidden="true"
+                      >
+                        <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.847h-7.406l-5.8-7.584-6.639 7.584H.474l8.601-9.83L0 1.154h7.594l5.243 6.932zM17.61 20.644h2.039L6.486 3.24H4.298z" />
+                      </svg>
+                    ) : (
+                      <item.icon size={20} />
+                    )}
                   </Link>
                 );
               })}
