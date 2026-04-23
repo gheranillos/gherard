@@ -38,7 +38,11 @@ export default function AboutPage() {
                   style={{ display: "inline-block", overflow: "hidden" }}
                 >
                   <motion.span
-                    style={{ display: "inline-block", marginRight: "0.25em" }}
+                    style={{
+                      display: "inline-block",
+                      marginRight: "0.25em",
+                      letterSpacing: "0px",
+                    }}
                     variants={wordVariants}
                     custom={index}
                     initial={prefersReduced ? false : "hidden"}
@@ -76,7 +80,7 @@ export default function AboutPage() {
               <p className="text-[0.65rem] uppercase tracking-[0.22em] text-[#d9ff3f]">
                 Sobre mi
               </p>
-              <h2 className="mt-4 text-[clamp(1.8rem,3.5vw,3.2rem)] font-black uppercase leading-[0.95] tracking-[-0.03em] text-white">
+              <h2 className="mt-4 text-[31px] font-black uppercase leading-[0.95] tracking-[2px] text-white [font-family:var(--font-coolvetica-book)]">
                 Editor y director creativo.
               </h2>
               <p className="mt-6 max-w-[46ch] text-[0.98rem] leading-[1.85] text-white/68">

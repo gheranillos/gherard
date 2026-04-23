@@ -217,7 +217,11 @@ export default function GherardPortfolio() {
                   style={{ display: "inline-block", overflow: "hidden" }}
                 >
                   <motion.span
-                    style={{ display: "inline-block", marginRight: "0.25em" }}
+                    style={{
+                      display: "inline-block",
+                      marginRight: "0.25em",
+                      lineHeight: "64px",
+                    }}
                     variants={wordVariants}
                     custom={index}
                     initial={prefersReduced ? false : "hidden"}
@@ -251,7 +255,11 @@ export default function GherardPortfolio() {
                   style={{ display: "inline-block", overflow: "hidden" }}
                 >
                   <motion.span
-                    style={{ display: "inline-block", marginRight: "0.25em" }}
+                    style={{
+                      display: "inline-block",
+                      marginRight: "0.25em",
+                      letterSpacing: "2.8px",
+                    }}
                     variants={wordVariants}
                     custom={index + 2}
                     initial={prefersReduced ? false : "hidden"}
@@ -317,6 +325,7 @@ export default function GherardPortfolio() {
               <span
                 ref={aboutLeftWordRef}
                 className="inline-block transition-transform duration-75"
+                style={{ position: "static", letterSpacing: "0px" }}
               >
                 Construyo
               </span>
@@ -336,7 +345,10 @@ export default function GherardPortfolio() {
                   }}
                   className="about-light pointer-events-auto rounded-full border border-[#f7b7ff] bg-[#f7b7ff] px-6 py-2 text-xs font-bold uppercase tracking-[0.12em] text-[#0a0a0a] transition hover:border-[#0a0a0a] hover:bg-[#0a0a0a] hover:text-white sm:px-8 sm:py-2.5 sm:text-sm md:px-10 md:py-3"
                   style={{
-                    fontFamily: "CoolveticaLight, sans-serif",
+                    fontFamily: "CoolveticaBook, sans-serif",
+                    position: "absolute",
+                    left: "-66px",
+                    top: "-12px",
                     paddingLeft: 32,
                     opacity: 0,
                     transform: "scale(1)",
@@ -350,6 +362,7 @@ export default function GherardPortfolio() {
               <span
                 ref={aboutRightWordRef}
                 className="inline-block transition-transform duration-75"
+                style={{ position: "static" }}
               >
                 identidad.
               </span>
@@ -648,7 +661,7 @@ export default function GherardPortfolio() {
               </div>
               <button
                 type="button"
-                className="mt-7 inline-flex h-12 items-center justify-center rounded-full bg-[#f7b7ff] px-8 text-xs font-semibold uppercase tracking-[0.24em] text-black transition hover:translate-y-[-1px] hover:bg-white"
+                className="mt-7 inline-flex h-12 items-center justify-center rounded-full bg-[#f7b7ff] px-8 text-xs font-semibold uppercase tracking-[1.2px] text-black [font-family:CoolveticaBook] transition hover:translate-y-[-1px] hover:bg-white"
               >
                 Enviar solicitud
               </button>
