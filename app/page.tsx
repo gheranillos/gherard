@@ -282,7 +282,7 @@ export default function GherardPortfolio() {
             className="absolute inset-0 bg-cover bg-center opacity-0"
             style={{
               backgroundImage:
-                "url('/images/about-bg.jpg'), url('https://picsum.photos/seed/gherard-about/1600/900')",
+                "url('/aboutbg.png'), url('https://picsum.photos/seed/gherard-about/1600/900')",
             }}
           >
             <div className="absolute inset-0 bg-black/40" />
