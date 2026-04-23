@@ -14,32 +14,38 @@ import { revealVariants } from "../hooks/useScrollReveal";
 const portfolioItems: GalleryItem[] = [
   {
     image: "/images/projects/el-kiosco.jpg",
-    text: "EL KIOSCO",
+    name: "El Kiosco",
+    category: "Branding e identidad",
     href: "/projects/el-kiosco",
   },
   {
     image: "/images/projects/branding.jpg",
-    text: "BRANDING",
+    name: "Branding",
+    category: "Sistema visual",
     href: "/projects/branding",
   },
   {
     image: "/images/projects/videos.jpg",
-    text: "VIDEOS",
+    name: "Videos",
+    category: "Edición y motion",
     href: "/projects/videos",
   },
   {
     image: "/images/projects/freelance.jpg",
-    text: "TRABAJOS FREELANCE",
+    name: "Trabajos freelance",
+    category: "Piezas y campañas",
     href: "/projects/freelance",
   },
   {
     image: "/images/projects/fotografia.jpg",
-    text: "FOTOGRAFÍA",
+    name: "Fotografía",
+    category: "Dirección de arte",
     href: "/projects/fotografia",
   },
   {
     image: "/images/projects/direccion.jpg",
-    text: "DIRECCIÓN",
+    name: "Dirección",
+    category: "Creatividad",
     href: "/projects/direccion",
   },
 ];

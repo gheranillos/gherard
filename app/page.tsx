@@ -53,13 +53,6 @@ const services = [
   },
 ];
 
-const process = [
-  "Entiendo tu marca y su contexto",
-  "Bajo ideas a una dirección visual clara",
-  "Diseño o edito con intención, no por relleno",
-  "Entrego piezas pensadas para verse bien y funcionar",
-];
-
 const navLink =
   "rounded-full px-3 py-2 text-[11px] font-medium uppercase tracking-[0.2em] text-white/80 transition hover:bg-white/10 hover:text-white transition-opacity duration-200 hover:opacity-50";
 
@@ -124,14 +117,17 @@ export default function GherardPortfolio() {
       const total = section.offsetHeight - window.innerHeight;
       const progress = clamp(scrolled / Math.max(total, 1), 0, 1);
       const splitP = remap(progress, 0, 0.45, 0, 1);
+      const isMobile = window.innerWidth < 640;
+      const microWidth = isMobile ? 115 : 155;
+      const buttonWidth = isMobile ? 136 : 180;
       line1.style.transform = "translateY(0px)";
       line2.style.transform = "translateY(0px)";
-      microWrap.style.width = `${155 * splitP}px`;
+      microWrap.style.width = `${microWidth * splitP}px`;
       microWrap.style.marginLeft = `${10 * splitP}px`;
       microWrap.style.marginRight = `${10 * splitP}px`;
       microText.style.opacity = String(splitP);
       microText.style.transform = `translateY(${(1 - splitP) * 8}px)`;
-      btnWrap.style.width = `${180 * splitP}px`;
+      btnWrap.style.width = `${buttonWidth * splitP}px`;
       btnWrap.style.marginLeft = `${14 * splitP}px`;
       btnWrap.style.marginRight = `${14 * splitP}px`;
       btn.style.opacity = String(splitP);
@@ -302,7 +298,7 @@ export default function GherardPortfolio() {
           >
             <h2
               ref={aboutLine1Ref}
-              className="about-book whitespace-nowrap font-black tracking-[-0.03em] text-[#0a0a0a]"
+              className="about-book font-black tracking-[-0.03em] text-[#0a0a0a] md:whitespace-nowrap"
               style={{
                 fontFamily: "CoolveticaBook, sans-serif",
                 fontSize: "clamp(2.6rem, 12vw, 9rem)",
@@ -340,7 +336,7 @@ export default function GherardPortfolio() {
 
             <h2
               ref={aboutLine2Ref}
-              className="about-book whitespace-nowrap font-black tracking-[-0.03em] text-[#0a0a0a]"
+              className="about-book font-black tracking-[-0.03em] text-[#0a0a0a] md:whitespace-nowrap"
               style={{
                 fontFamily: "CoolveticaBook, sans-serif",
                 fontSize: "clamp(2.6rem, 12vw, 9rem)",
@@ -407,7 +403,7 @@ export default function GherardPortfolio() {
       {/* Services Section */}
       <section
         id="servicios"
-        className="border-y border-neutral-200 bg-white"
+        className="border-y border-neutral-200 bg-neutral-100/90"
       >
         <div className="mx-auto max-w-7xl overflow-visible px-6 pb-0 pt-24 md:px-10">
           <div className="max-w-2xl">
@@ -451,7 +447,7 @@ export default function GherardPortfolio() {
             {services.map((service, index) => (
               <motion.article
                 key={service.title}
-                className={`group min-h-[420px] w-full rounded-2xl border border-[#e8e8e8] bg-white px-6 py-8 shadow-[0_-2px_20px_rgba(0,0,0,0.06)] transition-[transform,box-shadow] duration-300 ease-out hover:shadow-[0_-4px_26px_rgba(0,0,0,0.1)] md:px-14 md:py-12 sticky ${
+                className={`group min-h-[420px] w-full rounded-2xl border border-neutral-300/90 bg-white px-6 py-8 shadow-[0_4px_28px_rgba(0,0,0,0.1)] ring-1 ring-black/[0.06] transition-[transform,box-shadow] duration-300 ease-out hover:shadow-[0_12px_40px_rgba(0,0,0,0.14)] md:px-14 md:py-12 sticky ${
                   index === 0
                     ? "md:top-[80px] top-[60px]"
                     : index === 1
@@ -475,21 +471,21 @@ export default function GherardPortfolio() {
                 <div className="grid gap-8 md:grid-cols-[1fr_380px] md:gap-10">
                   <div className="min-w-0">
                     <div className="flex items-baseline">
-                      <span className="mr-4 align-super font-mono text-[0.75rem] font-bold text-[#f7b7ff]">
+                      <span className="mr-4 align-super font-mono text-[0.75rem] font-bold text-fuchsia-600/90">
                         {`{${service.number}}`}
                       </span>
-                      <h3 className="text-[clamp(1.6rem,8vw,2.4rem)] font-extrabold leading-[0.95] tracking-[-0.03em] text-[#0a0a0a] md:text-[clamp(2rem,3.5vw,3rem)]">
+                      <h3 className="text-[clamp(1.6rem,8vw,2.4rem)] font-normal leading-[0.95] tracking-[-0.03em] text-neutral-950 [font-family:var(--font-coolvetica-book),ui-sans-serif,system-ui,sans-serif] md:text-[clamp(2rem,3.5vw,3rem)]">
                         {service.title}
                       </h3>
                     </div>
-                    <p className="mt-5 max-w-[520px] text-base leading-[1.75] text-[#555555]">
+                    <p className="mt-5 max-w-[520px] text-base leading-[1.75] text-neutral-800">
                       {service.description}
                     </p>
                     <div className="mt-6 flex flex-wrap gap-2">
                       {service.tags.map((tag) => (
                         <span
                           key={`${service.title}-${tag}`}
-                          className="rounded-full bg-[#f2f2f2] px-3.5 py-1 text-[0.78rem] font-medium text-[#333333]"
+                          className="rounded-full border border-neutral-200/80 bg-neutral-200/60 px-3.5 py-1 text-[0.78rem] font-medium text-neutral-900"
                         >
                           {tag}
                         </span>
@@ -527,35 +523,6 @@ export default function GherardPortfolio() {
       </section>
 
       <SelectedWork />
-
-      {/* Process Section */}
-      <section className="border-y border-neutral-200 bg-[linear-gradient(180deg,rgba(0,0,0,0.015),rgba(0,0,0,0.03))]">
-        <div className="mx-auto max-w-7xl px-6 py-20 md:px-10">
-          <div className="grid gap-10 md:grid-cols-[0.9fr_1.1fr]">
-            <div>
-              <div className="text-sm uppercase tracking-[0.25em] text-[#f7b7ff]">
-                Proceso
-              </div>
-              <h2 className="mt-4 text-3xl font-black uppercase tracking-tight text-neutral-900 md:text-5xl">
-                Cómo trabajo
-              </h2>
-            </div>
-            <div className="grid gap-4">
-              {process.map((item, index) => (
-                <div
-                  key={item}
-                  className="flex items-start gap-4 rounded-[24px] border border-neutral-200 bg-white p-5 shadow-sm transition hover:border-fuchsia-400/35"
-                >
-                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-neutral-200 bg-neutral-50 text-sm font-bold text-[#f7b7ff]">
-                    0{index + 1}
-                  </div>
-                  <p className="pt-1 text-neutral-700">{item}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
 
       <ReviewsSection />
 

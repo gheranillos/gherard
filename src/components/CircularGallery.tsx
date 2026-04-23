@@ -5,7 +5,9 @@ import {
   forwardRef,
   useEffect,
   useImperativeHandle,
+  useLayoutEffect,
   useRef,
+  useState,
 } from "react";
 import { Camera, Mesh, Plane, Program, Renderer, Texture, Transform } from "ogl";
 
@@ -158,7 +160,8 @@ class Media {
   font: string;
   program!: Program;
   plane!: Mesh;
-  title!: Title;
+  title?: Title;
+  showPlaneTitles: boolean;
   scale!: number;
   padding!: number;
   width!: number;
@@ -184,13 +187,16 @@ class Media {
       textColor: string;
       borderRadius: number;
       font: string;
+      showPlaneTitles: boolean;
     },
   ) {
     autoBind(this);
     Object.assign(this, p);
     this.createShader();
     this.createMesh();
-    this.createTitle();
+    if (this.showPlaneTitles) {
+      this.createTitle();
+    }
     this.onResize();
   }
 
@@ -337,7 +343,16 @@ class Media {
   }
 }
 
-export type GalleryItem = { image: string; text: string; href: string };
+export type GalleryItem = {
+  image: string;
+  href: string;
+  /** Título en el preview (hover). Si no hay `text` y activas títulos bajo el plano, se usa `name`. */
+  name: string;
+  /** Subtítulo / categoría en el preview */
+  category: string;
+  /** Etiqueta bajo la tarjeta en WebGL; solo se usa si `showPlaneTitles` está activo */
+  text?: string;
+};
 
 type AppCfg = {
   items: GalleryItem[];
@@ -348,6 +363,8 @@ type AppCfg = {
   scrollSpeed: number;
   scrollEase: number;
   onItemNavigate: (href: string) => void;
+  showPlaneTitles: boolean;
+  activeIndexListener: { onIndex: (i: number) => void };
 };
 
 class GalleryApp {
@@ -372,6 +389,8 @@ class GalleryApp {
   scrollAtDown = 0;
   private moved = 0;
   onItemNavigate: (href: string) => void;
+  private activeIndexListener: { onIndex: (i: number) => void };
+  private lastEmittedActiveIndex = -1;
   private onResizeB!: () => void;
   private onWheelB!: (e: Event) => void;
   private onDownB!: (e: Event) => void;
@@ -384,6 +403,7 @@ class GalleryApp {
     this.container = container;
     this.scrollSpeed = cfg.scrollSpeed;
     this.onItemNavigate = cfg.onItemNavigate;
+    this.activeIndexListener = cfg.activeIndexListener;
     this.scroll = {
       ease: cfg.scrollEase,
       current: 0,
@@ -406,6 +426,7 @@ class GalleryApp {
         cfg.textColor,
         cfg.borderRadius,
         cfg.font,
+        cfg.showPlaneTitles,
       );
     }
     this.addListeners();
@@ -449,6 +470,7 @@ class GalleryApp {
     textColor: string,
     borderRadius: number,
     font: string,
+    showPlaneTitles: boolean,
   ) {
     this.medias = items.map(
       (data, index) =>
@@ -461,12 +483,13 @@ class GalleryApp {
           renderer: this.renderer,
           scene: this.scene,
           screen: this.screen,
-          text: data.text,
+          text: data.text ?? data.name,
           viewport: this.viewport,
           bend,
           textColor,
           borderRadius,
           font,
+          showPlaneTitles,
         }),
     );
   }
@@ -566,6 +589,11 @@ class GalleryApp {
       this.renderer.render({ scene: this.scene, camera: this.camera });
     }
     this.scroll.last = this.scroll.current;
+    const i = this.getClosestItemIndex();
+    if (i !== this.lastEmittedActiveIndex) {
+      this.lastEmittedActiveIndex = i;
+      this.activeIndexListener.onIndex(i);
+    }
     this.raf = requestAnimationFrame(() => this.update());
   }
 
@@ -622,6 +650,8 @@ const CircularGallery = forwardRef<
     scrollSpeed?: number;
     scrollEase?: number;
     onItemNavigate: (href: string) => void;
+    /** Mostrar títulos WebGL bajo cada imagen (por defecto desactivado) */
+    showPlaneTitles?: boolean;
   }
 >(function CircularGallery(
   {
@@ -633,11 +663,25 @@ const CircularGallery = forwardRef<
     scrollSpeed = 1.1,
     scrollEase = 0.04,
     onItemNavigate,
+    showPlaneTitles = false,
   },
   ref,
 ) {
   const rootRef = useRef<HTMLDivElement>(null);
   const appRef = useRef<GalleryApp | null>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isHovering, setIsHovering] = useState(false);
+  const [canHover, setCanHover] = useState(true);
+
+  const activeIndexListener = useRef<{ onIndex: (i: number) => void }>({
+    onIndex: () => {},
+  });
+  activeIndexListener.current.onIndex = (i) => setActiveIndex(i);
+
+  useLayoutEffect(() => {
+    if (typeof window === "undefined") return;
+    setCanHover(window.matchMedia("(hover: hover)").matches);
+  }, []);
 
   useImperativeHandle(ref, () => ({
     getClosestItemIndex: () =>
@@ -657,6 +701,8 @@ const CircularGallery = forwardRef<
       font,
       scrollSpeed,
       scrollEase,
+      showPlaneTitles,
+      activeIndexListener: activeIndexListener.current,
       onItemNavigate: (href) => navRef.current(href),
     });
     appRef.current = app;
@@ -664,9 +710,32 @@ const CircularGallery = forwardRef<
       app.destroy();
       appRef.current = null;
     };
-  }, [items, bend, textColor, borderRadius, font, scrollSpeed, scrollEase]);
+  }, [items, bend, textColor, borderRadius, font, scrollSpeed, scrollEase, showPlaneTitles]);
 
-  return <div className="circular-gallery h-full w-full" ref={rootRef} />;
+  const showPreview = !canHover || isHovering;
+  const current = items[activeIndex];
+
+  return (
+    <div
+      className="relative h-full w-full"
+      onMouseEnter={() => setIsHovering(true)}
+      onMouseLeave={() => setIsHovering(false)}
+    >
+      <div className="circular-gallery h-full w-full" ref={rootRef} />
+      {showPreview && current && (
+        <div className="pointer-events-none absolute inset-x-0 bottom-6 z-10 flex justify-center px-4 sm:bottom-8">
+          <div className="max-w-[min(100%,24rem)] rounded-2xl border border-white/25 bg-black/30 px-4 py-2.5 text-center shadow-lg backdrop-blur-md">
+            <p className="text-[0.95rem] font-semibold leading-tight text-white sm:text-sm">
+              {current.name}
+            </p>
+            <p className="mt-0.5 text-[0.65rem] font-medium uppercase tracking-[0.2em] text-white/80">
+              {current.category}
+            </p>
+          </div>
+        </div>
+      )}
+    </div>
+  );
 });
 
 CircularGallery.displayName = "CircularGallery";

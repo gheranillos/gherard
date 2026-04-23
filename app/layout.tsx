@@ -6,6 +6,14 @@ import { Providers } from './providers'
 import { CursorGlow } from '@/src/components/CursorGlow'
 import './globals.css'
 
+const coolveticaBook = localFont({
+  src: '../fonts/coolvetica/Coolvetica-Book-Regular.otf',
+  weight: '400',
+  style: 'normal',
+  variable: '--font-coolvetica-book',
+  display: 'swap',
+})
+
 const coolvetica = localFont({
   src: [
     {
@@ -62,7 +70,10 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="es" className={coolvetica.variable}>
+    <html
+      lang="es"
+      className={`${coolvetica.variable} ${coolveticaBook.variable}`}
+    >
       <body className={`${coolvetica.className} font-sans antialiased`}>
         <Providers>{children}</Providers>
         <CursorGlow />

@@ -46,9 +46,9 @@ export function ReviewsSection() {
       }
 
       if (p >= 0.65 && p <= 0.9) {
-        rotateY = 90 * remap(p, 0.65, 0.9, 0, 1);
+        rotateY = -90 * remap(p, 0.65, 0.9, 0, 1);
       } else if (p > 0.9) {
-        rotateY = 90;
+        rotateY = -90;
       }
 
       cube.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
@@ -105,16 +105,16 @@ export function ReviewsSection() {
 
               <div className="face face-top">
                 <p className="face-quote">
-                  "La edición del video para el lanzamiento superó todas las expectativas. Ritmo, estética y
-                  mensaje alineados perfectamente."
+                  "Nos ayudó a ordenar la identidad visual y todo empezó a sentirse más profesional.
+                  Hubo criterio, detalle y una dirección muy clara en cada entrega."
                 </p>
                 <p className="face-author">
-                  — <span className="face-name">Matías R.</span>,{" "}
-                  <span className="face-role">Director Creativo</span>
+                  — <span className="face-name">Carla P.</span>,{" "}
+                  <span className="face-role">Fundadora de marca</span>
                 </p>
               </div>
 
-              <div className="face face-right">
+              <div className="face face-left">
                 <p className="face-quote">
                   "Trabajo limpio, criterio claro y entrega rápida. Sabe lo que hace y se nota que le importa el
                   resultado."
@@ -173,8 +173,8 @@ export function ReviewsSection() {
           transform-origin: center center;
         }
 
-        .face-right {
-          transform: rotateY(-90deg) translateZ(calc(var(--cube-size) / 2));
+        .face-left {
+          transform: rotateY(90deg) translateZ(calc(var(--cube-size) / 2));
           transform-origin: center center;
         }
 
