@@ -26,7 +26,7 @@ export const projects: Project[] = [
     longDescription:
       "El Kiosco nació como un proyecto personal para explorar la intersección entre moda urbana, contenido visual y comunidad. Desarrollé la identidad completa: naming, sistema gráfico, paleta, dirección de arte y estrategia de contenido para redes. Cada pieza comunica una estética coherente y con personalidad propia.",
     tags: ["Branding", "Dirección de Arte", "Contenido", "Identidad Visual"],
-    coverImage: "/projects/el-kiosco/cover.jpg",
+    coverImage: "/images/projects/coverkiosco.png",
     images: [
       "/projects/el-kiosco/01.jpg",
       "/projects/el-kiosco/02.jpg",
@@ -35,8 +35,8 @@ export const projects: Project[] = [
     accentColor: "#d9ff3f",
   },
   {
-    slug: "branding",
-    title: "Branding",
+    slug: "mtb-caracas",
+    title: "Mtb caracas",
     category: "Identidad Visual",
     year: "2024",
     client: "Marcas y Emprendedores",
@@ -46,13 +46,13 @@ export const projects: Project[] = [
     longDescription:
       "Proyectos de branding para clientes y marcas propias. Desde el briefing hasta el manual de marca: logotipo, paleta, tipografía, aplicaciones y sistema gráfico completo. El objetivo siempre es que la marca se vea real, no genérica.",
     tags: ["Logotipo", "Sistema Visual", "Paleta", "Tipografía"],
-    coverImage: "/projects/branding/cover.jpg",
+    coverImage: "/images/projects/covermtb.png",
     images: ["/projects/branding/01.jpg", "/projects/branding/02.jpg"],
     accentColor: "#f7b7ff",
   },
   {
-    slug: "videos",
-    title: "Videos",
+    slug: "mundo-gelato",
+    title: "Mundo Gelato",
     category: "Edición y Contenido",
     year: "2024",
     client: "Contenido para Redes",
@@ -62,7 +62,7 @@ export const projects: Project[] = [
     longDescription:
       "Edición de video con criterio narrativo y estética cuidada. Desde reels y shorts hasta piezas de campaña. Cada video tiene ritmo, propósito y coherencia visual con la marca que lo respalda.",
     tags: ["Edición", "Redes", "Narrativa", "Campaña"],
-    coverImage: "/projects/videos/cover.jpg",
+    coverImage: "/images/projects/covergelato.png",
     images: ["/projects/videos/01.jpg", "/projects/videos/02.jpg"],
     accentColor: "#d9ff3f",
   },
