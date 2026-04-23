@@ -6,6 +6,7 @@ import { Instagram, MessageCircle, ShoppingBag } from "lucide-react";
 
 import { useCart } from "@/lib/cart-context";
 import { renderCanvas } from "@/components/ui/canvas";
+import Footer from "@/components/Footer";
 import { SelectedWork } from "../src/sections/SelectedWork";
 import { ReviewsSection } from "@/src/sections/Reviews";
 import { splitWords, wordVariants } from "@/src/hooks/useTextReveal";
@@ -632,6 +633,7 @@ export default function GherardPortfolio() {
           </div>
         </div>
       </section>
+      <Footer />
     </div>
   );
 }
