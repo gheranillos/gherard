@@ -58,9 +58,9 @@ export default function Footer() {
             <Image
               src="/iconfooter.png"
               alt="Gherard"
-              width={220}
-              height={64}
-              className="h-auto w-[min(220px,58vw)]"
+              width={35}
+              height={40}
+              className="h-[40px] w-[35px] object-contain"
               priority={false}
             />
           </Container>
@@ -81,11 +81,7 @@ export default function Footer() {
         </div>
 
         <Container delay={0.25} className="h-auto">
-          <div className="mt-8 flex flex-col items-center justify-between gap-6 border-y border-[#2a2a2a] py-12 text-center md:mt-10 md:flex-row md:text-left">
-            <p className="text-[clamp(1rem,2vw,1.2rem)] font-medium text-white">
-              Diseño. Identidad. Movimiento.
-            </p>
-
+          <div className="mt-8 flex flex-col items-center justify-center gap-6 border-y border-[#2a2a2a] py-12 text-center md:mt-10 md:flex-row md:justify-end md:text-left">
             <div className="flex items-center gap-6">
               {socialLinks.map((item) => {
                 return (

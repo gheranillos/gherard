@@ -36,28 +36,24 @@ export function ReviewsSection() {
       const scale = 0.3 + 0.7 * growP;
       pos.style.transform = `translateY(${translateY}%) scale(${scale})`;
 
-      let rotateX = 0;
       let rotateY = 0;
 
-      if (p >= 0.22 && p <= 0.44) {
-        // Movimiento 2: frente -> cara superior (Carla)
-        rotateX = -90 * remap(p, 0.22, 0.44, 0, 1);
-      } else if (p > 0.44 && p <= 0.56) {
-        // Regreso a eje neutro para evitar texto ladeado en el movimiento 3
-        rotateX = -90 + 90 * remap(p, 0.44, 0.56, 0, 1);
-      } else if (p > 0.56) {
-        rotateX = 0;
+      if (p >= 0.22 && p <= 0.4) {
+        // Movimiento 2: frente -> derecha (Carla)
+        rotateY = -90 * remap(p, 0.22, 0.4, 0, 1);
+      } else if (p > 0.4 && p <= 0.56) {
+        rotateY = -90;
+      } else if (p > 0.56 && p <= 0.76) {
+        // Movimiento 3: derecha -> posterior (Andres)
+        rotateY = -90 - 90 * remap(p, 0.56, 0.76, 0, 1);
+      } else if (p > 0.76 && p <= 0.88) {
+        rotateY = -180;
+      } else if (p > 0.88) {
+        // Movimiento 4: posterior -> izquierda (Mariana)
+        rotateY = -180 - 90 * remap(p, 0.88, 1, 0, 1);
       }
 
-      if (p >= 0.56 && p <= 0.78) {
-        // Movimiento 3: frente -> lateral izquierda (reseña 3)
-        rotateY = -90 * remap(p, 0.56, 0.78, 0, 1);
-      } else if (p > 0.78) {
-        // Movimiento 4: lateral -> posterior (reseña 4)
-        rotateY = -90 - 90 * remap(p, 0.78, 1, 0, 1);
-      }
-
-      cube.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+      cube.style.transform = `rotateY(${rotateY}deg)`;
       ticking = false;
     };
 
@@ -109,7 +105,7 @@ export function ReviewsSection() {
                 </p>
               </div>
 
-              <div className="face face-top">
+              <div className="face face-right">
                 <p className="face-quote">
                   "Nos ayudó a ordenar la identidad visual y todo empezó a sentirse más profesional.
                   Hubo criterio, detalle y una dirección muy clara en cada entrega."
@@ -122,23 +118,23 @@ export function ReviewsSection() {
 
               <div className="face face-left">
                 <p className="face-quote">
-                  "Pasamos de tener ideas sueltas a una presencia visual coherente. La ejecución fue impecable y
-                  el resultado elevó por completo la marca."
-                </p>
-                <p className="face-author">
-                  — <span className="face-name">Andrés C.</span>,{" "}
-                  <span className="face-role">Co-fundador</span>
-                </p>
-              </div>
-
-              <div className="face face-back">
-                <p className="face-quote">
                   "Cada detalle estuvo bien pensado: composición, ritmo y mensaje. El trabajo final se sintió
                   premium y totalmente alineado con lo que queríamos comunicar."
                 </p>
                 <p className="face-author">
                   — <span className="face-name">Mariana T.</span>,{" "}
                   <span className="face-role">Marketing Manager</span>
+                </p>
+              </div>
+
+              <div className="face face-back">
+                <p className="face-quote">
+                  "Pasamos de tener ideas sueltas a una presencia visual coherente. La ejecución fue impecable y
+                  el resultado elevó por completo la marca."
+                </p>
+                <p className="face-author">
+                  — <span className="face-name">Andrés C.</span>,{" "}
+                  <span className="face-role">Co-fundador</span>
                 </p>
               </div>
             </div>
@@ -185,8 +181,8 @@ export function ReviewsSection() {
           transform: translateZ(calc(var(--cube-size) / 2));
         }
 
-        .face-top {
-          transform: rotateX(90deg) translateZ(calc(var(--cube-size) / 2));
+        .face-right {
+          transform: rotateY(-90deg) translateZ(calc(var(--cube-size) / 2));
           transform-origin: center center;
         }
 

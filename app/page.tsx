@@ -118,10 +118,12 @@ export default function GherardPortfolio() {
       const total = section.offsetHeight - window.innerHeight;
       const progress = clamp(scrolled / Math.max(total, 1), 0, 1);
       const splitP = remap(progress, 0, 0.45, 0, 1);
-      const isMobile = window.innerWidth < 640;
-      const microWidth = isMobile ? 115 : 155;
-      const buttonWidth = isMobile ? 136 : 180;
-      const buttonGap = isMobile ? 18 : 14;
+      const vw = window.innerWidth;
+      const isMobile = vw < 640;
+      const isCompactDesktop = vw < 1280;
+      const microWidth = isMobile ? 100 : isCompactDesktop ? 128 : 148;
+      const buttonWidth = isMobile ? 120 : isCompactDesktop ? 146 : 168;
+      const buttonGap = isMobile ? 12 : isCompactDesktop ? 10 : 14;
       line1.style.transform = "translateY(0px)";
       line2.style.transform = "translateY(0px)";
       microWrap.style.width = `${microWidth * splitP}px`;
@@ -295,15 +297,15 @@ export default function GherardPortfolio() {
 
           <div
             ref={aboutCardRef}
-            className="relative z-10 w-[min(92vw,760px)] bg-white px-[5vw] py-[6vh] text-center md:px-[4vw] md:py-[5.5vh]"
+            className="relative z-10 w-[min(94vw,860px)] bg-white px-[5vw] py-[6vh] text-center md:px-[4vw] md:py-[5.5vh]"
             style={{ transformOrigin: "center center" }}
           >
             <h2
               ref={aboutLine1Ref}
-              className="about-book font-black tracking-[-0.03em] text-[#0a0a0a] md:whitespace-nowrap"
+              className="about-book font-black tracking-[-0.03em] text-[#0a0a0a] lg:whitespace-nowrap"
               style={{
                 fontFamily: "CoolveticaBook, sans-serif",
-                fontSize: "clamp(2rem, 9.2vw, 7.4rem)",
+                fontSize: "clamp(1.8rem, 7.2vw, 5.8rem)",
                 lineHeight: 0.92,
                 transition: "transform 0.1s",
               }}
@@ -338,10 +340,10 @@ export default function GherardPortfolio() {
 
             <h2
               ref={aboutLine2Ref}
-              className="about-book font-black tracking-[-0.03em] text-[#0a0a0a] md:whitespace-nowrap"
+              className="about-book font-black tracking-[-0.03em] text-[#0a0a0a] lg:whitespace-nowrap"
               style={{
                 fontFamily: "CoolveticaBook, sans-serif",
-                fontSize: "clamp(2rem, 9.2vw, 7.4rem)",
+                fontSize: "clamp(1.8rem, 7.2vw, 5.8rem)",
                 lineHeight: 0.92,
                 transition: "transform 0.1s",
               }}
