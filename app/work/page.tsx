@@ -295,12 +295,12 @@ function WorkHero() {
             <div className="absolute inset-0 flex items-center justify-center px-6">
               <div className="text-center">
                 <h2
-                  className="work-hero-book text-[clamp(2.8rem,12vw,10rem)] font-black uppercase leading-[0.9] tracking-[-0.03em] text-[#f5f0e8] mix-blend-difference"
+                  className="work-hero-book text-[90px] font-black uppercase leading-[0.9] tracking-[3.3px] text-[rgba(245,240,232,1)] mix-blend-difference"
                 >
                   EDITOR
                 </h2>
                 <h2
-                  className="work-hero-book text-[clamp(2.8rem,12vw,10rem)] font-black uppercase leading-[0.9] tracking-[-0.03em] text-[#f5f0e8] mix-blend-difference"
+                  className="work-hero-book text-[90px] font-black uppercase leading-[0.9] tracking-[3.3px] text-[rgba(245,240,232,1)] mix-blend-difference"
                 >
                   y DIRECTOR
                 </h2>
@@ -431,7 +431,7 @@ export default function WorkPage() {
                   <span className="inline-flex rounded-full border border-white/15 bg-white/10 px-3 py-1 text-[0.65rem] uppercase tracking-[0.2em] text-white backdrop-blur-sm">
                     {project.category}
                   </span>
-                  <h2 className="mt-3 text-[clamp(1.4rem,2.4vw,2.1rem)] font-extrabold uppercase text-white">
+                  <h2 className="mt-3 text-[17px] font-extrabold uppercase tracking-[0.8px] text-white [font-family:CoolveticaBook]">
                     {project.title}
                   </h2>
                   <p className="mt-1 text-xs uppercase tracking-[0.16em] text-white/50">

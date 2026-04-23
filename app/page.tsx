@@ -220,7 +220,8 @@ export default function GherardPortfolio() {
                     style={{
                       display: "inline-block",
                       marginRight: "0.25em",
-                      lineHeight: "64px",
+                      lineHeight: "80px",
+                      letterSpacing: "0px",
                     }}
                     variants={wordVariants}
                     custom={index}
@@ -298,7 +299,7 @@ export default function GherardPortfolio() {
 
           <div
             ref={aboutCardRef}
-            className="relative z-10 mx-auto w-[min(98vw,920px)] bg-white px-4 py-[6vh] text-center sm:px-[5vw] md:px-[4vw] md:py-[5.5vh]"
+            className="relative z-10 mx-auto w-[min(98vw,930px)] bg-white px-4 py-[6vh] text-center sm:px-[5vw] md:px-[4vw] md:py-[5.5vh]"
             style={{ transformOrigin: "center center" }}
           >
             <h2
@@ -309,6 +310,7 @@ export default function GherardPortfolio() {
                 fontSize: "clamp(1.45rem, 5.8vw, 5rem)",
                 lineHeight: 0.92,
                 transition: "transform 0.1s",
+                letterSpacing: "0px",
               }}
             >
               No soy editor,
@@ -362,7 +364,7 @@ export default function GherardPortfolio() {
               <span
                 ref={aboutRightWordRef}
                 className="inline-block transition-transform duration-75"
-                style={{ position: "static" }}
+                style={{ position: "static", letterSpacing: "0px" }}
               >
                 identidad.
               </span>
