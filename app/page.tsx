@@ -121,9 +121,9 @@ export default function GherardPortfolio() {
       const vw = window.innerWidth;
       const isMobile = vw < 640;
       const isCompactDesktop = vw < 1280;
-      const microWidth = isMobile ? 100 : isCompactDesktop ? 128 : 148;
-      const buttonWidth = isMobile ? 120 : isCompactDesktop ? 146 : 168;
-      const buttonGap = isMobile ? 12 : isCompactDesktop ? 10 : 14;
+      const microWidth = isMobile ? 88 : isCompactDesktop ? 128 : 148;
+      const buttonWidth = isMobile ? 104 : isCompactDesktop ? 146 : 168;
+      const buttonGap = isMobile ? 8 : isCompactDesktop ? 10 : 14;
       line1.style.transform = "translateY(0px)";
       line2.style.transform = "translateY(0px)";
       microWrap.style.width = `${microWidth * splitP}px`;
@@ -297,15 +297,15 @@ export default function GherardPortfolio() {
 
           <div
             ref={aboutCardRef}
-            className="relative z-10 w-[min(94vw,860px)] bg-white px-[5vw] py-[6vh] text-center md:px-[4vw] md:py-[5.5vh]"
+            className="relative z-10 w-[min(98vw,920px)] bg-white px-4 py-[6vh] text-center sm:px-[5vw] md:px-[4vw] md:py-[5.5vh]"
             style={{ transformOrigin: "center center" }}
           >
             <h2
               ref={aboutLine1Ref}
-              className="about-book font-black tracking-[-0.03em] text-[#0a0a0a] lg:whitespace-nowrap"
+              className="about-book whitespace-normal break-words font-black tracking-[-0.03em] text-[#0a0a0a] lg:whitespace-nowrap"
               style={{
                 fontFamily: "CoolveticaBook, sans-serif",
-                fontSize: "clamp(1.65rem, 6.4vw, 5rem)",
+                fontSize: "clamp(1.45rem, 5.8vw, 5rem)",
                 lineHeight: 0.92,
                 transition: "transform 0.1s",
               }}
@@ -340,10 +340,10 @@ export default function GherardPortfolio() {
 
             <h2
               ref={aboutLine2Ref}
-              className="about-book font-black tracking-[-0.03em] text-[#0a0a0a] lg:whitespace-nowrap"
+              className="about-book whitespace-normal break-words font-black tracking-[-0.03em] text-[#0a0a0a] lg:whitespace-nowrap"
               style={{
                 fontFamily: "CoolveticaBook, sans-serif",
-                fontSize: "clamp(1.65rem, 6.4vw, 5rem)",
+                fontSize: "clamp(1.45rem, 5.8vw, 5rem)",
                 lineHeight: 0.92,
                 transition: "transform 0.1s",
               }}
@@ -363,7 +363,7 @@ export default function GherardPortfolio() {
                       document.querySelector("#contacto");
                     target?.scrollIntoView({ behavior: "smooth" });
                   }}
-                  className="about-light rounded-full border border-[#f7b7ff] bg-[#f7b7ff] px-9 py-3 text-base font-normal tracking-[0.04em] text-[#0a0a0a] transition hover:border-[#0a0a0a] hover:bg-[#0a0a0a] hover:text-white md:px-11 md:py-4"
+                  className="about-light rounded-full border border-[#f7b7ff] bg-[#f7b7ff] px-7 py-2.5 text-sm font-normal tracking-[0.04em] text-[#0a0a0a] transition hover:border-[#0a0a0a] hover:bg-[#0a0a0a] hover:text-white sm:px-9 sm:py-3 sm:text-base md:px-11 md:py-4"
                   style={{
                     fontFamily: "CoolveticaLight, sans-serif",
                     opacity: 0,
