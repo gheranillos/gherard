@@ -78,7 +78,7 @@ export const projects: Project[] = [
     longDescription:
       "Colaboraciones con marcas, emprendedores y estudios creativos. Proyectos variados que van desde identidad visual hasta dirección de contenido, pasando por diseño gráfico y producción audiovisual.",
     tags: ["Freelance", "Colaboración", "Branding", "Diseño"],
-    coverImage: "/projects/freelance/cover.jpg",
+    coverImage: "/images/projects/coverfreelance.png",
     images: ["/projects/freelance/01.jpg", "/projects/freelance/02.jpg"],
     accentColor: "#f7b7ff",
   },

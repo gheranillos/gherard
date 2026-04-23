@@ -1,7 +1,7 @@
 "use client";
 
 type Point = { x: number; y: number };
-type TrailPoint = Point & { hue: number; life: number };
+type TrailPoint = Point & { life: number };
 
 export function renderCanvas() {
   const canvas = document.getElementById("canvas") as HTMLCanvasElement | null;
@@ -13,7 +13,6 @@ export function renderCanvas() {
   const dpr = Math.min(window.devicePixelRatio || 1, 2);
   let width = 0;
   let height = 0;
-  let hue = 0;
   let raf = 0;
   let active = false;
   let pointer: Point | null = null;
@@ -37,9 +36,8 @@ export function renderCanvas() {
   };
 
   const pushPoint = (x: number, y: number) => {
-    trail.push({ x, y, hue, life: 1 });
+    trail.push({ x, y, life: 1 });
     if (trail.length > 120) trail.splice(0, trail.length - 120);
-    hue = (hue + 4) % 360;
   };
 
   const toLocalPoint = (clientX: number, clientY: number): Point => {
@@ -95,7 +93,7 @@ export function renderCanvas() {
         const a = trail[i - 1];
         const b = trail[i];
         const alpha = Math.max(0, Math.min(1, b.life)) * 0.9;
-        ctx.strokeStyle = `hsla(${b.hue}, 100%, 65%, ${alpha})`;
+        ctx.strokeStyle = `rgba(247, 183, 255, ${alpha})`;
         ctx.lineWidth = 1 + 10 * alpha;
         ctx.beginPath();
         ctx.moveTo(a.x, a.y);

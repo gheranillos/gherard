@@ -280,20 +280,27 @@ function WorkHero() {
 
           <div className="absolute inset-0 z-20" style={{ opacity: overlayOpacity }}>
             <div className="pointer-events-none absolute left-0 right-0 top-8 flex items-center justify-between px-6 md:px-10">
-              <p className="text-[0.65rem] uppercase tracking-[0.2em] text-white/50">Venezuela</p>
-              <p className="text-base font-extrabold tracking-[0.15em] text-white">GHERARD</p>
-              <p className="text-[0.65rem] text-white/50">hello@gherad.com</p>
+              <p className="work-hero-book text-[0.65rem] uppercase tracking-[0.2em] text-white/50">
+                Venezuela
+              </p>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/iconfooter.png"
+                alt="Gherard"
+                className="h-[40px] w-[35px] object-contain"
+              />
+              <p className="work-hero-book text-[0.65rem] text-white/50">hello@gherad.com</p>
             </div>
 
             <div className="absolute inset-0 flex items-center justify-center px-6">
               <div className="text-center">
                 <h2
-                  className="text-[clamp(2.8rem,12vw,10rem)] font-black uppercase leading-[0.9] tracking-[-0.03em] text-[#f5f0e8] mix-blend-difference"
+                  className="work-hero-book text-[clamp(2.8rem,12vw,10rem)] font-black uppercase leading-[0.9] tracking-[-0.03em] text-[#f5f0e8] mix-blend-difference"
                 >
                   EDITOR
                 </h2>
                 <h2
-                  className="text-[clamp(2.8rem,12vw,10rem)] font-black uppercase leading-[0.9] tracking-[-0.03em] text-[#f5f0e8] mix-blend-difference"
+                  className="work-hero-book text-[clamp(2.8rem,12vw,10rem)] font-black uppercase leading-[0.9] tracking-[-0.03em] text-[#f5f0e8] mix-blend-difference"
                 >
                   y DIRECTOR
                 </h2>
@@ -365,6 +372,19 @@ function WorkHero() {
             </p>
           </div>
         </div>
+        <style jsx global>{`
+          @font-face {
+            font-family: "CoolveticaBook";
+            src: url("/fonts/coolvetica/Coolvetica-Book-Regular.otf")
+              format("opentype");
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+          }
+          .work-hero-book {
+            font-family: "CoolveticaBook", sans-serif;
+          }
+        `}</style>
       </div>
     </section>
   );

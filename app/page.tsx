@@ -3,9 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Instagram, MessageCircle, ShoppingBag } from "lucide-react";
+import { Instagram, Menu, MessageCircle } from "lucide-react";
 
-import { useCart } from "@/lib/cart-context";
 import { renderCanvas } from "@/components/ui/canvas";
 import Footer from "@/components/Footer";
 import { SelectedWork } from "../src/sections/SelectedWork";
@@ -55,15 +54,10 @@ const services = [
   },
 ];
 
-const navLink =
-  "rounded-full px-3 py-2 text-[11px] font-medium uppercase tracking-[0.2em] text-white/80 transition hover:bg-white/10 hover:text-white transition-opacity duration-200 hover:opacity-50";
-
-const navLinkActive =
-  "rounded-full px-3 py-2 text-[11px] font-medium uppercase tracking-[0.2em] text-[#f7b7ff] transition-opacity duration-200 hover:opacity-50";
-
 export default function GherardPortfolio() {
-  const { count, setOpen } = useCart();
   const [prefersReduced, setPrefersReduced] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [canHover, setCanHover] = useState(true);
   const aboutSectionRef = useRef<HTMLElement | null>(null);
   const aboutBgRef = useRef<HTMLDivElement | null>(null);
   const aboutCardRef = useRef<HTMLDivElement | null>(null);
@@ -82,6 +76,14 @@ export default function GherardPortfolio() {
       typeof window !== "undefined" &&
       window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     setPrefersReduced(reduced);
+  }, []);
+  useEffect(() => {
+    const onResize = () => {
+      setCanHover(window.matchMedia("(hover: hover)").matches);
+    };
+    onResize();
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
   }, []);
   useEffect(() => {
     const section = aboutSectionRef.current;
@@ -168,53 +170,60 @@ export default function GherardPortfolio() {
 
         {/* Floating nav pill */}
         <header className="pointer-events-none absolute left-0 right-0 top-6 z-20 flex justify-center px-4">
-          <div className="pointer-events-auto flex max-w-[95vw] flex-wrap items-center justify-center gap-1 rounded-full border border-white/15 bg-black/85 px-2 py-2 shadow-[0_8px_40px_rgba(0,0,0,0.45)] backdrop-blur-md">
-            <a href="#" className={navLinkActive}>
-              Inicio
-            </a>
-            <span className="hidden h-5 w-px bg-white/25 sm:block" aria-hidden />
-            <a href="#about" className={navLink}>
-              about
-            </a>
-            <Link href="/work" className={navLink}>
-              work
-            </Link>
-            <a href="/shop" className={navLink}>
-              Tienda
-            </a>
-            <a href="#contacto" className={navLink}>
-              Contacto
-            </a>
-            <span className="hidden h-5 w-px bg-white/25 sm:block" aria-hidden />
-            <a
-              href="https://instagram.com/gheranillos"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-full p-2 text-white/85 transition hover:bg-white/10 hover:text-white transition-transform duration-200 hover:-translate-y-1"
-              aria-label="Instagram"
+          <motion.div
+            className="pointer-events-auto flex h-12 items-center overflow-hidden border border-white/20 bg-white/12 px-3 backdrop-blur-md"
+            animate={{
+              width: menuOpen ? (canHover ? 420 : "90vw") : 48,
+              borderRadius: menuOpen ? 999 : 50,
+            }}
+            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+            onClick={() => setMenuOpen((v) => !v)}
+            onMouseEnter={() => {
+              if (canHover) setMenuOpen(true);
+            }}
+            onMouseLeave={() => {
+              if (canHover) setMenuOpen(false);
+            }}
+          >
+            <motion.div
+              className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+              animate={{ opacity: menuOpen ? 0 : 1 }}
+              transition={{ duration: 0.2 }}
             >
-              <Instagram className="size-4" />
-            </a>
-            <button
-              type="button"
-              onClick={() => setOpen(true)}
-              className="relative rounded-full p-2 text-white/85 transition hover:bg-white/10 hover:text-white transition-all duration-200"
-              aria-label="Abrir carrito"
+              <Menu size={18} className="text-white" />
+            </motion.div>
+            <motion.div
+              className="flex w-full items-center justify-center gap-2 whitespace-nowrap"
+              animate={{ opacity: menuOpen ? 1 : 0 }}
+              transition={{ duration: 0.2, delay: menuOpen ? 0.12 : 0 }}
             >
-              <ShoppingBag className="size-4" />
-              {count > 0 && (
-                <span className="absolute -right-0.5 -top-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-teal-400 px-1 text-[10px] font-bold text-black">
-                  {count > 99 ? "99+" : count}
-                </span>
-              )}
-            </button>
-          </div>
+              {[
+                { label: "Inicio", href: "#", active: true },
+                { label: "About", href: "#about" },
+                { label: "Work", href: "/work" },
+                { label: "Tienda", href: "/shop" },
+                { label: "Contacto", href: "#contacto" },
+              ].map((link, index, arr) => (
+                <div key={link.label} className="flex items-center gap-2">
+                  <a
+                    href={link.href}
+                    className={`text-[0.65rem] uppercase tracking-[0.2em] transition-colors ${
+                      link.active ? "text-[#d9ff3f]" : "text-white/80 hover:text-white"
+                    }`}
+                  >
+                    {link.label}
+                  </a>
+                  {index < arr.length - 1 && <span className="h-3 w-px bg-white/20" />}
+                </div>
+              ))}
+            </motion.div>
+          </motion.div>
         </header>
 
         {/* Bottom-centered headline + CTA */}
         <div className="relative z-10 flex min-h-[100dvh] flex-col justify-end px-6 pb-14 pt-32 md:px-10 md:pb-20">
           <div className="mx-auto flex w-full max-w-5xl flex-col items-center text-center">
-            <h1 className="max-w-4xl text-4xl font-black uppercase leading-[0.95] tracking-[-0.03em] text-white drop-shadow-sm sm:text-5xl md:text-6xl lg:text-[4.25rem] xl:text-7xl">
+            <h1 className="about-book max-w-4xl text-4xl font-black uppercase leading-[0.95] tracking-[-0.03em] text-white drop-shadow-sm sm:text-5xl md:text-6xl lg:text-[4.25rem] xl:text-7xl">
               {splitWords("Diseño").map((word, index) => (
                 <span
                   key={`hero-head-1-${word}-${index}`}
