@@ -294,7 +294,7 @@ export default function GherardPortfolio() {
 
           <div
             ref={aboutCardRef}
-            className="relative z-10 w-full max-w-full bg-white px-[6vw] py-[8vh] text-center"
+            className="relative z-10 w-[min(92vw,760px)] bg-white px-[5vw] py-[6vh] text-center md:px-[4vw] md:py-[5.5vh]"
             style={{ transformOrigin: "center center" }}
           >
             <h2
@@ -329,7 +329,7 @@ export default function GherardPortfolio() {
                   <br />
                   potencial de
                   <br />
-                  tu marca
+                  tu marca.
                 </span>
               </span>
               {" "}editor,
@@ -360,8 +360,9 @@ export default function GherardPortfolio() {
                       document.querySelector("#contacto");
                     target?.scrollIntoView({ behavior: "smooth" });
                   }}
-                  className="about-light rounded-full bg-[#0a0a0a] px-8 py-3 text-base font-semibold text-white transition hover:border-2 hover:border-[#0a0a0a] hover:bg-white hover:text-[#0a0a0a] md:px-11 md:py-4"
+                  className="about-light rounded-full border border-[#f7b7ff] bg-[#f7b7ff] px-8 py-3 text-base font-normal text-[#0a0a0a] transition hover:border-[#0a0a0a] hover:bg-[#0a0a0a] hover:text-white md:px-11 md:py-4"
                   style={{
+                    fontFamily: "CoolveticaLight, sans-serif",
                     opacity: 0,
                     transform: "scale(0.8)",
                     transition: "opacity 0.1s, transform 0.1s",

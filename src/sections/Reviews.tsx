@@ -39,15 +39,15 @@ export function ReviewsSection() {
       let rotateX = 0;
       let rotateY = 0;
 
-      if (p >= 0.35 && p <= 0.6) {
-        rotateX = -90 * remap(p, 0.35, 0.6, 0, 1);
-      } else if (p > 0.6) {
+      if (p >= 0.3 && p <= 0.55) {
+        rotateX = -90 * remap(p, 0.3, 0.55, 0, 1);
+      } else if (p > 0.55) {
         rotateX = -90;
       }
 
-      if (p >= 0.65 && p <= 0.9) {
-        rotateY = -90 * remap(p, 0.65, 0.9, 0, 1);
-      } else if (p > 0.9) {
+      if (p >= 0.58 && p <= 0.83) {
+        rotateY = -90 * remap(p, 0.58, 0.83, 0, 1);
+      } else if (p > 0.83) {
         rotateY = -90;
       }
 
@@ -116,12 +116,12 @@ export function ReviewsSection() {
 
               <div className="face face-left">
                 <p className="face-quote">
-                  "Trabajo limpio, criterio claro y entrega rápida. Sabe lo que hace y se nota que le importa el
-                  resultado."
+                  "Pasamos de tener ideas sueltas a una presencia visual coherente. La ejecución fue impecable y
+                  el resultado elevó por completo la marca."
                 </p>
                 <p className="face-author">
-                  — <span className="face-name">Lucía F.</span>,{" "}
-                  <span className="face-role">Diseñadora Freelance</span>
+                  — <span className="face-name">Andrés C.</span>,{" "}
+                  <span className="face-role">Co-fundador</span>
                 </p>
               </div>
             </div>
