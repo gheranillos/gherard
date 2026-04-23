@@ -22,7 +22,7 @@ const services = [
     description:
       "Desarrollo de identidad visual completa: naming, paleta, tipografía, logotipo y sistema gráfico. Marcas que se ven sólidas, actuales y con personalidad propia.",
     tags: ["Identidad", "Logotipo", "Sistema Visual", "Estrategia"],
-    image: "/images/services/branding.jpg",
+    image: "/picbranding.png",
     fallback: "https://picsum.photos/seed/branding/800/520",
   },
   {
@@ -31,7 +31,7 @@ const services = [
     description:
       "Piezas para redes, campañas y contenido audiovisual. Edición con criterio narrativo, ritmo y estética cuidada para que cada video comunique algo real.",
     tags: ["Redes", "Narrativa", "Ritmo", "Contenido"],
-    image: "/images/services/video.jpg",
+    image: "/picvideos.png",
     fallback: "https://picsum.photos/seed/videoediting/800/520",
   },
   {
@@ -305,7 +305,7 @@ export default function GherardPortfolio() {
               className="about-book font-black tracking-[-0.03em] text-[#0a0a0a] lg:whitespace-nowrap"
               style={{
                 fontFamily: "CoolveticaBook, sans-serif",
-                fontSize: "clamp(1.8rem, 7.2vw, 5.8rem)",
+                fontSize: "clamp(1.65rem, 6.4vw, 5rem)",
                 lineHeight: 0.92,
                 transition: "transform 0.1s",
               }}
@@ -343,7 +343,7 @@ export default function GherardPortfolio() {
               className="about-book font-black tracking-[-0.03em] text-[#0a0a0a] lg:whitespace-nowrap"
               style={{
                 fontFamily: "CoolveticaBook, sans-serif",
-                fontSize: "clamp(1.8rem, 7.2vw, 5.8rem)",
+                fontSize: "clamp(1.65rem, 6.4vw, 5rem)",
                 lineHeight: 0.92,
                 transition: "transform 0.1s",
               }}
@@ -532,109 +532,151 @@ export default function GherardPortfolio() {
       <ReviewsSection />
 
       {/* Contact Section */}
-      <section id="contacto" className="mx-auto max-w-7xl px-6 py-20 md:px-10">
-        <div className="relative overflow-hidden rounded-[36px] border border-neutral-200 bg-[linear-gradient(135deg,rgba(217,255,63,0.18),rgba(255,255,255,0.9),rgba(217,70,239,0.08))] p-8 md:p-12">
-          <div className="absolute right-0 top-0 h-40 w-40 rounded-full bg-[#d9ff3f]/20 blur-3xl" />
-          <div className="absolute bottom-0 left-0 h-40 w-40 rounded-full bg-fuchsia-500/15 blur-3xl" />
-          <div className="relative grid gap-8 md:grid-cols-[1.1fr_0.9fr] md:items-end">
-            <div>
-              <motion.div
-                className="text-sm uppercase tracking-[0.25em] text-neutral-500"
-                variants={revealVariants.fadeIn}
-                initial={prefersReduced ? false : "hidden"}
-                whileInView={prefersReduced ? undefined : "visible"}
-                viewport={{ once: true, margin: "-40px" }}
-              >
-                Contacto
-              </motion.div>
-              <h2 className="mt-4 max-w-2xl text-3xl font-black uppercase tracking-tight text-neutral-900 md:text-6xl">
-                {splitWords(
-                  "Si tu proyecto necesita dirección, branding o edición con identidad, escríbeme.",
-                ).map((word, index) => (
-                  <span
-                    key={`contact-head-${word}-${index}`}
-                    style={{ display: "inline-block", overflow: "hidden" }}
+      <section id="contacto" className="border-t border-neutral-200 bg-neutral-950 text-white">
+        <div className="mx-auto max-w-7xl px-6 py-20 md:px-10 md:py-28">
+          <motion.div
+            className="text-xs uppercase tracking-[0.28em] text-[#f7b7ff]"
+            variants={revealVariants.fadeIn}
+            initial={prefersReduced ? false : "hidden"}
+            whileInView={prefersReduced ? undefined : "visible"}
+            viewport={{ once: true, margin: "-40px" }}
+          >
+            Contact
+          </motion.div>
+          <h2 className="mt-5 max-w-5xl text-4xl font-black uppercase leading-[0.94] tracking-[-0.03em] md:text-7xl">
+            {splitWords("Ready para crear algo con identidad real?").map(
+              (word, index) => (
+                <span
+                  key={`contact-refresh-head-${word}-${index}`}
+                  style={{ display: "inline-block", overflow: "hidden" }}
+                >
+                  <motion.span
+                    style={{ display: "inline-block", marginRight: "0.25em" }}
+                    variants={wordVariants}
+                    custom={index}
+                    initial={prefersReduced ? false : "hidden"}
+                    whileInView={prefersReduced ? undefined : "visible"}
+                    viewport={{ once: true, margin: "-40px" }}
                   >
-                    <motion.span
-                      style={{ display: "inline-block", marginRight: "0.25em" }}
-                      variants={wordVariants}
-                      custom={index}
-                      initial={prefersReduced ? false : "hidden"}
-                      whileInView={prefersReduced ? undefined : "visible"}
-                      viewport={{ once: true, margin: "-40px" }}
-                    >
-                      {word}
-                    </motion.span>
-                  </span>
-                ))}
-              </h2>
-              <motion.p
-                className="mt-5 max-w-2xl leading-8 text-neutral-600"
-                variants={revealVariants.fadeUp}
-                initial={prefersReduced ? false : "hidden"}
-                whileInView={prefersReduced ? undefined : "visible"}
-                viewport={{ once: true, margin: "-40px" }}
-              >
-                Esta web está hecha para presentarte rápido, con personalidad y
-                sin mandar PDFs. Aquí puedes mostrar quién eres, qué haces y
-                cómo se ve tu trabajo en un formato mucho más vivo.
-              </motion.p>
-            </div>
+                    {word}
+                  </motion.span>
+                </span>
+              ),
+            )}
+          </h2>
 
+          <motion.div
+            className="mt-12 grid gap-8 lg:grid-cols-[0.9fr_1.1fr]"
+            variants={staggerContainer}
+            initial={prefersReduced ? false : "hidden"}
+            whileInView={prefersReduced ? undefined : "visible"}
+            viewport={{ once: true, margin: "-40px" }}
+          >
             <motion.div
-              className="grid gap-4"
-              variants={staggerContainer}
-              initial={prefersReduced ? false : "hidden"}
-              whileInView={prefersReduced ? undefined : "visible"}
-              viewport={{ once: true, margin: "-40px" }}
+              variants={staggerChild}
+              className="rounded-[30px] border border-white/15 bg-white/[0.04] p-7 backdrop-blur-sm md:p-9"
             >
-              <motion.a
-                href="#"
-                className="rounded-2xl border border-neutral-200 bg-neutral-100/80 px-6 py-4 text-center text-sm font-medium text-neutral-500 transition hover:border-neutral-300 hover:bg-neutral-100 hover:text-neutral-800 transition-all duration-200"
-                variants={staggerChild}
-              >
-                Correo próximamente
-              </motion.a>
-              <motion.a
-                href="https://instagram.com/gheranillos"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 rounded-2xl border border-neutral-200 bg-white px-6 py-4 text-center text-sm font-medium text-neutral-900 transition hover:border-fuchsia-400/40 hover:bg-neutral-50 transition-all duration-200"
-                variants={staggerChild}
-              >
-                <Instagram className="h-4 w-4" /> Ver Instagram
-              </motion.a>
-              <motion.a
-                href="https://wa.me/584147613621"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-2xl bg-[#d9ff3f] px-6 py-4 text-center text-sm font-semibold text-black transition hover:scale-[1.01]"
-                variants={staggerChild}
-                whileHover={
-                  prefersReduced
-                    ? undefined
-                    : { scale: 1.05, transition: { duration: 0.2 } }
-                }
-                whileTap={prefersReduced ? undefined : { scale: 0.95 }}
-              >
-                <motion.div
-                  style={{
-                    position: "absolute",
-                    inset: 0,
-                    background: "#ffffff",
-                    pointerEvents: "none",
-                  }}
-                  initial={{ x: "-100%", opacity: 0.15 }}
-                  whileHover={
-                    prefersReduced
-                      ? undefined
-                      : { x: "100%", opacity: 0.15, transition: { duration: 0.5, ease: "easeInOut" } }
-                  }
-                />
-                <MessageCircle className="h-4 w-4" /> Escribirme por WhatsApp
-              </motion.a>
+              <p className="text-sm uppercase tracking-[0.2em] text-white/60">
+                Contacto directo
+              </p>
+              <div className="mt-7 space-y-5">
+                <div className="border-b border-white/15 pb-4">
+                  <p className="text-xs uppercase tracking-[0.2em] text-white/45">
+                    Ubicacion
+                  </p>
+                  <p className="mt-2 text-lg tracking-wide text-white/90">
+                    Venezuela
+                  </p>
+                </div>
+                <div className="border-b border-white/15 pb-4">
+                  <p className="text-xs uppercase tracking-[0.2em] text-white/45">
+                    Email
+                  </p>
+                  <a
+                    href="mailto:hello@gherad.com"
+                    className="mt-2 inline-block text-lg tracking-wide text-white transition hover:text-[#d9ff3f]"
+                  >
+                    hello@gherad.com
+                  </a>
+                </div>
+                <div className="border-b border-white/15 pb-4">
+                  <p className="text-xs uppercase tracking-[0.2em] text-white/45">
+                    Instagram
+                  </p>
+                  <a
+                    href="https://instagram.com/gheranillos"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-2 inline-flex items-center gap-2 text-lg tracking-wide text-white transition hover:text-[#f7b7ff]"
+                  >
+                    <Instagram className="h-4 w-4" /> @gheranillos
+                  </a>
+                </div>
+                <div>
+                  <p className="text-xs uppercase tracking-[0.2em] text-white/45">
+                    WhatsApp
+                  </p>
+                  <a
+                    href="https://wa.me/584147613621"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-2 inline-flex items-center gap-2 text-lg tracking-wide text-white transition hover:text-[#d9ff3f]"
+                  >
+                    <MessageCircle className="h-4 w-4" /> +58 414 761 3621
+                  </a>
+                </div>
+              </div>
             </motion.div>
-          </div>
+
+            <motion.form
+              variants={staggerChild}
+              className="rounded-[30px] border border-white/15 bg-white/[0.03] p-7 md:p-9"
+            >
+              <p className="text-sm uppercase tracking-[0.2em] text-white/60">
+                Cuentame sobre tu idea
+              </p>
+              <div className="mt-7 grid gap-5">
+                <label className="grid gap-2 text-xs uppercase tracking-[0.2em] text-white/45">
+                  Nombre
+                  <input
+                    type="text"
+                    placeholder="Tu nombre"
+                    className="h-12 rounded-xl border border-white/15 bg-black/20 px-4 text-sm tracking-wide text-white placeholder:text-white/35 outline-none transition focus:border-[#d9ff3f]"
+                  />
+                </label>
+                <label className="grid gap-2 text-xs uppercase tracking-[0.2em] text-white/45">
+                  Email
+                  <input
+                    type="email"
+                    placeholder="correo@ejemplo.com"
+                    className="h-12 rounded-xl border border-white/15 bg-black/20 px-4 text-sm tracking-wide text-white placeholder:text-white/35 outline-none transition focus:border-[#d9ff3f]"
+                  />
+                </label>
+                <label className="grid gap-2 text-xs uppercase tracking-[0.2em] text-white/45">
+                  Tipo de proyecto
+                  <input
+                    type="text"
+                    placeholder="Branding, web, video..."
+                    className="h-12 rounded-xl border border-white/15 bg-black/20 px-4 text-sm tracking-wide text-white placeholder:text-white/35 outline-none transition focus:border-[#d9ff3f]"
+                  />
+                </label>
+                <label className="grid gap-2 text-xs uppercase tracking-[0.2em] text-white/45">
+                  Mensaje
+                  <textarea
+                    rows={5}
+                    placeholder="Describe tu proyecto, objetivos y tiempos..."
+                    className="min-h-[136px] rounded-xl border border-white/15 bg-black/20 px-4 py-3 text-sm leading-relaxed tracking-wide text-white placeholder:text-white/35 outline-none transition focus:border-[#d9ff3f]"
+                  />
+                </label>
+              </div>
+              <button
+                type="button"
+                className="mt-7 inline-flex h-12 items-center justify-center rounded-full bg-[#d9ff3f] px-8 text-xs font-semibold uppercase tracking-[0.24em] text-black transition hover:translate-y-[-1px] hover:bg-white"
+              >
+                Enviar solicitud
+              </button>
+            </motion.form>
+          </motion.div>
         </div>
       </section>
       <Footer />
