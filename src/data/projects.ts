@@ -3,6 +3,8 @@ export type Project = {
   title: string;
   category: string;
   year: string;
+  client: string;
+  role: string;
   description: string;
   longDescription: string;
   tags: string[];
@@ -17,6 +19,8 @@ export const projects: Project[] = [
     title: "El Kiosco",
     category: "Proyecto Propio / Cultura Visual",
     year: "2024",
+    client: "El Kiosco",
+    role: "Dirección Creativa",
     description:
       "Marca y universo creativo donde mezclo ropa, audiovisual, storytelling, comunidad y dirección estética con una energía urbana marcada.",
     longDescription:
@@ -35,6 +39,8 @@ export const projects: Project[] = [
     title: "Branding",
     category: "Identidad Visual",
     year: "2024",
+    client: "Marcas y Emprendedores",
+    role: "Brand Designer",
     description:
       "Diseño de marcas, sistemas visuales, piezas gráficas y conceptos que buscan verse sólidos, actuales y con personalidad.",
     longDescription:
@@ -49,6 +55,8 @@ export const projects: Project[] = [
     title: "Videos",
     category: "Edición y Contenido",
     year: "2024",
+    client: "Contenido para Redes",
+    role: "Editor / Dirección Visual",
     description:
       "Piezas para redes, campañas, promos y contenido audiovisual pensado para retener, comunicar y elevar la imagen del proyecto.",
     longDescription:
@@ -63,6 +71,8 @@ export const projects: Project[] = [
     title: "Trabajos Freelance",
     category: "Clientes y Colaboraciones",
     year: "2023–2024",
+    client: "Clientes Independientes",
+    role: "Diseño y Producción",
     description:
       "Trabajos desarrollados para marcas y proyectos en áreas como contenido, visuales, branding y dirección creativa.",
     longDescription:

@@ -50,7 +50,37 @@ export default async function WorkProjectPage({
         </div>
       </header>
 
-      <main className="bg-white pt-[96px]">
+      <main className="bg-white pt-[108px]">
+        <section className="mx-auto w-full max-w-[1200px] px-[5vw] pb-10 pt-8">
+          <p className="text-[0.65rem] uppercase tracking-[0.24em] text-black/35">
+            Work / Project
+          </p>
+          <div className="mt-5 grid gap-8 md:grid-cols-[1.2fr_0.8fr] md:items-end">
+            <div>
+              <h1 className="text-[clamp(2.6rem,8vw,6.8rem)] font-black uppercase leading-[0.9] tracking-[-0.03em] text-[#0a0a0a]">
+                {project.title}
+              </h1>
+              <p className="mt-4 max-w-[620px] text-[1.02rem] leading-[1.75] text-black/70">
+                {project.description}
+              </p>
+            </div>
+            <div className="grid gap-4 rounded-2xl border border-black/10 bg-[#f7f7f7] p-6">
+              <div>
+                <p className="text-[0.6rem] uppercase tracking-[0.22em] text-black/45">Cliente</p>
+                <p className="mt-1 text-[0.95rem] font-semibold text-black">{project.client}</p>
+              </div>
+              <div>
+                <p className="text-[0.6rem] uppercase tracking-[0.22em] text-black/45">Rol</p>
+                <p className="mt-1 text-[0.95rem] font-semibold text-black">{project.role}</p>
+              </div>
+              <div>
+                <p className="text-[0.6rem] uppercase tracking-[0.22em] text-black/45">Año</p>
+                <p className="mt-1 text-[0.95rem] font-semibold text-black">{project.year}</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section className="relative h-[70vh] w-full overflow-hidden bg-[#111]">
           <ProjectImage
             src={project.coverImage}
@@ -58,15 +88,11 @@ export default async function WorkProjectPage({
             slug={project.slug}
             className="h-full w-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent" />
-          <div className="absolute bottom-0 left-0 z-10 px-[4vw] pb-12">
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent" />
+          <div className="absolute bottom-0 left-0 z-10 px-[5vw] pb-12">
             <span className="inline-flex rounded-full border border-white/15 bg-white/10 px-3 py-1 text-[0.65rem] uppercase tracking-[0.2em] text-white backdrop-blur-sm">
               {project.category}
             </span>
-            <h1 className="mt-3 text-[clamp(2.5rem,7vw,7rem)] font-black uppercase tracking-[-0.03em] leading-[0.92] text-white">
-              {project.title}
-            </h1>
-            <p className="mt-2 text-[0.85rem] text-white/50">{project.year}</p>
           </div>
         </section>
 
@@ -75,8 +101,13 @@ export default async function WorkProjectPage({
             <p className="text-[0.7rem] uppercase tracking-[0.2em] text-[#d9ff3f]">
               Sobre el proyecto
             </p>
-            <p className="mt-6 max-w-[620px] text-[clamp(1rem,1.5vw,1.2rem)] leading-[1.8] text-[#333333]">
+            <p className="mt-6 max-w-[620px] text-[clamp(1rem,1.5vw,1.15rem)] leading-[1.85] text-[#333333]">
               {project.longDescription}
+            </p>
+            <p className="mt-7 max-w-[620px] text-[0.98rem] leading-[1.85] text-black/65">
+              Cada entrega se trabaja desde concepto, sistema visual y ejecucion para
+              mantener una narrativa consistente entre piezas graficas, contenido y
+              presencia digital.
             </p>
           </div>
 
@@ -113,7 +144,7 @@ export default async function WorkProjectPage({
           </div>
         </section>
 
-        <section className="mx-auto w-full max-w-[1200px] px-[5vw] pb-24 pt-8">
+        <section className="mx-auto w-full max-w-[1200px] px-[5vw] pb-24 pt-6">
           <p className="text-[0.7rem] uppercase tracking-[0.2em] text-[#d9ff3f]">
             Imágenes del proyecto
           </p>
@@ -121,7 +152,7 @@ export default async function WorkProjectPage({
             {project.images.map((image, index) => (
               <div
                 key={`${project.slug}-image-${index}`}
-                className={`${index === 0 ? "md:col-span-2" : ""} group overflow-hidden rounded-xl bg-neutral-100`}
+                className={`${index === 0 ? "md:col-span-2" : ""} group overflow-hidden rounded-md bg-neutral-100`}
               >
                 <ProjectImage
                   src={image}
@@ -136,7 +167,7 @@ export default async function WorkProjectPage({
 
         <Link
           href={`/work/${nextProject.slug}`}
-          className="group block w-full bg-[#0a0a0a] px-[5vw] py-16 transition-colors duration-200"
+          className="group block w-full bg-[#0a0a0a] px-[5vw] py-20 transition-colors duration-200"
         >
           <p className="text-[0.7rem] uppercase tracking-[0.2em] text-white/40">
             Siguiente proyecto
