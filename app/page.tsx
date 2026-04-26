@@ -55,37 +55,33 @@ const services = [
 
 function ScrollCategories() {
   const sectionRef = useRef<HTMLElement | null>(null);
-  const [activeIndex, setActiveIndex] = useState(-1);
-  const [lineProgress, setLineProgress] = useState([0, 0, 0, 0]);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [globalProgress, setGlobalProgress] = useState(0);
 
   const items = [
     {
-      number: "01",
-      label: "Branding",
-      href: "/work#branding",
+      number: "1",
+      label: "Mtb Caracas",
+      href: "/work/mtb-caracas",
       image: "/images/projects/covermtb.webp",
-      alt: "Mtb Caracas",
     },
     {
-      number: "02",
-      label: "Digital",
-      href: "/work#digital",
+      number: "2",
+      label: "El Kiosco",
+      href: "/work/el-kiosco",
       image: "/images/projects/coverkiosco.webp",
-      alt: "El Kiosco",
     },
     {
-      number: "03",
-      label: "Video",
-      href: "/work#video",
+      number: "3",
+      label: "Padel Cafe",
+      href: "/work/padelcafe",
       image: "/images/projects/coverpadelcafe.webp",
-      alt: "Padel Cafe",
     },
     {
-      number: "04",
-      label: "Estrategia",
-      href: "/work#estrategia",
+      number: "4",
+      label: "Trabajos Freelance",
+      href: "/work/freelance",
       image: "/images/projects/coverfreelancer.webp",
-      alt: "Trabajos Freelance",
     },
   ];
 
@@ -99,62 +95,124 @@ function ScrollCategories() {
       const scrolled = window.scrollY - section.offsetTop;
       const total = section.offsetHeight - window.innerHeight;
       const progress = clamp(scrolled / Math.max(total, 1), 0, 1);
-
-      const nextLineProgress = Array.from({ length: 4 }, (_, i) => {
-        const start = i * 0.25;
-        const end = (i + 1) * 0.25;
-        return clamp((progress - start) / (end - start), 0, 1);
-      });
-
-      const completed = nextLineProgress.filter((value) => value >= 1).length;
-      setLineProgress(nextLineProgress);
-      setActiveIndex(completed - 1);
+      const segmentSize = 1 / items.length;
+      const idx = Math.min(Math.floor(progress / segmentSize), items.length - 1);
+      setGlobalProgress(progress);
+      setActiveIndex(idx);
     };
 
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [items.length]);
 
   return (
-    <section id="proyectos" ref={sectionRef} className="h-[320vh] bg-neutral-950">
+    <section
+      id="proyectos"
+      ref={sectionRef}
+      className="bg-neutral-950"
+      style={{ height: `${items.length * 100}vh` }}
+    >
       <div className="sticky top-0 flex h-screen flex-col justify-center overflow-hidden">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.08),transparent_55%)]" />
+        {items.map((item, i) => {
+          const clamp = (v: number, min: number, max: number) => Math.min(Math.max(v, min), max);
+          const segmentSize = 1 / items.length;
+          const segmentProgress = clamp(
+            (globalProgress - activeIndex * segmentSize) / segmentSize,
+            0,
+            1,
+          );
+          const enterProgress = clamp(
+            (globalProgress - (i - 1) * segmentSize) / segmentSize,
+            0,
+            1,
+          );
+          const isActive = i === activeIndex;
+          const isPast = i < activeIndex;
+          const isNext = i === activeIndex + 1;
 
-        <div className="pointer-events-none absolute inset-x-0 top-[8.5vh] mx-auto h-[64vh] w-[min(92vw,1320px)]">
-          {items.map((item, i) => {
-            const reveal = lineProgress[i] ?? 0;
-            const depth = Math.max(activeIndex - i, 0);
-            const isCurrent = i === Math.max(activeIndex, 0);
-            const isPast = i < Math.max(activeIndex, 0);
-            const isFuture = i > Math.max(activeIndex, 0);
-            const opacity = isCurrent ? 1 : isPast ? 0.32 : reveal > 0 ? 0.12 : 0;
-            const yOffset = (1 - reveal) * 48 + depth * -16 + (isFuture ? 14 : 0);
-            const scale = isCurrent ? 1 : 0.98 - depth * 0.012;
+          let scale = 0;
+          let translateYVh = 100;
+          let borderRadius = "0px";
+          let darkOverlay = 0.2;
 
-            return (
-              <div
-                key={`${item.href}-image`}
-                className="absolute inset-0 overflow-hidden rounded-[6px] border border-white/15 bg-neutral-900/70 shadow-[0_25px_70px_rgba(0,0,0,0.45)] transition-all duration-500"
-                style={{
-                  opacity,
-                  transform: `translateY(${yOffset}px) scale(${scale})`,
-                  zIndex: i + 1,
+          if (isActive) {
+            const hasNext = activeIndex < items.length - 1;
+            scale = hasNext ? 1 - segmentProgress * 0.24 : 1;
+            translateYVh = hasNext ? -segmentProgress * 10 : 0;
+            borderRadius = hasNext && segmentProgress > 0.05 ? "16px" : "0px";
+          } else if (isNext) {
+            scale = 1;
+            translateYVh = (1 - segmentProgress) * 100;
+            borderRadius = "0px";
+          } else if (isPast) {
+            const depth = activeIndex - i;
+            scale = Math.max(0.68, 0.76 - (depth - 1) * 0.08);
+            translateYVh = -(depth * 2);
+            borderRadius = "16px";
+            darkOverlay = 0.3;
+          }
+
+          if (!isPast && !isActive && !isNext) {
+            scale = 0;
+            translateYVh = 120;
+          }
+
+          return (
+            <div
+              key={item.label}
+              style={{
+                position: "absolute",
+                inset: 0,
+                transform: `translateY(${translateYVh}vh) scale(${scale})`,
+                transformOrigin: "top center",
+                borderRadius,
+                zIndex: i + 1,
+                transition: "border-radius 0.3s ease",
+                overflow: "hidden",
+                opacity: enterProgress,
+              }}
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={item.image}
+                alt={item.label}
+                className="absolute inset-0 h-full w-full object-cover"
+                onError={(e) => {
+                  const img = e.currentTarget;
+                  if (img.dataset.fallbackApplied === "1") return;
+                  img.dataset.fallbackApplied = "1";
+                  img.src = `https://picsum.photos/seed/${item.label}/1600/900`;
                 }}
-              >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={item.image}
-                  alt={item.alt}
-                  className="h-full w-full object-cover"
-                />
-                <div className="absolute inset-0 bg-black/30" />
+              />
+              <div
+                className="absolute inset-0"
+                style={{ backgroundColor: `rgba(0,0,0,${darkOverlay})` }}
+              />
+              <div style={{ position: "absolute", bottom: 40, left: 24, right: 24 }}>
+                <div className="mb-4 h-px w-full bg-white/40" />
+                <div className="flex items-end justify-between">
+                  <span
+                    style={{ fontFamily: "CoolveticaBook, sans-serif" }}
+                    className="text-2xl font-light text-white"
+                  >
+                    {item.number}
+                  </span>
+                  <span
+                    style={{
+                      fontFamily: "CoolveticaBook, sans-serif",
+                      fontSize: "clamp(3rem,8vw,7rem)",
+                      lineHeight: 0.9,
+                    }}
+                    className="font-black uppercase text-white"
+                  >
+                    {item.label}
+                  </span>
+                </div>
               </div>
-            );
-          })}
-        </div>
-
-        <div className="pointer-events-none absolute inset-x-0 top-[8.5vh] mx-auto h-[64vh] w-[min(92vw,1320px)] border border-white/10" />
+            </div>
+          );
+        })}
 
         <Link
           href={items[Math.max(activeIndex, 0)]?.href ?? "/work"}
