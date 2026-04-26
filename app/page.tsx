@@ -54,6 +54,103 @@ const services = [
   },
 ];
 
+function ScrollCategories() {
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const [activeIndex, setActiveIndex] = useState(-1);
+  const [lineProgress, setLineProgress] = useState([0, 0, 0, 0]);
+
+  const items = [
+    { number: "01", label: "Branding", href: "/work#branding" },
+    { number: "02", label: "Digital", href: "/work#digital" },
+    { number: "03", label: "Video", href: "/work#video" },
+    { number: "04", label: "Estrategia", href: "/work#estrategia" },
+  ];
+
+  useEffect(() => {
+    const clamp = (v: number, min: number, max: number) => Math.min(Math.max(v, min), max);
+
+    const onScroll = () => {
+      const section = sectionRef.current;
+      if (!section) return;
+
+      const scrolled = window.scrollY - section.offsetTop;
+      const total = section.offsetHeight - window.innerHeight;
+      const progress = clamp(scrolled / Math.max(total, 1), 0, 1);
+
+      const nextLineProgress = Array.from({ length: 4 }, (_, i) => {
+        const start = i * 0.25;
+        const end = (i + 1) * 0.25;
+        return clamp((progress - start) / (end - start), 0, 1);
+      });
+
+      const completed = nextLineProgress.filter((value) => value >= 1).length;
+      setLineProgress(nextLineProgress);
+      setActiveIndex(completed - 1);
+    };
+
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  return (
+    <section id="proyectos" ref={sectionRef} className="h-[320vh] bg-neutral-950">
+      <div className="sticky top-0 flex h-screen flex-col justify-center overflow-hidden">
+        {items.map((item, i) => {
+          const progress = lineProgress[i] ?? 0;
+          const isRevealed = progress >= 1;
+          const isActive = activeIndex === i;
+          return (
+            <div key={item.href}>
+              <div
+                className="h-px bg-white/20 origin-left transition-transform duration-300"
+                style={{ transform: `scaleX(${progress})` }}
+              />
+              <Link
+                href={item.href}
+                className={`group block ${isRevealed ? "pointer-events-auto" : "pointer-events-none"}`}
+              >
+                <div className="flex items-center justify-between px-6 py-6 md:px-14">
+                  <span
+                    className={`font-mono text-xs tracking-[0.2em] transition-all duration-300 ${
+                      isActive ? "text-white/70" : "text-white/40"
+                    }`}
+                    style={{
+                      opacity: progress,
+                      transform: `translateY(${(1 - progress) * 20}px)`,
+                    }}
+                  >
+                    {item.number}
+                  </span>
+                  <span
+                    className="text-[clamp(2.8rem,9vw,7.5rem)] font-black uppercase leading-[0.92] tracking-[-0.03em] text-white transition-all duration-300 group-hover:translate-x-3 group-hover:text-[#f7b7ff]"
+                    style={{
+                      fontFamily: "CoolveticaBook, sans-serif",
+                      opacity: progress,
+                      transform: `translateY(${(1 - progress) * 20}px)`,
+                    }}
+                  >
+                    {item.label}
+                  </span>
+                  <span
+                    className="text-2xl text-white/0 transition-all duration-300 group-hover:text-[#f7b7ff] group-hover:text-white/80"
+                    style={{
+                      opacity: progress,
+                      transform: `translateY(${(1 - progress) * 20}px)`,
+                    }}
+                  >
+                    →
+                  </span>
+                </div>
+              </Link>
+            </div>
+          );
+        })}
+      </div>
+    </section>
+  );
+}
+
 export default function GherardPortfolio() {
   const [prefersReduced, setPrefersReduced] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -519,7 +616,7 @@ export default function GherardPortfolio() {
         </div>
       </section>
 
-      <SelectedWork />
+      <ScrollCategories />
 
       <ReviewsSection />
 
