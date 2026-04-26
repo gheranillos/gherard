@@ -339,16 +339,25 @@ export default function WorkPage() {
         <WorkHero />
 
         <motion.section
-          className="mx-auto grid w-full max-w-[1600px] grid-cols-1 gap-[2px] bg-neutral-200 px-0 md:grid-cols-2"
+          className="mx-auto w-full max-w-[1680px] bg-[#0b0f14] px-6 py-10 md:px-10 md:py-14"
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-20px" }}
         >
-          {projects.map((project) => (
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-12 md:gap-7">
+            {projects.map((project, index) => (
             <motion.article
               key={project.slug}
-              className="group relative aspect-[4/3] overflow-hidden bg-[#111] md:aspect-[16/11]"
+              className={`group relative overflow-hidden bg-[#111] ${
+                index === 0
+                  ? "aspect-[5/4] md:col-span-5 md:translate-y-0"
+                  : index === 1
+                    ? "aspect-[16/11] md:col-span-7 md:translate-y-10"
+                    : index === 2
+                      ? "aspect-[16/11] md:col-span-8 md:-translate-y-1"
+                      : "aspect-[5/4] md:col-span-6 md:translate-y-16 md:col-start-6"
+              }`}
               variants={staggerChild}
             >
               <Link href={`/work/${project.slug}`} className="block h-full w-full">
@@ -369,7 +378,7 @@ export default function WorkPage() {
                   className="absolute right-5 top-5 size-7 opacity-0 transition-opacity duration-200 group-hover:opacity-100"
                   style={{ color: project.accentColor }}
                 />
-                <div className="absolute bottom-0 p-6 md:p-8">
+                <div className="absolute bottom-0 p-5 md:p-6">
                   <span className="inline-flex rounded-full border border-white/15 bg-white/10 px-3 py-1 text-[0.65rem] uppercase tracking-[0.2em] text-white backdrop-blur-sm">
                     {project.category}
                   </span>
@@ -383,6 +392,7 @@ export default function WorkPage() {
               </Link>
             </motion.article>
           ))}
+          </div>
         </motion.section>
       </main>
     </div>
