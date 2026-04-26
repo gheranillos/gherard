@@ -122,14 +122,11 @@ function ScrollCategories() {
             0,
             1,
           );
-          const enterProgress = clamp(
-            (globalProgress - (i - 1) * segmentSize) / segmentSize,
-            0,
-            1,
-          );
           const isActive = i === activeIndex;
           const isPast = i < activeIndex;
           const isNext = i === activeIndex + 1;
+
+          if (!isPast && !isActive && !isNext) return null;
 
           let scale = 0;
           let translateYVh = 100;
@@ -153,11 +150,6 @@ function ScrollCategories() {
             darkOverlay = 0.3;
           }
 
-          if (!isPast && !isActive && !isNext) {
-            scale = 0;
-            translateYVh = 120;
-          }
-
           return (
             <div
               key={item.label}
@@ -170,7 +162,6 @@ function ScrollCategories() {
                 zIndex: i + 1,
                 transition: "border-radius 0.3s ease",
                 overflow: "hidden",
-                opacity: enterProgress,
               }}
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
