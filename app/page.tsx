@@ -7,7 +7,6 @@ import { Instagram, Menu, MessageCircle } from "lucide-react";
 
 import { renderCanvas } from "@/components/ui/canvas";
 import Footer from "@/components/Footer";
-import { SelectedWork } from "../src/sections/SelectedWork";
 import { ReviewsSection } from "@/src/sections/Reviews";
 import { splitWords, wordVariants } from "@/src/hooks/useTextReveal";
 import { revealVariants, staggerChild, staggerContainer } from "@/src/hooks/useScrollReveal";
@@ -60,10 +59,34 @@ function ScrollCategories() {
   const [lineProgress, setLineProgress] = useState([0, 0, 0, 0]);
 
   const items = [
-    { number: "01", label: "Branding", href: "/work#branding" },
-    { number: "02", label: "Digital", href: "/work#digital" },
-    { number: "03", label: "Video", href: "/work#video" },
-    { number: "04", label: "Estrategia", href: "/work#estrategia" },
+    {
+      number: "01",
+      label: "Branding",
+      href: "/work#branding",
+      image: "/images/projects/covermtb.webp",
+      alt: "Mtb Caracas",
+    },
+    {
+      number: "02",
+      label: "Digital",
+      href: "/work#digital",
+      image: "/images/projects/coverkiosco.webp",
+      alt: "El Kiosco",
+    },
+    {
+      number: "03",
+      label: "Video",
+      href: "/work#video",
+      image: "/images/projects/coverpadelcafe.webp",
+      alt: "Padel Cafe",
+    },
+    {
+      number: "04",
+      label: "Estrategia",
+      href: "/work#estrategia",
+      image: "/images/projects/coverfreelancer.webp",
+      alt: "Trabajos Freelance",
+    },
   ];
 
   useEffect(() => {
@@ -96,12 +119,49 @@ function ScrollCategories() {
   return (
     <section id="proyectos" ref={sectionRef} className="h-[320vh] bg-neutral-950">
       <div className="sticky top-0 flex h-screen flex-col justify-center overflow-hidden">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.08),transparent_55%)]" />
+
+        <div className="pointer-events-none absolute inset-x-0 top-[8.5vh] mx-auto h-[64vh] w-[min(92vw,1320px)]">
+          {items.map((item, i) => {
+            const reveal = lineProgress[i] ?? 0;
+            const depth = Math.max(activeIndex - i, 0);
+            const isCurrent = i === Math.max(activeIndex, 0);
+            const isPast = i < Math.max(activeIndex, 0);
+            const isFuture = i > Math.max(activeIndex, 0);
+            const opacity = isCurrent ? 1 : isPast ? 0.32 : reveal > 0 ? 0.12 : 0;
+            const yOffset = (1 - reveal) * 48 + depth * -16 + (isFuture ? 14 : 0);
+            const scale = isCurrent ? 1 : 0.98 - depth * 0.012;
+
+            return (
+              <div
+                key={`${item.href}-image`}
+                className="absolute inset-0 overflow-hidden rounded-[6px] border border-white/15 bg-neutral-900/70 shadow-[0_25px_70px_rgba(0,0,0,0.45)] transition-all duration-500"
+                style={{
+                  opacity,
+                  transform: `translateY(${yOffset}px) scale(${scale})`,
+                  zIndex: i + 1,
+                }}
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={item.image}
+                  alt={item.alt}
+                  className="h-full w-full object-cover"
+                />
+                <div className="absolute inset-0 bg-black/30" />
+              </div>
+            );
+          })}
+        </div>
+
+        <div className="pointer-events-none absolute inset-x-0 top-[8.5vh] mx-auto h-[64vh] w-[min(92vw,1320px)] border border-white/10" />
+
         {items.map((item, i) => {
           const progress = lineProgress[i] ?? 0;
           const isRevealed = progress >= 1;
           const isActive = activeIndex === i;
           return (
-            <div key={item.href}>
+            <div key={item.href} className="relative z-10">
               <div
                 className="h-px bg-white/20 origin-left transition-transform duration-300"
                 style={{ transform: `scaleX(${progress})` }}
@@ -123,7 +183,9 @@ function ScrollCategories() {
                     {item.number}
                   </span>
                   <span
-                    className="text-[clamp(2.8rem,9vw,7.5rem)] font-black uppercase leading-[0.92] tracking-[-0.03em] text-white transition-all duration-300 group-hover:translate-x-3 group-hover:text-[#f7b7ff]"
+                    className={`text-[clamp(2.8rem,9vw,7.5rem)] font-black uppercase leading-[0.92] tracking-[-0.03em] transition-all duration-300 group-hover:translate-x-3 group-hover:text-[#f7b7ff] ${
+                      isActive ? "text-white" : "text-white/92"
+                    }`}
                     style={{
                       fontFamily: "CoolveticaBook, sans-serif",
                       opacity: progress,
