@@ -53,49 +53,32 @@ export default function Footer() {
   return (
     <footer className="w-full border-t border-[#2b2b2b] bg-[#191919] px-6 py-16 md:px-[5vw] md:py-20">
       <div className="mx-auto flex w-full max-w-[1200px] flex-col">
-        <div className="grid grid-cols-1 items-center gap-4 border-b border-[#2a2a2a] pb-8 text-center md:grid-cols-3 md:text-left">
+        <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between md:gap-8">
           <Container delay={0.1} className="h-auto">
-            <p className="text-[0.72rem] uppercase tracking-[0.22em] text-[#9a9a9a]">Venezuela</p>
+            <Image
+              src="/iconfooter.png"
+              alt="Gherard"
+              width={35}
+              height={40}
+              className="h-[40px] w-[35px] object-contain"
+              priority={false}
+            />
           </Container>
 
-          <Container delay={0.15} className="h-auto">
-            <div className="flex justify-center">
-              <Image
-                src="/iconfooter.png"
-                alt="Gherard"
-                width={35}
-                height={40}
-                className="h-[40px] w-[35px] object-contain"
-                priority={false}
-              />
-            </div>
-          </Container>
-
-          <Container delay={0.2} className="h-auto md:text-right">
-            <Link
-              href="https://instagram.com/gheranillos"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[0.72rem] uppercase tracking-[0.22em] text-[#9a9a9a] transition-colors duration-200 hover:text-white"
-            >
-              @gheranillos
-            </Link>
+          <Container delay={0.2} className="h-auto">
+            <nav className="flex flex-wrap gap-x-4 gap-y-3 md:justify-end md:gap-x-8">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.label}
+                  href={link.href}
+                  className="text-[0.85rem] text-[#9a9a9a] transition-colors duration-200 hover:text-white"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </nav>
           </Container>
         </div>
-
-        <Container delay={0.22} className="h-auto">
-          <nav className="mt-8 flex flex-wrap justify-center gap-x-4 gap-y-3 md:justify-end md:gap-x-8">
-            {navLinks.map((link) => (
-              <Link
-                key={link.label}
-                href={link.href}
-                className="text-[0.85rem] text-[#9a9a9a] transition-colors duration-200 hover:text-white"
-              >
-                {link.label}
-              </Link>
-            ))}
-          </nav>
-        </Container>
 
         <Container delay={0.25} className="h-auto">
           <div className="mt-8 flex flex-col items-center justify-center gap-6 border-y border-[#2a2a2a] py-12 text-center md:mt-10 md:flex-row md:justify-end md:text-left">

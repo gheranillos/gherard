@@ -272,19 +272,6 @@ function WorkHero() {
           })}
 
           <div className="absolute inset-0 z-20" style={{ opacity: overlayOpacity }}>
-            <div className="pointer-events-none absolute left-0 right-0 top-8 flex items-center justify-between px-6 md:px-10">
-              <p className="work-hero-book text-[0.65rem] uppercase tracking-[0.2em] text-white/50">
-                Venezuela
-              </p>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/iconfooter.png"
-                alt="Gherard"
-                className="h-[40px] w-[35px] object-contain"
-              />
-              <p className="work-hero-book text-[0.65rem] text-white/50">hello@gherad.com</p>
-            </div>
-
             <div className="absolute inset-0 flex items-center justify-center px-6">
               <div className="text-center">
                 <h2
