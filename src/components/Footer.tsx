@@ -129,7 +129,7 @@ export default function Footer() {
               })}
             </div>
           </div>
-        </div>
+        </Container>
 
         <Container delay={0.35} className="h-auto">
           <div className="mt-8 flex flex-col items-center justify-between gap-2 text-center md:flex-row md:gap-4 md:text-left">
