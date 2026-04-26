@@ -156,58 +156,11 @@ function ScrollCategories() {
 
         <div className="pointer-events-none absolute inset-x-0 top-[8.5vh] mx-auto h-[64vh] w-[min(92vw,1320px)] border border-white/10" />
 
-        {items.map((item, i) => {
-          const progress = lineProgress[i] ?? 0;
-          const isRevealed = progress >= 1;
-          const isActive = activeIndex === i;
-          return (
-            <div key={item.href} className="relative z-10">
-              <div
-                className="h-px bg-white/20 origin-left transition-transform duration-300"
-                style={{ transform: `scaleX(${progress})` }}
-              />
-              <Link
-                href={item.href}
-                className={`group block ${isRevealed ? "pointer-events-auto" : "pointer-events-none"}`}
-              >
-                <div className="flex items-center justify-between px-6 py-6 md:px-14">
-                  <span
-                    className={`font-mono text-xs tracking-[0.2em] transition-all duration-300 ${
-                      isActive ? "text-white/70" : "text-white/40"
-                    }`}
-                    style={{
-                      opacity: progress,
-                      transform: `translateY(${(1 - progress) * 20}px)`,
-                    }}
-                  >
-                    {item.number}
-                  </span>
-                  <span
-                    className={`text-[clamp(2.8rem,9vw,7.5rem)] font-black uppercase leading-[0.92] tracking-[-0.03em] transition-all duration-300 group-hover:translate-x-3 group-hover:text-[#f7b7ff] ${
-                      isActive ? "text-white" : "text-white/92"
-                    }`}
-                    style={{
-                      fontFamily: "CoolveticaBook, sans-serif",
-                      opacity: progress,
-                      transform: `translateY(${(1 - progress) * 20}px)`,
-                    }}
-                  >
-                    {item.label}
-                  </span>
-                  <span
-                    className="text-2xl text-white/0 transition-all duration-300 group-hover:text-[#f7b7ff] group-hover:text-white/80"
-                    style={{
-                      opacity: progress,
-                      transform: `translateY(${(1 - progress) * 20}px)`,
-                    }}
-                  >
-                    →
-                  </span>
-                </div>
-              </Link>
-            </div>
-          );
-        })}
+        <Link
+          href={items[Math.max(activeIndex, 0)]?.href ?? "/work"}
+          className="absolute inset-0 z-10 block"
+          aria-label="Ir al proyecto activo"
+        />
       </div>
     </section>
   );
@@ -318,6 +271,7 @@ export default function GherardPortfolio() {
         <header className="pointer-events-none absolute left-0 right-0 top-6 z-20 flex justify-center px-4">
           <motion.div
             className="pointer-events-auto flex h-12 items-center overflow-hidden border border-white/20 bg-white/12 px-3 backdrop-blur-md"
+            initial={{ width: 48, borderRadius: 50 }}
             animate={{
               width: menuOpen ? (canHover ? 420 : "90vw") : 48,
               borderRadius: menuOpen ? 999 : 50,
@@ -333,6 +287,7 @@ export default function GherardPortfolio() {
           >
             <motion.div
               className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+              initial={{ opacity: 1 }}
               animate={{ opacity: menuOpen ? 0 : 1 }}
               transition={{ duration: 0.2 }}
             >
@@ -340,6 +295,7 @@ export default function GherardPortfolio() {
             </motion.div>
             <motion.div
               className="flex w-full items-center justify-center gap-2 whitespace-nowrap"
+              initial={{ opacity: 0 }}
               animate={{ opacity: menuOpen ? 1 : 0 }}
               transition={{ duration: 0.2, delay: menuOpen ? 0.12 : 0 }}
             >
