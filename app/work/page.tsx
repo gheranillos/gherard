@@ -47,7 +47,6 @@ function WorkHero() {
   const [progress, setProgress] = useState(0);
   const [phase, setPhase] = useState<1 | 2 | 3 | 4>(1);
   const [activeIndex, setActiveIndex] = useState(0);
-  const [heroComplete, setHeroComplete] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [viewport, setViewport] = useState({ width: 1440, height: 900 });
   const [canHover, setCanHover] = useState(true);
@@ -95,7 +94,6 @@ function WorkHero() {
         const total = section.offsetHeight - window.innerHeight;
         const p = clamp(scrolled / Math.max(total, 1), 0, 1);
         setProgress(p);
-        setHeroComplete(p >= 0.98);
 
         if (p < 0.15) setPhase(1);
         else if (p < 0.5) setPhase(2);
@@ -237,9 +235,7 @@ function WorkHero() {
   return (
     <section ref={sectionRef} className="relative h-[600vh]">
       <div className="sticky top-0 h-screen overflow-hidden bg-[#0a0a0a]">
-        <div
-          className={`absolute inset-0 ${heroComplete ? "opacity-0" : "opacity-100"} transition-opacity duration-300`}
-        >
+        <div className="absolute inset-0">
           {tiles.map((tile) => {
             const project = projects[tile.projectIndex]!;
             return (
