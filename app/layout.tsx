@@ -4,6 +4,7 @@ import { Analytics } from '@vercel/analytics/next'
 
 import { Providers } from './providers'
 import { CursorGlow } from '@/src/components/CursorGlow'
+import FloatingNav from '@/src/components/FloatingNav'
 import './globals.css'
 
 const coolveticaBook = localFont({
@@ -76,6 +77,7 @@ export default function RootLayout({
     >
       <body className={`${coolvetica.className} font-sans antialiased`}>
         <Providers>{children}</Providers>
+        <FloatingNav />
         <CursorGlow />
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>

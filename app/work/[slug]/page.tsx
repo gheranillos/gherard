@@ -5,12 +5,6 @@ import { ArrowUpRight } from "lucide-react";
 import ProjectImage from "@/src/components/ProjectImage";
 import { projects } from "@/src/data/projects";
 
-const navLink =
-  "rounded-full px-3 py-2 text-[11px] font-medium uppercase tracking-[0.2em] text-white/80 transition hover:bg-white/10 hover:text-white transition-opacity duration-200 hover:opacity-50";
-
-const navLinkActive =
-  "rounded-full px-3 py-2 text-[11px] font-medium uppercase tracking-[0.2em] text-[#f7b7ff] transition-opacity duration-200 hover:opacity-50";
-
 export function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }));
 }
@@ -29,27 +23,6 @@ export default async function WorkProjectPage({
 
   return (
     <div className="min-h-screen bg-white text-neutral-900 selection:bg-[#d9ff3f] selection:text-black">
-      <header className="pointer-events-none fixed left-0 right-0 top-6 z-40 flex justify-center px-4">
-        <div className="pointer-events-auto flex max-w-[95vw] flex-wrap items-center justify-center gap-1 rounded-full border border-white/15 bg-black/85 px-2 py-2 shadow-[0_8px_40px_rgba(0,0,0,0.45)] backdrop-blur-md">
-          <Link href="/" className={navLink}>
-            Inicio
-          </Link>
-          <span className="hidden h-5 w-px bg-white/25 sm:block" aria-hidden />
-          <Link href="/about" className={navLink}>
-            About
-          </Link>
-          <Link href="/work" className={navLinkActive}>
-            Work
-          </Link>
-          <Link href="/shop" className={navLink}>
-            Tienda
-          </Link>
-          <Link href="/#contacto" className={navLink}>
-            Contacto
-          </Link>
-        </div>
-      </header>
-
       <main className="bg-white pt-[108px]">
         <section className="mx-auto w-full max-w-[1200px] px-[5vw] pb-10 pt-8">
           <p className="text-[0.65rem] uppercase tracking-[0.24em] text-black/35">

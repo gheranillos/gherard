@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Instagram, Menu, MessageCircle } from "lucide-react";
+import { Instagram, MessageCircle } from "lucide-react";
 
 import { renderCanvas } from "@/components/ui/canvas";
 import Footer from "@/components/Footer";
@@ -217,8 +217,6 @@ function ScrollCategories() {
 
 export default function GherardPortfolio() {
   const [prefersReduced, setPrefersReduced] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [canHover, setCanHover] = useState(true);
   const aboutSectionRef = useRef<HTMLElement | null>(null);
   const aboutBgRef = useRef<HTMLDivElement | null>(null);
   const aboutCardRef = useRef<HTMLDivElement | null>(null);
@@ -236,14 +234,6 @@ export default function GherardPortfolio() {
       typeof window !== "undefined" &&
       window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     setPrefersReduced(reduced);
-  }, []);
-  useEffect(() => {
-    const onResize = () => {
-      setCanHover(window.matchMedia("(hover: hover)").matches);
-    };
-    onResize();
-    window.addEventListener("resize", onResize);
-    return () => window.removeEventListener("resize", onResize);
   }, []);
   useEffect(() => {
     const section = aboutSectionRef.current;
@@ -315,61 +305,6 @@ export default function GherardPortfolio() {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/40 to-black/25" />
         <div className="absolute inset-0 bg-black/20" />
-
-        {/* Floating nav pill */}
-        <header className="pointer-events-none absolute left-0 right-0 top-6 z-20 flex justify-center px-4">
-          <motion.div
-            className="pointer-events-auto flex h-12 items-center overflow-hidden border border-white/20 bg-white/12 px-3 backdrop-blur-md"
-            initial={{ width: 48, borderRadius: 50 }}
-            animate={{
-              width: menuOpen ? (canHover ? 420 : "90vw") : 48,
-              borderRadius: menuOpen ? 999 : 50,
-            }}
-            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            onClick={() => setMenuOpen((v) => !v)}
-            onMouseEnter={() => {
-              if (canHover) setMenuOpen(true);
-            }}
-            onMouseLeave={() => {
-              if (canHover) setMenuOpen(false);
-            }}
-          >
-            <motion.div
-              className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
-              initial={{ opacity: 1 }}
-              animate={{ opacity: menuOpen ? 0 : 1 }}
-              transition={{ duration: 0.2 }}
-            >
-              <Menu size={18} className="text-white" />
-            </motion.div>
-            <motion.div
-              className="flex w-full items-center justify-center gap-2 whitespace-nowrap"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: menuOpen ? 1 : 0 }}
-              transition={{ duration: 0.2, delay: menuOpen ? 0.12 : 0 }}
-            >
-              {[
-                { label: "Inicio", href: "#", active: true },
-                { label: "About", href: "/about" },
-                { label: "Work", href: "/work" },
-                { label: "Tienda", href: "/shop" },
-                { label: "Contacto", href: "#contacto" },
-              ].map((link, index, arr) => (
-                <div key={link.label} className="flex items-center gap-2">
-                  <a
-                    href={link.href}
-                    className={`text-[0.65rem] uppercase tracking-[0.2em] transition-colors ${
-                      link.active ? "text-[#f7b7ff]" : "text-white/80 hover:text-white"
-                    }`}
-                  >
-                    {link.label}
-                  </a>
-                  {index < arr.length - 1 && <span className="h-3 w-px bg-white/20" />}
-                </div>
-              ))}
-            </motion.div>
-          </motion.div>
-        </header>
 
         {/* Bottom-centered headline + CTA */}
         <div className="relative z-10 flex min-h-[100dvh] flex-col justify-end px-6 pb-14 pt-32 md:px-10 md:pb-20">

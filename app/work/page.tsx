@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowUpRight, Menu } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
 import { projects } from "@/src/data/projects";
 import { staggerChild, staggerContainer } from "@/src/hooks/useScrollReveal";
@@ -47,9 +47,7 @@ function WorkHero() {
   const [progress, setProgress] = useState(0);
   const [phase, setPhase] = useState<1 | 2 | 3 | 4>(1);
   const [activeIndex, setActiveIndex] = useState(0);
-  const [menuOpen, setMenuOpen] = useState(false);
   const [viewport, setViewport] = useState({ width: 1440, height: 900 });
-  const [canHover, setCanHover] = useState(true);
 
   const isMobile = viewport.width < 768;
   const mobilePhase4Height = 40;
@@ -76,7 +74,6 @@ function WorkHero() {
         width: window.innerWidth,
         height: window.innerHeight,
       });
-      setCanHover(window.matchMedia("(hover: hover)").matches);
     };
     onResize();
     window.addEventListener("resize", onResize);
@@ -303,57 +300,6 @@ function WorkHero() {
               </div>
             </div>
 
-            <div className="absolute bottom-10 left-1/2 -translate-x-1/2">
-              <motion.div
-                className="flex h-12 items-center overflow-hidden border border-white/20 bg-white/12 px-3 backdrop-blur-md"
-                animate={{
-                  width: menuOpen ? (isMobile ? "90vw" : 420) : 48,
-                  borderRadius: menuOpen ? 999 : 50,
-                }}
-                transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                onClick={() => setMenuOpen((v) => !v)}
-                onMouseEnter={() => {
-                  if (canHover) setMenuOpen(true);
-                }}
-                onMouseLeave={() => {
-                  if (canHover) setMenuOpen(false);
-                }}
-              >
-                <motion.div
-                  className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
-                  animate={{ opacity: menuOpen ? 0 : 1 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <Menu size={18} className="text-white" />
-                </motion.div>
-
-                <motion.div
-                  className="flex w-full items-center justify-center gap-2 whitespace-nowrap"
-                  animate={{ opacity: menuOpen ? 1 : 0 }}
-                  transition={{ duration: 0.2, delay: menuOpen ? 0.12 : 0 }}
-                >
-                  {[
-                    { label: "Inicio", href: "/" },
-                    { label: "About", href: "/about" },
-                    { label: "Work", href: "/work", active: true },
-                    { label: "Tienda", href: "/shop" },
-                    { label: "Contacto", href: "/#contacto" },
-                  ].map((link, index, arr) => (
-                    <div key={link.label} className="flex items-center gap-2">
-                      <Link
-                        href={link.href}
-                        className={`text-[0.65rem] uppercase tracking-[0.2em] transition-colors ${
-                          link.active ? "text-[#f7b7ff]" : "text-white/80 hover:text-white"
-                        }`}
-                      >
-                        {link.label}
-                      </Link>
-                      {index < arr.length - 1 && <span className="h-3 w-px bg-white/20" />}
-                    </div>
-                  ))}
-                </motion.div>
-              </motion.div>
-            </div>
           </div>
 
           <div
