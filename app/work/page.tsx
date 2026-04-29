@@ -5,7 +5,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 
-import { projects } from "@/src/data/projects";
+import { projects, projectsInWorkGridOrder } from "@/src/data/projects";
 import { staggerChild, staggerContainer } from "@/src/hooks/useScrollReveal";
 
 const clamp = (v: number, min: number, max: number) => Math.min(Math.max(v, min), max);
@@ -42,6 +42,16 @@ const TILE_GRID: TileConfig[] = [
   { topVh: 50, leftVw: 66.66, widthVw: 33.34, heightVh: 50, rotateDeg: 0 },
 ];
 
+/** Ritmo editorial en `/work` (filas claras + freelance visible). */
+const WORK_GRID_ARTICLE_CLASSES: string[] = [
+  "aspect-[5/4] md:col-span-5 md:col-start-1 md:row-start-1 md:self-start",
+  "aspect-[16/11] md:col-span-7 md:col-start-6 md:row-start-1 md:translate-y-10 md:self-start",
+  "aspect-[16/11] md:col-span-8 md:col-start-1 md:row-start-2 md:-translate-y-1 md:self-start",
+  "aspect-[4/5] md:col-span-4 md:col-start-9 md:row-start-2 md:translate-y-6 md:self-end",
+  "aspect-[16/10] md:col-span-6 md:col-start-1 md:row-start-3 md:self-start",
+  "aspect-[16/10] md:col-span-6 md:col-start-7 md:row-start-3 md:self-start",
+];
+
 function WorkHero() {
   const sectionRef = useRef<HTMLDivElement | null>(null);
   const [progress, setProgress] = useState(0);
@@ -51,7 +61,13 @@ function WorkHero() {
 
   const isMobile = viewport.width < 768;
   const mobilePhase4Height = 40;
-  const tileProjects = [0, 1, 2, 3, 0, 1];
+  const tileProjects = useMemo(
+    () =>
+      projectsInWorkGridOrder(projects)
+        .slice(0, TILE_INIT.length)
+        .map((p) => projects.indexOf(p)),
+    [],
+  );
   const activeTileIndex = tileProjects.findIndex((projectIndex) => projectIndex === activeIndex);
 
   const finalTiles: TileConfig[] = isMobile
@@ -332,20 +348,13 @@ export default function WorkPage() {
           whileInView="visible"
           viewport={{ once: true, margin: "-20px" }}
         >
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-12 md:gap-7">
-            {projects.map((project, index) => (
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-12 md:gap-x-7 md:gap-y-12">
+            {projectsInWorkGridOrder(projects).map((project, index) => (
             <motion.article
               key={project.slug}
               className={`group relative overflow-hidden bg-[#161616] ${
-                index === 0
-                  ? "aspect-[5/4] md:col-span-5 md:translate-y-0"
-                  : index === 1
-                    ? "aspect-[16/11] md:col-span-7 md:translate-y-10"
-                    : index === 2
-                      ? "aspect-[16/11] md:col-span-8 md:-translate-y-1"
-                      : index === 3
-                        ? "absolute aspect-[5/4] w-[444px] left-[-395px] top-[4828px] md:col-span-6 md:translate-y-16 md:col-start-6"
-                        : "aspect-[5/4] md:col-span-6 md:translate-y-16 md:col-start-6"
+                WORK_GRID_ARTICLE_CLASSES[index] ??
+                "aspect-[5/4] md:col-span-12 md:row-auto"
               }`}
               variants={staggerChild}
             >

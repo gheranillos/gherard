@@ -147,3 +147,20 @@ export const projects: Project[] = [
     accentColor: "#f7b7ff",
   },
 ];
+
+/** Orden en `/work`: ritmo editorial (no altera rutas de los proyectos). */
+export const WORK_PAGE_PROJECT_SLUGS = [
+  "el-kiosco",
+  "mtb-caracas",
+  "padelcafe",
+  "freelance",
+  "naponino",
+  "dtf-lecheria",
+] as const;
+
+export function projectsInWorkGridOrder(all: Project[] = projects): Project[] {
+  const bySlug = new Map(all.map((p) => [p.slug, p]));
+  return WORK_PAGE_PROJECT_SLUGS.map((slug) => bySlug.get(slug)).filter(
+    (p): p is Project => Boolean(p),
+  );
+}
