@@ -6,9 +6,11 @@ import ProjectImage from "@/src/components/ProjectImage";
 import { projects } from "@/src/data/projects";
 
 const PROJECT_TITLE_CLASS =
-  "absolute left-[45px] top-[197px] flex h-[77px] w-[377px] flex-col items-start justify-start gap-0 px-0 py-[12px] text-[100px] font-black uppercase leading-[44px] tracking-[1.2px] text-white";
+  "max-w-[min(377px,100%)] text-[80px] font-black uppercase leading-[78px] tracking-[1.2px] text-white";
 const PROJECT_INTRO_CLASS =
-  "absolute left-[43px] top-[263px] mt-[30px] w-[404px] text-[1.02rem] leading-[23px] text-white/75";
+  "mt-[30px] max-w-[620px] text-[1.02rem] leading-[23px] text-white/75";
+const PROJECT_CTA_CLASS =
+  "mt-6 inline-flex w-fit items-center rounded-full bg-[#f7b7ff] px-8 py-3.5 font-bold text-[#161616] transition-colors duration-200 hover:bg-[#161616] hover:text-[#f7b7ff]";
 const PROJECT_INFO_LABEL_CLASS =
   "text-[14px] font-thin leading-[1.3] text-white/80 [font-family:coolvetica]";
 const PROJECT_INFO_VALUE_CLASS =
@@ -70,21 +72,24 @@ export default async function WorkProjectPage({
   return (
     <div className="min-h-screen bg-black text-neutral-100 selection:bg-[#f7b7ff] selection:text-black">
       <main className="bg-black pt-[108px]">
-        <section className="relative mx-auto min-h-[430px] w-full max-w-[1200px] px-[5vw] pb-10 pt-8">
+        <section className="mx-auto w-full max-w-[1200px] px-[5vw] pb-10 pt-8">
           <p className="text-[0.65rem] uppercase tracking-[0.24em] text-white/45">
             Work / Project
           </p>
-          <h1 className={PROJECT_TITLE_CLASS}>
-            {projectHeading}
-          </h1>
-          <div className="mt-5 grid gap-8 md:grid-cols-[1.2fr_0.8fr] md:items-end">
-            <div>
+          <div className="mt-5 grid gap-8 md:grid-cols-[1.2fr_0.8fr] md:items-start">
+            <div className="min-w-0">
+              <h1 className={PROJECT_TITLE_CLASS}>
+                {projectHeading}
+              </h1>
               <p className={PROJECT_INTRO_CLASS}>
                 {project.longDescription}
               </p>
+              <Link href="/#contacto" className={PROJECT_CTA_CLASS}>
+                Trabajemos juntos &rarr;
+              </Link>
             </div>
-            <div className="flex flex-col">
-              <div className="w-[329px] border-y-0 border-solid bg-black px-0 py-2">
+            <div className="flex flex-col md:items-end md:justify-self-end">
+              <div className="w-full max-w-[329px] border-y-0 border-solid bg-black px-0 py-2 md:w-[329px]">
                 <div className="grid grid-cols-[1fr_1fr] border-b border-white/15 py-1.5">
                   <p className={PROJECT_INFO_LABEL_CLASS}>Categories</p>
                   <p className={PROJECT_INFO_VALUE_CLASS}>{project.category}</p>
@@ -108,12 +113,6 @@ export default async function WorkProjectPage({
                   <p className={PROJECT_INFO_VALUE_CLASS}>{project.year}</p>
                 </div>
               </div>
-              <Link
-                href="/#contacto"
-                className="absolute left-[35px] top-[328px] mt-6 inline-flex w-fit items-center rounded-full bg-[#f7b7ff] px-8 py-3.5 font-bold text-[#161616] transition-colors duration-200 hover:bg-[#161616] hover:text-[#f7b7ff]"
-              >
-                Trabajemos juntos &rarr;
-              </Link>
             </div>
           </div>
         </section>
