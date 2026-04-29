@@ -64,16 +64,18 @@ export default async function WorkProjectPage({
 
   const currentIndex = projects.findIndex((item) => item.slug === project.slug);
   const nextProject = projects[(currentIndex + 1) % projects.length]!;
+  const projectHeading =
+    project.slug === "padelcafe" ? "Padel Café Club" : project.title;
 
   return (
     <div className="min-h-screen bg-black text-neutral-100 selection:bg-[#f7b7ff] selection:text-black">
       <main className="bg-black pt-[108px]">
-        <section className="relative mx-auto w-full max-w-[1200px] px-[5vw] pb-10 pt-8">
+        <section className="relative mx-auto min-h-[430px] w-full max-w-[1200px] px-[5vw] pb-10 pt-8">
           <p className="text-[0.65rem] uppercase tracking-[0.24em] text-white/45">
             Work / Project
           </p>
           <h1 className={PROJECT_TITLE_CLASS}>
-            {project.title}
+            {projectHeading}
           </h1>
           <div className="mt-5 grid gap-8 md:grid-cols-[1.2fr_0.8fr] md:items-end">
             <div>
@@ -90,10 +92,6 @@ export default async function WorkProjectPage({
                 <div className="grid grid-cols-[1fr_1fr] border-b border-white/15 py-1.5">
                   <p className={PROJECT_INFO_LABEL_CLASS}>Client</p>
                   <p className={PROJECT_INFO_VALUE_CLASS}>{project.client}</p>
-                </div>
-                <div className="grid grid-cols-[1fr_1fr] border-b border-white/15 py-1.5">
-                  <p className={PROJECT_INFO_LABEL_CLASS}>Project</p>
-                  <p className={PROJECT_INFO_VALUE_CLASS}>{project.title}</p>
                 </div>
                 <div className="grid grid-cols-[1fr_1fr] border-b border-white/15 py-1.5">
                   <p className={PROJECT_INFO_LABEL_CLASS}>Services</p>
