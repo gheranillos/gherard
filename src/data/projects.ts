@@ -123,4 +123,27 @@ export const projects: Project[] = [
     ],
     accentColor: "#f7b7ff",
   },
+  {
+    slug: "dtf-lecheria",
+    title: "DTF Lecheria",
+    category: "Branding",
+    year: "2026",
+    client: "Naponino",
+    role: "Diseño, dirección",
+    description:
+      "Proyecto de branding para DTF Lecheria, enfocado en una identidad visual sólida y versátil para piezas digitales y de marca.",
+    longDescription:
+      "Desarrollo de branding para DTF Lecheria con enfoque en diseño y dirección visual para reforzar su presencia y coherencia de marca.",
+    tags: ["Diseño", "Dirección"],
+    coverImage: "/images/projects/covertdf.webp",
+    images: [
+      "/images/projects/dtf1.webp",
+      "/images/projects/dtf2.webp",
+      "/images/projects/dtf3.webp",
+      "/images/projects/dtf4.webp",
+      "/images/projects/dtf5.webp",
+      "/images/projects/dtf6.webp",
+    ],
+    accentColor: "#f7b7ff",
+  },
 ];

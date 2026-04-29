@@ -7,6 +7,7 @@ import { Instagram, MessageCircle } from "lucide-react";
 
 import { renderCanvas } from "@/components/ui/canvas";
 import Footer from "@/components/Footer";
+import { projects } from "@/src/data/projects";
 import { ReviewsSection } from "@/src/sections/Reviews";
 import { splitWords, wordVariants } from "@/src/hooks/useTextReveal";
 import { revealVariants, staggerChild, staggerContainer } from "@/src/hooks/useScrollReveal";
@@ -58,32 +59,12 @@ function ScrollCategories() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [globalProgress, setGlobalProgress] = useState(0);
 
-  const items = [
-    {
-      number: "1",
-      label: "Mtb Caracas",
-      href: "/work/mtb-caracas",
-      image: "/images/projects/covermtb.webp",
-    },
-    {
-      number: "2",
-      label: "El Kiosco",
-      href: "/work/el-kiosco",
-      image: "/images/projects/coverkiosco.webp",
-    },
-    {
-      number: "3",
-      label: "Padel Cafe",
-      href: "/work/padelcafe",
-      image: "/images/projects/coverpadelcafe.webp",
-    },
-    {
-      number: "4",
-      label: "Trabajos Freelance",
-      href: "/work/freelance",
-      image: "/images/projects/coverfreelancer.webp",
-    },
-  ];
+  const items = projects.map((project, index) => ({
+    number: String(index + 1),
+    label: project.title,
+    href: `/work/${project.slug}`,
+    image: project.coverImage,
+  }));
 
   useEffect(() => {
     const clamp = (v: number, min: number, max: number) => Math.min(Math.max(v, min), max);
