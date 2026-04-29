@@ -10,6 +10,7 @@ export type Project = {
   tags: string[];
   coverImage: string;
   images: string[];
+  brandingSheetImage?: string;
   accentColor: string;
 };
 
@@ -70,6 +71,7 @@ export const projects: Project[] = [
     tags: ["Edición", "Redes", "Narrativa", "Campaña"],
     coverImage: "/images/projects/coverpadelcafe.webp",
     images: ["/projects/videos/01.jpg", "/projects/videos/02.jpg"],
+    brandingSheetImage: "/images/projects/padelcafeproject.jpg",
     accentColor: "#d9ff3f",
   },
   {

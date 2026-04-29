@@ -39,10 +39,22 @@ export default async function WorkProjectPage({
 
   const currentIndex = projects.findIndex((item) => item.slug === project.slug);
   const nextProject = projects[(currentIndex + 1) % projects.length]!;
+  const hasBrandingSheet = Boolean(project.brandingSheetImage);
 
   return (
     <div className="min-h-screen bg-white text-neutral-900 selection:bg-[#d9ff3f] selection:text-black">
       <main className="bg-white pt-[108px]">
+        {hasBrandingSheet ? (
+          <section className="mx-auto w-full max-w-[1200px] px-[5vw] pb-24 pt-0">
+            <ProjectImage
+              src={project.brandingSheetImage!}
+              alt={`${project.title} branding sheet`}
+              slug={project.slug}
+              className="block h-auto w-full"
+            />
+          </section>
+        ) : (
+          <>
         <section className="mx-auto w-full max-w-[1200px] px-[5vw] pb-10 pt-8">
           <p className="text-[0.65rem] uppercase tracking-[0.24em] text-black/35">
             Work / Project
@@ -172,6 +184,8 @@ export default async function WorkProjectPage({
             })}
           </div>
         </section>
+          </>
+        )}
 
         <Link
           href={`/work/${nextProject.slug}`}
