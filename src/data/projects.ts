@@ -98,4 +98,29 @@ export const projects: Project[] = [
     images: ["/projects/freelance/01.jpg", "/projects/freelance/02.jpg"],
     accentColor: "#f7b7ff",
   },
+  {
+    slug: "naponino",
+    title: "Naponino",
+    category: "Branding",
+    year: "2025",
+    client: "Naponino",
+    role: "Diseño, Dirección",
+    description:
+      "Proyecto de branding para Naponino enfocado en construir una identidad visual clara, moderna y con personalidad.",
+    longDescription:
+      "Desarrollo de identidad de marca para Naponino con enfoque en dirección visual y diseño aplicado a piezas clave del proyecto.",
+    tags: ["Diseño", "Dirección"],
+    coverImage: "/images/projects/covernapo.webp",
+    images: [
+      "/images/projects/napo1.webp",
+      "/images/projects/napo2.webp",
+      "/images/projects/napo3.webp",
+      "/images/projects/napo4.webp",
+      "/images/projects/napo5.webp",
+      "/images/projects/napo6.webp",
+      "/images/projects/napo7.webp",
+      "/images/projects/napo8.webp",
+    ],
+    accentColor: "#f7b7ff",
+  },
 ];
