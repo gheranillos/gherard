@@ -41,33 +41,33 @@ export default async function WorkProjectPage({
   const nextProject = projects[(currentIndex + 1) % projects.length]!;
 
   return (
-    <div className="min-h-screen bg-white text-neutral-900 selection:bg-[#f7b7ff] selection:text-black">
-      <main className="bg-white pt-[108px]">
+    <div className="min-h-screen bg-black text-neutral-100 selection:bg-[#f7b7ff] selection:text-black">
+      <main className="bg-black pt-[108px]">
         <section className="mx-auto w-full max-w-[1200px] px-[5vw] pb-10 pt-8">
-          <p className="text-[0.65rem] uppercase tracking-[0.24em] text-black/35">
+          <p className="text-[0.65rem] uppercase tracking-[0.24em] text-white/45">
             Work / Project
           </p>
           <div className="mt-5 grid gap-8 md:grid-cols-[1.2fr_0.8fr] md:items-end">
             <div>
-              <h1 className="text-[clamp(2.6rem,8vw,6.8rem)] font-black uppercase leading-[0.9] tracking-[-0.03em] text-[#0a0a0a]">
+              <h1 className="text-[clamp(2.6rem,8vw,6.8rem)] font-black uppercase leading-[0.9] tracking-[-0.03em] text-white">
                 {project.title}
               </h1>
-              <p className="mt-4 max-w-[620px] text-[1.02rem] leading-[1.75] text-black/70">
+              <p className="mt-4 max-w-[620px] text-[1.02rem] leading-[1.75] text-white/75">
                 {project.description}
               </p>
             </div>
-            <div className="grid gap-4 rounded-2xl border border-black/10 bg-[#f7f7f7] p-6">
+            <div className="grid gap-4 rounded-2xl border border-white/10 bg-[#161616] p-6">
               <div>
-                <p className="text-[0.6rem] uppercase tracking-[0.22em] text-black/45">Cliente</p>
-                <p className="mt-1 text-[0.95rem] font-semibold text-black">{project.client}</p>
+                <p className="text-[0.6rem] uppercase tracking-[0.22em] text-white/50">Cliente</p>
+                <p className="mt-1 text-[0.95rem] font-semibold text-white">{project.client}</p>
               </div>
               <div>
-                <p className="text-[0.6rem] uppercase tracking-[0.22em] text-black/45">Rol</p>
-                <p className="mt-1 text-[0.95rem] font-semibold text-black">{project.role}</p>
+                <p className="text-[0.6rem] uppercase tracking-[0.22em] text-white/50">Rol</p>
+                <p className="mt-1 text-[0.95rem] font-semibold text-white">{project.role}</p>
               </div>
               <div>
-                <p className="text-[0.6rem] uppercase tracking-[0.22em] text-black/45">Año</p>
-                <p className="mt-1 text-[0.95rem] font-semibold text-black">{project.year}</p>
+                <p className="text-[0.6rem] uppercase tracking-[0.22em] text-white/50">Año</p>
+                <p className="mt-1 text-[0.95rem] font-semibold text-white">{project.year}</p>
               </div>
             </div>
           </div>
@@ -93,10 +93,10 @@ export default async function WorkProjectPage({
             <p className="text-[0.7rem] uppercase tracking-[0.2em] text-[#f7b7ff]">
               Sobre el proyecto
             </p>
-            <p className="mt-6 max-w-[620px] text-[clamp(1rem,1.5vw,1.15rem)] leading-[1.85] text-[#333333]">
+            <p className="mt-6 max-w-[620px] text-[clamp(1rem,1.5vw,1.15rem)] leading-[1.85] text-white/80">
               {project.longDescription}
             </p>
-            <p className="mt-7 max-w-[620px] text-[0.98rem] leading-[1.85] text-black/65">
+            <p className="mt-7 max-w-[620px] text-[0.98rem] leading-[1.85] text-white/65">
               Cada entrega se trabaja desde concepto, sistema visual y ejecucion para
               mantener una narrativa consistente entre piezas graficas, contenido y
               presencia digital.
@@ -104,17 +104,17 @@ export default async function WorkProjectPage({
           </div>
 
           <div className="flex flex-col">
-            <div className="rounded-[20px] bg-[#f5f5f5] p-8">
-              <div className="border-b border-black/10 pb-4">
-                <p className="text-xs uppercase tracking-[0.16em] text-black/40">Categoría</p>
-                <p className="mt-1 font-semibold text-black">{project.category}</p>
+            <div className="rounded-[20px] border border-white/10 bg-[#161616] p-8">
+              <div className="border-b border-white/10 pb-4">
+                <p className="text-xs uppercase tracking-[0.16em] text-white/45">Categoría</p>
+                <p className="mt-1 font-semibold text-white">{project.category}</p>
               </div>
-              <div className="border-b border-black/10 py-4">
-                <p className="text-xs uppercase tracking-[0.16em] text-black/40">Año</p>
-                <p className="mt-1 font-semibold text-black">{project.year}</p>
+              <div className="border-b border-white/10 py-4">
+                <p className="text-xs uppercase tracking-[0.16em] text-white/45">Año</p>
+                <p className="mt-1 font-semibold text-white">{project.year}</p>
               </div>
               <div className="pt-4">
-                <p className="text-xs uppercase tracking-[0.16em] text-black/40">Tags</p>
+                <p className="text-xs uppercase tracking-[0.16em] text-white/45">Tags</p>
                 <div className="mt-3 flex flex-wrap gap-2">
                   {project.tags.map((tag) => (
                     <span
@@ -147,7 +147,7 @@ export default async function WorkProjectPage({
               return (
                 <div
                   key={`${project.slug}-media-${index}`}
-                  className={`${index === 0 ? "md:col-span-2" : ""} group overflow-hidden rounded-md bg-neutral-100`}
+                  className={`${index === 0 ? "md:col-span-2" : ""} group overflow-hidden rounded-md bg-[#161616]`}
                 >
                   {youtubeEmbed ? (
                     <iframe
