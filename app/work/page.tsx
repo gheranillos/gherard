@@ -231,7 +231,7 @@ function WorkHero() {
 
   return (
     <section ref={sectionRef} className="relative h-[600vh]">
-      <div className="sticky top-0 h-screen overflow-hidden bg-[#0a0a0a]">
+      <div className="sticky top-0 h-screen overflow-hidden bg-[#161616]">
         <div className="absolute inset-0">
           {tiles.map((tile) => {
             const project = projects[tile.projectIndex]!;
@@ -321,7 +321,7 @@ function WorkHero() {
 
 export default function WorkPage() {
   return (
-    <div className="min-h-screen bg-white text-neutral-900 selection:bg-[#d9ff3f] selection:text-black">
+    <div className="min-h-screen bg-white text-neutral-900 selection:bg-[#f7b7ff] selection:text-black">
       <main className="pb-14">
         <WorkHero />
 
@@ -336,7 +336,7 @@ export default function WorkPage() {
             {projects.map((project, index) => (
             <motion.article
               key={project.slug}
-              className={`group relative overflow-hidden bg-[#111] ${
+              className={`group relative overflow-hidden bg-[#161616] ${
                 index === 0
                   ? "aspect-[5/4] md:col-span-5 md:translate-y-0"
                   : index === 1

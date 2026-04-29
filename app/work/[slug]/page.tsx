@@ -39,22 +39,10 @@ export default async function WorkProjectPage({
 
   const currentIndex = projects.findIndex((item) => item.slug === project.slug);
   const nextProject = projects[(currentIndex + 1) % projects.length]!;
-  const hasBrandingSheet = Boolean(project.brandingSheetImage);
 
   return (
-    <div className="min-h-screen bg-white text-neutral-900 selection:bg-[#d9ff3f] selection:text-black">
+    <div className="min-h-screen bg-white text-neutral-900 selection:bg-[#f7b7ff] selection:text-black">
       <main className="bg-white pt-[108px]">
-        {hasBrandingSheet ? (
-          <section className="mx-auto w-full max-w-[1200px] px-[5vw] pb-24 pt-0">
-            <ProjectImage
-              src={project.brandingSheetImage!}
-              alt={`${project.title} branding sheet`}
-              slug={project.slug}
-              className="block h-auto w-full"
-            />
-          </section>
-        ) : (
-          <>
         <section className="mx-auto w-full max-w-[1200px] px-[5vw] pb-10 pt-8">
           <p className="text-[0.65rem] uppercase tracking-[0.24em] text-black/35">
             Work / Project
@@ -102,7 +90,7 @@ export default async function WorkProjectPage({
 
         <section className="mx-auto grid w-full max-w-[1200px] gap-10 px-[5vw] py-20 md:grid-cols-[60%_40%]">
           <div>
-            <p className="text-[0.7rem] uppercase tracking-[0.2em] text-[#d9ff3f]">
+            <p className="text-[0.7rem] uppercase tracking-[0.2em] text-[#f7b7ff]">
               Sobre el proyecto
             </p>
             <p className="mt-6 max-w-[620px] text-[clamp(1rem,1.5vw,1.15rem)] leading-[1.85] text-[#333333]">
@@ -131,7 +119,7 @@ export default async function WorkProjectPage({
                   {project.tags.map((tag) => (
                     <span
                       key={`${project.slug}-${tag}`}
-                      className="rounded-full bg-[#0a0a0a] px-3 py-[0.3rem] text-[0.72rem] font-semibold text-white"
+                      className="rounded-full bg-[#161616] px-3 py-[0.3rem] text-[0.72rem] font-semibold text-white"
                     >
                       {tag}
                     </span>
@@ -141,7 +129,7 @@ export default async function WorkProjectPage({
             </div>
             <Link
               href="/#contacto"
-              className="mt-6 inline-flex w-fit items-center rounded-full bg-[#d9ff3f] px-8 py-3.5 font-bold text-[#0a0a0a] transition-colors duration-200 hover:bg-[#0a0a0a] hover:text-[#d9ff3f]"
+              className="mt-6 inline-flex w-fit items-center rounded-full bg-[#f7b7ff] px-8 py-3.5 font-bold text-[#161616] transition-colors duration-200 hover:bg-[#161616] hover:text-[#f7b7ff]"
             >
               Trabajemos juntos &rarr;
             </Link>
@@ -149,7 +137,7 @@ export default async function WorkProjectPage({
         </section>
 
         <section className="mx-auto w-full max-w-[1200px] px-[5vw] pb-24 pt-6">
-          <p className="text-[0.7rem] uppercase tracking-[0.2em] text-[#d9ff3f]">
+          <p className="text-[0.7rem] uppercase tracking-[0.2em] text-[#f7b7ff]">
             Imágenes y videos del proyecto
           </p>
           <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2">
@@ -184,21 +172,19 @@ export default async function WorkProjectPage({
             })}
           </div>
         </section>
-          </>
-        )}
 
         <Link
           href={`/work/${nextProject.slug}`}
-          className="group block w-full bg-[#0a0a0a] px-[5vw] py-20 transition-colors duration-200"
+          className="group block w-full bg-[#161616] px-[5vw] py-20 transition-colors duration-200"
         >
           <p className="text-[0.7rem] uppercase tracking-[0.2em] text-white/40">
             Siguiente proyecto
           </p>
           <div className="mt-4 flex items-center justify-between gap-4">
-            <h2 className="text-[clamp(2rem,5vw,4rem)] font-black uppercase text-white transition-colors duration-200 group-hover:text-[#d9ff3f]">
+            <h2 className="text-[clamp(2rem,5vw,4rem)] font-black uppercase text-white transition-colors duration-200 group-hover:text-[#f7b7ff]">
               {nextProject.title}
             </h2>
-            <ArrowUpRight className="size-8 text-[#d9ff3f]" />
+            <ArrowUpRight className="size-8 text-[#f7b7ff]" />
           </div>
         </Link>
       </main>

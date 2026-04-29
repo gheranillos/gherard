@@ -10,7 +10,6 @@ export type Project = {
   tags: string[];
   coverImage: string;
   images: string[];
-  brandingSheetImage?: string;
   accentColor: string;
 };
 
@@ -33,7 +32,7 @@ export const projects: Project[] = [
       "/projects/el-kiosco/02.jpg",
       "/projects/el-kiosco/03.jpg",
     ],
-    accentColor: "#d9ff3f",
+    accentColor: "#f7b7ff",
   },
   {
     slug: "mtb-caracas",
@@ -71,8 +70,7 @@ export const projects: Project[] = [
     tags: ["Edición", "Redes", "Narrativa", "Campaña"],
     coverImage: "/images/projects/coverpadelcafe.webp",
     images: ["/projects/videos/01.jpg", "/projects/videos/02.jpg"],
-    brandingSheetImage: "/images/projects/padelcafeproject.jpg",
-    accentColor: "#d9ff3f",
+    accentColor: "#f7b7ff",
   },
   {
     slug: "freelance",
