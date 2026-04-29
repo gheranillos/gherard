@@ -5,6 +5,25 @@ import { ArrowUpRight } from "lucide-react";
 import ProjectImage from "@/src/components/ProjectImage";
 import { projects } from "@/src/data/projects";
 
+function getYouTubeEmbedUrl(url: string) {
+  try {
+    const parsed = new URL(url);
+    const hostname = parsed.hostname.replace("www.", "");
+    if (hostname === "youtube.com" || hostname === "m.youtube.com") {
+      const videoId = parsed.searchParams.get("v");
+      if (videoId) return `https://www.youtube.com/embed/${videoId}`;
+      if (parsed.pathname.startsWith("/embed/")) return url;
+    }
+    if (hostname === "youtu.be") {
+      const videoId = parsed.pathname.slice(1);
+      if (videoId) return `https://www.youtube.com/embed/${videoId}`;
+    }
+  } catch {
+    return null;
+  }
+  return null;
+}
+
 export function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }));
 }
@@ -119,22 +138,38 @@ export default async function WorkProjectPage({
 
         <section className="mx-auto w-full max-w-[1200px] px-[5vw] pb-24 pt-6">
           <p className="text-[0.7rem] uppercase tracking-[0.2em] text-[#d9ff3f]">
-            Imágenes del proyecto
+            Imágenes y videos del proyecto
           </p>
           <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2">
-            {project.images.map((image, index) => (
-              <div
-                key={`${project.slug}-image-${index}`}
-                className={`${index === 0 ? "md:col-span-2" : ""} group overflow-hidden rounded-md bg-neutral-100`}
-              >
-                <ProjectImage
-                  src={image}
-                  alt={`${project.title} ${index + 1}`}
-                  slug={project.slug}
-                  className="aspect-[4/3] w-full object-cover transition-transform duration-400 ease-out group-hover:scale-[1.02]"
-                />
-              </div>
-            ))}
+            {project.images.map((media, index) => {
+              const youtubeEmbed = getYouTubeEmbedUrl(media);
+
+              return (
+                <div
+                  key={`${project.slug}-media-${index}`}
+                  className={`${index === 0 ? "md:col-span-2" : ""} group overflow-hidden rounded-md bg-neutral-100`}
+                >
+                  {youtubeEmbed ? (
+                    <iframe
+                      src={youtubeEmbed}
+                      title={`${project.title} video ${index + 1}`}
+                      className="aspect-[16/9] w-full"
+                      loading="lazy"
+                      referrerPolicy="strict-origin-when-cross-origin"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowFullScreen
+                    />
+                  ) : (
+                    <ProjectImage
+                      src={media}
+                      alt={`${project.title} ${index + 1}`}
+                      slug={project.slug}
+                      className="aspect-[4/3] w-full object-cover transition-transform duration-400 ease-out group-hover:scale-[1.02]"
+                    />
+                  )}
+                </div>
+              );
+            })}
           </div>
         </section>
 

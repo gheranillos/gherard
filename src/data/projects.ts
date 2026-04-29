@@ -37,17 +37,23 @@ export const projects: Project[] = [
   {
     slug: "mtb-caracas",
     title: "Mtb caracas",
-    category: "Identidad Visual",
-    year: "2024",
-    client: "Marcas y Emprendedores",
-    role: "Brand Designer",
+    category: "Canal de youtube | Edicion",
+    year: "2024 - en curso",
+    client: "Mtb Caracas",
+    role: "Editor de videos",
     description:
       "Diseño de marcas, sistemas visuales, piezas gráficas y conceptos que buscan verse sólidos, actuales y con personalidad.",
     longDescription:
-      "Proyectos de branding para clientes y marcas propias. Desde el briefing hasta el manual de marca: logotipo, paleta, tipografía, aplicaciones y sistema gráfico completo. El objetivo siempre es que la marca se vea real, no genérica.",
-    tags: ["Logotipo", "Sistema Visual", "Paleta", "Tipografía"],
+      "Me encargo de editar, filtrar y gestionar el contenido del canal de youtube. Buscando mostrar el MTB en Venezuela y Caracas.",
+    tags: ["Youtube", "Edicion", "Dirección"],
     coverImage: "/images/projects/covermtb.webp",
-    images: ["/projects/branding/01.jpg", "/projects/branding/02.jpg"],
+    images: [
+      "https://www.youtube.com/watch?v=u6CZna11jGE&t=885s",
+      "https://www.youtube.com/watch?v=LbnLk-tDUM4&t=4s",
+      "https://www.youtube.com/watch?v=iwsh9kQaL-A",
+      "https://www.youtube.com/watch?v=9JdqWfUkwp0&t=1424s",
+      "https://www.youtube.com/watch?v=Ez-fszUFfqk&t=5s",
+    ],
     accentColor: "#f7b7ff",
   },
   {
