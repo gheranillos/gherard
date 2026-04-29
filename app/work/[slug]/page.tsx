@@ -5,6 +5,20 @@ import { ArrowUpRight } from "lucide-react";
 import ProjectImage from "@/src/components/ProjectImage";
 import { projects } from "@/src/data/projects";
 
+const PROJECT_TITLE_CLASS =
+  "text-[100px] font-black uppercase leading-[44px] tracking-[1.2px] text-white";
+const PROJECT_INTRO_CLASS =
+  "mt-[30px] max-w-[620px] text-[1.02rem] leading-[23px] text-white/75";
+const PROJECT_SECTION_LABEL_CLASS =
+  "text-[0.7rem] font-light uppercase tracking-[0.8px] leading-[26px] text-[#f7b7ff]";
+const PROJECT_LONG_DESCRIPTION_CLASS =
+  "mt-6 max-w-[620px] text-[clamp(1rem,1.5vw,1.15rem)] leading-[21px] tracking-[0px] text-white/80";
+const PROJECT_SUPPORTING_DESCRIPTION_CLASS =
+  "mt-[27px] max-w-[620px] text-[0.98rem] leading-[19px] text-white/65";
+const PROJECT_MEDIA_LABEL_CLASS =
+  "w-[531px] text-[13px] font-light uppercase tracking-[0.8px] leading-[26px] text-[#f7b7ff]";
+const PROJECT_LABEL_FONT_STYLE = { fontFamily: "coolveticaBook" } as const;
+
 function getYouTubeEmbedUrl(url: string) {
   try {
     const parsed = new URL(url);
@@ -49,10 +63,10 @@ export default async function WorkProjectPage({
           </p>
           <div className="mt-5 grid gap-8 md:grid-cols-[1.2fr_0.8fr] md:items-end">
             <div>
-              <h1 className="text-[clamp(2.6rem,8vw,6.8rem)] font-black uppercase leading-[0.9] tracking-[-0.03em] text-white">
+              <h1 className={PROJECT_TITLE_CLASS}>
                 {project.title}
               </h1>
-              <p className="mt-4 max-w-[620px] text-[1.02rem] leading-[1.75] text-white/75">
+              <p className={PROJECT_INTRO_CLASS}>
                 {project.description}
               </p>
             </div>
@@ -90,17 +104,19 @@ export default async function WorkProjectPage({
 
         <section className="mx-auto grid w-full max-w-[1200px] gap-10 px-[5vw] py-20 md:grid-cols-[60%_40%]">
           <div>
-            <p className="text-[0.7rem] uppercase tracking-[0.2em] text-[#f7b7ff]">
+            <p className={PROJECT_SECTION_LABEL_CLASS} style={PROJECT_LABEL_FONT_STYLE}>
               Sobre el proyecto
             </p>
-            <p className="mt-6 max-w-[620px] text-[clamp(1rem,1.5vw,1.15rem)] leading-[1.85] text-white/80">
+            <p className={PROJECT_LONG_DESCRIPTION_CLASS}>
               {project.longDescription}
             </p>
-            <p className="mt-7 max-w-[620px] text-[0.98rem] leading-[1.85] text-white/65">
-              Cada entrega se trabaja desde concepto, sistema visual y ejecucion para
-              mantener una narrativa consistente entre piezas graficas, contenido y
-              presencia digital.
-            </p>
+            {project.slug !== "padelcafe" ? (
+              <p className={PROJECT_SUPPORTING_DESCRIPTION_CLASS}>
+                Cada entrega se trabaja desde concepto, sistema visual y ejecucion para
+                mantener una narrativa consistente entre piezas graficas, contenido y
+                presencia digital.
+              </p>
+            ) : null}
           </div>
 
           <div className="flex flex-col">
@@ -137,7 +153,7 @@ export default async function WorkProjectPage({
         </section>
 
         <section className="mx-auto w-full max-w-[1200px] px-[5vw] pb-24 pt-6">
-          <p className="text-[0.7rem] uppercase tracking-[0.2em] text-[#f7b7ff]">
+          <p className={PROJECT_MEDIA_LABEL_CLASS} style={PROJECT_LABEL_FONT_STYLE}>
             Imágenes y videos del proyecto
           </p>
           <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2">
