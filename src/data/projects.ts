@@ -135,7 +135,7 @@ export const projects: Project[] = [
     longDescription:
       "Desarrollo de branding para DTF Lecheria con enfoque en diseño y dirección visual para reforzar su presencia y coherencia de marca.",
     tags: ["Diseño", "Dirección"],
-    coverImage: "/images/projects/covertdf.webp",
+    coverImage: "/images/projects/coverdtf.webp",
     images: [
       "/images/projects/dtf1.webp",
       "/images/projects/dtf2.webp",
