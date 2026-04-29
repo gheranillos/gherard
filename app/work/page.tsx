@@ -343,7 +343,9 @@ export default function WorkPage() {
                     ? "aspect-[16/11] md:col-span-7 md:translate-y-10"
                     : index === 2
                       ? "aspect-[16/11] md:col-span-8 md:-translate-y-1"
-                      : "aspect-[5/4] md:col-span-6 md:translate-y-16 md:col-start-6"
+                      : index === 3
+                        ? "absolute aspect-[5/4] w-[444px] left-[-395px] top-[4828px] md:col-span-6 md:translate-y-16 md:col-start-6"
+                        : "aspect-[5/4] md:col-span-6 md:translate-y-16 md:col-start-6"
               }`}
               variants={staggerChild}
             >
