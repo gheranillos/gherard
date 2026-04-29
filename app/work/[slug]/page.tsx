@@ -50,6 +50,13 @@ export default async function WorkProjectPage({
   const { slug } = await params;
   const project = projects.find((item) => item.slug === slug);
   if (!project) notFound();
+  const serviceItems =
+    project.tags.length > 0
+      ? project.tags
+      : project.role
+          .split(/[|,/]/)
+          .map((item) => item.trim())
+          .filter(Boolean);
 
   const currentIndex = projects.findIndex((item) => item.slug === project.slug);
   const nextProject = projects[(currentIndex + 1) % projects.length]!;
@@ -67,22 +74,44 @@ export default async function WorkProjectPage({
                 {project.title}
               </h1>
               <p className={PROJECT_INTRO_CLASS}>
-                {project.description}
+                {project.longDescription}
               </p>
             </div>
-            <div className="grid gap-4 rounded-2xl border border-white/10 bg-[#161616] p-6">
-              <div>
-                <p className="text-[0.6rem] uppercase tracking-[0.22em] text-white/50">Cliente</p>
-                <p className="mt-1 text-[0.95rem] font-semibold text-white">{project.client}</p>
+            <div className="flex flex-col">
+              <div className="border-y border-white/15 bg-[#121212] px-0 py-2">
+                <div className="grid grid-cols-[1fr_1fr] border-b border-white/15 py-1.5">
+                  <p className="text-[1.05rem] leading-[1.3] text-white/80 md:text-[2rem]">Categories</p>
+                  <p className="text-[1.05rem] leading-[1.3] text-white md:text-[2rem]">{project.category}</p>
+                </div>
+                <div className="grid grid-cols-[1fr_1fr] border-b border-white/15 py-1.5">
+                  <p className="text-[1.05rem] leading-[1.3] text-white/80 md:text-[2rem]">Client</p>
+                  <p className="text-[1.05rem] leading-[1.3] text-white md:text-[2rem]">{project.client}</p>
+                </div>
+                <div className="grid grid-cols-[1fr_1fr] border-b border-white/15 py-1.5">
+                  <p className="text-[1.05rem] leading-[1.3] text-white/80 md:text-[2rem]">Project</p>
+                  <p className="text-[1.05rem] leading-[1.3] text-white md:text-[2rem]">{project.title}</p>
+                </div>
+                <div className="grid grid-cols-[1fr_1fr] border-b border-white/15 py-1.5">
+                  <p className="text-[1.05rem] leading-[1.3] text-white/80 md:text-[2rem]">Services</p>
+                  <div className="flex flex-col">
+                    {serviceItems.map((item) => (
+                      <p key={`${project.slug}-service-${item}`} className="text-[1.05rem] leading-[1.3] text-white md:text-[2rem]">
+                        {item}
+                      </p>
+                    ))}
+                  </div>
+                </div>
+                <div className="grid grid-cols-[1fr_1fr] py-1.5">
+                  <p className="text-[1.05rem] leading-[1.3] text-white/80 md:text-[2rem]">Year</p>
+                  <p className="text-[1.05rem] leading-[1.3] text-white md:text-[2rem]">{project.year}</p>
+                </div>
               </div>
-              <div>
-                <p className="text-[0.6rem] uppercase tracking-[0.22em] text-white/50">Rol</p>
-                <p className="mt-1 text-[0.95rem] font-semibold text-white">{project.role}</p>
-              </div>
-              <div>
-                <p className="text-[0.6rem] uppercase tracking-[0.22em] text-white/50">Año</p>
-                <p className="mt-1 text-[0.95rem] font-semibold text-white">{project.year}</p>
-              </div>
+              <Link
+                href="/#contacto"
+                className="mt-6 inline-flex w-fit items-center rounded-full bg-[#f7b7ff] px-8 py-3.5 font-bold text-[#161616] transition-colors duration-200 hover:bg-[#161616] hover:text-[#f7b7ff]"
+              >
+                Trabajemos juntos &rarr;
+              </Link>
             </div>
           </div>
         </section>
@@ -99,56 +128,6 @@ export default async function WorkProjectPage({
             <span className="inline-flex rounded-full border border-white/15 bg-white/10 px-3 py-1 text-[0.65rem] uppercase tracking-[0.2em] text-white backdrop-blur-sm">
               {project.category}
             </span>
-          </div>
-        </section>
-
-        <section className="mx-auto grid w-full max-w-[1200px] gap-10 px-[5vw] py-20 md:grid-cols-[60%_40%]">
-          <div>
-            <p className={PROJECT_SECTION_LABEL_CLASS} style={PROJECT_LABEL_FONT_STYLE}>
-              Sobre el proyecto
-            </p>
-            <p className={PROJECT_LONG_DESCRIPTION_CLASS}>
-              {project.longDescription}
-            </p>
-            {project.slug !== "padelcafe" ? (
-              <p className={PROJECT_SUPPORTING_DESCRIPTION_CLASS}>
-                Cada entrega se trabaja desde concepto, sistema visual y ejecucion para
-                mantener una narrativa consistente entre piezas graficas, contenido y
-                presencia digital.
-              </p>
-            ) : null}
-          </div>
-
-          <div className="flex flex-col">
-            <div className="rounded-[20px] border border-white/10 bg-[#161616] p-8">
-              <div className="border-b border-white/10 pb-4">
-                <p className="text-xs uppercase tracking-[0.16em] text-white/45">Categoría</p>
-                <p className="mt-1 font-semibold text-white">{project.category}</p>
-              </div>
-              <div className="border-b border-white/10 py-4">
-                <p className="text-xs uppercase tracking-[0.16em] text-white/45">Año</p>
-                <p className="mt-1 font-semibold text-white">{project.year}</p>
-              </div>
-              <div className="pt-4">
-                <p className="text-xs uppercase tracking-[0.16em] text-white/45">Tags</p>
-                <div className="mt-3 flex flex-wrap gap-2">
-                  {project.tags.map((tag) => (
-                    <span
-                      key={`${project.slug}-${tag}`}
-                      className="rounded-full bg-[#161616] px-3 py-[0.3rem] text-[0.72rem] font-semibold text-white"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
-            <Link
-              href="/#contacto"
-              className="mt-6 inline-flex w-fit items-center rounded-full bg-[#f7b7ff] px-8 py-3.5 font-bold text-[#161616] transition-colors duration-200 hover:bg-[#161616] hover:text-[#f7b7ff]"
-            >
-              Trabajemos juntos &rarr;
-            </Link>
           </div>
         </section>
 
