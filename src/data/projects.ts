@@ -85,8 +85,8 @@ export const projects: Project[] = [
   {
     slug: "freelance",
     title: "Trabajos Freelance",
-    category: "Clientes y Colaboraciones",
-    year: "2023–2024",
+    category: "Edicion y creación",
+    year: "2024-2026",
     client: "Clientes Independientes",
     role: "Diseño y Producción",
     description:
