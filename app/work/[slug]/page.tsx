@@ -67,6 +67,19 @@ function getFreelanceEditorialTileClass(index: number) {
   return layout[index] ?? "md:col-span-3 md:row-span-1";
 }
 
+function isYouTubeShortUrl(url: string) {
+  try {
+    const parsed = new URL(url);
+    const hostname = parsed.hostname.replace("www.", "");
+    return (
+      (hostname === "youtube.com" || hostname === "m.youtube.com") &&
+      parsed.pathname.startsWith("/shorts/")
+    );
+  } catch {
+    return false;
+  }
+}
+
 export function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }));
 }
@@ -167,13 +180,16 @@ export default async function WorkProjectPage({
           >
             {project.images.map((media, index) => {
               const youtubeEmbed = getYouTubeEmbedUrl(media);
+              const isShortVideo = Boolean(youtubeEmbed && isYouTubeShortUrl(media));
 
               return (
                 <div
                   key={`${project.slug}-media-${index}`}
                   className={`group overflow-hidden rounded-none bg-[#161616] ${
                     isFreelance
-                      ? getFreelanceEditorialTileClass(index)
+                      ? isShortVideo
+                        ? "md:col-span-2 md:row-span-2"
+                        : getFreelanceEditorialTileClass(index)
                       : index === 0
                         ? "md:col-span-2"
                         : ""
