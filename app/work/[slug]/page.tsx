@@ -32,6 +32,10 @@ function getYouTubeEmbedUrl(url: string) {
     if (hostname === "youtube.com" || hostname === "m.youtube.com") {
       const videoId = parsed.searchParams.get("v");
       if (videoId) return `https://www.youtube.com/embed/${videoId}`;
+      if (parsed.pathname.startsWith("/shorts/")) {
+        const shortId = parsed.pathname.split("/")[2];
+        if (shortId) return `https://www.youtube.com/embed/${shortId}`;
+      }
       if (parsed.pathname.startsWith("/embed/")) return url;
     }
     if (hostname === "youtu.be") {
@@ -42,6 +46,25 @@ function getYouTubeEmbedUrl(url: string) {
     return null;
   }
   return null;
+}
+
+function getFreelanceEditorialTileClass(index: number) {
+  const layout = [
+    "md:col-span-4 md:row-span-2",
+    "md:col-span-2 md:row-span-1",
+    "md:col-span-2 md:row-span-1",
+    "md:col-span-3 md:row-span-2",
+    "md:col-span-3 md:row-span-1",
+    "md:col-span-3 md:row-span-1",
+    "md:col-span-2 md:row-span-1",
+    "md:col-span-4 md:row-span-2",
+    "md:col-span-2 md:row-span-1",
+    "md:col-span-3 md:row-span-1",
+    "md:col-span-3 md:row-span-2",
+    "md:col-span-6 md:row-span-1",
+  ] as const;
+
+  return layout[index] ?? "md:col-span-3 md:row-span-1";
 }
 
 export function generateStaticParams() {
@@ -68,6 +91,7 @@ export default async function WorkProjectPage({
   const nextProject = projects[(currentIndex + 1) % projects.length]!;
   const projectHeading =
     project.slug === "padelcafe" ? "Padel Café Club" : project.title;
+  const isFreelance = project.slug === "freelance";
 
   return (
     <div className="min-h-screen bg-black text-neutral-100 selection:bg-[#f7b7ff] selection:text-black">
@@ -136,20 +160,30 @@ export default async function WorkProjectPage({
           <p className={PROJECT_MEDIA_LABEL_CLASS} style={PROJECT_LABEL_FONT_STYLE}>
             Imágenes y videos del proyecto
           </p>
-          <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2">
+          <div
+            className={`mt-8 grid grid-cols-1 gap-4 ${
+              isFreelance ? "md:auto-rows-[220px] md:grid-cols-6" : "md:grid-cols-2"
+            }`}
+          >
             {project.images.map((media, index) => {
               const youtubeEmbed = getYouTubeEmbedUrl(media);
 
               return (
                 <div
                   key={`${project.slug}-media-${index}`}
-                  className={`${index === 0 ? "md:col-span-2" : ""} group overflow-hidden rounded-md bg-[#161616]`}
+                  className={`group overflow-hidden rounded-none bg-[#161616] ${
+                    isFreelance
+                      ? getFreelanceEditorialTileClass(index)
+                      : index === 0
+                        ? "md:col-span-2"
+                        : ""
+                  }`}
                 >
                   {youtubeEmbed ? (
                     <iframe
                       src={youtubeEmbed}
                       title={`${project.title} video ${index + 1}`}
-                      className="aspect-[16/9] w-full"
+                      className={isFreelance ? "h-full w-full" : "aspect-[16/9] w-full"}
                       loading="lazy"
                       referrerPolicy="strict-origin-when-cross-origin"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -160,7 +194,11 @@ export default async function WorkProjectPage({
                       src={media}
                       alt={`${project.title} ${index + 1}`}
                       slug={project.slug}
-                      className="aspect-[4/3] w-full object-cover transition-transform duration-400 ease-out group-hover:scale-[1.02]"
+                      className={
+                        isFreelance
+                          ? "h-full w-full object-cover transition-transform duration-400 ease-out group-hover:scale-[1.02]"
+                          : "aspect-[4/3] w-full object-cover transition-transform duration-400 ease-out group-hover:scale-[1.02]"
+                      }
                     />
                   )}
                 </div>
