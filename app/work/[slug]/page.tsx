@@ -48,23 +48,38 @@ function getYouTubeEmbedUrl(url: string) {
   return null;
 }
 
-function getFreelanceEditorialTileClass(index: number) {
-  const layout = [
-    "md:col-span-4 md:row-span-2",
-    "md:col-span-2 md:row-span-1",
-    "md:col-span-2 md:row-span-1",
-    "md:col-span-3 md:row-span-2",
-    "md:col-span-3 md:row-span-1",
-    "md:col-span-3 md:row-span-1",
-    "md:col-span-2 md:row-span-1",
-    "md:col-span-4 md:row-span-2",
-    "md:col-span-2 md:row-span-1",
-    "md:col-span-3 md:row-span-1",
-    "md:col-span-3 md:row-span-2",
-    "md:col-span-6 md:row-span-1",
-  ] as const;
+function getEditorialTileClass(slug: string, index: number) {
+  const layouts: Record<string, readonly string[]> = {
+    freelance: [
+      "md:col-span-4 md:row-span-2",
+      "md:col-span-2 md:row-span-1 md:-translate-y-2",
+      "md:col-span-2 md:row-span-1",
+      "md:col-span-3 md:row-span-2",
+      "md:col-span-3 md:row-span-1 md:translate-y-2",
+      "md:col-span-3 md:row-span-1",
+      "md:col-span-2 md:row-span-1",
+      "md:col-span-4 md:row-span-2 md:-translate-y-2",
+      "md:col-span-2 md:row-span-1",
+      "md:col-span-3 md:row-span-1",
+      "md:col-span-3 md:row-span-2 md:translate-y-2",
+      "md:col-span-6 md:row-span-1",
+    ],
+    "el-kiosco": [
+      "md:col-span-3 md:row-span-2",
+      "md:col-span-3 md:row-span-1 md:translate-y-2",
+      "md:col-span-3 md:row-span-2",
+      "md:col-span-3 md:row-span-1 md:-translate-y-2",
+      "md:col-span-2 md:row-span-1",
+      "md:col-span-4 md:row-span-2",
+      "md:col-span-2 md:row-span-1",
+      "md:col-span-2 md:row-span-2 md:translate-y-2",
+      "md:col-span-4 md:row-span-1",
+      "md:col-span-2 md:row-span-2 md:-translate-y-2",
+      "md:col-span-4 md:row-span-1",
+    ],
+  };
 
-  return layout[index] ?? "md:col-span-3 md:row-span-1";
+  return layouts[slug]?.[index] ?? "md:col-span-3 md:row-span-1";
 }
 
 function isYouTubeShortUrl(url: string) {
@@ -104,7 +119,8 @@ export default async function WorkProjectPage({
   const nextProject = projects[(currentIndex + 1) % projects.length]!;
   const projectHeading =
     project.slug === "padelcafe" ? "Padel Café Club" : project.title;
-  const isFreelance = project.slug === "freelance";
+  const isEditorialGallery =
+    project.slug === "freelance" || project.slug === "el-kiosco";
 
   return (
     <div className="min-h-screen bg-black text-neutral-100 selection:bg-[#f7b7ff] selection:text-black">
@@ -175,7 +191,7 @@ export default async function WorkProjectPage({
           </p>
           <div
             className={`mt-8 grid grid-cols-1 gap-4 ${
-              isFreelance ? "md:auto-rows-[220px] md:grid-cols-6" : "md:grid-cols-2"
+              isEditorialGallery ? "md:auto-rows-[200px] md:grid-cols-6" : "md:grid-cols-2"
             }`}
           >
             {project.images.map((media, index) => {
@@ -186,10 +202,10 @@ export default async function WorkProjectPage({
                 <div
                   key={`${project.slug}-media-${index}`}
                   className={`group overflow-hidden rounded-none bg-[#161616] ${
-                    isFreelance
+                    isEditorialGallery
                       ? isShortVideo
-                        ? "md:col-span-2 md:row-span-2"
-                        : getFreelanceEditorialTileClass(index)
+                        ? "md:col-span-2 md:row-span-2 md:translate-y-1"
+                        : getEditorialTileClass(project.slug, index)
                       : index === 0
                         ? "md:col-span-2"
                         : ""
@@ -199,7 +215,7 @@ export default async function WorkProjectPage({
                     <iframe
                       src={youtubeEmbed}
                       title={`${project.title} video ${index + 1}`}
-                      className={isFreelance ? "h-full w-full" : "aspect-[16/9] w-full"}
+                      className={isEditorialGallery ? "h-full w-full" : "aspect-[16/9] w-full"}
                       loading="lazy"
                       referrerPolicy="strict-origin-when-cross-origin"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -211,7 +227,7 @@ export default async function WorkProjectPage({
                       alt={`${project.title} ${index + 1}`}
                       slug={project.slug}
                       className={
-                        isFreelance
+                        isEditorialGallery
                           ? "h-full w-full object-cover transition-transform duration-400 ease-out group-hover:scale-[1.02]"
                           : "aspect-[4/3] w-full object-cover transition-transform duration-400 ease-out group-hover:scale-[1.02]"
                       }
