@@ -19,18 +19,7 @@ export default function AboutPage() {
     <div className="min-h-screen bg-white text-neutral-900 selection:bg-[#d9ff3f] selection:text-black">
       <main className="bg-white">
         <section className="mx-auto w-full max-w-[1200px] px-[5vw] pb-16 pt-10 md:pb-24">
-          <div className="flex items-center justify-between border-b border-black/10 pb-5 text-[0.65rem] uppercase tracking-[0.22em] text-black/45">
-            <span>Venezuela</span>
-            <span className="font-black tracking-[0.08em] text-black">GHERARD</span>
-            <a
-              href="mailto:hello@site.com"
-              className="transition-opacity duration-200 hover:opacity-55"
-            >
-              hello@site.com
-            </a>
-          </div>
-
-          <div className="pt-12 md:pt-16">
+          <div className="pt-4 md:pt-8">
             <h1 className="text-center text-[clamp(2.8rem,8vw,6.8rem)] font-black uppercase leading-[0.9] tracking-[-0.03em] text-[#0a0a0a]">
               {splitWords("About me").map((word, index) => (
                 <span
