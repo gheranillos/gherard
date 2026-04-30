@@ -32,9 +32,12 @@ export default function ShopPage() {
     <div className="min-h-screen bg-[#f8f8f8] text-neutral-900">
       <main>
         <section className="mx-auto w-full max-w-[1200px] px-6 pb-14 pt-16 md:px-10 md:pt-20">
+          <p className="text-[0.65rem] font-black uppercase tracking-[0.24em] text-black/70">
+            SHOP PROXIMAMENTE
+          </p>
           <Link
             href="/"
-            className="inline-flex rounded-full border border-black/15 px-4 py-2 text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-black/75 transition hover:bg-black hover:text-white"
+            className="mt-4 inline-flex rounded-full border border-black/15 px-4 py-2 text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-black/75 transition hover:bg-black hover:text-white"
           >
             Volver al inicio
           </Link>
