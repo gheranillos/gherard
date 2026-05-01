@@ -61,6 +61,7 @@ export const projects: Project[] = [
       "https://www.youtube.com/watch?v=iwsh9kQaL-A",
       "https://www.youtube.com/watch?v=9JdqWfUkwp0&t=1424s",
       "https://www.youtube.com/watch?v=Ez-fszUFfqk&t=5s",
+      "https://www.youtube.com/watch?v=1n8G_QSA8-Q&list=RD1n8G_QSA8-Q&start_radio=1",
     ],
     accentColor: "#f7b7ff",
   },
