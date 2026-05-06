@@ -5,7 +5,6 @@ import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight, Clock3, Instagram, MessageCircle } from "lucide-react";
 
-import { renderCanvas } from "@/components/ui/canvas";
 import Footer from "@/components/Footer";
 import { projects } from "@/src/data/projects";
 import { ReviewsSection } from "@/src/sections/Reviews";
@@ -215,9 +214,6 @@ export default function GherardPortfolio() {
   const aboutBtnRef = useRef<HTMLButtonElement | null>(null);
 
   useEffect(() => {
-    renderCanvas();
-  }, []);
-  useEffect(() => {
     const reduced =
       typeof window !== "undefined" &&
       window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -297,73 +293,43 @@ export default function GherardPortfolio() {
         {/* Bottom-centered headline + CTA */}
         <div className="relative z-10 flex min-h-[100dvh] flex-col justify-end px-6 pb-14 pt-32 md:px-10 md:pb-20">
           <div className="mx-auto flex w-full max-w-5xl flex-col items-center text-center">
-            <h1 className="about-book max-w-4xl text-4xl font-black uppercase leading-[0.95] tracking-[-0.03em] text-white drop-shadow-sm sm:text-5xl md:text-6xl lg:text-[4.25rem] xl:text-7xl">
-              {splitWords("Criterio").map((word, index) => (
-                <span
-                  key={`hero-head-1-${word}-${index}`}
-                  style={{ display: "inline-block", overflow: "hidden" }}
+            <h1 className="about-book max-w-5xl text-[clamp(2.7rem,9vw,7rem)] font-black uppercase leading-[0.9] tracking-[-0.02em] text-white drop-shadow-sm">
+              <span className="inline-block overflow-hidden align-middle">
+                <motion.span
+                  className="mr-[0.22em] inline-block"
+                  variants={wordVariants}
+                  custom={0}
+                  initial={prefersReduced ? false : "hidden"}
+                  animate={prefersReduced ? undefined : "visible"}
                 >
-                  <motion.span
-                    style={{
-                      display: "inline-block",
-                      marginRight: "0.25em",
-                      lineHeight: "80px",
-                      letterSpacing: "0px",
-                    }}
-                    variants={wordVariants}
-                    custom={index}
-                    initial={prefersReduced ? false : "hidden"}
-                    animate={prefersReduced ? undefined : "visible"}
-                  >
-                    {word}
-                  </motion.span>
-                </span>
-              ))}
-              <span className="text-[#f7b7ff]">
-                {splitWords("sin").map((word, index) => (
-                  <span
-                    key={`hero-head-2-${word}-${index}`}
-                    style={{ display: "inline-block", overflow: "hidden" }}
-                  >
-                    <motion.span
-                      style={{ display: "inline-block", marginRight: "0.25em" }}
-                      variants={wordVariants}
-                      custom={index + 1}
-                      initial={prefersReduced ? false : "hidden"}
-                      animate={prefersReduced ? undefined : "visible"}
-                    >
-                      {word}
-                    </motion.span>
-                  </span>
-                ))}
+                  Criterio
+                </motion.span>
               </span>
-              {splitWords("humo.").map((word, index) => (
-                <span
-                  key={`hero-head-3-${word}-${index}`}
-                  style={{ display: "inline-block", overflow: "hidden" }}
+              <span className="inline-block overflow-hidden align-middle text-[#f7b7ff]">
+                <motion.span
+                  className="mr-[0.22em] inline-block"
+                  variants={wordVariants}
+                  custom={1}
+                  initial={prefersReduced ? false : "hidden"}
+                  animate={prefersReduced ? undefined : "visible"}
                 >
-                  <motion.span
-                    style={{
-                      display: "inline-block",
-                      marginRight: "0.25em",
-                      letterSpacing: "2.8px",
-                    }}
-                    variants={wordVariants}
-                    custom={index + 2}
-                    initial={prefersReduced ? false : "hidden"}
-                    animate={prefersReduced ? undefined : "visible"}
-                  >
-                    {word}
-                  </motion.span>
-                </span>
-              ))}
+                  sin
+                </motion.span>
+              </span>
+              <span className="inline-block overflow-hidden align-middle">
+                <motion.span
+                  className="inline-block"
+                  variants={wordVariants}
+                  custom={2}
+                  initial={prefersReduced ? false : "hidden"}
+                  animate={prefersReduced ? undefined : "visible"}
+                >
+                  humo.
+                </motion.span>
+              </span>
             </h1>
           </div>
         </div>
-        <canvas
-          className="pointer-events-none absolute inset-0 mx-auto"
-          id="canvas"
-        />
       </section>
 
       {/* About Section */}
@@ -530,11 +496,11 @@ export default function GherardPortfolio() {
                     <button
                       type="button"
                       onClick={() => setActiveServiceIndex(index)}
-                      className="flex w-full items-center justify-between py-4 text-left transition-colors duration-200"
+                      className="flex w-full items-center justify-between py-5 text-left transition-colors duration-200 md:py-6"
                       aria-expanded={isActive}
                     >
                       <span
-                        className={`text-[0.95rem] uppercase tracking-[0.14em] transition-colors duration-200 md:text-[1.02rem] ${
+                        className={`text-[1.05rem] uppercase tracking-[0.14em] transition-colors duration-200 md:text-[1.35rem] ${
                           isActive ? "text-white" : "text-white/45"
                         }`}
                       >
