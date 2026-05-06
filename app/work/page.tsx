@@ -20,7 +20,7 @@ export default function WorkPage() {
           <div className="flex flex-wrap items-start justify-between gap-5">
             <div>
               <p className="text-[0.62rem] uppercase tracking-[0.24em] text-white/55">Casos</p>
-              <h1 className="mt-3 text-[clamp(2.4rem,8vw,5.8rem)] font-black uppercase leading-[0.9] tracking-[2px] text-[#ece8e2] [font-family:CoolveticaBook]">
+              <h1 className="mt-3 text-[clamp(2.4rem,8vw,5.8rem)] font-black uppercase leading-[0.9] tracking-[2px] text-[#ece8e2] [font-family:var(--font-helvetica-neue)]">
                 Criterio aplicado
               </h1>
             </div>
@@ -78,7 +78,7 @@ export default function WorkPage() {
 
                 <div className="mt-4 border-b border-white/10 pb-5">
                   <div className="flex items-start justify-between gap-4">
-                    <h2 className="text-[clamp(1.4rem,2.2vw,2rem)] font-bold leading-[1.05] text-white [font-family:CoolveticaBook]">
+                    <h2 className="text-[clamp(1.4rem,2.2vw,2rem)] font-bold leading-[1.05] text-white [font-family:var(--font-helvetica-neue)]">
                       {project.title}
                     </h2>
                     <ArrowUpRight className="mt-1 size-5 shrink-0 text-white/65 transition-colors duration-200 group-hover:text-[#f7b7ff]" />

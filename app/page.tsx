@@ -170,14 +170,14 @@ function ScrollCategories() {
                 <div className="mb-4 h-px w-full bg-white/40" />
                 <div className="flex items-end justify-between">
                   <span
-                    style={{ fontFamily: "CoolveticaBook, sans-serif" }}
+                    style={{ fontFamily: "var(--font-helvetica-neue), sans-serif" }}
                     className="text-2xl font-light text-white"
                   >
                     {item.number}
                   </span>
                   <span
                     style={{
-                      fontFamily: "CoolveticaBook, sans-serif",
+                      fontFamily: "var(--font-helvetica-neue), sans-serif",
                       fontSize: "clamp(3rem,8vw,7rem)",
                       lineHeight: 0.9,
                     }}
@@ -359,7 +359,7 @@ export default function GherardPortfolio() {
               ref={aboutLine1Ref}
               className="about-book whitespace-normal break-words font-black tracking-[-0.03em] text-[#0a0a0a] lg:whitespace-nowrap"
               style={{
-                fontFamily: "CoolveticaBook, sans-serif",
+                fontFamily: "var(--font-helvetica-neue), sans-serif",
                 fontSize: "clamp(1.45rem, 5.8vw, 5rem)",
                 lineHeight: 0.92,
                 transition: "transform 0.1s",
@@ -372,7 +372,7 @@ export default function GherardPortfolio() {
             <h2
               className="about-book relative mt-1 flex items-center justify-center gap-[0.24em] whitespace-normal font-black tracking-[-0.03em] text-[#0a0a0a] md:whitespace-nowrap"
               style={{
-                fontFamily: "CoolveticaBook, sans-serif",
+                fontFamily: "var(--font-helvetica-neue), sans-serif",
                 fontSize: "clamp(1.45rem, 5.8vw, 5rem)",
                 lineHeight: 0.92,
               }}
@@ -400,7 +400,7 @@ export default function GherardPortfolio() {
                   }}
                   className="about-light pointer-events-auto rounded-full border border-[#f7b7ff] bg-[#f7b7ff] px-6 py-2 text-xs font-bold uppercase tracking-[0.12em] text-[#0a0a0a] transition hover:border-[#0a0a0a] hover:bg-[#0a0a0a] hover:text-white sm:px-8 sm:py-2.5 sm:text-sm md:px-10 md:py-3"
                   style={{
-                    fontFamily: "CoolveticaBook, sans-serif",
+                    fontFamily: "var(--font-helvetica-neue), sans-serif",
                     position: "absolute",
                     left: "-66px",
                     top: "-12px",
@@ -424,27 +424,11 @@ export default function GherardPortfolio() {
             </h2>
           </div>
           <style jsx global>{`
-            @font-face {
-              font-family: "CoolveticaBook";
-              src: url("/fonts/coolvetica/Coolvetica-Book-Regular.otf")
-                format("opentype");
-              font-weight: 400;
-              font-style: normal;
-              font-display: swap;
-            }
-            @font-face {
-              font-family: "CoolveticaLight";
-              src: url("/fonts/coolvetica/Coolvetica-Light-Regular.otf")
-                format("opentype");
-              font-weight: 300;
-              font-style: normal;
-              font-display: swap;
-            }
             .about-book {
-              font-family: "CoolveticaBook", sans-serif;
+              font-family: var(--font-helvetica-neue), sans-serif;
             }
             .about-light {
-              font-family: "CoolveticaLight", sans-serif;
+              font-family: var(--font-helvetica), sans-serif;
             }
           `}</style>
         </div>
@@ -463,7 +447,7 @@ export default function GherardPortfolio() {
             >
               ✦ Servicios
             </motion.p>
-            <h2 className="mt-4 text-[clamp(2rem,7vw,4.6rem)] font-black uppercase leading-[0.92] tracking-[1.5px] text-white [font-family:CoolveticaBook]">
+            <h2 className="mt-4 text-[clamp(2rem,7vw,4.6rem)] font-black uppercase leading-[0.92] tracking-[1.5px] text-white [font-family:var(--font-helvetica-neue)]">
               {splitWords("Lo que resuelvo.").map((word, index) => (
                 <span
                   key={`services-head-editorial-${word}-${index}`}
@@ -575,7 +559,7 @@ export default function GherardPortfolio() {
                   transition={{ duration: 0.28, ease: servicesEase }}
                   className="rounded-[26px] border border-white/15 bg-white/[0.03] p-7"
                 >
-                  <h3 className="text-[clamp(1.6rem,2.6vw,2.4rem)] font-black uppercase tracking-[0.08em] text-white [font-family:CoolveticaBook]">
+                  <h3 className="text-[clamp(1.6rem,2.6vw,2.4rem)] font-black uppercase tracking-[0.08em] text-white [font-family:var(--font-helvetica-neue)]">
                     {services[activeServiceIndex]?.title}
                   </h3>
                   <p className="mt-4 max-w-[62ch] text-base leading-relaxed text-white/80">
@@ -759,7 +743,7 @@ export default function GherardPortfolio() {
               </div>
               <button
                 type="button"
-                className="mt-7 inline-flex h-12 items-center justify-center rounded-full bg-[#f7b7ff] px-8 text-xs font-semibold uppercase tracking-[1.2px] text-black [font-family:CoolveticaBook] transition hover:translate-y-[-1px] hover:bg-white"
+                className="mt-7 inline-flex h-12 items-center justify-center rounded-full bg-[#f7b7ff] px-8 text-xs font-semibold uppercase tracking-[1.2px] text-black [font-family:var(--font-helvetica-neue)] transition hover:translate-y-[-1px] hover:bg-white"
               >
                 Quiero trabajar contigo
               </button>

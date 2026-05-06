@@ -8,38 +8,42 @@ import FloatingNav from '@/src/components/FloatingNav'
 import GlobalIdentityBar from '@/src/components/GlobalIdentityBar'
 import './globals.css'
 
-const coolveticaBook = localFont({
-  src: '../fonts/coolvetica/Coolvetica-Book-Regular.otf',
-  weight: '400',
-  style: 'normal',
-  variable: '--font-coolvetica-book',
-  display: 'swap',
-})
-
-const coolvetica = localFont({
+const helvetica = localFont({
   src: [
     {
-      path: '../fonts/coolvetica/coolvetica-rg.otf',
+      path: '../fonts/Helvetica/Helvetica.ttf',
       weight: '400',
       style: 'normal',
     },
     {
-      path: '../fonts/coolvetica/coolvetica-rg-it.otf',
-      weight: '400',
-      style: 'italic',
+      path: '../fonts/Helvetica/Helvetica Light.ttf',
+      weight: '300',
+      style: 'normal',
+    },
+  ],
+  variable: '--font-helvetica',
+  display: 'swap',
+})
+
+const helveticaNeue = localFont({
+  src: [
+    {
+      path: '../fonts/HelveticaNeue/HelveticaNeue-Thin.otf',
+      weight: '100',
+      style: 'normal',
     },
     {
-      path: '../fonts/coolvetica/coolvetica-condensed-rg.otf',
+      path: '../fonts/HelveticaNeue/HelveticaNeue Bold.ttf',
       weight: '700',
       style: 'normal',
     },
     {
-      path: '../fonts/coolvetica/coolvetica-compressed-hv.otf',
+      path: '../fonts/HelveticaNeue/HelveticaNeue-Black.otf',
       weight: '900',
       style: 'normal',
     },
   ],
-  variable: '--font-coolvetica',
+  variable: '--font-helvetica-neue',
   display: 'swap',
 })
 
@@ -74,9 +78,9 @@ export default function RootLayout({
   return (
     <html
       lang="es"
-      className={`${coolvetica.variable} ${coolveticaBook.variable}`}
+      className={`${helvetica.variable} ${helveticaNeue.variable}`}
     >
-      <body className={`${coolvetica.className} font-sans antialiased`}>
+      <body className={`${helvetica.className} font-sans antialiased`}>
         <Providers>{children}</Providers>
         <GlobalIdentityBar />
         <FloatingNav />
