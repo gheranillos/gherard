@@ -178,12 +178,14 @@ function ScrollCategories() {
                     {item.number}
                   </span>
                   <span
-                    style={{
-                      fontFamily: "var(--font-helvetica-neue), sans-serif",
-                      fontSize: "clamp(3rem,8vw,7rem)",
-                      lineHeight: 0.9,
-                    }}
                     className="font-black uppercase text-white"
+                    style={{
+                      fontFamily: "helveticaNeue",
+                      lineHeight: 0.9,
+                      fontWeight: 100,
+                      letterSpacing: "-0.5px",
+                      fontSize: "50px",
+                    }}
                   >
                     {item.label}
                   </span>
@@ -247,7 +249,6 @@ export default function GherardPortfolio() {
   }, []);
 
   const aboutWords = ABOUT_REVEAL_TEXT.split(" ");
-  const latestWorkProgress = Math.min(Math.max((aboutProgress - 0.84) / 0.16, 0), 1);
   const aboutOverlayOpacity = 0.95 - aboutProgress * 0.35;
 
   return (
@@ -314,18 +315,6 @@ export default function GherardPortfolio() {
                 })}
               </p>
 
-              <div className="mt-14 overflow-hidden">
-                <h3
-                  className="text-[clamp(2.4rem,8vw,6.4rem)] font-black uppercase leading-[0.9] text-white [font-family:var(--font-helvetica-neue)]"
-                  style={{
-                    opacity: latestWorkProgress,
-                    transform: `translateY(${(1 - latestWorkProgress) * 46}px)`,
-                    transition: "opacity 0.28s ease, transform 0.28s ease",
-                  }}
-                >
-                  Latest Work
-                </h3>
-              </div>
             </div>
           </div>
         </div>
@@ -351,7 +340,7 @@ export default function GherardPortfolio() {
                   className="inline-block overflow-hidden"
                 >
                   <motion.span
-                    className="mr-[0.28em] inline-block"
+                    className="mr-[0.28em] inline-block text-[55px] font-bold tracking-[0px] [font-family:helvetica]"
                     initial={prefersReduced ? false : { opacity: 0, y: 14 }}
                     whileInView={prefersReduced ? undefined : { opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-40px" }}

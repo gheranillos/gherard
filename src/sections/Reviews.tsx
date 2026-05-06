@@ -202,7 +202,8 @@ export function ReviewsSection() {
           font-size: clamp(1rem, 2vw, 1.25rem);
           line-height: 1.65;
           font-style: normal;
-          font-weight: 400;
+          font-weight: 800;
+          letter-spacing: -0.5px;
           color: #ffffff;
         }
 

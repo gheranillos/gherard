@@ -160,7 +160,7 @@ export default function Footer() {
       <Container delay={0.34} className="h-auto">
         <div className="bg-[#ff4a2f] px-6 py-10 md:px-10 md:py-12">
           <div className="mx-auto flex w-full max-w-[1400px] flex-col gap-6 md:flex-row md:items-end md:justify-between">
-            <h2 className="text-[clamp(4rem,16vw,13rem)] font-black uppercase leading-[0.85] text-black [font-family:var(--font-helvetica-neue)]">
+            <h2 className="text-[110px] font-black uppercase leading-[0.85] text-black [font-family:var(--font-helvetica-neue)]">
               Gherard
             </h2>
             <p className="max-w-[300px] text-[clamp(2rem,4vw,4.3rem)] font-black uppercase leading-[0.88] text-black md:text-right">

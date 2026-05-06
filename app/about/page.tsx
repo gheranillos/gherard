@@ -69,7 +69,7 @@ export default function AboutPage() {
               <p className="text-[0.65rem] uppercase text-[#d9ff3f]">
                 Gherard
               </p>
-              <h2 className="mt-4 text-[31px] font-black uppercase leading-[0.95] text-white [font-family:var(--font-helvetica-neue)]">
+              <h2 className="mt-4 text-[31px] font-black uppercase leading-[0.95] text-white [font-family:helvetica]">
                 Diseno, edito y dirijo con criterio.
               </h2>
               <p className="mt-6 max-w-[46ch] text-[0.98rem] leading-[1.85] text-white/68">

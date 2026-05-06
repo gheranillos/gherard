@@ -22,7 +22,9 @@ export default function GlobalIdentityBar() {
           <div className="hidden items-start gap-2 text-white/85 sm:flex">
             <span className="mt-1 inline-flex h-1.5 w-1.5 rounded-full bg-[#7dfd63]" />
             <span className="flex flex-col leading-none">
-              <span className="text-[0.52rem] uppercase">Available for project</span>
+              <span className="inline-block h-[14px] w-[158px] text-[12px]">
+                Available for project
+              </span>
               <span className="mt-1 text-[0.52rem] uppercase text-white/60">
                 May 2026
               </span>
