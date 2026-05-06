@@ -28,12 +28,6 @@ export default function BrandingPage() {
                   src={project.coverImage}
                   alt={project.title}
                   className="aspect-[16/11] w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.05]"
-                  onError={(e) => {
-                    const img = e.currentTarget;
-                    if (img.dataset.fallbackApplied === "1") return;
-                    img.dataset.fallbackApplied = "1";
-                    img.src = `https://picsum.photos/seed/${project.slug}/1200/800`;
-                  }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/[0.85] via-black/10 to-transparent transition-colors duration-300 group-hover:from-black/90 group-hover:via-black/20" />
                 <ArrowUpRight

@@ -69,12 +69,6 @@ export default function WorkPage() {
                     src={project.coverImage}
                     alt={project.title}
                     className="aspect-[16/10] w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
-                    onError={(e) => {
-                      const img = e.currentTarget;
-                      if (img.dataset.fallbackApplied === "1") return;
-                      img.dataset.fallbackApplied = "1";
-                      img.src = `https://picsum.photos/seed/${project.slug}/1200/800`;
-                    }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/10 to-transparent opacity-90 transition-opacity duration-200 group-hover:opacity-100" />
                   <span className="absolute right-4 top-4 inline-flex items-center rounded-full border border-white/25 bg-black/30 px-3 py-1 text-[0.58rem] uppercase tracking-[0.16em] text-white/85 backdrop-blur-sm">
