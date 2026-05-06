@@ -326,12 +326,12 @@ export default function GherardPortfolio() {
 
           <div
             ref={aboutCardRef}
-            className="relative z-10 mx-auto w-[min(98vw,930px)] bg-white px-4 py-[6vh] text-center sm:px-[5vw] md:px-[4vw] md:py-[5.5vh]"
+            className="relative z-10 mx-auto w-[min(98vw,930px)] border border-white/10 bg-black/75 px-4 py-[6vh] text-center backdrop-blur-[2px] sm:px-[5vw] md:px-[4vw] md:py-[5.5vh]"
             style={{ transformOrigin: "center center" }}
           >
             <h2
               ref={aboutLine1Ref}
-              className="about-book whitespace-normal break-words font-black text-[#0a0a0a] lg:whitespace-nowrap"
+              className="about-book whitespace-normal break-words font-black text-white lg:whitespace-nowrap"
               style={{
                 fontFamily: "var(--font-helvetica-neue), sans-serif",
                 fontWeight: 700,
@@ -345,7 +345,7 @@ export default function GherardPortfolio() {
             </h2>
 
             <h2
-              className="about-book relative mt-1 flex items-center justify-center gap-[0.24em] whitespace-normal font-black text-[#0a0a0a] md:whitespace-nowrap"
+              className="about-book relative mt-1 flex items-center justify-center gap-[0.24em] whitespace-normal font-black text-white md:whitespace-nowrap"
               style={{
                 fontFamily: "var(--font-helvetica-neue), sans-serif",
                 fontWeight: 700,
@@ -375,7 +375,7 @@ export default function GherardPortfolio() {
                       document.querySelector("#contacto");
                     target?.scrollIntoView({ behavior: "smooth" });
                   }}
-                  className="about-light pointer-events-auto rounded-full border border-[#f7b7ff] bg-[#f7b7ff] px-6 py-2 text-xs font-bold uppercase text-[#0a0a0a] transition hover:border-[#0a0a0a] hover:bg-[#0a0a0a] hover:text-white sm:px-8 sm:py-2.5 sm:text-sm md:px-10 md:py-3"
+                  className="about-light pointer-events-auto rounded-full border border-[#f7b7ff] bg-[#f7b7ff] px-6 py-2 text-xs font-bold uppercase text-black transition hover:border-white hover:bg-white hover:text-black sm:px-8 sm:py-2.5 sm:text-sm md:px-10 md:py-3"
                   style={{
                     fontFamily: "var(--font-helvetica-neue), sans-serif",
                     position: "absolute",

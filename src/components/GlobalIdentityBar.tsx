@@ -19,7 +19,7 @@ export default function GlobalIdentityBar() {
         </Link>
 
         <div className="pointer-events-auto flex items-center gap-2.5 sm:gap-3">
-          <div className="hidden items-start gap-2 rounded-full border border-white/15 bg-black/35 px-3 py-1.5 text-white/85 backdrop-blur-sm sm:flex">
+          <div className="hidden items-start gap-2 text-white/85 sm:flex">
             <span className="mt-1 inline-flex h-1.5 w-1.5 rounded-full bg-[#7dfd63]" />
             <span className="flex flex-col leading-none">
               <span className="text-[0.52rem] uppercase">Available for project</span>
