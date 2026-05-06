@@ -7,7 +7,7 @@ export default function GlobalIdentityBar() {
   return (
     <div className="pointer-events-none fixed left-0 right-0 top-8 z-40 px-6 md:px-10">
       <div className="mx-auto flex w-full max-w-[1600px] items-center justify-between">
-        <p className="text-[0.65rem] uppercase tracking-[0.2em] text-white/50">Venezuela</p>
+        <p className="text-[0.65rem] uppercase tracking-[0.2em] text-white/50">Criterio sin humo</p>
         <Image
           src="/iconfooter.png"
           alt="Gherard"

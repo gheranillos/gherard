@@ -10,12 +10,12 @@ export default function VideosPage() {
     <div className="min-h-screen bg-[#0b0f14] text-neutral-100 selection:bg-[#f7b7ff] selection:text-black">
       <main className="mx-auto w-full max-w-[1680px] px-6 pb-14 pt-[120px] md:px-10">
         <header className="mb-10">
-          <p className="text-[0.68rem] uppercase tracking-[0.24em] text-white/45">Portfolio</p>
+          <p className="text-[0.68rem] uppercase tracking-[0.24em] text-white/45">Filtro</p>
           <h1 className="mt-3 text-[clamp(2.2rem,5vw,4.2rem)] font-black uppercase tracking-[1.2px] text-white">
             Videos
           </h1>
           <p className="mt-3 max-w-[640px] text-sm uppercase tracking-[0.12em] text-white/55">
-            Proyectos filtrados por tags de edicion, video y contenido audiovisual.
+            Edicion y direccion de contenido para marcas que necesitan impacto con criterio.
           </p>
         </header>
 

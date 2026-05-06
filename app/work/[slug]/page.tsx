@@ -127,7 +127,7 @@ export default async function WorkProjectPage({
       <main className="bg-black pt-[108px]">
         <section className="mx-auto w-full max-w-[1200px] px-[5vw] pb-10 pt-8">
           <p className="text-[0.65rem] uppercase tracking-[0.24em] text-white/45">
-            Work / Project
+            Caso / Proyecto
           </p>
           <div className="mt-5 grid gap-8 md:grid-cols-[1.2fr_0.8fr] md:items-start">
             <div className="min-w-0">
@@ -138,21 +138,21 @@ export default async function WorkProjectPage({
                 {project.longDescription}
               </p>
               <Link href="/#contacto" className={PROJECT_CTA_CLASS}>
-                Trabajemos juntos &rarr;
+                Quiero este nivel &rarr;
               </Link>
             </div>
             <div className="flex flex-col md:items-end md:justify-self-end">
               <div className="w-full max-w-[329px] border-y-0 border-solid bg-black px-0 py-2 md:w-[329px]">
                 <div className="grid grid-cols-[1fr_1fr] border-b border-white/15 py-1.5">
-                  <p className={PROJECT_INFO_LABEL_CLASS}>Categories</p>
+                  <p className={PROJECT_INFO_LABEL_CLASS}>Categoria</p>
                   <p className={PROJECT_INFO_VALUE_CLASS}>{project.category}</p>
                 </div>
                 <div className="grid grid-cols-[1fr_1fr] border-b border-white/15 py-1.5">
-                  <p className={PROJECT_INFO_LABEL_CLASS}>Client</p>
+                  <p className={PROJECT_INFO_LABEL_CLASS}>Cliente</p>
                   <p className={PROJECT_INFO_VALUE_CLASS}>{project.client}</p>
                 </div>
                 <div className="grid grid-cols-[1fr_1fr] border-b border-white/15 py-1.5">
-                  <p className={PROJECT_INFO_LABEL_CLASS}>Services</p>
+                  <p className={PROJECT_INFO_LABEL_CLASS}>Enfoque</p>
                   <div className="flex flex-col">
                     {serviceItems.map((item) => (
                       <p key={`${project.slug}-service-${item}`} className={PROJECT_INFO_VALUE_CLASS}>
@@ -162,7 +162,7 @@ export default async function WorkProjectPage({
                   </div>
                 </div>
                 <div className="grid grid-cols-[1fr_1fr] py-1.5">
-                  <p className={PROJECT_INFO_LABEL_CLASS}>Year</p>
+                  <p className={PROJECT_INFO_LABEL_CLASS}>Ano</p>
                   <p className={PROJECT_INFO_VALUE_CLASS}>{project.year}</p>
                 </div>
               </div>

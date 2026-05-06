@@ -79,10 +79,10 @@ export function ReviewsSection() {
         <div className="pointer-events-none absolute left-0 right-0 top-1/2 z-[1] -translate-y-1/2 overflow-hidden whitespace-nowrap">
           <div className="marquee-track inline-flex min-w-[200%] will-change-transform">
             <span className="marquee-text px-6">
-              Review · Review · Review · Review · Review · Review ·
+              Resultado real · Resultado real · Resultado real · Resultado real ·
             </span>
             <span className="marquee-text px-6">
-              Review · Review · Review · Review · Review · Review ·
+              Resultado real · Resultado real · Resultado real · Resultado real ·
             </span>
           </div>
         </div>
@@ -96,19 +96,19 @@ export function ReviewsSection() {
             <div ref={cubeRef} className="cube relative will-change-transform">
               <div className="face face-front">
                 <p className="face-quote">
-                  "Gherard entendió desde el principio la vibra que quería para mi marca. El resultado fue
-                  exactamente lo que tenía en la cabeza pero mejor ejecutado."
+                  "Llegue con ideas sueltas y sali con una marca clara. Se noto criterio en cada decision y eso
+                  se tradujo en mas confianza para vender."
                 </p>
                 <p className="face-author">
                   — <span className="face-name">Valentina M.</span>,{" "}
-                  <span className="face-role">Fundadora</span>
+                  <span className="face-role">Emprendedora</span>
                 </p>
               </div>
 
               <div className="face face-right">
                 <p className="face-quote">
-                  "Nos ayudó a ordenar la identidad visual y todo empezó a sentirse más profesional.
-                  Hubo criterio, detalle y una dirección muy clara en cada entrega."
+                  "No fue solo diseno bonito. Nos ordeno el mensaje, la narrativa y la ejecucion. Desde ahi, la
+                  marca se empezo a percibir en otro nivel."
                 </p>
                 <p className="face-author">
                   — <span className="face-name">Carla P.</span>,{" "}
@@ -118,19 +118,19 @@ export function ReviewsSection() {
 
               <div className="face face-left">
                 <p className="face-quote">
-                  "Cada detalle estuvo bien pensado: composición, ritmo y mensaje. El trabajo final se sintió
-                  premium y totalmente alineado con lo que queríamos comunicar."
+                  "Necesitabamos alguien que entendiera negocio y visual al mismo tiempo. Gherard dirigio el
+                  proceso sin rodeos y el resultado fue mas claro y mas rentable."
                 </p>
                 <p className="face-author">
                   — <span className="face-name">Mariana T.</span>,{" "}
-                  <span className="face-role">Marketing Manager</span>
+                  <span className="face-role">Directora de marketing</span>
                 </p>
               </div>
 
               <div className="face face-back">
                 <p className="face-quote">
-                  "Pasamos de tener ideas sueltas a una presencia visual coherente. La ejecución fue impecable y
-                  el resultado elevó por completo la marca."
+                  "Nos ayudo a pasar de piezas aisladas a una identidad con criterio. Ahora cada publicacion suma
+                  y la marca se siente realmente consistente."
                 </p>
                 <p className="face-author">
                   — <span className="face-name">Andrés C.</span>,{" "}

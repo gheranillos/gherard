@@ -5,9 +5,9 @@ import { projects, projectsInWorkGridOrder } from "@/src/data/projects";
 
 function getProjectEditorialSubtitle(description: string): string {
   const normalized = description.trim();
-  if (!normalized) return "Proyecto visual y direccion creativa.";
+  if (!normalized) return "Contexto real, decisiones claras y resultado medible.";
   const firstSentence = normalized.split(".")[0]?.trim();
-  return firstSentence ? `${firstSentence}.` : "Proyecto visual y direccion creativa.";
+  return firstSentence ? `${firstSentence}.` : "Contexto real, decisiones claras y resultado medible.";
 }
 
 export default function WorkPage() {
@@ -19,9 +19,9 @@ export default function WorkPage() {
         <header className="border-b border-white/10 pb-8">
           <div className="flex flex-wrap items-start justify-between gap-5">
             <div>
-              <p className="text-[0.62rem] uppercase tracking-[0.24em] text-white/55">Portfolio</p>
+              <p className="text-[0.62rem] uppercase tracking-[0.24em] text-white/55">Casos</p>
               <h1 className="mt-3 text-[clamp(2.4rem,8vw,5.8rem)] font-black uppercase leading-[0.9] tracking-[2px] text-[#ece8e2] [font-family:CoolveticaBook]">
-                Our Works
+                Criterio aplicado
               </h1>
             </div>
             <div className="flex flex-col items-start gap-2 text-left sm:items-end sm:text-right">
@@ -39,7 +39,7 @@ export default function WorkPage() {
               href="/work"
               className="inline-flex items-center rounded-full border border-white/20 bg-white/10 px-5 py-2 text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-white transition-colors duration-200 hover:bg-[#f7b7ff] hover:text-black"
             >
-              Todos
+              Todo
             </Link>
             <Link
               href="/branding"
@@ -72,7 +72,7 @@ export default function WorkPage() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/10 to-transparent opacity-90 transition-opacity duration-200 group-hover:opacity-100" />
                   <span className="absolute right-4 top-4 inline-flex items-center rounded-full border border-white/25 bg-black/30 px-3 py-1 text-[0.58rem] uppercase tracking-[0.16em] text-white/85 backdrop-blur-sm">
-                    View Project
+                    Ver caso
                   </span>
                 </div>
 

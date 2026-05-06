@@ -34,11 +34,11 @@ const Container = ({ children, className, delay = 0.2, reverse, simple }: Props)
 };
 
 const linksColumn = [
-  { label: "Home", href: "/" },
-  { label: "Works", href: "/work" },
-  { label: "About", href: "/about" },
-  { label: "Contact", href: "/#contacto" },
-  { label: "Shop", href: "/shop" },
+  { label: "Inicio", href: "/" },
+  { label: "Casos", href: "/work" },
+  { label: "Sobre", href: "/about" },
+  { label: "Contacto", href: "/#contacto" },
+  { label: "Tienda", href: "/shop" },
 ];
 
 const socialsColumn = [
@@ -117,7 +117,7 @@ export default function Footer() {
             <Container delay={0.24} className="h-auto">
               <div className="md:pl-6">
                 <p className="max-w-[280px] text-sm leading-[1.45] text-white/65">
-                  Sign up for newsletter to get latest insights and updates.
+                  Si quieres ideas accionables y cero humo, te las mando por correo.
                 </p>
                 <form className="mt-6 max-w-[320px]">
                   <label className="sr-only" htmlFor="footer-newsletter">
@@ -126,14 +126,14 @@ export default function Footer() {
                   <input
                     id="footer-newsletter"
                     type="email"
-                    placeholder="Enter email address"
+                    placeholder="Tu email"
                     className="h-11 w-full border-b border-white/25 bg-transparent px-0 text-base text-white outline-none placeholder:text-white/38 focus:border-white/55"
                   />
                   <button
                     type="button"
                     className="mt-4 inline-flex h-10 w-full items-center justify-center rounded-full border border-white/20 bg-transparent text-sm font-medium text-white/90 transition-colors duration-200 hover:border-[#d9ff3f] hover:bg-[#d9ff3f] hover:text-black"
                   >
-                    Submit
+                    Recibir
                   </button>
                 </form>
               </div>
@@ -142,16 +142,16 @@ export default function Footer() {
 
           <Container delay={0.3} className="h-auto">
             <div className="mt-14 flex flex-col gap-3 border-t border-white/10 pt-5 text-[0.72rem] uppercase tracking-[0.08em] text-white/45 md:flex-row md:items-center md:justify-between">
-              <p>© 2026 Gherard. All rights reserved.</p>
+              <p>© 2026 Gherard. Todos los derechos reservados.</p>
               <div className="flex items-center gap-4">
                 <Link href="/privacy" className="transition-colors duration-200 hover:text-white/75">
-                  Privacy policy
+                  Privacidad
                 </Link>
                 <Link href="/terms" className="transition-colors duration-200 hover:text-white/75">
-                  Terms of service
+                  Terminos
                 </Link>
               </div>
-              <p className="md:text-right">Made by Gherard</p>
+              <p className="md:text-right">Hecho por Gherard</p>
             </div>
           </Container>
         </div>
@@ -164,7 +164,7 @@ export default function Footer() {
               Gherard
             </h2>
             <p className="max-w-[300px] text-[clamp(2rem,4vw,4.3rem)] font-black uppercase leading-[0.88] tracking-[-0.025em] text-black md:text-right">
-              Beyond visuals. Built with vision.
+              Criterio real. Sin humo.
             </p>
           </div>
         </div>

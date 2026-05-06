@@ -33,13 +33,13 @@ export default function ShopPage() {
       <main>
         <section className="mx-auto w-full max-w-[1200px] px-6 pb-14 pt-16 md:px-10 md:pt-20">
           <p className="text-[0.65rem] font-black uppercase tracking-[0.24em] text-black/70">
-            SHOP PROXIMAMENTE
+            SHOP EN CONSTRUCCION
           </p>
           <Link
             href="/"
             className="mt-4 inline-flex rounded-full border border-black/15 px-4 py-2 text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-black/75 transition hover:bg-black hover:text-white"
           >
-            Volver al inicio
+            Volver
           </Link>
 
           <div className="mt-8 grid gap-10 rounded-[2rem] bg-[#0f0f10] px-6 py-10 text-white md:grid-cols-[1.2fr_0.8fr] md:px-10 md:py-12">
@@ -51,21 +51,21 @@ export default function ShopPage() {
                 Shop
               </h1>
               <p className="mt-5 max-w-[620px] text-[1rem] leading-[1.75] text-white/75">
-                Productos seleccionados para elevar tu estilo visual: piezas con
-                identidad, edición limitada y estética contemporánea.
+                Piezas propias con el mismo criterio de la web: directas,
+                funcionales y sin ruido visual innecesario.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <Link
                   href="#productos"
                   className="rounded-full bg-[#d9ff3f] px-6 py-3 text-xs font-bold uppercase tracking-[0.16em] text-[#0a0a0a] transition hover:opacity-80"
                 >
-                  Ver productos
+                  Ver catalogo
                 </Link>
                 <Link
                   href="/#contacto"
                   className="rounded-full border border-white/25 px-6 py-3 text-xs font-bold uppercase tracking-[0.16em] text-white transition hover:bg-white/10"
                 >
-                  Consultar pedido
+                  Hacer consulta
                 </Link>
               </div>
             </div>
@@ -75,14 +75,14 @@ export default function ShopPage() {
                 Destacado
               </p>
               <p className="mt-3 text-2xl font-black uppercase text-[#d9ff3f]">
-                Envío gratis
+                Envio gratis
               </p>
               <p className="mt-3 text-sm leading-relaxed text-white/70">
-                En compras desde $80. Entregas nacionales en 48-72 horas hábiles.
+                En compras desde $80. Entregas nacionales en 48-72 horas.
               </p>
               <div className="mt-7 border-t border-white/20 pt-5">
                 <p className="text-[0.65rem] uppercase tracking-[0.22em] text-white/60">
-                  Métodos de pago
+                  Metodos de pago
                 </p>
                 <p className="mt-2 text-sm text-white/85">
                   Tarjeta, transferencia y efectivo contra entrega.

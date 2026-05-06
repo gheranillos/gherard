@@ -8,10 +8,10 @@ import { useEffect, useState } from "react";
 
 const links = [
   { label: "Inicio", href: "/" },
-  { label: "About", href: "/about" },
-  { label: "Work", href: "/work" },
+  { label: "Sobre", href: "/about" },
+  { label: "Casos", href: "/work" },
   { label: "Tienda", href: "/shop" },
-  { label: "Contacto", href: "/#contacto" },
+  { label: "Hablemos", href: "/#contacto" },
 ];
 
 export default function FloatingNav() {

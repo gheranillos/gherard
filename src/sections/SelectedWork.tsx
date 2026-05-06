@@ -43,10 +43,10 @@ export function SelectedWork() {
               whileInView={prefersReduced ? undefined : "visible"}
               viewport={{ once: true, margin: "-40px" }}
             >
-              Portfolio
+              Casos
             </motion.div>
             <h2 className="mt-4 text-3xl font-black uppercase tracking-tight text-neutral-900 md:text-5xl">
-              {splitWords("Selected work / visual worlds").map((word, index) => (
+              {splitWords("Trabajo seleccionado / decisiones reales").map((word, index) => (
                 <span
                   key={`portfolio-head-${word}-${index}`}
                   style={{ display: "inline-block", overflow: "hidden" }}
@@ -72,9 +72,8 @@ export function SelectedWork() {
             whileInView={prefersReduced ? undefined : "visible"}
             viewport={{ once: true, margin: "-40px" }}
           >
-            Te dejé esta sección más visual para que metas covers, frames,
-            thumbnails, logos, renders o links reales a proyectos que quieras
-            enseñar.
+            No son piezas sueltas. Cada proyecto tiene contexto, decisiones y un
+            objetivo claro de negocio.
           </motion.p>
         </div>
       </div>
@@ -98,7 +97,7 @@ export function SelectedWork() {
           href="/work"
           className="inline-flex items-center justify-center rounded-full border-2 border-[#0a0a0a] bg-transparent px-10 py-[0.85rem] font-semibold text-[#0a0a0a] transition-colors duration-200 hover:bg-[#0a0a0a] hover:text-white"
         >
-          Ver todos los proyectos &rarr;
+          Ver todos los casos &rarr;
         </Link>
       </div>
     </section>

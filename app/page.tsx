@@ -20,8 +20,8 @@ const services = [
     number: "01",
     title: "Branding",
     description:
-      "Desarrollo de identidad visual completa: naming, paleta, tipografía, logotipo y sistema gráfico. Marcas que se ven sólidas, actuales y con personalidad propia.",
-    tags: ["Identidad", "Logotipo", "Sistema Visual", "Estrategia"],
+      "Alineo posicionamiento, mensaje y sistema visual para que tu marca deje de verse improvisada y empiece a vender con claridad.",
+    tags: ["Posicionamiento", "Sistema visual", "Claridad", "Consistencia"],
     image: "/picbranding.png",
     fallback: "https://picsum.photos/seed/branding/800/520",
     duration: "2-4 semanas",
@@ -30,8 +30,8 @@ const services = [
     number: "02",
     title: "Edición de Video",
     description:
-      "Piezas para redes, campañas y contenido audiovisual. Edición con criterio narrativo, ritmo y estética cuidada para que cada video comunique algo real.",
-    tags: ["Redes", "Narrativa", "Ritmo", "Contenido"],
+      "Edito piezas con ritmo y direccion para captar atencion, sostenerla y cerrar con mensaje claro. Menos relleno, mas resultado.",
+    tags: ["Retencion", "Narrativa", "Ritmo", "Conversion"],
     image: "/picvideos.png",
     fallback: "https://picsum.photos/seed/videoediting/800/520",
     duration: "3-10 dias por pieza",
@@ -40,8 +40,8 @@ const services = [
     number: "03",
     title: "Diseño Web",
     description:
-      "Sitios y portfolios con diseño limpio, buena estructura y atención al detalle. Enfocado en que la experiencia visual refleje la identidad de la marca.",
-    tags: ["Responsive", "UI", "Portfolio", "Webflow"],
+      "Diseno webs que filtran: dejan claro que haces, para quien es y por que confiar en ti. Tu presencia digital tiene que jugar a favor del negocio.",
+    tags: ["Posicionamiento", "Estructura", "Conversion", "Experiencia"],
     image: "/picweb.png",
     fallback: "https://picsum.photos/seed/webdesign/800/520",
     duration: "2-5 semanas",
@@ -50,8 +50,8 @@ const services = [
     number: "04",
     title: "Diseño Gráfico",
     description:
-      "Piezas gráficas para redes, print y campañas. Flyers, presentaciones, contenido visual y todo lo que necesite verse bien y tener coherencia.",
-    tags: ["Gráfica", "Print", "Redes", "Campaña"],
+      "Creo piezas que sostienen una misma linea visual en todos tus canales. Nada de diseno suelto: todo responde a una estrategia.",
+    tags: ["Sistema", "Campanas", "Contenido", "Escalabilidad"],
     image: "/picdesign.png",
     fallback: "https://picsum.photos/seed/graphic/800/520",
     duration: "3-8 dias",
@@ -298,7 +298,7 @@ export default function GherardPortfolio() {
         <div className="relative z-10 flex min-h-[100dvh] flex-col justify-end px-6 pb-14 pt-32 md:px-10 md:pb-20">
           <div className="mx-auto flex w-full max-w-5xl flex-col items-center text-center">
             <h1 className="about-book max-w-4xl text-4xl font-black uppercase leading-[0.95] tracking-[-0.03em] text-white drop-shadow-sm sm:text-5xl md:text-6xl lg:text-[4.25rem] xl:text-7xl">
-              {splitWords("Diseño").map((word, index) => (
+              {splitWords("Criterio").map((word, index) => (
                 <span
                   key={`hero-head-1-${word}-${index}`}
                   style={{ display: "inline-block", overflow: "hidden" }}
@@ -320,7 +320,7 @@ export default function GherardPortfolio() {
                 </span>
               ))}
               <span className="text-[#f7b7ff]">
-                {splitWords("con").map((word, index) => (
+                {splitWords("sin").map((word, index) => (
                   <span
                     key={`hero-head-2-${word}-${index}`}
                     style={{ display: "inline-block", overflow: "hidden" }}
@@ -337,7 +337,7 @@ export default function GherardPortfolio() {
                   </span>
                 ))}
               </span>
-              {splitWords("autenticidad").map((word, index) => (
+              {splitWords("humo.").map((word, index) => (
                 <span
                   key={`hero-head-3-${word}-${index}`}
                   style={{ display: "inline-block", overflow: "hidden" }}
@@ -400,7 +400,7 @@ export default function GherardPortfolio() {
                 letterSpacing: "0px",
               }}
             >
-              No soy editor,
+              No ejecuto pedidos,
             </h2>
 
             <h2
@@ -445,7 +445,7 @@ export default function GherardPortfolio() {
                     whiteSpace: "nowrap",
                   }}
                 >
-                  Contacto
+                  Hablemos
                 </button>
               </span>
               <span
@@ -453,7 +453,7 @@ export default function GherardPortfolio() {
                 className="inline-block transition-transform duration-75"
                 style={{ position: "static", letterSpacing: "0px" }}
               >
-                identidad.
+                negocios.
               </span>
             </h2>
           </div>
@@ -498,7 +498,7 @@ export default function GherardPortfolio() {
               ✦ Servicios
             </motion.p>
             <h2 className="mt-4 text-[clamp(2rem,7vw,4.6rem)] font-black uppercase leading-[0.92] tracking-[1.5px] text-white [font-family:CoolveticaBook]">
-              {splitWords("Lo que hacemos.").map((word, index) => (
+              {splitWords("Lo que resuelvo.").map((word, index) => (
                 <span
                   key={`services-head-editorial-${word}-${index}`}
                   className="inline-block overflow-hidden"
@@ -568,7 +568,7 @@ export default function GherardPortfolio() {
                             </p>
                             <div className="mt-3 flex items-center gap-2 text-[0.72rem] uppercase tracking-[0.12em] text-white/60">
                               <Clock3 className="size-3.5" />
-                              <span>Duracion: {service.duration}</span>
+                    <span>Tiempo estimado: {service.duration}</span>
                             </div>
                             <div className="mt-5 overflow-hidden rounded-2xl border border-white/15 bg-white/5">
                               {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -588,7 +588,7 @@ export default function GherardPortfolio() {
                               href="/#contacto"
                               className="mt-5 inline-flex items-center rounded-full bg-white px-5 py-2.5 text-[0.72rem] font-semibold uppercase tracking-[0.13em] text-black transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#d9ff3f]"
                             >
-                              Ver precios
+                              Ver alcance
                             </Link>
                           </div>
                         </motion.div>
@@ -620,7 +620,7 @@ export default function GherardPortfolio() {
                   </p>
                   <div className="mt-3 flex items-center gap-2 text-[0.72rem] uppercase tracking-[0.14em] text-white/60">
                     <Clock3 className="size-3.5" />
-                    <span>Duracion: {services[activeServiceIndex]?.duration}</span>
+                    <span>Tiempo estimado: {services[activeServiceIndex]?.duration}</span>
                   </div>
                   <div className="mt-6 overflow-hidden rounded-2xl border border-white/15 bg-white/5">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -640,7 +640,7 @@ export default function GherardPortfolio() {
                     href="/#contacto"
                     className="mt-6 inline-flex items-center rounded-full bg-white px-6 py-3 text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-black transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#d9ff3f]"
                   >
-                    Ver precios
+                    Ver alcance
                   </Link>
                 </motion.article>
               </AnimatePresence>
@@ -663,10 +663,10 @@ export default function GherardPortfolio() {
             whileInView={prefersReduced ? undefined : "visible"}
             viewport={{ once: true, margin: "-40px" }}
           >
-            Contact
+            Hablemos
           </motion.div>
           <h2 className="mt-5 max-w-5xl text-4xl font-black uppercase leading-[0.94] tracking-[-0.03em] md:text-7xl">
-            {splitWords("Ready para crear algo con identidad real?").map(
+            {splitWords("Si tu negocio ya crece, tu imagen tiene que estar a la altura.").map(
               (word, index) => (
                 <span
                   key={`contact-refresh-head-${word}-${index}`}
@@ -704,7 +704,7 @@ export default function GherardPortfolio() {
               <div className="mt-7 space-y-5">
                 <div className="border-b border-white/15 pb-4">
                   <p className="text-xs uppercase tracking-[0.2em] text-white/45">
-                    Ubicacion
+                    Base
                   </p>
                   <p className="mt-2 text-lg tracking-wide text-white/90">
                     Venezuela
@@ -755,7 +755,7 @@ export default function GherardPortfolio() {
               className="rounded-[30px] border border-white/15 bg-white/[0.03] p-7 md:p-9"
             >
               <p className="text-sm uppercase tracking-[0.2em] text-white/60">
-                Cuentame sobre tu idea
+                Cuentame que estas construyendo
               </p>
               <div className="mt-7 grid gap-5">
                 <label className="grid gap-2 text-xs uppercase tracking-[0.2em] text-white/45">
@@ -775,10 +775,10 @@ export default function GherardPortfolio() {
                   />
                 </label>
                 <label className="grid gap-2 text-xs uppercase tracking-[0.2em] text-white/45">
-                  Tipo de proyecto
+                  En que necesitas criterio
                   <input
                     type="text"
-                    placeholder="Branding, web, video..."
+                    placeholder="Marca, contenido, web o direccion visual"
                     className="h-12 rounded-xl border border-white/15 bg-black/20 px-4 text-sm tracking-wide text-white placeholder:text-white/35 outline-none transition focus:border-[#d9ff3f]"
                   />
                 </label>
@@ -786,7 +786,7 @@ export default function GherardPortfolio() {
                   Mensaje
                   <textarea
                     rows={5}
-                    placeholder="Describe tu proyecto, objetivos y tiempos..."
+                    placeholder="Que vendes, en que punto estas y que necesitas resolver"
                     className="min-h-[136px] rounded-xl border border-white/15 bg-black/20 px-4 py-3 text-sm leading-relaxed tracking-wide text-white placeholder:text-white/35 outline-none transition focus:border-[#d9ff3f]"
                   />
                 </label>
@@ -795,7 +795,7 @@ export default function GherardPortfolio() {
                 type="button"
                 className="mt-7 inline-flex h-12 items-center justify-center rounded-full bg-[#f7b7ff] px-8 text-xs font-semibold uppercase tracking-[1.2px] text-black [font-family:CoolveticaBook] transition hover:translate-y-[-1px] hover:bg-white"
               >
-                Enviar solicitud
+                Quiero trabajar contigo
               </button>
             </motion.form>
           </motion.div>

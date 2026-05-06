@@ -17,14 +17,14 @@ export const projects: Project[] = [
   {
     slug: "el-kiosco",
     title: "El Kiosco",
-    category: "Proyecto Propio / Cultura Visual",
+    category: "Proyecto propio / Cultura urbana",
     year: "2024",
     client: "El Kiosco",
-    role: "Dirección Creativa",
+    role: "Direccion creativa y negocio",
     description:
-      "Marca y universo creativo donde mezclo ropa, audiovisual, storytelling, comunidad y dirección estética con una energía urbana marcada.",
+      "El Kiosco es mi prueba real: una marca propia donde cada decision visual responde a negocio, comunidad y posicionamiento.",
     longDescription:
-      "El Kiosco nació como un proyecto personal para explorar la intersección entre moda urbana, contenido visual y comunidad. Desarrollé la identidad completa: naming, sistema gráfico, paleta, dirección de arte y estrategia de contenido para redes. Cada pieza comunica una estética coherente y con personalidad propia.",
+      "El Kiosco no es un ejercicio de portafolio. Es un proyecto vivo donde construyo marca, contenido y producto con foco comercial. Defini el sistema visual completo, la direccion creativa y la estrategia de comunicacion para conectar con cultura urbana latina y convertir esa energia en una marca consistente.",
     tags: ["Branding", "Dirección de Arte", "Contenido", "Identidad Visual"],
     coverImage: "/images/projects/coverkiosco.webp",
     images: [
@@ -45,14 +45,14 @@ export const projects: Project[] = [
   {
     slug: "mtb-caracas",
     title: "Mtb caracas",
-    category: "Canal de youtube | Edicion",
+    category: "Contenido / Edicion de video",
     year: "2024 - en curso",
     client: "Mtb Caracas",
-    role: "Editor de videos",
+    role: "Edicion y direccion de contenido",
     description:
-      "Diseño de marcas, sistemas visuales, piezas gráficas y conceptos que buscan verse sólidos, actuales y con personalidad.",
+      "Canal con volumen alto de contenido donde el foco es retencion, narrativa clara y consistencia visual en cada entrega.",
     longDescription:
-      "Me encargo de editar, filtrar y gestionar el contenido del canal de youtube. Buscando mostrar el MTB en Venezuela y Caracas.",
+      "En MTB Caracas no se trata solo de cortar videos: se trata de sostener una linea editorial que haga crecer audiencia y marca. Ordeno material, defino ritmo, pulso narrativa y entrego piezas pensadas para mantener atencion y reforzar identidad en cada publicacion.",
     tags: ["Youtube", "Edicion", "Dirección"],
     coverImage: "/images/projects/covermtb.webp",
     images: [
@@ -67,14 +67,14 @@ export const projects: Project[] = [
   {
     slug: "padelcafe",
     title: "Padel Cafe",
-    category: "Branding",
+    category: "Branding y direccion visual",
     year: "2025",
     client: "Branding",
-    role: "Dirección creativa | diseñador",
+    role: "Direccion creativa y diseno",
     description:
-      "Piezas para redes, campañas, promos y contenido audiovisual pensado para retener, comunicar y elevar la imagen del proyecto.",
+      "Sistema visual para un club en crecimiento que necesitaba verse a la altura de su ambicion y propuesta comercial.",
     longDescription:
-      "Club enfocado en ser un centro deportivo y recreativo para familiares y amigos. Su enfoque principal es el Padel.",
+      "Padel Cafe necesitaba pasar de idea prometedora a marca clara y confiable. Ordene identidad, tono visual y aplicaciones clave para que cada punto de contacto transmitiera criterio, energia y una propuesta consistente para su publico.",
     tags: ["Branding", "direccion creativa", "Diseño"],
     coverImage: "/images/projects/coverpadelcafe.webp",
     images: [
@@ -93,14 +93,14 @@ export const projects: Project[] = [
   {
     slug: "freelance",
     title: "Trabajos Freelance",
-    category: "Edicion y creación",
+    category: "Contenido y direccion creativa",
     year: "2024-2026",
     client: "Clientes Independientes",
-    role: "Diseño y Producción",
+    role: "Direccion, diseno y produccion",
     description:
-      "Trabajos desarrollados para marcas y proyectos en áreas como contenido, visuales, branding y dirección creativa.",
+      "Seleccion de proyectos para clientes que necesitaban decisiones claras, ejecucion rapida y coherencia visual en serio.",
     longDescription:
-      "Colaboraciones con marcas, emprendedores y estudios creativos. Proyectos variados que van desde identidad visual hasta dirección de contenido, pasando por diseño gráfico y producción audiovisual.",
+      "Este bloque resume trabajos para marcas, emprendedores y equipos creativos que querian subir su nivel visual sin perder tiempo. Cada pieza parte de contexto real: objetivo, publico y posicionamiento. No es producir por producir, es construir imagen que ayude a vender mejor.",
     tags: ["Freelance", "Colaboración", "Branding", "Diseño"],
     coverImage: "/images/projects/coverfreelancer.webp",
     images: [
@@ -126,11 +126,11 @@ export const projects: Project[] = [
     category: "Branding",
     year: "2025",
     client: "Naponino",
-    role: "Diseño, Dirección",
+    role: "Diseno y direccion",
     description:
-      "Proyecto de branding para Naponino enfocado en construir una identidad visual clara, moderna y con personalidad.",
+      "Branding pensado para diferenciar la marca con claridad y darle una base visual lista para escalar.",
     longDescription:
-      "Desarrollo de identidad de marca para Naponino con enfoque en dirección visual y diseño aplicado a piezas clave del proyecto.",
+      "Con Naponino trabajamos una identidad concreta, sin ruido ni adornos vacios. Se definio direccion visual, sistema grafico y aplicaciones clave para que la marca comunicara valor de forma consistente desde el primer contacto.",
     tags: ["Diseño", "Dirección"],
     coverImage: "/images/projects/covernapo.webp",
     images: [
@@ -151,11 +151,11 @@ export const projects: Project[] = [
     category: "Branding",
     year: "2026",
     client: "Naponino",
-    role: "Diseño, dirección",
+    role: "Diseno y direccion",
     description:
-      "Proyecto de branding para DTF Lecheria, enfocado en una identidad visual sólida y versátil para piezas digitales y de marca.",
+      "Identidad creada para reforzar presencia local y convertir una propuesta tecnica en una marca facil de reconocer.",
     longDescription:
-      "Desarrollo de branding para DTF Lecheria con enfoque en diseño y dirección visual para reforzar su presencia y coherencia de marca.",
+      "DTF Lecheria necesitaba verse tan solida como su servicio. Definimos un lenguaje visual directo y aplicable a digital y fisico para que cada pieza hablara el mismo idioma y transmitiera confianza comercial.",
     tags: ["Diseño", "Dirección"],
     coverImage: "/images/projects/coverdtf.webp",
     images: [

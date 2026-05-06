@@ -6,8 +6,8 @@ const titles: Record<string, string> = {
   branding: "Branding",
   videos: "Videos",
   freelance: "Trabajos freelance",
-  fotografia: "Fotografía",
-  direccion: "Dirección",
+  fotografia: "Fotografia",
+  direccion: "Direccion",
 };
 
 type PageProps = { params: Promise<{ slug: string }> };
@@ -23,14 +23,14 @@ export default async function ProjectPage({ params }: PageProps) {
         href="/#proyectos"
         className="text-sm uppercase tracking-widest text-teal-600 hover:underline"
       >
-        ← Volver al portfolio
+        ← Volver a casos
       </Link>
       <h1 className="mt-8 text-4xl font-black uppercase tracking-tight md:text-6xl">
         {title}
       </h1>
       <p className="mt-4 max-w-2xl text-neutral-600">
-        Página de proyecto. Sustituye este bloque con el case study, galería o
-        media que quieras mostrar.
+        Este caso todavia esta en construccion. Si quieres ver proyectos
+        completos con contexto y decisiones, revisa la seccion Work.
       </p>
     </div>
   );
