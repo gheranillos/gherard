@@ -6,6 +6,7 @@ import { Providers } from './providers'
 import { CursorGlow } from '@/src/components/CursorGlow'
 import FloatingNav from '@/src/components/FloatingNav'
 import GlobalIdentityBar from '@/src/components/GlobalIdentityBar'
+import SoftScrollReveal from '@/src/components/SoftScrollReveal'
 import './globals.css'
 
 const helvetica = localFont({
@@ -81,6 +82,7 @@ export default function RootLayout({
       className={`${helvetica.variable} ${helveticaNeue.variable}`}
     >
       <body className={`${helvetica.className} font-sans antialiased`}>
+        <SoftScrollReveal />
         <Providers>{children}</Providers>
         <GlobalIdentityBar />
         <FloatingNav />

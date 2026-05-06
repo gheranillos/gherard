@@ -28,7 +28,7 @@ export default async function ProjectPage({ params }: PageProps) {
       <h1 className="mt-8 text-4xl font-black uppercase md:text-6xl">
         {title}
       </h1>
-      <p className="mt-4 max-w-2xl text-neutral-600">
+      <p className="mt-4 max-w-2xl font-medium text-neutral-600">
         Este caso todavia esta en construccion. Si quieres ver proyectos
         completos con contexto y decisiones, revisa la seccion Work.
       </p>

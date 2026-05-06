@@ -86,7 +86,7 @@ export default function WorkPage() {
                   <p className="mt-1 text-[0.66rem] uppercase text-white/45">
                     {project.category} / {project.year}
                   </p>
-                  <p className="mt-3 max-w-[48ch] text-sm leading-relaxed text-white/72">
+                  <p className="mt-3 max-w-[48ch] text-sm font-medium leading-relaxed text-white/72">
                     {getProjectEditorialSubtitle(project.description)}
                   </p>
                 </div>

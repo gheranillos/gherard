@@ -22,10 +22,10 @@ export default function GlobalIdentityBar() {
           <div className="hidden items-start gap-2 text-white/85 sm:flex">
             <span className="mt-1 inline-flex h-1.5 w-1.5 rounded-full bg-[#7dfd63]" />
             <span className="flex flex-col leading-none">
-              <span className="inline-block h-[14px] w-[158px] text-[12px]">
+              <span className="inline-block h-[14px] w-[158px] text-[15px] font-bold">
                 Available for project
               </span>
-              <span className="mt-1 text-[0.52rem] uppercase text-white/60">
+              <span className="mt-1 text-[13px] uppercase text-white/60">
                 May 2026
               </span>
             </span>
@@ -33,7 +33,7 @@ export default function GlobalIdentityBar() {
 
           <Link
             href="/#contacto"
-            className="inline-flex h-8 items-center rounded-full border border-white/20 bg-black/35 px-4 text-[0.56rem] font-semibold uppercase text-white transition-colors duration-200 hover:border-[#d9ff3f] hover:bg-[#d9ff3f] hover:text-black"
+            className="inline-flex h-8 w-[99px] items-center rounded-full border border-white/20 bg-black/35 px-4 text-[12px] font-semibold uppercase text-white transition-colors duration-200 hover:border-[#d9ff3f] hover:bg-[#d9ff3f] hover:text-black"
           >
             Let&apos;s Talk
           </Link>

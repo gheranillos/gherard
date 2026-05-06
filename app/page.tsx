@@ -265,10 +265,10 @@ export default function GherardPortfolio() {
         <div className="absolute inset-0 bg-black/20" />
 
         {/* Bottom-centered headline + CTA */}
-        <div className="relative z-10 flex min-h-[100dvh] flex-col justify-end px-6 pb-14 pt-32 md:px-10 md:pb-20">
+        <div className="relative z-10 flex h-[810px] flex-col justify-end px-6 pb-14 pt-32 md:px-10 md:pb-20">
           <div className="mx-auto flex w-full max-w-7xl items-end justify-start">
             <motion.h1
-              className="max-w-[540px] text-left text-[clamp(1.35rem,2.3vw,2.15rem)] font-bold leading-[1.08] text-white drop-shadow-sm [font-family:var(--font-helvetica-neue)]"
+              className="h-[55px] max-w-[313px] text-left text-[clamp(1.35rem,2.3vw,2.15rem)] font-bold leading-[23px] tracking-[-1.5px] text-white drop-shadow-sm [font-family:var(--font-helvetica-neue)]"
               initial={prefersReduced ? false : { opacity: 0, y: 16 }}
               animate={prefersReduced ? undefined : { opacity: 1, y: 0 }}
               transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
@@ -445,10 +445,10 @@ export default function GherardPortfolio() {
                   transition={{ duration: 0.28, ease: servicesEase }}
                   className="rounded-[26px] border border-white/15 bg-white/[0.03] p-7"
                 >
-                  <h3 className="text-[clamp(1.6rem,2.6vw,2.4rem)] font-black uppercase text-white [font-family:var(--font-helvetica-neue)]">
+                  <h3 className="text-[clamp(1.6rem,2.6vw,2.4rem)] font-bold uppercase text-white [font-family:var(--font-helvetica-neue)]">
                     {services[activeServiceIndex]?.title}
                   </h3>
-                  <p className="mt-4 max-w-[62ch] text-base leading-relaxed text-white/80">
+                  <p className="mt-4 max-w-[62ch] text-base leading-5 tracking-[0px] text-white/80">
                     {services[activeServiceIndex]?.description}
                   </p>
                   <p className="mt-5 text-[0.72rem] uppercase text-white/55">

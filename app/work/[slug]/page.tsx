@@ -8,13 +8,13 @@ import { projects } from "@/src/data/projects";
 const PROJECT_TITLE_CLASS =
   "max-w-[min(377px,100%)] text-[80px] font-black uppercase leading-[78px] text-white";
 const PROJECT_INTRO_CLASS =
-  "mt-[30px] max-w-[620px] text-[1.02rem] leading-[23px] text-white/75";
+  "mt-[30px] max-w-[620px] text-[13px] leading-[15px] font-medium text-white/75";
 const PROJECT_CTA_CLASS =
   "mt-6 inline-flex w-fit items-center rounded-full bg-[#f7b7ff] px-8 py-3.5 font-bold text-[#161616] transition-colors duration-200 hover:bg-[#161616] hover:text-[#f7b7ff]";
 const PROJECT_INFO_LABEL_CLASS =
-  "text-[14px] font-thin leading-[1.3] text-white/80 [font-family:var(--font-helvetica)]";
+  "text-[14px] font-semibold leading-[1.3] text-white/80 [font-family:var(--font-helvetica)]";
 const PROJECT_INFO_VALUE_CLASS =
-  "w-[111px] text-[15px] leading-[1.3] text-white";
+  "w-[111px] text-[15px] font-black leading-[1.3] text-white";
 const PROJECT_SECTION_LABEL_CLASS =
   "text-[0.7rem] font-light uppercase leading-[26px] text-[#f7b7ff]";
 const PROJECT_LONG_DESCRIPTION_CLASS =
