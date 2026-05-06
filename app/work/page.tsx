@@ -300,6 +300,20 @@ function WorkHero() {
                 >
                   y DIRECTOR
                 </h2>
+                <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
+                  <Link
+                    href="/branding"
+                    className="inline-flex items-center rounded-full border border-white/25 bg-black/30 px-5 py-2 text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-white transition-colors duration-200 hover:bg-[#f7b7ff] hover:text-black"
+                  >
+                    Ver Branding
+                  </Link>
+                  <Link
+                    href="/videos"
+                    className="inline-flex items-center rounded-full border border-white/25 bg-black/30 px-5 py-2 text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-white transition-colors duration-200 hover:bg-[#f7b7ff] hover:text-black"
+                  >
+                    Ver Videos
+                  </Link>
+                </div>
               </div>
             </div>
 

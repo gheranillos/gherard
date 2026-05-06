@@ -186,3 +186,46 @@ export function projectsInWorkGridOrder(all: Project[] = projects): Project[] {
     (p): p is Project => Boolean(p),
   );
 }
+
+function normalizeTag(value: string): string {
+  return value
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .trim();
+}
+
+function projectMatchesAnyKeyword(project: Project, keywords: readonly string[]): boolean {
+  const normalizedKeywords = keywords.map(normalizeTag);
+  const normalizedTags = project.tags.map(normalizeTag);
+  return normalizedTags.some((tag) =>
+    normalizedKeywords.some((keyword) => tag.includes(keyword)),
+  );
+}
+
+export function getBrandingProjects(all: Project[] = projects): Project[] {
+  const brandingKeywords = [
+    "branding",
+    "diseno",
+    "identidad",
+    "direccion de arte",
+    "direccion creativa",
+  ] as const;
+  return projectsInWorkGridOrder(all).filter((project) =>
+    projectMatchesAnyKeyword(project, brandingKeywords),
+  );
+}
+
+export function getVideoProjects(all: Project[] = projects): Project[] {
+  const videoKeywords = [
+    "edicion",
+    "youtube",
+    "video",
+    "contenido",
+    "produccion",
+    "audiovisual",
+  ] as const;
+  return projectsInWorkGridOrder(all).filter((project) =>
+    projectMatchesAnyKeyword(project, videoKeywords),
+  );
+}
