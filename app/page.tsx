@@ -292,42 +292,16 @@ export default function GherardPortfolio() {
 
         {/* Bottom-centered headline + CTA */}
         <div className="relative z-10 flex min-h-[100dvh] flex-col justify-end px-6 pb-14 pt-32 md:px-10 md:pb-20">
-          <div className="mx-auto flex w-full max-w-5xl flex-col items-center text-center">
-            <h1 className="about-book max-w-5xl text-[clamp(2.7rem,9vw,7rem)] font-black uppercase leading-[0.9] text-white drop-shadow-sm">
-              <span className="inline-block overflow-hidden align-middle">
-                <motion.span
-                  className="mr-[0.22em] inline-block"
-                  variants={wordVariants}
-                  custom={0}
-                  initial={prefersReduced ? false : "hidden"}
-                  animate={prefersReduced ? undefined : "visible"}
-                >
-                  Criterio
-                </motion.span>
-              </span>
-              <span className="inline-block overflow-hidden align-middle text-[#f7b7ff]">
-                <motion.span
-                  className="mr-[0.22em] inline-block"
-                  variants={wordVariants}
-                  custom={1}
-                  initial={prefersReduced ? false : "hidden"}
-                  animate={prefersReduced ? undefined : "visible"}
-                >
-                  sin
-                </motion.span>
-              </span>
-              <span className="inline-block overflow-hidden align-middle">
-                <motion.span
-                  className="inline-block"
-                  variants={wordVariants}
-                  custom={2}
-                  initial={prefersReduced ? false : "hidden"}
-                  animate={prefersReduced ? undefined : "visible"}
-                >
-                  humo.
-                </motion.span>
-              </span>
-            </h1>
+          <div className="mx-auto flex w-full max-w-7xl items-end justify-start">
+            <motion.h1
+              className="about-book max-w-[540px] text-left text-[clamp(1.35rem,2.3vw,2.15rem)] font-bold leading-[1.08] text-white drop-shadow-sm"
+              initial={prefersReduced ? false : { opacity: 0, y: 16 }}
+              animate={prefersReduced ? undefined : { opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            >
+              We build brands, video, and digital presence with clear direction, sharp criteria, and
+              zero fluff.
+            </motion.h1>
           </div>
         </div>
       </section>
@@ -360,29 +334,32 @@ export default function GherardPortfolio() {
               className="about-book whitespace-normal break-words font-black text-[#0a0a0a] lg:whitespace-nowrap"
               style={{
                 fontFamily: "var(--font-helvetica-neue), sans-serif",
+                fontWeight: 700,
                 fontSize: "clamp(1.45rem, 5.8vw, 5rem)",
                 lineHeight: 0.92,
                 transition: "transform 0.1s",
-                letterSpacing: "0px",
+                letterSpacing: "-1px",
               }}
             >
-              No ejecuto pedidos,
+              I do not take orders,
             </h2>
 
             <h2
               className="about-book relative mt-1 flex items-center justify-center gap-[0.24em] whitespace-normal font-black text-[#0a0a0a] md:whitespace-nowrap"
               style={{
                 fontFamily: "var(--font-helvetica-neue), sans-serif",
+                fontWeight: 700,
                 fontSize: "clamp(1.45rem, 5.8vw, 5rem)",
                 lineHeight: 0.92,
+                letterSpacing: "-1px",
               }}
             >
               <span
                 ref={aboutLeftWordRef}
                 className="inline-block transition-transform duration-75"
-                style={{ position: "static", letterSpacing: "0px" }}
+                style={{ position: "static", letterSpacing: "-1px" }}
               >
-                Construyo
+                I build
               </span>
               <span
                 ref={aboutBtnWrapRef}
@@ -417,9 +394,9 @@ export default function GherardPortfolio() {
               <span
                 ref={aboutRightWordRef}
                 className="inline-block transition-transform duration-75"
-                style={{ position: "static", letterSpacing: "0px" }}
+                style={{ position: "static", letterSpacing: "-1px" }}
               >
-                negocios.
+                businesses.
               </span>
             </h2>
           </div>
