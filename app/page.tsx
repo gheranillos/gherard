@@ -2,8 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
-import { Instagram, MessageCircle } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
+import { ArrowRight, Clock3, Instagram, MessageCircle } from "lucide-react";
 
 import { renderCanvas } from "@/components/ui/canvas";
 import Footer from "@/components/Footer";
@@ -24,6 +24,7 @@ const services = [
     tags: ["Identidad", "Logotipo", "Sistema Visual", "Estrategia"],
     image: "/picbranding.png",
     fallback: "https://picsum.photos/seed/branding/800/520",
+    duration: "2-4 semanas",
   },
   {
     number: "02",
@@ -33,6 +34,7 @@ const services = [
     tags: ["Redes", "Narrativa", "Ritmo", "Contenido"],
     image: "/picvideos.png",
     fallback: "https://picsum.photos/seed/videoediting/800/520",
+    duration: "3-10 dias por pieza",
   },
   {
     number: "03",
@@ -42,6 +44,7 @@ const services = [
     tags: ["Responsive", "UI", "Portfolio", "Webflow"],
     image: "/picweb.png",
     fallback: "https://picsum.photos/seed/webdesign/800/520",
+    duration: "2-5 semanas",
   },
   {
     number: "04",
@@ -51,8 +54,11 @@ const services = [
     tags: ["Gráfica", "Print", "Redes", "Campaña"],
     image: "/picdesign.png",
     fallback: "https://picsum.photos/seed/graphic/800/520",
+    duration: "3-8 dias",
   },
 ];
+
+const servicesEase = [0.16, 1, 0.3, 1] as const;
 
 function ScrollCategories() {
   const sectionRef = useRef<HTMLElement | null>(null);
@@ -198,6 +204,7 @@ function ScrollCategories() {
 
 export default function GherardPortfolio() {
   const [prefersReduced, setPrefersReduced] = useState(false);
+  const [activeServiceIndex, setActiveServiceIndex] = useState(0);
   const aboutSectionRef = useRef<HTMLElement | null>(null);
   const aboutBgRef = useRef<HTMLDivElement | null>(null);
   const aboutCardRef = useRef<HTMLDivElement | null>(null);
@@ -478,34 +485,34 @@ export default function GherardPortfolio() {
       </section>
 
       {/* Services Section */}
-      <section
-        id="servicios"
-        className="border-y border-neutral-200 bg-neutral-100/90"
-      >
-        <div className="mx-auto max-w-7xl overflow-visible px-6 pb-0 pt-24 md:px-10">
-          <div className="max-w-2xl">
-            <motion.div
+      <section id="servicios" className="bg-neutral-950 text-white">
+        <div className="mx-auto max-w-7xl px-6 py-20 md:px-10 md:py-28">
+          <div className="max-w-3xl">
+            <motion.p
+              className="text-[0.72rem] uppercase tracking-[0.24em] text-[#d9ff3f]"
               variants={revealVariants.fadeIn}
               initial={prefersReduced ? false : "hidden"}
               whileInView={prefersReduced ? undefined : "visible"}
               viewport={{ once: true, margin: "-40px" }}
-              className="text-sm uppercase tracking-[0.25em] text-[#f7b7ff]"
             >
-              Servicios
-            </motion.div>
-            <h2 className="mt-4 text-3xl font-black uppercase tracking-tight text-neutral-900 md:text-5xl">
-              {splitWords("Lo que hago.").map((word, index) => (
+              ✦ Servicios
+            </motion.p>
+            <h2 className="mt-4 text-[clamp(2rem,7vw,4.6rem)] font-black uppercase leading-[0.92] tracking-[1.5px] text-white [font-family:CoolveticaBook]">
+              {splitWords("Lo que hacemos.").map((word, index) => (
                 <span
-                  key={`services-head-${word}-${index}`}
-                  style={{ display: "inline-block", overflow: "hidden" }}
+                  key={`services-head-editorial-${word}-${index}`}
+                  className="inline-block overflow-hidden"
                 >
                   <motion.span
-                    style={{ display: "inline-block", marginRight: "0.25em" }}
-                    variants={wordVariants}
-                    custom={index}
-                    initial={prefersReduced ? false : "hidden"}
-                    whileInView={prefersReduced ? undefined : "visible"}
+                    className="mr-[0.28em] inline-block"
+                    initial={prefersReduced ? false : { opacity: 0, y: 14 }}
+                    whileInView={prefersReduced ? undefined : { opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-40px" }}
+                    transition={{
+                      duration: 0.38,
+                      delay: index * 0.08,
+                      ease: servicesEase,
+                    }}
                   >
                     {word}
                   </motion.span>
@@ -514,88 +521,131 @@ export default function GherardPortfolio() {
             </h2>
           </div>
 
-          <motion.div
-            className="mt-10 flex flex-col gap-0 overflow-visible pb-14"
-            variants={staggerContainer}
-            initial={prefersReduced ? false : "hidden"}
-            whileInView={prefersReduced ? undefined : "visible"}
-            viewport={{ once: true, margin: "-40px" }}
-          >
-            {services.map((service, index) => (
-              <motion.article
-                key={service.title}
-                className={`group min-h-[420px] w-full rounded-2xl border border-neutral-300/90 bg-white px-6 py-8 shadow-[0_4px_28px_rgba(0,0,0,0.1)] ring-1 ring-black/[0.06] transition-[transform,box-shadow] duration-300 ease-out hover:shadow-[0_12px_40px_rgba(0,0,0,0.14)] md:px-14 md:py-12 sticky ${
-                  index === 0
-                    ? "md:top-[80px] top-[60px]"
-                    : index === 1
-                      ? "md:top-[98px] top-[72px]"
-                      : index === 2
-                        ? "md:top-[116px] top-[84px]"
-                        : "md:top-[134px] top-[96px]"
-                }`}
-                style={{ zIndex: index + 1 }}
-                variants={staggerChild}
-                whileHover={
-                  prefersReduced
-                    ? undefined
-                    : {
-                        y: -8,
-                        scale: 1.015,
-                        transition: { duration: 0.25, ease: "easeOut" },
-                      }
-                }
-              >
-                <div className="grid gap-8 md:grid-cols-[1fr_380px] md:gap-10">
-                  <div className="min-w-0">
-                    <div className="flex items-baseline">
-                      <span className="mr-4 align-super font-mono text-[0.75rem] font-bold text-fuchsia-600/90">
-                        {`{${service.number}}`}
-                      </span>
-                      <h3 className="text-[clamp(1.6rem,8vw,2.4rem)] font-normal leading-[0.95] tracking-[-0.03em] text-neutral-950 [font-family:var(--font-coolvetica-book),ui-sans-serif,system-ui,sans-serif] md:text-[clamp(2rem,3.5vw,3rem)]">
-                        {service.title}
-                      </h3>
-                    </div>
-                    <p className="mt-5 max-w-[520px] text-base leading-[1.75] text-neutral-800">
-                      {service.description}
-                    </p>
-                    <div className="mt-6 flex flex-wrap gap-2">
-                      {service.tags.map((tag) => (
-                        <span
-                          key={`${service.title}-${tag}`}
-                          className="rounded-full border border-neutral-200/80 bg-neutral-200/60 px-3.5 py-1 text-[0.78rem] font-medium text-neutral-900"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                  <div className="hidden md:block">
-                    <motion.div
-                      className="relative h-[260px] overflow-hidden rounded-xl"
-                      whileHover={
-                        prefersReduced
-                          ? undefined
-                          : { scale: 1.06, transition: { duration: 0.5 } }
-                      }
+          <div className="mt-10 grid grid-cols-1 gap-10 md:grid-cols-[minmax(0,0.4fr)_minmax(0,0.6fr)] md:gap-14">
+            <div className="flex flex-col border-t border-white/20">
+              {services.map((service, index) => {
+                const isActive = index === activeServiceIndex;
+                return (
+                  <div key={service.title} className="border-b border-white/15">
+                    <button
+                      type="button"
+                      onClick={() => setActiveServiceIndex(index)}
+                      className="flex w-full items-center justify-between py-4 text-left transition-colors duration-200"
+                      aria-expanded={isActive}
                     >
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img
-                        src={service.image}
-                        alt={service.title}
-                        className="h-full w-full object-cover transition-transform duration-400 ease-out group-hover:scale-[1.03]"
-                        onError={(e) => {
-                          const img = e.currentTarget;
-                          if (img.dataset.fallbackApplied === "1") return;
-                          img.dataset.fallbackApplied = "1";
-                          img.src = service.fallback;
-                        }}
+                      <span
+                        className={`text-[0.95rem] uppercase tracking-[0.14em] transition-colors duration-200 md:text-[1.02rem] ${
+                          isActive ? "text-white" : "text-white/45"
+                        }`}
+                      >
+                        ({service.number}) {service.title.toUpperCase()}
+                      </span>
+                      <ArrowRight
+                        className={`size-4 shrink-0 transition-all duration-200 ${
+                          isActive
+                            ? "translate-x-0 opacity-100 text-white"
+                            : "-translate-x-1 opacity-0 text-white/50"
+                        }`}
                       />
-                    </motion.div>
+                    </button>
+
+                    <AnimatePresence initial={false}>
+                      {isActive ? (
+                        <motion.div
+                          key={`service-mobile-${service.number}`}
+                          className="overflow-hidden md:hidden"
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.28, ease: servicesEase }}
+                        >
+                          <div className="pb-5 pr-1">
+                            <p className="text-sm leading-relaxed text-white/75">
+                              {service.description}
+                            </p>
+                            <p className="mt-4 text-[0.72rem] uppercase tracking-[0.14em] text-white/55">
+                              {service.tags.join(" · ")}
+                            </p>
+                            <div className="mt-3 flex items-center gap-2 text-[0.72rem] uppercase tracking-[0.12em] text-white/60">
+                              <Clock3 className="size-3.5" />
+                              <span>Duracion: {service.duration}</span>
+                            </div>
+                            <div className="mt-5 overflow-hidden rounded-2xl border border-white/15 bg-white/5">
+                              {/* eslint-disable-next-line @next/next/no-img-element */}
+                              <img
+                                src={service.image}
+                                alt={service.title}
+                                className="aspect-[16/10] w-full object-cover"
+                                onError={(e) => {
+                                  const img = e.currentTarget;
+                                  if (img.dataset.fallbackApplied === "1") return;
+                                  img.dataset.fallbackApplied = "1";
+                                  img.src = service.fallback;
+                                }}
+                              />
+                            </div>
+                            <Link
+                              href="/#contacto"
+                              className="mt-5 inline-flex items-center rounded-full bg-white px-5 py-2.5 text-[0.72rem] font-semibold uppercase tracking-[0.13em] text-black transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#d9ff3f]"
+                            >
+                              Ver precios
+                            </Link>
+                          </div>
+                        </motion.div>
+                      ) : null}
+                    </AnimatePresence>
                   </div>
-                </div>
-              </motion.article>
-            ))}
-          </motion.div>
+                );
+              })}
+            </div>
+
+            <div className="hidden md:block">
+              <AnimatePresence mode="wait" initial={false}>
+                <motion.article
+                  key={`service-panel-${services[activeServiceIndex]?.number}`}
+                  initial={prefersReduced ? false : { opacity: 0, y: 18 }}
+                  animate={prefersReduced ? undefined : { opacity: 1, y: 0 }}
+                  exit={prefersReduced ? undefined : { opacity: 0, y: -18 }}
+                  transition={{ duration: 0.28, ease: servicesEase }}
+                  className="rounded-[26px] border border-white/15 bg-white/[0.03] p-7"
+                >
+                  <h3 className="text-[clamp(1.6rem,2.6vw,2.4rem)] font-black uppercase tracking-[0.08em] text-white [font-family:CoolveticaBook]">
+                    {services[activeServiceIndex]?.title}
+                  </h3>
+                  <p className="mt-4 max-w-[62ch] text-base leading-relaxed text-white/80">
+                    {services[activeServiceIndex]?.description}
+                  </p>
+                  <p className="mt-5 text-[0.72rem] uppercase tracking-[0.16em] text-white/55">
+                    {services[activeServiceIndex]?.tags.join(" · ")}
+                  </p>
+                  <div className="mt-3 flex items-center gap-2 text-[0.72rem] uppercase tracking-[0.14em] text-white/60">
+                    <Clock3 className="size-3.5" />
+                    <span>Duracion: {services[activeServiceIndex]?.duration}</span>
+                  </div>
+                  <div className="mt-6 overflow-hidden rounded-2xl border border-white/15 bg-white/5">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={services[activeServiceIndex]?.image}
+                      alt={services[activeServiceIndex]?.title}
+                      className="aspect-[16/10] w-full object-cover"
+                      onError={(e) => {
+                        const img = e.currentTarget;
+                        if (img.dataset.fallbackApplied === "1") return;
+                        img.dataset.fallbackApplied = "1";
+                        img.src = services[activeServiceIndex]?.fallback ?? "";
+                      }}
+                    />
+                  </div>
+                  <Link
+                    href="/#contacto"
+                    className="mt-6 inline-flex items-center rounded-full bg-white px-6 py-3 text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-black transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#d9ff3f]"
+                  >
+                    Ver precios
+                  </Link>
+                </motion.article>
+              </AnimatePresence>
+            </div>
+          </div>
         </div>
       </section>
 
