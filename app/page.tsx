@@ -58,6 +58,8 @@ const services = [
 ];
 
 const servicesEase = [0.16, 1, 0.3, 1] as const;
+const ABOUT_REVEAL_TEXT =
+  "We combine years of branding, design direction, and content execution to build businesses that look sharp, speak clearly, and sell with confidence.";
 
 function ScrollCategories() {
   const sectionRef = useRef<HTMLElement | null>(null);
@@ -204,14 +206,8 @@ function ScrollCategories() {
 export default function GherardPortfolio() {
   const [prefersReduced, setPrefersReduced] = useState(false);
   const [activeServiceIndex, setActiveServiceIndex] = useState(0);
+  const [aboutProgress, setAboutProgress] = useState(0);
   const aboutSectionRef = useRef<HTMLElement | null>(null);
-  const aboutBgRef = useRef<HTMLDivElement | null>(null);
-  const aboutCardRef = useRef<HTMLDivElement | null>(null);
-  const aboutLine1Ref = useRef<HTMLHeadingElement | null>(null);
-  const aboutLeftWordRef = useRef<HTMLSpanElement | null>(null);
-  const aboutRightWordRef = useRef<HTMLSpanElement | null>(null);
-  const aboutBtnWrapRef = useRef<HTMLSpanElement | null>(null);
-  const aboutBtnRef = useRef<HTMLButtonElement | null>(null);
 
   useEffect(() => {
     const reduced =
@@ -219,53 +215,25 @@ export default function GherardPortfolio() {
       window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     setPrefersReduced(reduced);
   }, []);
+
   useEffect(() => {
     const section = aboutSectionRef.current;
-    const bg = aboutBgRef.current;
-    const card = aboutCardRef.current;
-    const line1 = aboutLine1Ref.current;
-    const leftWord = aboutLeftWordRef.current;
-    const rightWord = aboutRightWordRef.current;
-    const btnWrap = aboutBtnWrapRef.current;
-    const btn = aboutBtnRef.current;
-    if (
-      !section ||
-      !bg ||
-      !card ||
-      !line1 ||
-      !leftWord ||
-      !rightWord ||
-      !btnWrap ||
-      !btn
-    )
-      return;
+    if (!section) return;
 
     const clamp = (v: number, min: number, max: number) =>
       Math.min(Math.max(v, min), max);
-    const remap = (v: number, i0: number, i1: number, o0: number, o1: number) => {
-      if (i1 - i0 === 0) return o0;
-      const mapped = o0 + ((v - i0) / (i1 - i0)) * (o1 - o0);
-      return clamp(mapped, Math.min(o0, o1), Math.max(o0, o1));
-    };
+
+    let raf = 0;
 
     const onScroll = () => {
+      if (raf) return;
+      raf = window.requestAnimationFrame(() => {
       const scrolled = window.scrollY - section.offsetTop;
       const total = section.offsetHeight - window.innerHeight;
       const progress = clamp(scrolled / Math.max(total, 1), 0, 1);
-      const splitP = remap(progress, 0, 0.45, 0, 1);
-      const spread = remap(splitP, 0, 1, 0, 120);
-      line1.style.transform = "translateY(0px)";
-      leftWord.style.transform = `translateX(${-spread}px)`;
-      rightWord.style.transform = `translateX(${spread}px)`;
-      btnWrap.style.opacity = String(splitP);
-      btnWrap.style.transform = `translate(-50%, ${14 * (1 - splitP)}px) scale(${0.88 + 0.12 * splitP})`;
-      btn.style.opacity = String(splitP);
-      btn.style.transform = "scale(1)";
-
-      const zoomP = remap(progress, 0.6, 1, 0, 1);
-      card.style.transform = `scale(${1 - 0.22 * zoomP})`;
-      card.style.borderRadius = `${28 * zoomP}px`;
-      bg.style.opacity = String(zoomP);
+      setAboutProgress(progress);
+      raf = 0;
+      });
     };
 
     onScroll();
@@ -274,8 +242,13 @@ export default function GherardPortfolio() {
     return () => {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
+      if (raf) window.cancelAnimationFrame(raf);
     };
   }, []);
+
+  const aboutWords = ABOUT_REVEAL_TEXT.split(" ");
+  const latestWorkProgress = Math.min(Math.max((aboutProgress - 0.84) / 0.16, 0), 1);
+  const aboutOverlayOpacity = 0.95 - aboutProgress * 0.35;
 
   return (
     <div className="bg-white text-neutral-900 selection:bg-[#d9ff3f] selection:text-black">
@@ -294,7 +267,7 @@ export default function GherardPortfolio() {
         <div className="relative z-10 flex min-h-[100dvh] flex-col justify-end px-6 pb-14 pt-32 md:px-10 md:pb-20">
           <div className="mx-auto flex w-full max-w-7xl items-end justify-start">
             <motion.h1
-              className="about-book max-w-[540px] text-left text-[clamp(1.35rem,2.3vw,2.15rem)] font-bold leading-[1.08] text-white drop-shadow-sm"
+              className="max-w-[540px] text-left text-[clamp(1.35rem,2.3vw,2.15rem)] font-bold leading-[1.08] text-white drop-shadow-sm [font-family:var(--font-helvetica-neue)]"
               initial={prefersReduced ? false : { opacity: 0, y: 16 }}
               animate={prefersReduced ? undefined : { opacity: 1, y: 0 }}
               transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
@@ -307,107 +280,54 @@ export default function GherardPortfolio() {
       </section>
 
       {/* About Section */}
-      <section
-        id="about"
-        ref={aboutSectionRef}
-        className="relative h-[300vh]"
-      >
-        <div className="sticky top-0 flex h-screen items-center justify-center overflow-hidden">
+      <section id="about" ref={aboutSectionRef} className="relative h-[300vh] bg-[#0a0a0a]">
+        <div className="sticky top-0 h-screen overflow-hidden">
           <div
-            ref={aboutBgRef}
-            className="absolute inset-0 bg-cover bg-center opacity-0"
-            style={{
-              backgroundImage:
-                "url('/aboutbg.png'), url('https://picsum.photos/seed/gherard-about/1600/900')",
-            }}
-          >
-            <div className="absolute inset-0 bg-black/40" />
-          </div>
+            className="absolute inset-0 bg-black transition-opacity duration-200"
+            style={{ opacity: aboutOverlayOpacity }}
+          />
+          <div className="relative z-10 mx-auto grid h-full w-full max-w-[1400px] grid-cols-1 items-center gap-10 px-6 md:grid-cols-[130px_minmax(0,1fr)] md:px-10">
+            <div className="self-start pt-24 md:pt-28">
+              <p className="text-xs text-white/35">(ABOUT)</p>
+            </div>
 
-          <div
-            ref={aboutCardRef}
-            className="relative z-10 mx-auto w-[min(98vw,930px)] border border-white/10 bg-black/75 px-4 py-[6vh] text-center backdrop-blur-[2px] sm:px-[5vw] md:px-[4vw] md:py-[5.5vh]"
-            style={{ transformOrigin: "center center" }}
-          >
-            <h2
-              ref={aboutLine1Ref}
-              className="about-book whitespace-normal break-words font-black text-white lg:whitespace-nowrap"
-              style={{
-                fontFamily: "var(--font-helvetica-neue), sans-serif",
-                fontWeight: 700,
-                fontSize: "clamp(1.45rem, 5.8vw, 5rem)",
-                lineHeight: 0.92,
-                transition: "transform 0.1s",
-                letterSpacing: "-1px",
-              }}
-            >
-              I do not take orders,
-            </h2>
+            <div>
+              <p
+                className="max-w-[1050px] text-[clamp(2rem,5vw,4rem)] font-bold leading-[1.04] [font-family:var(--font-helvetica)]"
+              >
+                {aboutWords.map((word, index) => {
+                  const revealedIndex = Math.floor(aboutWords.length * aboutProgress);
+                  const isRevealed = index <= revealedIndex;
 
-            <h2
-              className="about-book relative mt-1 flex items-center justify-center gap-[0.24em] whitespace-normal font-black text-white md:whitespace-nowrap"
-              style={{
-                fontFamily: "var(--font-helvetica-neue), sans-serif",
-                fontWeight: 700,
-                fontSize: "clamp(1.45rem, 5.8vw, 5rem)",
-                lineHeight: 0.92,
-                letterSpacing: "-1px",
-              }}
-            >
-              <span
-                ref={aboutLeftWordRef}
-                className="inline-block transition-transform duration-75"
-                style={{ position: "static", letterSpacing: "-1px" }}
-              >
-                I build
-              </span>
-              <span
-                ref={aboutBtnWrapRef}
-                className="pointer-events-none absolute left-1/2 inline-flex items-center justify-center overflow-visible align-middle"
-                style={{ opacity: 0, transform: "translate(-50%, 14px) scale(0.88)" }}
-              >
-                <button
-                  ref={aboutBtnRef}
-                  type="button"
-                  onClick={() => {
-                    const target =
-                      document.querySelector("#contact") ??
-                      document.querySelector("#contacto");
-                    target?.scrollIntoView({ behavior: "smooth" });
-                  }}
-                  className="about-light pointer-events-auto rounded-full border border-[#f7b7ff] bg-[#f7b7ff] px-6 py-2 text-xs font-bold uppercase text-black transition hover:border-white hover:bg-white hover:text-black sm:px-8 sm:py-2.5 sm:text-sm md:px-10 md:py-3"
+                  return (
+                    <span
+                      key={`about-reveal-${word}-${index}`}
+                      className="transition-colors duration-300 ease-out"
+                      style={{
+                        color: isRevealed ? "rgba(255,255,255,1)" : "rgba(255,255,255,0.25)",
+                      }}
+                    >
+                      {word}
+                      {" "}
+                    </span>
+                  );
+                })}
+              </p>
+
+              <div className="mt-14 overflow-hidden">
+                <h3
+                  className="text-[clamp(2.4rem,8vw,6.4rem)] font-black uppercase leading-[0.9] text-white [font-family:var(--font-helvetica-neue)]"
                   style={{
-                    fontFamily: "var(--font-helvetica-neue), sans-serif",
-                    position: "absolute",
-                    left: "-66px",
-                    top: "-12px",
-                    paddingLeft: 32,
-                    opacity: 0,
-                    transform: "scale(1)",
-                    transition: "opacity 0.1s, transform 0.1s",
-                    whiteSpace: "nowrap",
+                    opacity: latestWorkProgress,
+                    transform: `translateY(${(1 - latestWorkProgress) * 46}px)`,
+                    transition: "opacity 0.28s ease, transform 0.28s ease",
                   }}
                 >
-                  Hablemos
-                </button>
-              </span>
-              <span
-                ref={aboutRightWordRef}
-                className="inline-block transition-transform duration-75"
-                style={{ position: "static", letterSpacing: "-1px" }}
-              >
-                businesses.
-              </span>
-            </h2>
+                  Latest Work
+                </h3>
+              </div>
+            </div>
           </div>
-          <style jsx global>{`
-            .about-book {
-              font-family: var(--font-helvetica-neue), sans-serif;
-            }
-            .about-light {
-              font-family: var(--font-helvetica), sans-serif;
-            }
-          `}</style>
         </div>
       </section>
 
@@ -590,7 +510,7 @@ export default function GherardPortfolio() {
             whileInView={prefersReduced ? undefined : "visible"}
             viewport={{ once: true, margin: "-40px" }}
           >
-            Hablemos
+            Contacto
           </motion.div>
           <h2 className="mt-5 max-w-5xl text-4xl font-black uppercase leading-[0.94] md:text-7xl">
             {splitWords("Si tu negocio ya crece, tu imagen tiene que estar a la altura.").map(

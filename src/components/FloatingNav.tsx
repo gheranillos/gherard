@@ -11,7 +11,7 @@ const links = [
   { label: "Sobre", href: "/about" },
   { label: "Casos", href: "/work" },
   { label: "Tienda", href: "/shop" },
-  { label: "Hablemos", href: "/#contacto" },
+  { label: "Contacto", href: "/#contacto" },
 ];
 
 export default function FloatingNav() {
