@@ -20,7 +20,7 @@ export default function AboutPage() {
       <main className="bg-white">
         <section className="mx-auto w-full max-w-[1200px] px-[5vw] pb-16 pt-10 md:pb-24">
           <div className="pt-4 md:pt-8">
-            <h1 className="text-center text-[clamp(2.8rem,8vw,6.8rem)] font-black uppercase leading-[0.9] tracking-[-0.03em] text-[#0a0a0a]">
+            <h1 className="text-center text-[clamp(2.8rem,8vw,6.8rem)] font-black uppercase leading-[0.9] text-[#0a0a0a]">
               {splitWords("Sobre mi").map((word, index) => (
                 <span
                   key={`about-head-${word}-${index}`}
@@ -66,10 +66,10 @@ export default function AboutPage() {
             </div>
 
             <div className="flex flex-col justify-center px-1 py-2 md:px-2">
-              <p className="text-[0.65rem] uppercase tracking-[0.22em] text-[#d9ff3f]">
+              <p className="text-[0.65rem] uppercase text-[#d9ff3f]">
                 Gherard
               </p>
-              <h2 className="mt-4 text-[31px] font-black uppercase leading-[0.95] tracking-[2px] text-white [font-family:var(--font-helvetica-neue)]">
+              <h2 className="mt-4 text-[31px] font-black uppercase leading-[0.95] text-white [font-family:var(--font-helvetica-neue)]">
                 Diseno, edito y dirijo con criterio.
               </h2>
               <p className="mt-6 max-w-[46ch] text-[0.98rem] leading-[1.85] text-white/68">

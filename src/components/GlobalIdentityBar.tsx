@@ -22,8 +22,8 @@ export default function GlobalIdentityBar() {
           <div className="hidden items-start gap-2 rounded-full border border-white/15 bg-black/35 px-3 py-1.5 text-white/85 backdrop-blur-sm sm:flex">
             <span className="mt-1 inline-flex h-1.5 w-1.5 rounded-full bg-[#7dfd63]" />
             <span className="flex flex-col leading-none">
-              <span className="text-[0.52rem] uppercase tracking-[0.14em]">Available for project</span>
-              <span className="mt-1 text-[0.52rem] uppercase tracking-[0.14em] text-white/60">
+              <span className="text-[0.52rem] uppercase">Available for project</span>
+              <span className="mt-1 text-[0.52rem] uppercase text-white/60">
                 May 2026
               </span>
             </span>
@@ -31,7 +31,7 @@ export default function GlobalIdentityBar() {
 
           <Link
             href="/#contacto"
-            className="inline-flex h-8 items-center rounded-full border border-white/20 bg-black/35 px-4 text-[0.56rem] font-semibold uppercase tracking-[0.14em] text-white transition-colors duration-200 hover:border-[#d9ff3f] hover:bg-[#d9ff3f] hover:text-black"
+            className="inline-flex h-8 items-center rounded-full border border-white/20 bg-black/35 px-4 text-[0.56rem] font-semibold uppercase text-white transition-colors duration-200 hover:border-[#d9ff3f] hover:bg-[#d9ff3f] hover:text-black"
           >
             Let&apos;s Talk
           </Link>
@@ -39,7 +39,7 @@ export default function GlobalIdentityBar() {
             href="https://instagram.com/gheranillos"
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden text-[0.65rem] tracking-[0.02em] text-white/55 transition-colors hover:text-white lg:block"
+            className="hidden text-[0.65rem] text-white/55 transition-colors hover:text-white lg:block"
           >
             @gheranillos
           </Link>

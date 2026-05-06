@@ -37,7 +37,7 @@ export function SelectedWork() {
         <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div>
             <motion.div
-              className="text-sm uppercase tracking-[0.25em] text-cyan-700"
+              className="text-sm uppercase text-cyan-700"
               variants={revealVariants.fadeIn}
               initial={prefersReduced ? false : "hidden"}
               whileInView={prefersReduced ? undefined : "visible"}
@@ -45,7 +45,7 @@ export function SelectedWork() {
             >
               Casos
             </motion.div>
-            <h2 className="mt-4 text-3xl font-black uppercase tracking-tight text-neutral-900 md:text-5xl">
+            <h2 className="mt-4 text-3xl font-black uppercase text-neutral-900 md:text-5xl">
               {splitWords("Trabajo seleccionado / decisiones reales").map((word, index) => (
                 <span
                   key={`portfolio-head-${word}-${index}`}

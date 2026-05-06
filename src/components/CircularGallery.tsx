@@ -728,7 +728,7 @@ const CircularGallery = forwardRef<
             <p className="text-[0.95rem] font-semibold leading-tight text-white sm:text-sm">
               {current.name}
             </p>
-            <p className="mt-0.5 text-[0.65rem] font-medium uppercase tracking-[0.2em] text-white/80">
+            <p className="mt-0.5 text-[0.65rem] font-medium uppercase text-white/80">
               {current.category}
             </p>
           </div>

@@ -73,7 +73,7 @@ export default function FloatingNav() {
               <div key={link.label} className="flex items-center gap-2">
                 <Link
                   href={link.href}
-                  className={`text-[0.65rem] uppercase tracking-[0.2em] transition-colors ${
+                  className={`text-[0.65rem] uppercase transition-colors ${
                     isActive ? "text-[#f7b7ff]" : "text-white/80 hover:text-white"
                   }`}
                 >

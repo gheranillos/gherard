@@ -32,22 +32,22 @@ export default function ShopPage() {
     <div className="min-h-screen bg-[#f8f8f8] text-neutral-900">
       <main>
         <section className="mx-auto w-full max-w-[1200px] px-6 pb-14 pt-16 md:px-10 md:pt-20">
-          <p className="text-[0.65rem] font-black uppercase tracking-[0.24em] text-black/70">
+          <p className="text-[0.65rem] font-black uppercase text-black/70">
             SHOP EN CONSTRUCCION
           </p>
           <Link
             href="/"
-            className="mt-4 inline-flex rounded-full border border-black/15 px-4 py-2 text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-black/75 transition hover:bg-black hover:text-white"
+            className="mt-4 inline-flex rounded-full border border-black/15 px-4 py-2 text-[0.65rem] font-semibold uppercase text-black/75 transition hover:bg-black hover:text-white"
           >
             Volver
           </Link>
 
           <div className="mt-8 grid gap-10 rounded-[2rem] bg-[#0f0f10] px-6 py-10 text-white md:grid-cols-[1.2fr_0.8fr] md:px-10 md:py-12">
             <div>
-              <p className="text-[0.65rem] uppercase tracking-[0.24em] text-white/65">
+              <p className="text-[0.65rem] uppercase text-white/65">
                 Nueva colección
               </p>
-              <h1 className="mt-4 text-[clamp(2.4rem,7vw,5rem)] font-black uppercase leading-[0.9] tracking-[-0.03em]">
+              <h1 className="mt-4 text-[clamp(2.4rem,7vw,5rem)] font-black uppercase leading-[0.9]">
                 Shop
               </h1>
               <p className="mt-5 max-w-[620px] text-[1rem] leading-[1.75] text-white/75">
@@ -57,13 +57,13 @@ export default function ShopPage() {
               <div className="mt-8 flex flex-wrap gap-3">
                 <Link
                   href="#productos"
-                  className="rounded-full bg-[#d9ff3f] px-6 py-3 text-xs font-bold uppercase tracking-[0.16em] text-[#0a0a0a] transition hover:opacity-80"
+                  className="rounded-full bg-[#d9ff3f] px-6 py-3 text-xs font-bold uppercase text-[#0a0a0a] transition hover:opacity-80"
                 >
                   Ver catalogo
                 </Link>
                 <Link
                   href="/#contacto"
-                  className="rounded-full border border-white/25 px-6 py-3 text-xs font-bold uppercase tracking-[0.16em] text-white transition hover:bg-white/10"
+                  className="rounded-full border border-white/25 px-6 py-3 text-xs font-bold uppercase text-white transition hover:bg-white/10"
                 >
                   Hacer consulta
                 </Link>
@@ -71,7 +71,7 @@ export default function ShopPage() {
             </div>
 
             <div className="rounded-3xl border border-white/15 bg-white/5 p-6 backdrop-blur-sm">
-              <p className="text-[0.65rem] uppercase tracking-[0.22em] text-white/60">
+              <p className="text-[0.65rem] uppercase text-white/60">
                 Destacado
               </p>
               <p className="mt-3 text-2xl font-black uppercase text-[#d9ff3f]">
@@ -81,7 +81,7 @@ export default function ShopPage() {
                 En compras desde $80. Entregas nacionales en 48-72 horas.
               </p>
               <div className="mt-7 border-t border-white/20 pt-5">
-                <p className="text-[0.65rem] uppercase tracking-[0.22em] text-white/60">
+                <p className="text-[0.65rem] uppercase text-white/60">
                   Metodos de pago
                 </p>
                 <p className="mt-2 text-sm text-white/85">
@@ -94,7 +94,7 @@ export default function ShopPage() {
 
         <section id="productos" className="mx-auto w-full max-w-[1200px] px-6 pb-20 md:px-10">
           <div className="mb-8 flex items-end justify-between gap-4">
-            <h2 className="text-3xl font-black uppercase tracking-tight md:text-4xl">
+            <h2 className="text-3xl font-black uppercase md:text-4xl">
               Productos
             </h2>
             <p className="text-sm text-black/60">Mostrando 3 productos</p>
@@ -108,7 +108,7 @@ export default function ShopPage() {
               >
                 <div className={`h-48 w-full bg-gradient-to-br ${product.colorClass}`} />
                 <div className="p-6">
-                  <p className="text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-black/45">
+                  <p className="text-[0.65rem] font-semibold uppercase text-black/45">
                     {product.category}
                   </p>
                   <h3 className="mt-2 text-xl font-black leading-tight text-black">
@@ -121,7 +121,7 @@ export default function ShopPage() {
                     <span className="text-lg font-black text-black">{product.price}</span>
                     <button
                       type="button"
-                      className="rounded-full bg-black px-4 py-2 text-[0.68rem] font-bold uppercase tracking-[0.14em] text-white transition hover:bg-[#d9ff3f] hover:text-black"
+                      className="rounded-full bg-black px-4 py-2 text-[0.68rem] font-bold uppercase text-white transition hover:bg-[#d9ff3f] hover:text-black"
                     >
                       Agregar
                     </button>

@@ -293,7 +293,7 @@ export default function GherardPortfolio() {
         {/* Bottom-centered headline + CTA */}
         <div className="relative z-10 flex min-h-[100dvh] flex-col justify-end px-6 pb-14 pt-32 md:px-10 md:pb-20">
           <div className="mx-auto flex w-full max-w-5xl flex-col items-center text-center">
-            <h1 className="about-book max-w-5xl text-[clamp(2.7rem,9vw,7rem)] font-black uppercase leading-[0.9] tracking-[-0.02em] text-white drop-shadow-sm">
+            <h1 className="about-book max-w-5xl text-[clamp(2.7rem,9vw,7rem)] font-black uppercase leading-[0.9] text-white drop-shadow-sm">
               <span className="inline-block overflow-hidden align-middle">
                 <motion.span
                   className="mr-[0.22em] inline-block"
@@ -357,7 +357,7 @@ export default function GherardPortfolio() {
           >
             <h2
               ref={aboutLine1Ref}
-              className="about-book whitespace-normal break-words font-black tracking-[-0.03em] text-[#0a0a0a] lg:whitespace-nowrap"
+              className="about-book whitespace-normal break-words font-black text-[#0a0a0a] lg:whitespace-nowrap"
               style={{
                 fontFamily: "var(--font-helvetica-neue), sans-serif",
                 fontSize: "clamp(1.45rem, 5.8vw, 5rem)",
@@ -370,7 +370,7 @@ export default function GherardPortfolio() {
             </h2>
 
             <h2
-              className="about-book relative mt-1 flex items-center justify-center gap-[0.24em] whitespace-normal font-black tracking-[-0.03em] text-[#0a0a0a] md:whitespace-nowrap"
+              className="about-book relative mt-1 flex items-center justify-center gap-[0.24em] whitespace-normal font-black text-[#0a0a0a] md:whitespace-nowrap"
               style={{
                 fontFamily: "var(--font-helvetica-neue), sans-serif",
                 fontSize: "clamp(1.45rem, 5.8vw, 5rem)",
@@ -398,7 +398,7 @@ export default function GherardPortfolio() {
                       document.querySelector("#contacto");
                     target?.scrollIntoView({ behavior: "smooth" });
                   }}
-                  className="about-light pointer-events-auto rounded-full border border-[#f7b7ff] bg-[#f7b7ff] px-6 py-2 text-xs font-bold uppercase tracking-[0.12em] text-[#0a0a0a] transition hover:border-[#0a0a0a] hover:bg-[#0a0a0a] hover:text-white sm:px-8 sm:py-2.5 sm:text-sm md:px-10 md:py-3"
+                  className="about-light pointer-events-auto rounded-full border border-[#f7b7ff] bg-[#f7b7ff] px-6 py-2 text-xs font-bold uppercase text-[#0a0a0a] transition hover:border-[#0a0a0a] hover:bg-[#0a0a0a] hover:text-white sm:px-8 sm:py-2.5 sm:text-sm md:px-10 md:py-3"
                   style={{
                     fontFamily: "var(--font-helvetica-neue), sans-serif",
                     position: "absolute",
@@ -439,7 +439,7 @@ export default function GherardPortfolio() {
         <div className="mx-auto max-w-7xl px-6 py-20 md:px-10 md:py-28">
           <div className="max-w-3xl">
             <motion.p
-              className="text-[0.72rem] uppercase tracking-[0.24em] text-[#d9ff3f]"
+              className="text-[0.72rem] uppercase text-[#d9ff3f]"
               variants={revealVariants.fadeIn}
               initial={prefersReduced ? false : "hidden"}
               whileInView={prefersReduced ? undefined : "visible"}
@@ -447,7 +447,7 @@ export default function GherardPortfolio() {
             >
               ✦ Servicios
             </motion.p>
-            <h2 className="mt-4 text-[clamp(2rem,7vw,4.6rem)] font-black uppercase leading-[0.92] tracking-[1.5px] text-white [font-family:var(--font-helvetica-neue)]">
+            <h2 className="mt-4 text-[clamp(2rem,7vw,4.6rem)] font-black uppercase leading-[0.92] text-white [font-family:var(--font-helvetica-neue)]">
               {splitWords("Lo que resuelvo.").map((word, index) => (
                 <span
                   key={`services-head-editorial-${word}-${index}`}
@@ -484,7 +484,7 @@ export default function GherardPortfolio() {
                       aria-expanded={isActive}
                     >
                       <span
-                        className={`text-[1.05rem] uppercase tracking-[0.14em] transition-colors duration-200 md:text-[1.35rem] ${
+                        className={`text-[1.05rem] uppercase transition-colors duration-200 md:text-[1.35rem] ${
                           isActive ? "text-white" : "text-white/45"
                         }`}
                       >
@@ -513,10 +513,10 @@ export default function GherardPortfolio() {
                             <p className="text-sm leading-relaxed text-white/75">
                               {service.description}
                             </p>
-                            <p className="mt-4 text-[0.72rem] uppercase tracking-[0.14em] text-white/55">
+                            <p className="mt-4 text-[0.72rem] uppercase text-white/55">
                               {service.tags.join(" · ")}
                             </p>
-                            <div className="mt-3 flex items-center gap-2 text-[0.72rem] uppercase tracking-[0.12em] text-white/60">
+                            <div className="mt-3 flex items-center gap-2 text-[0.72rem] uppercase text-white/60">
                               <Clock3 className="size-3.5" />
                     <span>Tiempo estimado: {service.duration}</span>
                             </div>
@@ -536,7 +536,7 @@ export default function GherardPortfolio() {
                             </div>
                             <Link
                               href="/#contacto"
-                              className="mt-5 inline-flex items-center rounded-full bg-white px-5 py-2.5 text-[0.72rem] font-semibold uppercase tracking-[0.13em] text-black transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#d9ff3f]"
+                              className="mt-5 inline-flex items-center rounded-full bg-white px-5 py-2.5 text-[0.72rem] font-semibold uppercase text-black transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#d9ff3f]"
                             >
                               Ver alcance
                             </Link>
@@ -559,16 +559,16 @@ export default function GherardPortfolio() {
                   transition={{ duration: 0.28, ease: servicesEase }}
                   className="rounded-[26px] border border-white/15 bg-white/[0.03] p-7"
                 >
-                  <h3 className="text-[clamp(1.6rem,2.6vw,2.4rem)] font-black uppercase tracking-[0.08em] text-white [font-family:var(--font-helvetica-neue)]">
+                  <h3 className="text-[clamp(1.6rem,2.6vw,2.4rem)] font-black uppercase text-white [font-family:var(--font-helvetica-neue)]">
                     {services[activeServiceIndex]?.title}
                   </h3>
                   <p className="mt-4 max-w-[62ch] text-base leading-relaxed text-white/80">
                     {services[activeServiceIndex]?.description}
                   </p>
-                  <p className="mt-5 text-[0.72rem] uppercase tracking-[0.16em] text-white/55">
+                  <p className="mt-5 text-[0.72rem] uppercase text-white/55">
                     {services[activeServiceIndex]?.tags.join(" · ")}
                   </p>
-                  <div className="mt-3 flex items-center gap-2 text-[0.72rem] uppercase tracking-[0.14em] text-white/60">
+                  <div className="mt-3 flex items-center gap-2 text-[0.72rem] uppercase text-white/60">
                     <Clock3 className="size-3.5" />
                     <span>Tiempo estimado: {services[activeServiceIndex]?.duration}</span>
                   </div>
@@ -588,7 +588,7 @@ export default function GherardPortfolio() {
                   </div>
                   <Link
                     href="/#contacto"
-                    className="mt-6 inline-flex items-center rounded-full bg-white px-6 py-3 text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-black transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#d9ff3f]"
+                    className="mt-6 inline-flex items-center rounded-full bg-white px-6 py-3 text-[0.72rem] font-semibold uppercase text-black transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#d9ff3f]"
                   >
                     Ver alcance
                   </Link>
@@ -607,7 +607,7 @@ export default function GherardPortfolio() {
       <section id="contacto" className="border-t border-neutral-200 bg-neutral-950 text-white">
         <div className="mx-auto max-w-7xl px-6 py-20 md:px-10 md:py-28">
           <motion.div
-            className="text-xs uppercase tracking-[0.28em] text-[#f7b7ff]"
+            className="text-xs uppercase text-[#f7b7ff]"
             variants={revealVariants.fadeIn}
             initial={prefersReduced ? false : "hidden"}
             whileInView={prefersReduced ? undefined : "visible"}
@@ -615,7 +615,7 @@ export default function GherardPortfolio() {
           >
             Hablemos
           </motion.div>
-          <h2 className="mt-5 max-w-5xl text-4xl font-black uppercase leading-[0.94] tracking-[-0.03em] md:text-7xl">
+          <h2 className="mt-5 max-w-5xl text-4xl font-black uppercase leading-[0.94] md:text-7xl">
             {splitWords("Si tu negocio ya crece, tu imagen tiene que estar a la altura.").map(
               (word, index) => (
                 <span
@@ -648,12 +648,12 @@ export default function GherardPortfolio() {
               variants={staggerChild}
               className="rounded-[30px] border border-white/15 bg-white/[0.04] p-7 backdrop-blur-sm md:p-9"
             >
-              <p className="text-sm uppercase tracking-[0.2em] text-white/60">
+              <p className="text-sm uppercase text-white/60">
                 Contacto directo
               </p>
               <div className="mt-7 space-y-5">
                 <div className="border-b border-white/15 pb-4">
-                  <p className="text-xs uppercase tracking-[0.2em] text-white/45">
+                  <p className="text-xs uppercase text-white/45">
                     Base
                   </p>
                   <p className="mt-2 text-lg tracking-wide text-white/90">
@@ -661,7 +661,7 @@ export default function GherardPortfolio() {
                   </p>
                 </div>
                 <div className="border-b border-white/15 pb-4">
-                  <p className="text-xs uppercase tracking-[0.2em] text-white/45">
+                  <p className="text-xs uppercase text-white/45">
                     Email
                   </p>
                   <a
@@ -672,7 +672,7 @@ export default function GherardPortfolio() {
                   </a>
                 </div>
                 <div className="border-b border-white/15 pb-4">
-                  <p className="text-xs uppercase tracking-[0.2em] text-white/45">
+                  <p className="text-xs uppercase text-white/45">
                     Instagram
                   </p>
                   <a
@@ -685,7 +685,7 @@ export default function GherardPortfolio() {
                   </a>
                 </div>
                 <div>
-                  <p className="text-xs uppercase tracking-[0.2em] text-white/45">
+                  <p className="text-xs uppercase text-white/45">
                     WhatsApp
                   </p>
                   <a
@@ -704,11 +704,11 @@ export default function GherardPortfolio() {
               variants={staggerChild}
               className="rounded-[30px] border border-white/15 bg-white/[0.03] p-7 md:p-9"
             >
-              <p className="text-sm uppercase tracking-[0.2em] text-white/60">
+              <p className="text-sm uppercase text-white/60">
                 Cuentame que estas construyendo
               </p>
               <div className="mt-7 grid gap-5">
-                <label className="grid gap-2 text-xs uppercase tracking-[0.2em] text-white/45">
+                <label className="grid gap-2 text-xs uppercase text-white/45">
                   Nombre
                   <input
                     type="text"
@@ -716,7 +716,7 @@ export default function GherardPortfolio() {
                     className="h-12 rounded-xl border border-white/15 bg-black/20 px-4 text-sm tracking-wide text-white placeholder:text-white/35 outline-none transition focus:border-[#d9ff3f]"
                   />
                 </label>
-                <label className="grid gap-2 text-xs uppercase tracking-[0.2em] text-white/45">
+                <label className="grid gap-2 text-xs uppercase text-white/45">
                   Email
                   <input
                     type="email"
@@ -724,7 +724,7 @@ export default function GherardPortfolio() {
                     className="h-12 rounded-xl border border-white/15 bg-black/20 px-4 text-sm tracking-wide text-white placeholder:text-white/35 outline-none transition focus:border-[#d9ff3f]"
                   />
                 </label>
-                <label className="grid gap-2 text-xs uppercase tracking-[0.2em] text-white/45">
+                <label className="grid gap-2 text-xs uppercase text-white/45">
                   En que necesitas criterio
                   <input
                     type="text"
@@ -732,7 +732,7 @@ export default function GherardPortfolio() {
                     className="h-12 rounded-xl border border-white/15 bg-black/20 px-4 text-sm tracking-wide text-white placeholder:text-white/35 outline-none transition focus:border-[#d9ff3f]"
                   />
                 </label>
-                <label className="grid gap-2 text-xs uppercase tracking-[0.2em] text-white/45">
+                <label className="grid gap-2 text-xs uppercase text-white/45">
                   Mensaje
                   <textarea
                     rows={5}
@@ -743,7 +743,7 @@ export default function GherardPortfolio() {
               </div>
               <button
                 type="button"
-                className="mt-7 inline-flex h-12 items-center justify-center rounded-full bg-[#f7b7ff] px-8 text-xs font-semibold uppercase tracking-[1.2px] text-black [font-family:var(--font-helvetica-neue)] transition hover:translate-y-[-1px] hover:bg-white"
+                className="mt-7 inline-flex h-12 items-center justify-center rounded-full bg-[#f7b7ff] px-8 text-xs font-semibold uppercase text-black [font-family:var(--font-helvetica-neue)] transition hover:translate-y-[-1px] hover:bg-white"
               >
                 Quiero trabajar contigo
               </button>

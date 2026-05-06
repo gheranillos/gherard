@@ -57,7 +57,7 @@ export default function Footer() {
             <Container delay={0.08} className="h-auto">
               <div className="space-y-4">
                 <div>
-                  <p className="text-[0.66rem] uppercase tracking-[0.2em] text-white/45">(Email)</p>
+                  <p className="text-[0.66rem] uppercase text-white/45">(Email)</p>
                   <a
                     href="mailto:hello@gherad.com"
                     className="mt-2 inline-block text-[clamp(1.3rem,2.1vw,2rem)] font-bold leading-none text-[#ff4a2f] transition-colors duration-200 hover:text-[#d9ff3f]"
@@ -66,7 +66,7 @@ export default function Footer() {
                   </a>
                 </div>
                 <div>
-                  <p className="text-[0.66rem] uppercase tracking-[0.2em] text-white/45">(Phone)</p>
+                  <p className="text-[0.66rem] uppercase text-white/45">(Phone)</p>
                   <a
                     href="tel:+584147613621"
                     className="mt-2 inline-block text-2xl font-semibold leading-none text-white/90 transition-colors duration-200 hover:text-[#d9ff3f]"
@@ -79,13 +79,13 @@ export default function Footer() {
 
             <Container delay={0.14} className="h-auto">
               <div>
-                <p className="text-[0.66rem] uppercase tracking-[0.2em] text-white/45">(Links)</p>
+                <p className="text-[0.66rem] uppercase text-white/45">(Links)</p>
                 <nav className="mt-4 flex flex-col gap-2.5">
                   {linksColumn.map((item) => (
                     <Link
                       key={item.label}
                       href={item.href}
-                      className="w-fit text-[1.75rem] font-normal leading-none tracking-[-0.02em] text-white/88 transition-colors duration-200 hover:text-[#d9ff3f]"
+                      className="w-fit text-[1.75rem] font-normal leading-none text-white/88 transition-colors duration-200 hover:text-[#d9ff3f]"
                     >
                       {item.label}
                     </Link>
@@ -96,7 +96,7 @@ export default function Footer() {
 
             <Container delay={0.2} className="h-auto">
               <div>
-                <p className="text-[0.66rem] uppercase tracking-[0.2em] text-white/45">(Social)</p>
+                <p className="text-[0.66rem] uppercase text-white/45">(Social)</p>
                 <div className="mt-4 flex flex-col gap-2.5">
                   {socialsColumn.map((item) => (
                     <Link
@@ -104,7 +104,7 @@ export default function Footer() {
                       href={item.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex w-fit items-center gap-1.5 text-[1.75rem] font-normal leading-none tracking-[-0.02em] text-white/88 transition-colors duration-200 hover:text-[#d9ff3f]"
+                      className="inline-flex w-fit items-center gap-1.5 text-[1.75rem] font-normal leading-none text-white/88 transition-colors duration-200 hover:text-[#d9ff3f]"
                     >
                       {item.label}
                       <ArrowUpRight className="size-4" />
@@ -141,7 +141,7 @@ export default function Footer() {
           </div>
 
           <Container delay={0.3} className="h-auto">
-            <div className="mt-14 flex flex-col gap-3 border-t border-white/10 pt-5 text-[0.72rem] uppercase tracking-[0.08em] text-white/45 md:flex-row md:items-center md:justify-between">
+            <div className="mt-14 flex flex-col gap-3 border-t border-white/10 pt-5 text-[0.72rem] uppercase text-white/45 md:flex-row md:items-center md:justify-between">
               <p>© 2026 Gherard. Todos los derechos reservados.</p>
               <div className="flex items-center gap-4">
                 <Link href="/privacy" className="transition-colors duration-200 hover:text-white/75">
@@ -160,10 +160,10 @@ export default function Footer() {
       <Container delay={0.34} className="h-auto">
         <div className="bg-[#ff4a2f] px-6 py-10 md:px-10 md:py-12">
           <div className="mx-auto flex w-full max-w-[1400px] flex-col gap-6 md:flex-row md:items-end md:justify-between">
-            <h2 className="text-[clamp(4rem,16vw,13rem)] font-black uppercase leading-[0.85] tracking-[-0.03em] text-black [font-family:var(--font-helvetica-neue)]">
+            <h2 className="text-[clamp(4rem,16vw,13rem)] font-black uppercase leading-[0.85] text-black [font-family:var(--font-helvetica-neue)]">
               Gherard
             </h2>
-            <p className="max-w-[300px] text-[clamp(2rem,4vw,4.3rem)] font-black uppercase leading-[0.88] tracking-[-0.025em] text-black md:text-right">
+            <p className="max-w-[300px] text-[clamp(2rem,4vw,4.3rem)] font-black uppercase leading-[0.88] text-black md:text-right">
               Criterio real. Sin humo.
             </p>
           </div>

@@ -6,7 +6,7 @@ import ProjectImage from "@/src/components/ProjectImage";
 import { projects } from "@/src/data/projects";
 
 const PROJECT_TITLE_CLASS =
-  "max-w-[min(377px,100%)] text-[80px] font-black uppercase leading-[78px] tracking-[1.2px] text-white";
+  "max-w-[min(377px,100%)] text-[80px] font-black uppercase leading-[78px] text-white";
 const PROJECT_INTRO_CLASS =
   "mt-[30px] max-w-[620px] text-[1.02rem] leading-[23px] text-white/75";
 const PROJECT_CTA_CLASS =
@@ -16,13 +16,13 @@ const PROJECT_INFO_LABEL_CLASS =
 const PROJECT_INFO_VALUE_CLASS =
   "w-[111px] text-[15px] leading-[1.3] text-white";
 const PROJECT_SECTION_LABEL_CLASS =
-  "text-[0.7rem] font-light uppercase tracking-[0.8px] leading-[26px] text-[#f7b7ff]";
+  "text-[0.7rem] font-light uppercase leading-[26px] text-[#f7b7ff]";
 const PROJECT_LONG_DESCRIPTION_CLASS =
-  "mt-6 max-w-[620px] text-[clamp(1rem,1.5vw,1.15rem)] leading-[21px] tracking-[0px] text-white/80";
+  "mt-6 max-w-[620px] text-[clamp(1rem,1.5vw,1.15rem)] leading-[21px] text-white/80";
 const PROJECT_SUPPORTING_DESCRIPTION_CLASS =
   "mt-[27px] max-w-[620px] text-[0.98rem] leading-[19px] text-white/65";
 const PROJECT_MEDIA_LABEL_CLASS =
-  "w-[531px] text-[13px] font-light uppercase tracking-[0.8px] leading-[26px] text-[#f7b7ff]";
+  "w-[531px] text-[13px] font-light uppercase leading-[26px] text-[#f7b7ff]";
 const PROJECT_LABEL_FONT_STYLE = { fontFamily: "var(--font-helvetica-neue)" } as const;
 
 function getYouTubeEmbedUrl(url: string) {
@@ -126,7 +126,7 @@ export default async function WorkProjectPage({
     <div className="min-h-screen bg-black text-neutral-100 selection:bg-[#f7b7ff] selection:text-black">
       <main className="bg-black pt-[108px]">
         <section className="mx-auto w-full max-w-[1200px] px-[5vw] pb-10 pt-8">
-          <p className="text-[0.65rem] uppercase tracking-[0.24em] text-white/45">
+          <p className="text-[0.65rem] uppercase text-white/45">
             Caso / Proyecto
           </p>
           <div className="mt-5 grid gap-8 md:grid-cols-[1.2fr_0.8fr] md:items-start">
@@ -179,7 +179,7 @@ export default async function WorkProjectPage({
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent" />
           <div className="absolute bottom-0 left-0 z-10 px-[5vw] pb-12">
-            <span className="inline-flex rounded-full border border-white/15 bg-white/10 px-3 py-1 text-[0.65rem] uppercase tracking-[0.2em] text-white backdrop-blur-sm">
+            <span className="inline-flex rounded-full border border-white/15 bg-white/10 px-3 py-1 text-[0.65rem] uppercase text-white backdrop-blur-sm">
               {project.category}
             </span>
           </div>
@@ -243,7 +243,7 @@ export default async function WorkProjectPage({
           href={`/work/${nextProject.slug}`}
           className="group block w-full bg-[#161616] px-[5vw] py-20 transition-colors duration-200"
         >
-          <p className="text-[0.7rem] uppercase tracking-[0.2em] text-white/40">
+          <p className="text-[0.7rem] uppercase text-white/40">
             Siguiente proyecto
           </p>
           <div className="mt-4 flex items-center justify-between gap-4">
