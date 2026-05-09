@@ -225,7 +225,8 @@ export function getVideoProjects(all: Project[] = projects): Project[] {
     "produccion",
     "audiovisual",
   ] as const;
-  return projectsInWorkGridOrder(all).filter((project) =>
-    projectMatchesAnyKeyword(project, videoKeywords),
+  return projectsInWorkGridOrder(all).filter(
+    (project) =>
+      project.slug === "freelance" || projectMatchesAnyKeyword(project, videoKeywords),
   );
 }

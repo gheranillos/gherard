@@ -264,17 +264,30 @@ export default function GherardPortfolio() {
         <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/40 to-black/25" />
         <div className="absolute inset-0 bg-black/20" />
 
-        {/* Bottom-centered headline + CTA */}
+        {/* Hero copy layout */}
         <div className="relative z-10 flex h-[810px] flex-col justify-end px-6 pb-14 pt-32 md:px-10 md:pb-20">
+          <div className="pointer-events-none absolute right-6 top-14 md:right-10 md:top-10">
+            <motion.p
+              className="text-right text-[clamp(2.1rem,4vw,4rem)] font-black leading-[0.9] tracking-[-1px] text-white/75 [font-family:var(--font-helvetica-neue)]"
+              initial={prefersReduced ? false : { opacity: 0, y: 16 }}
+              animate={prefersReduced ? undefined : { opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.06, ease: [0.16, 1, 0.3, 1] }}
+            >
+              Visual con intención.
+              <br />
+              Resultado con criterio.
+            </motion.p>
+          </div>
+
           <div className="mx-auto flex w-full max-w-7xl items-end justify-start">
             <motion.h1
-              className="h-[55px] max-w-[313px] text-left text-[clamp(1.35rem,2.3vw,2.15rem)] font-bold leading-[23px] tracking-[-1.5px] text-white drop-shadow-sm [font-family:var(--font-helvetica-neue)]"
+              className="max-w-[360px] text-left text-[clamp(1.2rem,2vw,1.85rem)] font-bold leading-[1.08] tracking-[-1px] text-white drop-shadow-sm [font-family:var(--font-helvetica-neue)]"
               initial={prefersReduced ? false : { opacity: 0, y: 16 }}
               animate={prefersReduced ? undefined : { opacity: 1, y: 0 }}
               transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
             >
-              We build brands, video, and digital presence with clear direction, sharp criteria, and
-              zero fluff.
+              Diseño, edición y dirección para marcas que quieren verse a la altura de lo que ya
+              venden.
             </motion.h1>
           </div>
         </div>

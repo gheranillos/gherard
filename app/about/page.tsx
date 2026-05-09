@@ -66,11 +66,11 @@ export default function AboutPage() {
             </div>
 
             <div className="flex flex-col justify-center px-1 py-2 md:px-2">
-              <p className="text-[0.65rem] uppercase text-[#f7b7ff]">
-                Gherard
+              <p className="h-[19px] w-[339px] text-[30px] font-black leading-[17px] text-[#f7b7ff]">
+                Gherard Gon.
               </p>
-              <h2 className="mt-4 text-[31px] font-black uppercase leading-[0.95] text-white [font-family:helvetica]">
-                Diseno, edito y dirijo con criterio.
+              <h2 className="mt-4 text-[25px] font-black uppercase leading-[0.95] text-white [font-family:helvetica]">
+                Diseño, edito y dirijo con criterio.
               </h2>
               <p className="mt-6 max-w-[46ch] text-[0.98rem] leading-[1.85] text-white/68">
                 Trabajo con emprendedores y profesionales que ya venden y
