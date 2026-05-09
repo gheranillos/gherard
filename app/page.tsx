@@ -209,6 +209,16 @@ export default function GherardPortfolio() {
   const [prefersReduced, setPrefersReduced] = useState(false);
   const [activeServiceIndex, setActiveServiceIndex] = useState(0);
   const [aboutProgress, setAboutProgress] = useState(0);
+  const [contactForm, setContactForm] = useState({
+    name: "",
+    email: "",
+    need: "",
+    message: "",
+  });
+  const [contactStatus, setContactStatus] = useState<"idle" | "loading" | "success" | "error">(
+    "idle",
+  );
+  const [contactFeedback, setContactFeedback] = useState("");
   const aboutSectionRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
@@ -250,6 +260,50 @@ export default function GherardPortfolio() {
 
   const aboutWords = ABOUT_REVEAL_TEXT.split(" ");
   const aboutOverlayOpacity = 0.95 - aboutProgress * 0.35;
+  const isContactLoading = contactStatus === "loading";
+
+  const handleContactChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
+    const { name, value } = e.target;
+    setContactForm((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleContactSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    if (!contactForm.name || !contactForm.email || !contactForm.message) {
+      setContactStatus("error");
+      setContactFeedback("Completa nombre, email y mensaje.");
+      return;
+    }
+
+    setContactStatus("loading");
+    setContactFeedback("");
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(contactForm),
+      });
+
+      const payload = (await response.json()) as { error?: string };
+
+      if (!response.ok) {
+        throw new Error(payload.error || "No se pudo enviar el mensaje.");
+      }
+
+      setContactStatus("success");
+      setContactFeedback("Mensaje enviado. Te respondere pronto.");
+      setContactForm({ name: "", email: "", need: "", message: "" });
+    } catch (error) {
+      setContactStatus("error");
+      setContactFeedback(
+        error instanceof Error ? error.message : "Error inesperado al enviar el mensaje.",
+      );
+    }
+  };
 
   return (
     <div className="bg-white text-neutral-900 selection:bg-[#f7b7ff] selection:text-black">
@@ -601,6 +655,7 @@ export default function GherardPortfolio() {
 
             <motion.form
               variants={staggerChild}
+              onSubmit={handleContactSubmit}
               className="rounded-[30px] border border-white/15 bg-white/[0.03] p-7 md:p-9"
             >
               <p className="text-sm uppercase text-white/60">
@@ -610,41 +665,63 @@ export default function GherardPortfolio() {
                 <label className="grid gap-2 text-xs uppercase text-white/45">
                   Nombre
                   <input
+                    name="name"
                     type="text"
                     placeholder="Tu nombre"
+                    value={contactForm.name}
+                    onChange={handleContactChange}
                     className="h-12 rounded-xl border border-white/15 bg-black/20 px-4 text-sm tracking-wide text-white placeholder:text-white/35 outline-none transition focus:border-[#f7b7ff]"
                   />
                 </label>
                 <label className="grid gap-2 text-xs uppercase text-white/45">
                   Email
                   <input
+                    name="email"
                     type="email"
                     placeholder="correo@ejemplo.com"
+                    value={contactForm.email}
+                    onChange={handleContactChange}
                     className="h-12 rounded-xl border border-white/15 bg-black/20 px-4 text-sm tracking-wide text-white placeholder:text-white/35 outline-none transition focus:border-[#f7b7ff]"
                   />
                 </label>
                 <label className="grid gap-2 text-xs uppercase text-white/45">
                   En que necesitas criterio
                   <input
+                    name="need"
                     type="text"
                     placeholder="Marca, contenido, web o direccion visual"
+                    value={contactForm.need}
+                    onChange={handleContactChange}
                     className="h-12 rounded-xl border border-white/15 bg-black/20 px-4 text-sm tracking-wide text-white placeholder:text-white/35 outline-none transition focus:border-[#f7b7ff]"
                   />
                 </label>
                 <label className="grid gap-2 text-xs uppercase text-white/45">
                   Mensaje
                   <textarea
+                    name="message"
                     rows={5}
                     placeholder="Que vendes, en que punto estas y que necesitas resolver"
+                    value={contactForm.message}
+                    onChange={handleContactChange}
                     className="min-h-[136px] rounded-xl border border-white/15 bg-black/20 px-4 py-3 text-sm leading-relaxed tracking-wide text-white placeholder:text-white/35 outline-none transition focus:border-[#f7b7ff]"
                   />
                 </label>
               </div>
+              {contactFeedback ? (
+                <p
+                  className={`mt-4 text-xs ${
+                    contactStatus === "success" ? "text-[#9cffc7]" : "text-[#ffb4b4]"
+                  }`}
+                >
+                  {contactFeedback}
+                </p>
+              ) : null}
               <button
-                type="button"
-                className="mt-7 inline-flex h-12 items-center justify-center rounded-full bg-[#f7b7ff] px-8 text-xs font-semibold uppercase text-black [font-family:var(--font-helvetica-neue)] transition hover:translate-y-[-1px] hover:bg-white"
+                type="submit"
+                disabled={isContactLoading}
+                className="mt-7 inline-flex h-12 items-center justify-center rounded-full bg-[#f7b7ff] px-8 text-xs font-semibold uppercase text-black [font-family:var(--font-helvetica-neue)] transition hover:translate-y-[-1px] hover:bg-white disabled:cursor-not-allowed disabled:opacity-70"
               >
-                Quiero trabajar contigo
+                {isContactLoading ? "Enviando..." : "Quiero trabajar contigo"}
               </button>
             </motion.form>
           </motion.div>
