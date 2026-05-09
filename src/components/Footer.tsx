@@ -59,17 +59,17 @@ export default function Footer() {
                 <div>
                   <p className="text-[0.66rem] uppercase text-white/45">(Email)</p>
                   <a
-                    href="mailto:hello@gherad.com"
-                    className="mt-2 inline-block text-[clamp(1.3rem,2.1vw,2rem)] font-bold leading-none text-[#ff4a2f] transition-colors duration-200 hover:text-[#d9ff3f]"
+                    href="mailto:hello@gheranillos.com"
+                    className="mt-2 inline-block text-[clamp(1.3rem,2.1vw,2rem)] font-bold leading-none text-[#f7b7ff] transition-colors duration-200 hover:text-[#f7b7ff]"
                   >
-                    hello@gherad.com
+                    hello@gheranillos.com
                   </a>
                 </div>
                 <div>
                   <p className="text-[0.66rem] uppercase text-white/45">(Phone)</p>
                   <a
                     href="tel:+584147613621"
-                    className="mt-2 inline-block text-2xl font-semibold leading-none text-white/90 transition-colors duration-200 hover:text-[#d9ff3f]"
+                    className="mt-2 inline-block text-2xl font-semibold leading-none text-white/90 transition-colors duration-200 hover:text-[#f7b7ff]"
                   >
                     +58 414 761 3621
                   </a>
@@ -85,7 +85,7 @@ export default function Footer() {
                     <Link
                       key={item.label}
                       href={item.href}
-                      className="w-fit text-[1.75rem] font-normal leading-none text-white/88 transition-colors duration-200 hover:text-[#d9ff3f]"
+                      className="w-fit text-[1.75rem] font-normal leading-none text-white/88 transition-colors duration-200 hover:text-[#f7b7ff]"
                     >
                       {item.label}
                     </Link>
@@ -104,7 +104,7 @@ export default function Footer() {
                       href={item.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex w-fit items-center gap-1.5 text-[1.75rem] font-normal leading-none text-white/88 transition-colors duration-200 hover:text-[#d9ff3f]"
+                      className="inline-flex w-fit items-center gap-1.5 text-[1.75rem] font-normal leading-none text-white/88 transition-colors duration-200 hover:text-[#f7b7ff]"
                     >
                       {item.label}
                       <ArrowUpRight className="size-4" />
@@ -131,7 +131,7 @@ export default function Footer() {
                   />
                   <button
                     type="button"
-                    className="mt-4 inline-flex h-10 w-full items-center justify-center rounded-full border border-white/20 bg-transparent text-sm font-medium text-white/90 transition-colors duration-200 hover:border-[#d9ff3f] hover:bg-[#d9ff3f] hover:text-black"
+                    className="mt-4 inline-flex h-10 w-full items-center justify-center rounded-full border border-white/20 bg-transparent text-sm font-medium text-white/90 transition-colors duration-200 hover:border-[#f7b7ff] hover:bg-[#f7b7ff] hover:text-black"
                   >
                     Recibir
                   </button>
@@ -158,7 +158,7 @@ export default function Footer() {
       </div>
 
       <Container delay={0.34} className="h-auto">
-        <div className="bg-[#ff4a2f] px-6 py-10 md:px-10 md:py-12">
+        <div className="bg-[#f7b7ff] px-6 py-10 md:px-10 md:py-12">
           <div className="mx-auto flex w-full max-w-[1400px] flex-col gap-6 md:flex-row md:items-end md:justify-between">
             <h2 className="text-[110px] font-black uppercase leading-[0.85] text-black [font-family:var(--font-helvetica-neue)]">
               Gherard

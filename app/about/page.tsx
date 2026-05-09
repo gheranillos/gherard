@@ -16,7 +16,7 @@ export default function AboutPage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-white text-neutral-900 selection:bg-[#d9ff3f] selection:text-black">
+    <div className="min-h-screen bg-white text-neutral-900 selection:bg-[#f7b7ff] selection:text-black">
       <main className="bg-white">
         <section className="mx-auto w-full max-w-[1200px] px-[5vw] pb-16 pt-10 md:pb-24">
           <div className="pt-4 md:pt-8">
@@ -66,7 +66,7 @@ export default function AboutPage() {
             </div>
 
             <div className="flex flex-col justify-center px-1 py-2 md:px-2">
-              <p className="text-[0.65rem] uppercase text-[#d9ff3f]">
+              <p className="text-[0.65rem] uppercase text-[#f7b7ff]">
                 Gherard
               </p>
               <h2 className="mt-4 text-[31px] font-black uppercase leading-[0.95] text-white [font-family:helvetica]">

@@ -57,7 +57,7 @@ export default function ShopPage() {
               <div className="mt-8 flex flex-wrap gap-3">
                 <Link
                   href="#productos"
-                  className="rounded-full bg-[#d9ff3f] px-6 py-3 text-xs font-bold uppercase text-[#0a0a0a] transition hover:opacity-80"
+                  className="rounded-full bg-[#f7b7ff] px-6 py-3 text-xs font-bold uppercase text-[#0a0a0a] transition hover:opacity-80"
                 >
                   Ver catalogo
                 </Link>
@@ -74,7 +74,7 @@ export default function ShopPage() {
               <p className="text-[0.65rem] uppercase text-white/60">
                 Destacado
               </p>
-              <p className="mt-3 text-2xl font-black uppercase text-[#d9ff3f]">
+              <p className="mt-3 text-2xl font-black uppercase text-[#f7b7ff]">
                 Envio gratis
               </p>
               <p className="mt-3 text-sm leading-relaxed text-white/70">
@@ -121,7 +121,7 @@ export default function ShopPage() {
                     <span className="text-lg font-black text-black">{product.price}</span>
                     <button
                       type="button"
-                      className="rounded-full bg-black px-4 py-2 text-[0.68rem] font-bold uppercase text-white transition hover:bg-[#d9ff3f] hover:text-black"
+                      className="rounded-full bg-black px-4 py-2 text-[0.68rem] font-bold uppercase text-white transition hover:bg-[#f7b7ff] hover:text-black"
                     >
                       Agregar
                     </button>

@@ -96,45 +96,47 @@ export function ReviewsSection() {
             <div ref={cubeRef} className="cube relative will-change-transform">
               <div className="face face-front">
                 <p className="face-quote">
-                  "Llegue con ideas sueltas y sali con una marca clara. Se noto criterio en cada decision y eso
-                  se tradujo en mas confianza para vender."
+                  "Buscaba alguien que entendiera mi canal de youtube y agilizara mis ideas en ediciones,
+                  entendiendo el color, planos y contexto de las carreras. Gherard entendió el mensaje y
+                  logramos ser un buen equipo Editor en Jefe de MTB Caracas!"
                 </p>
                 <p className="face-author">
-                  — <span className="face-name">Valentina M.</span>,{" "}
-                  <span className="face-role">Emprendedora</span>
+                  — <span className="face-name">Daniel G.</span>,{" "}
+                  <span className="face-role">MTB CARACAS</span>
                 </p>
               </div>
 
               <div className="face face-right">
                 <p className="face-quote">
-                  "No fue solo diseno bonito. Nos ordeno el mensaje, la narrativa y la ejecucion. Desde ahi, la
-                  marca se empezo a percibir en otro nivel."
+                  "Buscaba un diseñador que pudiera hacer una identidad para un cliente lo más pronto
+                  posible, conozco a gherard de otros proyectos. No solo me entrego un diseño bonito, si no
+                  también el mensaje y ejecucion, desde ahí la marca se percibe distinto."
                 </p>
                 <p className="face-author">
-                  — <span className="face-name">Carla P.</span>,{" "}
-                  <span className="face-role">Fundadora de marca</span>
+                  — <span className="face-name">Jesus F.</span>,{" "}
+                  <span className="face-role">Vision Dream</span>
                 </p>
               </div>
 
               <div className="face face-left">
                 <p className="face-quote">
-                  "Necesitabamos alguien que entendiera negocio y visual al mismo tiempo. Gherard dirigio el
-                  proceso sin rodeos y el resultado fue mas claro y mas rentable."
+                  "Buscabamos un diseñador grafico, que realizara nuestra identidad de marca y logo. Gherard
+                  propuso la idea más resultado lo más claro posible y quedamos encantados."
                 </p>
                 <p className="face-author">
-                  — <span className="face-name">Mariana T.</span>,{" "}
-                  <span className="face-role">Directora de marketing</span>
+                  — <span className="face-name">Maria V.</span>,{" "}
+                  <span className="face-role">Mundo Gelato.</span>
                 </p>
               </div>
 
               <div className="face face-back">
                 <p className="face-quote">
-                  "Nos ayudo a pasar de piezas aisladas a una identidad con criterio. Ahora cada publicacion suma
-                  y la marca se siente realmente consistente."
+                  "Gherard ha desarrollado varias identidades de mi marca, buscabamos un diseñador que
+                  trabajara a la mano para mis proyectos, sin pensar 2 veces no cambio mi decisión."
                 </p>
                 <p className="face-author">
-                  — <span className="face-name">Andrés C.</span>,{" "}
-                  <span className="face-role">Co-fundador</span>
+                  — <span className="face-name">Carlos H.</span>,{" "}
+                  <span className="face-role">Emprendedor</span>
                 </p>
               </div>
             </div>

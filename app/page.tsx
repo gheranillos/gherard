@@ -252,7 +252,7 @@ export default function GherardPortfolio() {
   const aboutOverlayOpacity = 0.95 - aboutProgress * 0.35;
 
   return (
-    <div className="bg-white text-neutral-900 selection:bg-[#d9ff3f] selection:text-black">
+    <div className="bg-white text-neutral-900 selection:bg-[#f7b7ff] selection:text-black">
       {/* Hero — full viewport, reference layout */}
       <section className="relative min-h-[100dvh] overflow-hidden border-b border-neutral-900/10">
         {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -325,7 +325,7 @@ export default function GherardPortfolio() {
         <div className="mx-auto max-w-7xl px-6 py-20 md:px-10 md:py-28">
           <div className="max-w-3xl">
             <motion.p
-              className="text-[0.72rem] uppercase text-[#d9ff3f]"
+              className="text-[0.72rem] uppercase text-[#f7b7ff]"
               variants={revealVariants.fadeIn}
               initial={prefersReduced ? false : "hidden"}
               whileInView={prefersReduced ? undefined : "visible"}
@@ -422,7 +422,7 @@ export default function GherardPortfolio() {
                             </div>
                             <Link
                               href="/#contacto"
-                              className="mt-5 inline-flex items-center rounded-full bg-white px-5 py-2.5 text-[0.72rem] font-semibold uppercase text-black transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#d9ff3f]"
+                              className="mt-5 inline-flex items-center rounded-full bg-white px-5 py-2.5 text-[0.72rem] font-semibold uppercase text-black transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#f7b7ff]"
                             >
                               Ver alcance
                             </Link>
@@ -474,7 +474,7 @@ export default function GherardPortfolio() {
                   </div>
                   <Link
                     href="/#contacto"
-                    className="mt-6 inline-flex items-center rounded-full bg-white px-6 py-3 text-[0.72rem] font-semibold uppercase text-black transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#d9ff3f]"
+                    className="mt-6 inline-flex items-center rounded-full bg-white px-6 py-3 text-[0.72rem] font-semibold uppercase text-black transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#f7b7ff]"
                   >
                     Ver alcance
                   </Link>
@@ -551,10 +551,10 @@ export default function GherardPortfolio() {
                     Email
                   </p>
                   <a
-                    href="mailto:hello@gherad.com"
-                    className="mt-2 inline-block text-lg tracking-wide text-white transition hover:text-[#d9ff3f]"
+                    href="mailto:hello@gheranillos.com"
+                    className="mt-2 inline-block text-lg tracking-wide text-white transition hover:text-[#f7b7ff]"
                   >
-                    hello@gherad.com
+                    hello@gheranillos.com
                   </a>
                 </div>
                 <div className="border-b border-white/15 pb-4">
@@ -578,7 +578,7 @@ export default function GherardPortfolio() {
                     href="https://wa.me/584147613621"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-2 inline-flex items-center gap-2 text-lg tracking-wide text-white transition hover:text-[#d9ff3f]"
+                    className="mt-2 inline-flex items-center gap-2 text-lg tracking-wide text-white transition hover:text-[#f7b7ff]"
                   >
                     <MessageCircle className="h-4 w-4" /> +58 414 761 3621
                   </a>
@@ -599,7 +599,7 @@ export default function GherardPortfolio() {
                   <input
                     type="text"
                     placeholder="Tu nombre"
-                    className="h-12 rounded-xl border border-white/15 bg-black/20 px-4 text-sm tracking-wide text-white placeholder:text-white/35 outline-none transition focus:border-[#d9ff3f]"
+                    className="h-12 rounded-xl border border-white/15 bg-black/20 px-4 text-sm tracking-wide text-white placeholder:text-white/35 outline-none transition focus:border-[#f7b7ff]"
                   />
                 </label>
                 <label className="grid gap-2 text-xs uppercase text-white/45">
@@ -607,7 +607,7 @@ export default function GherardPortfolio() {
                   <input
                     type="email"
                     placeholder="correo@ejemplo.com"
-                    className="h-12 rounded-xl border border-white/15 bg-black/20 px-4 text-sm tracking-wide text-white placeholder:text-white/35 outline-none transition focus:border-[#d9ff3f]"
+                    className="h-12 rounded-xl border border-white/15 bg-black/20 px-4 text-sm tracking-wide text-white placeholder:text-white/35 outline-none transition focus:border-[#f7b7ff]"
                   />
                 </label>
                 <label className="grid gap-2 text-xs uppercase text-white/45">
@@ -615,7 +615,7 @@ export default function GherardPortfolio() {
                   <input
                     type="text"
                     placeholder="Marca, contenido, web o direccion visual"
-                    className="h-12 rounded-xl border border-white/15 bg-black/20 px-4 text-sm tracking-wide text-white placeholder:text-white/35 outline-none transition focus:border-[#d9ff3f]"
+                    className="h-12 rounded-xl border border-white/15 bg-black/20 px-4 text-sm tracking-wide text-white placeholder:text-white/35 outline-none transition focus:border-[#f7b7ff]"
                   />
                 </label>
                 <label className="grid gap-2 text-xs uppercase text-white/45">
@@ -623,7 +623,7 @@ export default function GherardPortfolio() {
                   <textarea
                     rows={5}
                     placeholder="Que vendes, en que punto estas y que necesitas resolver"
-                    className="min-h-[136px] rounded-xl border border-white/15 bg-black/20 px-4 py-3 text-sm leading-relaxed tracking-wide text-white placeholder:text-white/35 outline-none transition focus:border-[#d9ff3f]"
+                    className="min-h-[136px] rounded-xl border border-white/15 bg-black/20 px-4 py-3 text-sm leading-relaxed tracking-wide text-white placeholder:text-white/35 outline-none transition focus:border-[#f7b7ff]"
                   />
                 </label>
               </div>
