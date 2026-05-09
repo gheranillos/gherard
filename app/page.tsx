@@ -268,7 +268,7 @@ export default function GherardPortfolio() {
         <div className="relative z-10 flex h-[810px] flex-col justify-end px-6 pb-14 pt-32 md:px-10 md:pb-20">
           <div className="pointer-events-none absolute right-6 top-14 md:right-10 md:top-10">
             <motion.p
-              className="text-right text-[clamp(2.1rem,4vw,4rem)] font-black leading-[0.9] tracking-[-1px] text-white/75 [font-family:var(--font-helvetica-neue)]"
+              className="max-w-[360px] text-right text-[clamp(1rem,1.5vw,1.65rem)] font-black leading-[1.05] tracking-[-0.5px] text-white/80 [font-family:var(--font-helvetica-neue)]"
               initial={prefersReduced ? false : { opacity: 0, y: 16 }}
               animate={prefersReduced ? undefined : { opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.06, ease: [0.16, 1, 0.3, 1] }}
