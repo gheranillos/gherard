@@ -184,7 +184,7 @@ function ScrollCategories() {
                       lineHeight: 0.9,
                       fontWeight: 100,
                       letterSpacing: "-0.5px",
-                      fontSize: "50px",
+                      fontSize: "clamp(1.85rem, 10vw, 50px)",
                     }}
                   >
                     {item.label}
@@ -319,10 +319,10 @@ export default function GherardPortfolio() {
         <div className="absolute inset-0 bg-black/20" />
 
         {/* Hero copy layout */}
-        <div className="relative z-10 mx-auto flex h-[810px] w-full max-w-[1537px] flex-col justify-end px-6 pb-14 pt-32 md:px-10 md:pb-20">
-          <div className="pointer-events-none absolute right-6 top-14 text-[29px] font-thin [font-family:var(--font-helvetica)] md:right-10 md:top-[142px]">
+        <div className="relative z-10 mx-auto flex h-[100dvh] w-full max-w-[1537px] flex-col justify-end px-5 pb-10 pt-28 md:h-[810px] md:px-10 md:pb-20 md:pt-32">
+          <div className="pointer-events-none absolute right-5 top-10 text-[20px] font-thin [font-family:var(--font-helvetica)] md:right-10 md:top-[142px] md:text-[29px]">
             <motion.p
-              className="max-w-[360px] text-right text-[29px] font-bold leading-[1.05] tracking-[-0.5px] text-white [font-family:var(--font-helvetica)]"
+              className="max-w-[250px] text-right text-[20px] font-bold leading-[1.05] tracking-[-0.5px] text-white [font-family:var(--font-helvetica)] md:max-w-[360px] md:text-[29px]"
               initial={prefersReduced ? false : { opacity: 0, y: 16 }}
               animate={prefersReduced ? undefined : { opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.06, ease: [0.16, 1, 0.3, 1] }}
@@ -335,7 +335,7 @@ export default function GherardPortfolio() {
 
           <div className="mx-auto flex w-full max-w-7xl items-end justify-start">
             <motion.h1
-              className="max-w-[360px] text-left text-[clamp(1.2rem,2vw,1.85rem)] font-bold leading-[1.08] tracking-[-1px] text-white drop-shadow-sm [font-family:var(--font-helvetica-neue)]"
+              className="max-w-[300px] text-left text-[clamp(1.45rem,7vw,2rem)] font-bold leading-[1.08] tracking-[-1px] text-white drop-shadow-sm [font-family:var(--font-helvetica-neue)] md:max-w-[360px] md:text-[clamp(1.2rem,2vw,1.85rem)]"
               initial={prefersReduced ? false : { opacity: 0, y: 16 }}
               animate={prefersReduced ? undefined : { opacity: 1, y: 0 }}
               transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
@@ -407,7 +407,7 @@ export default function GherardPortfolio() {
                   className="inline-block overflow-hidden"
                 >
                   <motion.span
-                    className="mr-[0.28em] inline-block text-[55px] font-bold tracking-[0px] [font-family:helvetica]"
+                    className="mr-[0.28em] inline-block text-[34px] font-bold tracking-[0px] [font-family:helvetica] md:text-[55px]"
                     initial={prefersReduced ? false : { opacity: 0, y: 14 }}
                     whileInView={prefersReduced ? undefined : { opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-40px" }}
