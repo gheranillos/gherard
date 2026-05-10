@@ -158,12 +158,12 @@ export default function Footer() {
       </div>
 
       <Container delay={0.34} className="h-auto">
-        <div className="bg-[#f7b7ff] px-6 py-10 md:px-10 md:py-12">
+        <div className="overflow-hidden bg-[#f7b7ff] px-6 py-10 md:px-10 md:py-12">
           <div className="mx-auto flex w-full max-w-[1400px] flex-col gap-6 md:flex-row md:items-end md:justify-between">
-            <h2 className="text-[110px] font-black uppercase leading-[0.85] text-black [font-family:var(--font-helvetica-neue)]">
+            <h2 className="text-[clamp(3.6rem,22vw,7rem)] font-black uppercase leading-[0.85] text-black [font-family:var(--font-helvetica-neue)] md:text-[110px]">
               Gherard
             </h2>
-            <p className="max-w-[300px] text-[clamp(2rem,4vw,4.3rem)] font-black uppercase leading-[0.88] text-black md:text-right">
+            <p className="max-w-[260px] text-[clamp(1.8rem,10vw,3rem)] font-black uppercase leading-[0.88] text-black md:max-w-[300px] md:text-[clamp(2rem,4vw,4.3rem)] md:text-right">
               Criterio real. Sin humo.
             </p>
           </div>

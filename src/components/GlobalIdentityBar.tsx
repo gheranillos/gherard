@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export default function GlobalIdentityBar() {
   return (
-    <div className="pointer-events-none fixed left-0 right-0 top-6 z-40 px-6 md:px-10">
+    <div className="pointer-events-none fixed left-0 right-0 top-4 z-40 px-4 md:top-6 md:px-10">
       <div className="mx-auto flex w-full max-w-[1600px] items-center justify-between">
         <Link href="/" className="pointer-events-auto">
           <Image
@@ -33,7 +33,7 @@ export default function GlobalIdentityBar() {
 
           <Link
             href="/#contacto"
-            className="inline-flex h-8 w-[99px] items-center rounded-full border border-white/20 bg-black/35 px-4 text-[12px] font-semibold uppercase text-white transition-colors duration-200 hover:border-[#f7b7ff] hover:bg-[#f7b7ff] hover:text-black"
+            className="inline-flex h-7 w-[88px] items-center rounded-full border border-white/20 bg-black/35 px-3 text-[11px] font-semibold uppercase text-white transition-colors duration-200 hover:border-[#f7b7ff] hover:bg-[#f7b7ff] hover:text-black md:h-8 md:w-[99px] md:px-4 md:text-[12px]"
           >
             Let&apos;s Talk
           </Link>

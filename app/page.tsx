@@ -320,7 +320,7 @@ export default function GherardPortfolio() {
 
         {/* Hero copy layout */}
         <div className="relative z-10 mx-auto flex h-[100dvh] w-full max-w-[1537px] flex-col justify-end px-5 pb-10 pt-28 md:h-[810px] md:px-10 md:pb-20 md:pt-32">
-          <div className="pointer-events-none absolute right-5 top-10 text-[20px] font-thin [font-family:var(--font-helvetica)] md:right-10 md:top-[142px] md:text-[29px]">
+          <div className="pointer-events-none absolute right-4 top-22 text-[20px] font-thin [font-family:var(--font-helvetica)] md:right-10 md:top-[142px] md:text-[29px]">
             <motion.p
               className="max-w-[250px] text-right text-[20px] font-bold leading-[1.05] tracking-[-0.5px] text-white [font-family:var(--font-helvetica)] md:max-w-[360px] md:text-[29px]"
               initial={prefersReduced ? false : { opacity: 0, y: 16 }}
