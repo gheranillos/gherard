@@ -125,6 +125,7 @@ export const projects: Project[] = [
       "https://youtu.be/-izok_dDuwY",
       "https://youtu.be/OV844E8nhpw",
       "https://youtu.be/ycN7I57EwcE",
+      "https://youtu.be/jbAcQS1VYw4",
     ],
     accentColor: "#f7b7ff",
   },
