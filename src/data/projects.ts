@@ -65,6 +65,50 @@ export const projects: Project[] = [
     accentColor: "#f7b7ff",
   },
   {
+    slug: "real-florida",
+    title: "Real Florida",
+    category: "Contenido / Edicion de video",
+    year: "2023-2025",
+    client: "Andreina Russa",
+    role: "Youtube, edicion, direccion",
+    description:
+      "Proyecto editorial para blindar y hacer crecer patrimonio con una curaduria del 1% de propiedades de alta rentabilidad y plusvalia en Miami y Orlando.",
+    longDescription:
+      "Real Florida es un proyecto liderado por Andreina Russa que traduce informacion del mercado inmobiliario en decisiones de inversion mas claras. El contenido cubre noticias que mueven la economia, spots exclusivos, eventos que atraen millones de personas a Miami y Orlando, updates de infraestructura y acceso a pre-construcciones con mayor retorno. Todo esta filtrado desde su vision de donde y como invertir en el next big thing de Florida.",
+    tags: ["Contenido", "Edicion de video", "Youtube", "Edicion", "Direccion"],
+    coverImage: "https://img.youtube.com/vi/QQEIRwPRnHE/maxresdefault.jpg",
+    images: [
+      "https://www.youtube.com/watch?v=QQEIRwPRnHE",
+      "https://www.youtube.com/watch?v=nHQpL38DcjU&t=45s",
+      "https://www.youtube.com/watch?v=a9gBuhzkh6k",
+      "https://www.youtube.com/watch?v=N3uaUPOgp1o&t=3s",
+    ],
+    accentColor: "#f7b7ff",
+  },
+  {
+    slug: "andreina-shorts",
+    title: "Andreina Shorts",
+    category: "Contenido / Edicion de video",
+    year: "2023-2025",
+    client: "Andreina Russa",
+    role: "Youtube, edicion, direccion",
+    description:
+      "Serie de piezas cortas enfocadas en retencion, claridad de mensaje y consistencia para reforzar autoridad de marca en formato vertical.",
+    longDescription:
+      "Andreina Shorts concentra la linea de contenido corto de Andreina Russa para YouTube Shorts. El enfoque esta en empaquetar insights de inversion inmobiliaria en Florida con ritmo, estructura y direccion narrativa para captar atencion rapido y sostener engagement en cada pieza.",
+    tags: ["Contenido", "Edicion de video", "Youtube", "Edicion", "Direccion", "Shorts"],
+    coverImage: "https://img.youtube.com/vi/UhH1KZ_bTNs/maxresdefault.jpg",
+    images: [
+      "https://www.youtube.com/shorts/UhH1KZ_bTNs",
+      "https://www.youtube.com/shorts/SCO5QlH3EIw",
+      "https://www.youtube.com/shorts/VHFR-Bmc1wQ",
+      "https://www.youtube.com/shorts/k5Hk8DXapag",
+      "https://www.youtube.com/shorts/FeQ-GRx1tos",
+      "https://www.youtube.com/shorts/ktjxG96nT_Y",
+    ],
+    accentColor: "#f7b7ff",
+  },
+  {
     slug: "padelcafe",
     title: "Padel Cafe",
     category: "Branding y direccion visual",
@@ -174,6 +218,8 @@ export const projects: Project[] = [
 export const WORK_PAGE_PROJECT_SLUGS = [
   "el-kiosco",
   "mtb-caracas",
+  "real-florida",
+  "andreina-shorts",
   "padelcafe",
   "freelance",
   "naponino",
