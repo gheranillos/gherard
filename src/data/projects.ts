@@ -109,6 +109,26 @@ export const projects: Project[] = [
     accentColor: "#f7b7ff",
   },
   {
+    slug: "gaming-edits",
+    title: "Gaming Edits",
+    category: "Contenido / Edicion de video",
+    year: "2025-2026",
+    client: "Variados",
+    role: "Edicion de videos",
+    description:
+      "Ediciones de videos particulares para proyectos pequenos, con entregas puntuales y un resultado final de alta calidad.",
+    longDescription:
+      "Edit Games agrupa proyectos pequenos de edicion para clientes variados. El enfoque esta en resolver piezas concretas con velocidad, claridad y acabado profesional, cuidando ritmo, narrativa y calidad visual en cada entrega pagada.",
+    tags: ["Contenido", "Edicion de video", "Edicion de videos"],
+    coverImage: "/images/projects/covergames.jpg",
+    images: [
+      "https://youtu.be/-izok_dDuwY",
+      "https://youtu.be/OV844E8nhpw",
+      "https://youtu.be/ycN7I57EwcE",
+    ],
+    accentColor: "#f7b7ff",
+  },
+  {
     slug: "padelcafe",
     title: "Padel Cafe",
     category: "Branding y direccion visual",
@@ -220,6 +240,7 @@ export const WORK_PAGE_PROJECT_SLUGS = [
   "mtb-caracas",
   "real-florida",
   "andreina-shorts",
+  "gaming-edits",
   "padelcafe",
   "freelance",
   "naponino",
